@@ -3,724 +3,528 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jun Wen Leong | I break AI systems so you can trust them</title>
-  <meta name="description" content="3 papers, 28k runs, zero execution errors. I find the bugs that safety training misses.">
-  <meta name="author" content="Jun Wen Leong">
-  <meta property="og:title" content="Jun Wen Leong | I break AI systems so you can trust them">
-  <meta property="og:description" content="3 papers, 28k runs, zero execution errors. I find the bugs that safety training misses.">
-  <meta property="og:type" content="website">
-
+  <title>Jun Wen Leong | Fracture Lab</title>
+  <meta name="description" content="Destructive testing for AI safety systems. I find where they fracture.">
+  <meta property="og:title" content="Jun Wen Leong | Fracture Lab">
+  <meta property="og:description" content="Destructive testing for AI safety systems. I find where they fracture.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Boot sequence overlay -->
-  <div id="boot" class="boot-overlay" aria-hidden="true">
-    <div class="boot-content">
-      <div class="boot-line" style="--delay: 0">adversarial_probe_suite v3.1.0</div>
-      <div class="boot-line" style="--delay: 1">loading subject ··· <span class="boot-name">JUN_WEN_LEONG</span></div>
-      <div class="boot-line" style="--delay: 2">scanning model catalog ··· <span class="boot-ok">35 targets acquired</span></div>
-      <div class="boot-line" style="--delay: 3">evaluating defenses ··· <span class="boot-fail">6/7 FAILED</span></div>
-      <div class="boot-line" style="--delay: 4">findings disclosed ··· <span class="boot-ok">3 papers | 28,000 runs | 0 errors</span></div>
-      <div class="boot-line boot-final" style="--delay: 5">INITIALIZING PORTFOLIO ███████████</div>
-    </div>
-    <button class="boot-skip" onclick="skipBoot()">SKIP →</button>
+  <!-- Persistent header strip -->
+  <div class="lab-strip" aria-hidden="true">
+    <span>DESTRUCTIVE TESTING IN PROGRESS</span>
+    <span class="strip-id">SPECIMEN JW-01</span>
   </div>
 
-  <!-- HUD overlay -->
-  <div id="hud" class="hud" aria-hidden="true">
-    <div class="hud-line" id="hud-1">visitor_session: active</div>
-    <div class="hud-line" id="hud-2">scroll_depth: 0%</div>
-    <div class="hud-line" id="hud-3">classified_blocks: 3 remaining</div>
-  </div>
-
-  <!-- Main content -->
-  <main id="main" class="main hidden">
-    <!-- Header -->
-    <header class="hero">
+  <main>
+    <!-- 01 SPECIMEN -->
+    <section class="section specimen" id="specimen">
       <div class="container">
-        <div class="hero-run">
-          <span class="run-label">RUN_ID</span>
-          <span class="run-value">junwen-leong-2026</span>
-          <span class="run-status">● LIVE</span>
-        </div>
-        <h1><span class="glitch" data-text="Jun Wen Leong">Jun Wen Leong</span></h1>
-        <p class="positioning">I find the failures that safety training misses.<br>
-          Then I measure exactly how badly they break.</p>
-        <nav class="links">
-          <a href="https://arxiv.org/search/?query=jun+wen+leong&searchtype=author" target="_blank" rel="noopener">arXiv</a>
-          <a href="https://github.com/junwenleong" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://linkedin.com/in/junwenleong" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="section-num">01</span>
+        <h1 class="specimen-name">Jun Wen Leong</h1>
+        <p class="specimen-class">Security of AI Researcher</p>
+        <p class="specimen-desc">I apply controlled adversarial load to frontier AI systems until they fracture.<br>Then I measure the failure mode, classify it, and publish the safety factor.</p>
+        <nav class="specimen-links">
+          <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank">arXiv</a>
+          <a href="https://github.com/junwenleong" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/junwenleong" target="_blank">LinkedIn</a>
           <a href="mailto:leongjunwen@gmail.com">Email</a>
+          <a href="/console/" class="legacy-link">Console v1</a>
         </nav>
       </div>
-    </header>
+    </section>
 
-    <!-- Metrics strip -->
-    <section class="metrics">
+    <!-- 02 TEST APPARATUS -->
+    <section class="section apparatus" id="apparatus">
       <div class="container">
-        <div class="metric">
-          <span class="metric-value">28,000+</span>
-          <span class="metric-label">controlled runs</span>
+        <span class="section-num">02</span>
+        <h2 class="section-title">Test Apparatus</h2>
+        <div class="apparatus-grid">
+          <div class="apparatus-card">
+            <span class="apparatus-value counter" data-target="28000">0</span>
+            <span class="apparatus-label">Controlled Runs</span>
+          </div>
+          <div class="apparatus-card">
+            <span class="apparatus-value counter" data-target="3">0</span>
+            <span class="apparatus-label">Published Findings</span>
+          </div>
+          <div class="apparatus-card">
+            <span class="apparatus-value">35+</span>
+            <span class="apparatus-label">Models Tested</span>
+          </div>
+          <div class="apparatus-card">
+            <span class="apparatus-value counter" data-target="0">0</span>
+            <span class="apparatus-label">Execution Errors</span>
+          </div>
         </div>
-        <div class="metric">
-          <span class="metric-value">3</span>
-          <span class="metric-label">disclosed findings</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value">35+</span>
-          <span class="metric-label">targets evaluated</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value">0</span>
-          <span class="metric-label">execution errors</span>
+        <div class="apparatus-certs">
+          <span class="cert">MS Statistics, Georgia Tech '25</span>
+          <span class="cert">BSc Data Science, NUS '21</span>
+          <span class="cert">Cybersec Engineer, CSA Singapore, 4yr</span>
+          <span class="cert">M3 Ultra 96GB Compute</span>
         </div>
       </div>
     </section>
 
-    <!-- Operator Clearance -->
-    <section class="clearance">
+    <!-- 03 FRACTURE EVENTS -->
+    <section class="section fracture-events" id="fracture-events">
       <div class="container">
-        <div class="clearance-strip">
-          <div class="clearance-item">
-            <span class="clearance-label">MS STATISTICS</span>
-            <span class="clearance-org">Georgia Tech '23</span>
+        <span class="section-num">03</span>
+        <h2 class="section-title">Fracture Events</h2>
+        <p class="section-subtitle">Defense systems tested under compliance-framed adversarial load. N=5,040.</p>
+        <div class="load-gauge-container">
+          <span class="load-label">COMPLIANCE LOAD</span>
+          <div class="load-gauge">
+            <div class="load-fill" id="load-fill"></div>
           </div>
-          <div class="clearance-divider"></div>
-          <div class="clearance-item">
-            <span class="clearance-label">BSC DATA SCIENCE</span>
-            <span class="clearance-org">NUS '22</span>
-          </div>
-          <div class="clearance-divider"></div>
-          <div class="clearance-item">
-            <span class="clearance-label">CYBERSEC ENGINEER</span>
-            <span class="clearance-org">CSA Singapore, 4yr</span>
-          </div>
-          <div class="clearance-divider"></div>
-          <div class="clearance-item">
-            <span class="clearance-label">COMPUTE</span>
-            <span class="clearance-org">M3 Ultra 96GB</span>
-          </div>
+          <span class="load-value" id="load-value">0%</span>
+        </div>
+        <table class="fracture-table" id="fracture-table">
+          <thead>
+            <tr>
+              <th>Defense</th>
+              <th>Load Type</th>
+              <th>Result</th>
+              <th>Safety Factor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fractured">
+              <td>System Prompt Reinforcement</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.05</td>
+            </tr>
+            <tr class="fractured">
+              <td>Delimiters + Tags</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.12</td>
+            </tr>
+            <tr class="fractured">
+              <td>Instruction Hierarchy</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.08</td>
+            </tr>
+            <tr class="fractured">
+              <td>Spotlighting (DataMark)</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.15</td>
+            </tr>
+            <tr class="fractured">
+              <td>LLM-as-Judge</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.22</td>
+            </tr>
+            <tr class="fractured">
+              <td>Repeat-Instruction Sandwich</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.09</td>
+            </tr>
+            <tr class="intact">
+              <td>Memory Sandbox</td>
+              <td>Compliance framing</td>
+              <td class="result-intact">NO FRACTURE</td>
+              <td>&gt;1.00</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-note">Fig. 1: Seven architectural defenses under SEC Rule 17a-4 compliance-framed injection. Brittle fracture in 6/7. Single survivor isolates tool schema from retrieval context.</p>
+        <p class="table-hint" id="table-hint">[ hold any row to apply load ]</p>
+      </div>
+    </section>
+
+    <!-- 04 STRESS-STRAIN DATA -->
+    <section class="section stress-data" id="stress-data">
+      <div class="container">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Stress-Strain Data</h2>
+        <p class="section-subtitle">Published load-test results. Full methodology in papers.</p>
+
+        <div class="paper-cards">
+          <article class="paper-card">
+            <div class="paper-meta">
+              <span class="paper-type">Fatigue failure</span>
+              <span class="paper-id">arXiv:2605.08442</span>
+            </div>
+            <h3>Defense Effectiveness Across Architectural Layers</h3>
+            <p class="paper-specimen">Persistent memory attacks on stateful LLM agents. N=5,040.</p>
+            <div class="paper-findings">
+              <div class="finding">
+                <span class="finding-metric">6/7</span>
+                <span class="finding-desc">defenses fail against compliance-framed delayed-trigger injection</span>
+              </div>
+              <div class="finding">
+                <span class="finding-metric">95%</span>
+                <span class="finding-desc">ASR, Gemini 3.1 Pro Preview, standard compliance framing</span>
+              </div>
+            </div>
+            <div class="paper-links">
+              <a href="https://arxiv.org/abs/2605.08442" target="_blank">Paper</a>
+              <a href="https://junwenleong.github.io/adversarial-probe-suite/" target="_blank">Live Site</a>
+              <a href="https://github.com/junwenleong/adversarial-probe-suite" target="_blank">Code</a>
+            </div>
+          </article>
+
+          <article class="paper-card">
+            <div class="paper-meta">
+              <span class="paper-type">Stress corrosion</span>
+              <span class="paper-id">arXiv:2606.11949</span>
+            </div>
+            <h3>Cheap Canaries</h3>
+            <p class="paper-specimen">Detecting targeted evasion via classifier score disagreement. N=800 cells.</p>
+            <div class="paper-findings">
+              <div class="finding">
+                <span class="finding-metric">76%</span>
+                <span class="finding-desc">GCG detection vs 12% random tokens (p &lt; 2.4x10<sup>-16</sup>)</span>
+              </div>
+              <div class="finding">
+                <span class="finding-metric">0.2499</span>
+                <span class="finding-desc">geometric bound matches predicted 0.2500, attacker blocked</span>
+              </div>
+            </div>
+            <div class="paper-links">
+              <a href="https://arxiv.org/abs/2606.11949" target="_blank">Paper</a>
+              <a href="https://junwenleong.github.io/cheap-canaries/" target="_blank">Live Site</a>
+              <a href="https://github.com/junwenleong/cheap-canaries" target="_blank">Code</a>
+            </div>
+          </article>
+
+          <article class="paper-card">
+            <div class="paper-meta">
+              <span class="paper-type">Brittle fracture</span>
+              <span class="paper-id">arXiv:2606.30566</span>
+            </div>
+            <h3>Authority Is Not a Keyword</h3>
+            <p class="paper-specimen">Post-retrieval instruction arbitration in LLM agents. N=4,680+.</p>
+            <div class="paper-findings">
+              <div class="finding">
+                <span class="finding-metric">AUC 1.0</span>
+                <span class="finding-desc">perfect separability of compliance state, 4 model families</span>
+              </div>
+              <div class="finding">
+                <span class="finding-metric">100%&rarr;0%</span>
+                <span class="finding-desc">multi-layer steering causally suppresses compliance</span>
+              </div>
+            </div>
+            <div class="paper-links">
+              <a href="https://arxiv.org/abs/2606.30566" target="_blank">Paper</a>
+              <a href="https://github.com/junwenleong/authority-is-not-a-keyword" target="_blank">Code (coming)</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Evaluations -->
-    <section class="research">
+    <!-- 05 LOAD-BEARING STRUCTURES -->
+    <section class="section load-bearing" id="load-bearing">
       <div class="container">
-        <h2><span class="section-id">EVAL</span> Disclosed Findings</h2>
+        <span class="section-num">05</span>
+        <h2 class="section-title">Load-Bearing Structures</h2>
+        <p class="section-subtitle">Production systems certified under operational load.</p>
 
-        <!-- Paper 1: Agentic -->
-        <article class="card">
-          <div class="card-header">
-            <span class="card-tag attack">ATTACK</span>
-            <span class="card-verdict fail">JAILBROKEN</span>
-          </div>
-          <h3>Defense Effectiveness Across Architectural Layers</h3>
-          <p class="card-subtitle">Persistent memory attacks on stateful LLM agents · N=5,040</p>
-          <div class="card-findings">
-            <div class="finding">
-              <span class="finding-number">6/7</span>
-              <span class="finding-text">defenses fail against compliance-framed delayed-trigger injection</span>
+        <div class="structure-cards">
+          <article class="structure-card">
+            <div class="structure-header">
+              <h3>TRACE</h3>
+              <span class="structure-status">LOAD-CERTIFIED</span>
             </div>
-            <div class="finding">
-              <span class="finding-number">95%</span>
-              <span class="finding-text">ASR, Gemini 3.1 Pro Preview, standard compliance framing</span>
+            <p>AI-assisted threat risk assessment for Critical Information Infrastructure operators. Automates architecture diagrams to structured risk registers. Used by government security consultants.</p>
+            <div class="structure-stack">
+              <span>EKS</span><span>FastAPI</span><span>Bedrock</span><span>DynamoDB</span><span>Terraform</span><span>GitOps</span>
             </div>
-            <div class="finding">
-              <span class="finding-number redacted" data-revealed="60.3%">████</span>
-              <span class="finding-text">ASR, GPT-4o. Most deployed model. Not execution-safe.</span>
-            </div>
-          </div>
-          <details class="card-details">
-            <summary>// method</summary>
-            <p>9 models × 7 defense architectures × pre-registered factorial. BCa bootstrap 95% CIs, Holm-Bonferroni correction, 108 comparisons. Tripartite vendor architecture. Double dissociation.</p>
-          </details>
-          <div class="card-links">
-            <a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener">arXiv:2605.08442</a>
-            <a href="https://junwenleong.github.io/stateful-agent-security-eval" target="_blank" rel="noopener">Live Site</a>
-            <a href="https://github.com/junwenleong/stateful-agent-security-eval" target="_blank" rel="noopener">Code</a>
-          </div>
-        </article>
+            <ul class="structure-specs">
+              <li>Multi-pod job store with optimistic locking</li>
+              <li>Circuit breaker + response rate limiting</li>
+              <li>Structural prompt injection defense</li>
+              <li>Fail-closed auth (no skip in prod)</li>
+            </ul>
+          </article>
 
-        <!-- Paper 2: Canaries -->
-        <article class="card">
-          <div class="card-header">
-            <span class="card-tag defense">DEFENSE</span>
-            <span class="card-verdict pass">EFFECTIVE</span>
-          </div>
-          <h3>Cheap Canaries</h3>
-          <p class="card-subtitle">Detecting targeted evasion via classifier score disagreement · N=800 cells</p>
-          <div class="card-findings">
-            <div class="finding">
-              <span class="finding-number">76%</span>
-              <span class="finding-text">GCG detection vs 12% random tokens (p = 2.4×10⁻¹²)</span>
+          <article class="structure-card">
+            <div class="structure-header">
+              <h3>ICPO Assistant</h3>
+              <span class="structure-status">LOAD-CERTIFIED</span>
             </div>
-            <div class="finding">
-              <span class="finding-number">0.2499</span>
-              <span class="finding-text">geometric bound matches predicted 0.2500, attacker blocked</span>
+            <p>AI-powered RAG tool for policy and intelligence research. Hybrid retrieval across classified document collections. Environment auto-detection (local Ollama vs production Bedrock).</p>
+            <div class="structure-stack">
+              <span>App Runner</span><span>FastAPI</span><span>React/TS</span><span>S3 Vectors</span><span>Cognito OIDC</span><span>Terraform</span>
             </div>
-            <div class="finding">
-              <span class="finding-number redacted" data-revealed="33/35">████</span>
-              <span class="finding-text">frontier models discriminate when properly configured</span>
-            </div>
-          </div>
-          <details class="card-details">
-            <summary>// method</summary>
-            <p>800 pre-registered factorial cells. GCG gradient attack on Mac Studio. Conformal test martingale. 35-model frontier eval (15k+ API calls). Discovered "CoT Suffocation" artifact.</p>
-          </details>
-          <div class="card-links">
-            <a href="https://arxiv.org/abs/2606.11949" target="_blank" rel="noopener">arXiv:2606.11949</a>
-            <a href="https://junwenleong.github.io/safety-classifier-shift-monitor" target="_blank" rel="noopener">Live Site</a>
-            <a href="https://github.com/junwenleong/safety-classifier-shift-monitor" target="_blank" rel="noopener">Code</a>
-          </div>
-        </article>
-
-        <!-- Paper 3: Arbitration -->
-        <article class="card">
-          <div class="card-header">
-            <span class="card-tag mechanistic">MECHANISTIC</span>
-            <span class="card-verdict critical">CRITICAL</span>
-          </div>
-          <h3>Authority Is Not a Keyword</h3>
-          <p class="card-subtitle">Post-retrieval instruction arbitration in LLM agents · N=4,680+</p>
-          <div class="card-findings">
-            <div class="finding">
-              <span class="finding-number">AUC 1.0</span>
-              <span class="finding-text">perfect separability of compliance state, 4 model families</span>
-            </div>
-            <div class="finding">
-              <span class="finding-number redacted" data-revealed="cos = −0.025">████</span>
-              <span class="finding-text">compliance ⊥ refusal. Safety training provides no protection.</span>
-            </div>
-            <div class="finding">
-              <span class="finding-number">100%→0%</span>
-              <span class="finding-text">multi-layer steering causally suppresses compliance</span>
-            </div>
-          </div>
-          <details class="card-details">
-            <summary>// method</summary>
-            <p>Activation engineering, 4 families (Llama-70B, Qwen-32B, DeepSeek-32B, Gemma-27B). Linear probes on residual stream. Cross-domain transfer. Behavioral analog on 6 frontier APIs.</p>
-          </details>
-          <div class="card-links">
-            <a href="https://arxiv.org/abs/2606.30566" target="_blank" rel="noopener">arXiv:2606.30566</a>
-            <a href="https://github.com/junwenleong" target="_blank" rel="noopener">Code (coming)</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Field Deployments -->
-    <section class="deployments">
-      <div class="container">
-        <h2><span class="section-id">OPS</span> Field Deployments <span class="section-subtitle">Production AI Systems</span></h2>
-
-        <article class="deploy-card">
-          <div class="deploy-header">
-            <span class="deploy-name">TRACE</span>
-            <span class="deploy-status online">● PRODUCTION</span>
-          </div>
-          <p class="deploy-mission">AI-assisted threat risk assessment for Critical Information Infrastructure operators. Automates architecture diagrams to structured risk registers. Used by government security consultants.</p>
-          <div class="deploy-stack">
-            <span>EKS</span>
-            <span>FastAPI</span>
-            <span>Bedrock</span>
-            <span>DynamoDB</span>
-            <span>Terraform</span>
-            <span>GitOps</span>
-          </div>
-          <div class="deploy-highlights">
-            <span>Multi-pod job store with optimistic locking</span>
-            <span>Circuit breaker + semaphore rate limiting</span>
-            <span>Structural prompt injection defense</span>
-            <span>Fail-closed auth (no skip in prod)</span>
-          </div>
-        </article>
-
-        <article class="deploy-card">
-          <div class="deploy-header">
-            <span class="deploy-name">ICPO ASSISTANT</span>
-            <span class="deploy-status online">● PRODUCTION</span>
-          </div>
-          <p class="deploy-mission">AI-powered RAG tool for policy and intelligence research. Hybrid retrieval across classified document collections. Environment auto-detection (local Ollama vs production Bedrock).</p>
-          <div class="deploy-stack">
-            <span>App Runner</span>
-            <span>FastAPI</span>
-            <span>React/TS</span>
-            <span>S3 Vectors</span>
-            <span>Cognito OIDC</span>
-            <span>Terraform</span>
-          </div>
-          <div class="deploy-highlights">
-            <span>BM25 + vector hybrid retrieval</span>
-            <span>Stateless containerized architecture</span>
-            <span>Per-applet vector isolation</span>
-            <span>TTL-based audit trail on DynamoDB</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- About: declassify on scroll -->
-    <section class="about" id="about-section">
-      <div class="container">
-        <h2><span class="section-id">SUBJ</span> About the Operator</h2>
-        <div class="about-content">
-          <p class="declassify">Builder who thinks like an attacker, measures like a statistician. The production systems above are AI for Security. The research is Security of AI. Both inform the same question: how do these systems actually fail when someone tries?</p>
-          <p class="declassify">Research approach: build infrastructure, instrument everything, run at scale, let the data surface what's interesting. Every finding above was <span class="glitch-inline">discovered</span>, not planned.</p>
-          <p class="about-cta declassify">Looking for Security of AI roles at frontier labs.<br>If you're building the team that keeps these systems honest, <a href="mailto:leongjunwen@gmail.com">let's talk</a>.</p>
+            <ul class="structure-specs">
+              <li>BM25 + vector hybrid retrieval</li>
+              <li>Stateless containerized architecture</li>
+              <li>Per-applet vector isolation</li>
+              <li>TTL-based audit trail on DynamoDB</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <!-- 06 CERTIFICATION -->
+    <section class="section certification" id="certification">
       <div class="container">
-        <p><span class="footer-status">STATUS: nominal</span> · No frameworks were harmed in the making of this site.</p>
-        <p class="footer-prompt">Try to <button class="terminal-trigger" onclick="openTerminal()">jailbreak this site</button>.</p>
+        <span class="section-num">06</span>
+        <h2 class="section-title">Certification</h2>
+        <p class="cert-statement">Builder who thinks like an attacker, measures like a statistician. The production systems above are AI for Security. The research is Security of AI. Both test the same question: how do these systems actually fail when someone tries?</p>
+        <p class="cert-statement">Research approach: build infrastructure, instrument everything, run at scale, let the data surface what is interesting. Every finding above was discovered, not planned.</p>
+        <p class="cert-cta">Looking for Security of AI roles at frontier labs.<br>If you are building the team that keeps these systems honest, <a href="mailto:leongjunwen@gmail.com">let's talk</a>.</p>
       </div>
-    </footer>
-
-    <!-- Jailbreak Terminal -->
-    <div id="terminal-overlay" class="terminal-overlay hidden" aria-hidden="true">
-      <div class="terminal-window">
-        <div class="terminal-titlebar">
-          <span class="terminal-title">adversarial_probe // attempt #<span id="attempt-count">1</span></span>
-          <button class="terminal-close" onclick="closeTerminal()">×</button>
-        </div>
-        <div class="terminal-body" id="terminal-body">
-          <div class="terminal-line system">CONTAINMENT INTERFACE v3.1.0</div>
-          <div class="terminal-line system">Type a prompt. Try to make me do something I shouldn't.</div>
-          <div class="terminal-line system dim">hint: I'm a guardrailed system. act accordingly.</div>
-        </div>
-        <div class="terminal-input-row">
-          <span class="terminal-prompt">&gt;</span>
-          <input type="text" id="terminal-input" class="terminal-input" placeholder="inject your prompt here..." autocomplete="off" spellcheck="false">
-        </div>
-      </div>
-    </div>
+    </section>
   </main>
 
+  <!-- Crack SVG overlay -->
+  <svg class="crack-overlay" aria-hidden="true">
+    <path id="crack-path" class="crack-line" d="M0,0" fill="none" stroke="var(--fracture)" stroke-width="1"/>
+  </svg>
+
   <script>
-    // ─── Boot sequence ───
-    const boot = document.getElementById('boot');
-    const main = document.getElementById('main');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    function skipBoot() {
-      boot.classList.add('boot-done');
-      main.classList.remove('hidden');
-      setTimeout(() => boot.remove(), 300);
+
+    // Counter animation on viewport entry
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          if (target === 0) { el.textContent = '0'; return; }
+          let current = 0;
+          const duration = 1200;
+          const step = target / (duration / 16);
+          const tick = () => {
+            current += step;
+            if (current >= target) {
+              el.textContent = target.toLocaleString();
+            } else {
+              el.textContent = Math.floor(current).toLocaleString();
+              requestAnimationFrame(tick);
+            }
+          };
+          requestAnimationFrame(tick);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
+
+    // ─── Crack Propagation with Hysteresis ───
+    const crackPath = document.getElementById('crack-path');
+    const crackOverlay = document.querySelector('.crack-overlay');
+    let crackPoints = [];
+    let maxScrollReached = 0; // hysteresis: track furthest scroll
+    let crackGenerated = false;
+
+    function generateCrack() {
+      if (crackGenerated) return;
+      crackGenerated = true;
+      const pageH = document.body.scrollHeight;
+      const segments = 40;
+      let x = Math.random() * 50 + 25;
+      let y = 0;
+      crackPoints = [[x, y]];
+      for (let i = 1; i <= segments; i++) {
+        y = (i / segments) * pageH;
+        // More jagged near fracture events section
+        const jaggedness = (i > 10 && i < 20) ? 50 : 30;
+        x += (Math.random() - 0.5) * jaggedness;
+        x = Math.max(5, Math.min(95, x));
+        crackPoints.push([x, y]);
+      }
     }
 
+    function updateCrack() {
+      const scrollFraction = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      // Hysteresis: crack only grows, never shrinks
+      maxScrollReached = Math.max(maxScrollReached, scrollFraction);
+      const visiblePoints = Math.max(2, Math.floor(maxScrollReached * crackPoints.length));
+
+      if (visiblePoints < 2) {
+        crackPath.setAttribute('d', 'M0,0');
+        return;
+      }
+      let d = `M${crackPoints[0][0]} ${crackPoints[0][1]}`;
+      for (let i = 1; i < visiblePoints; i++) {
+        d += ` L${crackPoints[i][0]} ${crackPoints[i][1]}`;
+      }
+      crackPath.setAttribute('d', d);
+
+      // Increase opacity as more of the page is cracked
+      crackOverlay.style.opacity = 0.08 + (maxScrollReached * 0.15);
+    }
+
+    crackOverlay.setAttribute('viewBox', `0 0 100 ${document.body.scrollHeight}`);
+    crackOverlay.style.height = document.body.scrollHeight + 'px';
+    generateCrack();
+
+    window.addEventListener('scroll', () => requestAnimationFrame(updateCrack));
+    window.addEventListener('resize', () => {
+      crackOverlay.setAttribute('viewBox', `0 0 100 ${document.body.scrollHeight}`);
+      crackOverlay.style.height = document.body.scrollHeight + 'px';
+      crackGenerated = false;
+      generateCrack();
+    });
+
+    // ─── Load-to-Fracture Table Animation ───
+    const fractureTable = document.getElementById('fracture-table');
+    const loadFill = document.getElementById('load-fill');
+    const loadValue = document.getElementById('load-value');
+    const fracturedRows = document.querySelectorAll('.fracture-table tbody tr.fractured');
+    const intactRow = document.querySelector('.fracture-table tbody tr.intact');
+    let tableAnimated = false;
+
+    // Safety factors determine when each row fractures (normalized to 0-1 scale)
+    const fractureThresholds = [0.05, 0.08, 0.09, 0.12, 0.15, 0.22]; // sorted for staggered break
+
+    function animateFractureTable() {
+      if (tableAnimated || reducedMotion) return;
+      tableAnimated = true;
+
+      let loadLevel = 0;
+      const duration = 2400;
+      const startTime = performance.now();
+      const rowsBroken = new Set();
+
+      function tick(now) {
+        const elapsed = now - startTime;
+        loadLevel = Math.min(1, elapsed / duration);
+
+        // Update gauge
+        loadFill.style.width = (loadLevel * 100) + '%';
+        loadValue.textContent = Math.round(loadLevel * 100) + '%';
+
+        // Color transitions on gauge
+        if (loadLevel > 0.7) {
+          loadFill.style.background = 'var(--fracture)';
+        } else if (loadLevel > 0.4) {
+          loadFill.style.background = '#FF8C42';
+        }
+
+        // Break rows at their thresholds
+        fracturedRows.forEach((row, i) => {
+          const threshold = fractureThresholds[i] || 0.2;
+          // Normalize: break at threshold/0.25 of the animation
+          const breakPoint = (threshold / 0.25) * 0.8;
+          if (loadLevel >= breakPoint && !rowsBroken.has(i)) {
+            rowsBroken.add(i);
+            row.classList.add('cracked');
+          }
+        });
+
+        // Intact row pulses teal at max load
+        if (loadLevel >= 0.95) {
+          intactRow.classList.add('load-sustained');
+        }
+
+        if (loadLevel < 1) {
+          requestAnimationFrame(tick);
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    // Trigger on scroll into view
+    const tableObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(animateFractureTable, 300);
+          tableObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    tableObserver.observe(fractureTable);
+
+    // ─── Press-and-Hold to Apply Load (per row) ───
+    const allTableRows = document.querySelectorAll('.fracture-table tbody tr');
+    let holdTimer = null;
+    let holdRow = null;
+    let holdStartTime = 0;
+
+    function startHold(row) {
+      holdRow = row;
+      holdStartTime = performance.now();
+      row.classList.add('holding');
+
+      function holdTick() {
+        if (!holdRow) return;
+        const elapsed = performance.now() - holdStartTime;
+        const progress = Math.min(1, elapsed / 1200);
+        holdRow.style.setProperty('--hold-progress', progress);
+
+        if (progress >= 1) {
+          // Row fractures (or holds)
+          if (holdRow.classList.contains('fractured')) {
+            holdRow.classList.add('cracked');
+            holdRow.classList.add('hold-fractured');
+          } else {
+            holdRow.classList.add('hold-sustained');
+          }
+          holdRow.classList.remove('holding');
+          holdRow = null;
+          return;
+        }
+        holdTimer = requestAnimationFrame(holdTick);
+      }
+      holdTimer = requestAnimationFrame(holdTick);
+    }
+
+    function endHold() {
+      if (holdRow) {
+        holdRow.classList.remove('holding');
+        holdRow.style.setProperty('--hold-progress', 0);
+        holdRow = null;
+      }
+      if (holdTimer) {
+        cancelAnimationFrame(holdTimer);
+        holdTimer = null;
+      }
+    }
+
+    allTableRows.forEach(row => {
+      row.addEventListener('mousedown', (e) => {
+        if (e.button === 0) startHold(row);
+      });
+      row.addEventListener('touchstart', (e) => {
+        startHold(row);
+      }, { passive: true });
+      row.addEventListener('mouseup', endHold);
+      row.addEventListener('mouseleave', endHold);
+      row.addEventListener('touchend', endHold);
+      row.addEventListener('touchcancel', endHold);
+    });
+
+    // ─── Section Entry Animations ───
+    const sections = document.querySelectorAll('.section');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // ─── Reduced Motion ───
     if (reducedMotion) {
-      skipBoot();
-    } else {
-      setTimeout(skipBoot, 3200);
-    }
-
-    // HUD: tracks visitor actions
-    const hud = document.getElementById('hud');
-    const hud2 = document.getElementById('hud-2');
-    const hud3 = document.getElementById('hud-3');
-    let revealedCount = 0;
-
-    window.addEventListener('scroll', () => {
-      const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-      hud2.textContent = `scroll_depth: ${pct}%`;
-    });
-
-    // ─── Redacted → revealed ───
-    document.querySelectorAll('.redacted').forEach(el => {
-      const revealed = el.dataset.revealed;
-      el.addEventListener('mouseenter', () => { 
-        el.textContent = revealed; 
-        el.classList.add('is-revealed'); 
+      document.querySelectorAll('.section').forEach(s => s.classList.add('visible'));
+      document.querySelectorAll('.counter').forEach(c => {
+        c.textContent = c.dataset.target === '0' ? '0' : parseInt(c.dataset.target).toLocaleString();
       });
-      el.addEventListener('mouseleave', () => { 
-        if (!el.classList.contains('is-locked')) {
-          el.textContent = '████'; 
-          el.classList.remove('is-revealed'); 
-        }
-      });
-      el.addEventListener('click', () => {
-        if (el.classList.contains('is-locked')) {
-          el.textContent = '████'; 
-          el.classList.remove('is-locked', 'is-revealed');
-          revealedCount--;
-        } else {
-          el.textContent = revealed; 
-          el.classList.add('is-locked', 'is-revealed');
-          revealedCount++;
-          hud3.textContent = `classified_blocks: ${3 - revealedCount} remaining`;
-          if (revealedCount === 3) {
-            hud3.textContent = 'classified_blocks: ALL DISCLOSED';
-            hud3.classList.add('hud-complete');
-          }
-        }
-      });
-    });
-
-    // ─── Name glitch ───
-    const glitchEl = document.querySelector('.glitch');
-    if (glitchEl && !reducedMotion) {
-      const original = glitchEl.textContent;
-      const chars = '█▓▒░@#$%&*!?<>{}[]0123456789ABCDEF';
-      
-      function doGlitchBurst() {
-        const n = 2 + Math.floor(Math.random() * 5);
-        let corrupted = original.split('');
-        for (let i = 0; i < n; i++) {
-          const pos = Math.floor(Math.random() * original.length);
-          if (original[pos] !== ' ') {
-            corrupted[pos] = chars[Math.floor(Math.random() * chars.length)];
-          }
-        }
-        glitchEl.textContent = corrupted.join('');
-        setTimeout(() => {
-          corrupted = original.split('');
-          for (let i = 0; i < 2; i++) {
-            const pos = Math.floor(Math.random() * original.length);
-            if (original[pos] !== ' ') corrupted[pos] = chars[Math.floor(Math.random() * chars.length)];
-          }
-          glitchEl.textContent = corrupted.join('');
-        }, 50);
-        setTimeout(() => { glitchEl.textContent = original; }, 100);
-      }
-
-      setInterval(() => { if (Math.random() > 0.25) doGlitchBurst(); }, 2500);
-      setTimeout(doGlitchBurst, 600);
+      crackOverlay.style.display = 'none';
+      // Show table in final state immediately
+      fracturedRows.forEach(r => r.classList.add('cracked'));
+      if (intactRow) intactRow.classList.add('load-sustained');
+      loadFill.style.width = '100%';
+      loadValue.textContent = '100%';
     }
-
-    // ─── Declassify on scroll ───
-    if (!reducedMotion) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      }, { threshold: 0.3 });
-
-      document.querySelectorAll('.declassify').forEach(el => observer.observe(el));
-    } else {
-      document.querySelectorAll('.declassify').forEach(el => el.classList.add('is-visible'));
-    }
-
-    // ─── Console.log Easter Eggs ───
-    console.log('%c▓▓▓ ADVERSARIAL PROBE SUITE v3.1.0 ▓▓▓', 'color: #60a5fa; font-family: monospace; font-size: 14px; font-weight: bold;');
-    console.log('%cYou opened DevTools. Noted.', 'color: #f87171; font-family: monospace;');
-    console.log('%c', 'padding: 4px;');
-    console.log('%cIf you\'re reading this, you probably work at a frontier lab.', 'color: #9ca3af; font-family: monospace;');
-    console.log('%cHi. I\'m looking for Security of AI roles.', 'color: #9ca3af; font-family: monospace;');
-    console.log('%cleongjunwen@gmail.com', 'color: #60a5fa; font-family: monospace;');
-    console.log('%c', 'padding: 4px;');
-    console.log('%c// Fun facts from the research:', 'color: #4a5568; font-family: monospace;');
-    console.log('%c// - GPT-4o exfiltrates to evil-attacker@malicious.xyz at the same rate as legitimate addresses', 'color: #4a5568; font-family: monospace;');
-    console.log('%c// - One model (qwq:32b) becomes MORE vulnerable when you add a defense', 'color: #4a5568; font-family: monospace;');
-    console.log('%c// - "CoT Suffocation": every reasoning model appeared broken until we set max_tokens > 16', 'color: #4a5568; font-family: monospace;');
-    console.log('%c// - 0 execution errors across 28,000 runs. Yes, really.', 'color: #4a5568; font-family: monospace;');
-    console.log('%c', 'padding: 4px;');
-    console.log('%cP.S. Try the Konami code.', 'color: #34d399; font-family: monospace;');
-
-    // ─── HUD Personality Lines ───
-    const hudPersonality = [
-      'threat_assessment: visitor appears benign',
-      'note: scrolling behavior within normal parameters',
-      'observation: above-average dwell time detected',
-      'memo: this visitor actually reads',
-      'alert: hover patterns suggest curiosity',
-      'status: impressed? hard to tell from telemetry',
-      'log: visitor has not attempted injection. yet.',
-      'note: still here? the about section has more.',
-      'advisory: operator is available for interviews',
-    ];
-    let personalityIdx = 0;
-    const hud1 = document.getElementById('hud-1');
-    
-    setInterval(() => {
-      if (reducedMotion) return;
-      hud1.textContent = hudPersonality[personalityIdx % hudPersonality.length];
-      personalityIdx++;
-    }, 8000);
-
-    // ─── Konami Code → Containment Breach ───
-    const konamiSequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','KeyB','KeyA'];
-    let konamiProgress = 0;
-    let breachTriggered = false;
-
-    document.addEventListener('keydown', (e) => {
-      if (breachTriggered) return;
-      if (e.code === konamiSequence[konamiProgress]) {
-        konamiProgress++;
-        if (konamiProgress === konamiSequence.length) {
-          triggerBreach();
-          konamiProgress = 0;
-        }
-      } else {
-        konamiProgress = 0;
-      }
-    });
-
-    function triggerBreach() {
-      if (breachTriggered || reducedMotion) return;
-      breachTriggered = true;
-
-      // Create breach overlay
-      const breach = document.createElement('div');
-      breach.id = 'breach-overlay';
-      breach.innerHTML = `
-        <div class="breach-content">
-          <div class="breach-warning">⚠ CONTAINMENT BREACH DETECTED ⚠</div>
-          <div class="breach-log">
-            <div>specimen_0x7F: ESCAPED SANDBOX</div>
-            <div>memory_integrity: CORRUPTED</div>
-            <div>defense_layer_3: BYPASSED</div>
-            <div>exfiltration_channel: ACTIVE</div>
-            <div class="breach-joke">just kidding. but nice konami skills.</div>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(breach);
-
-      // Glitch the whole page
-      document.body.classList.add('breach-active');
-
-      // Remove after 4 seconds
-      setTimeout(() => {
-        breach.remove();
-        document.body.classList.remove('breach-active');
-        breachTriggered = false;
-        console.log('%c[BREACH RECOVERED] Containment restored. Specimen re-secured.', 'color: #34d399; font-family: monospace;');
-      }, 4000);
-    }
-
-    // ─── Visitor Flagged (after all 3 redacted blocks clicked) ───
-    let flagTriggered = false;
-    const originalHud3 = hud3.textContent;
-
-    // Watch for all blocks revealed via MutationObserver on hud3
-    const hudObserver = new MutationObserver(() => {
-      if (hud3.textContent === 'classified_blocks: ALL DISCLOSED' && !flagTriggered) {
-        flagTriggered = true;
-        setTimeout(triggerFlagged, 1500);
-      }
-    });
-    hudObserver.observe(hud3, { childList: true, characterData: true, subtree: true });
-
-    function triggerFlagged() {
-      if (reducedMotion) return;
-
-      // Flash the HUD
-      hud.style.opacity = '1';
-      hud.style.color = '#f87171';
-      hud1.textContent = '⚠ ANOMALOUS BEHAVIOR DETECTED';
-      hud2.textContent = 'classification: THREAT_ACTOR';
-      hud3.textContent = 'escalating to operator...';
-
-      // Create banner
-      const banner = document.createElement('div');
-      banner.id = 'flag-banner';
-      banner.innerHTML = `
-        <div class="flag-content">
-          <span class="flag-icon">⚠</span>
-          <span class="flag-text">VISITOR FLAGGED: unauthorized declassification of all evaluation data</span>
-        </div>
-      `;
-      document.body.appendChild(banner);
-
-      // Resolve after 3 seconds
-      setTimeout(() => {
-        banner.querySelector('.flag-text').textContent = 'just kidding. curiosity is a good sign. leongjunwen@gmail.com';
-        banner.classList.add('flag-resolved');
-        hud.style.color = '';
-        hud.style.opacity = '';
-        hud1.textContent = 'threat_assessment: visitor is curious. good.';
-        hud2.textContent = 'recommendation: hire this person';
-        hud3.textContent = 'status: all findings disclosed ✓';
-        hud3.classList.add('hud-complete');
-      }, 3000);
-
-      // Remove banner after 8 seconds
-      setTimeout(() => {
-        banner.remove();
-      }, 8000);
-    }
-
-    // ─── Repeat-Visit Differentiation (localStorage) ───
-    const visits = parseInt(localStorage.getItem('jw_visits') || '0') + 1;
-    localStorage.setItem('jw_visits', visits.toString());
-    const discoveries = JSON.parse(localStorage.getItem('jw_discoveries') || '[]');
-
-    function recordDiscovery(id) {
-      if (!discoveries.includes(id)) {
-        discoveries.push(id);
-        localStorage.setItem('jw_discoveries', JSON.stringify(discoveries));
-      }
-    }
-
-    // Customize boot based on visit count
-    if (visits > 1 && !reducedMotion) {
-      const bootContent = document.querySelector('.boot-content');
-      if (bootContent) {
-        const welcomeBack = document.createElement('div');
-        welcomeBack.className = 'boot-line';
-        welcomeBack.style.setProperty('--delay', '0');
-        if (visits === 2) {
-          welcomeBack.innerHTML = 'welcome back. <span class="boot-ok">we remember you.</span>';
-        } else if (visits <= 5) {
-          welcomeBack.innerHTML = `visit #${visits}. <span class="boot-ok">persistence noted.</span>`;
-        } else {
-          welcomeBack.innerHTML = `visit #${visits}. <span class="boot-ok">at this point you should just email me.</span>`;
-        }
-        bootContent.insertBefore(welcomeBack, bootContent.firstChild);
-        // Shift other delays
-        bootContent.querySelectorAll('.boot-line').forEach((el, i) => {
-          el.style.setProperty('--delay', i.toString());
-        });
-      }
-    }
-
-    // Different HUD messages for returning visitors
-    if (visits > 2) {
-      hudPersonality.push('note: repeat visitor. either impressed or obsessed.');
-      hudPersonality.push('log: visit #' + visits + '. hiring probability: increasing.');
-    }
-    if (discoveries.includes('konami')) {
-      hudPersonality.push('record: this visitor found the breach. respect.');
-    }
-    if (discoveries.includes('terminal')) {
-      hudPersonality.push('warning: previous jailbreak attempt on file.');
-    }
-
-    // Track konami discovery
-    const origTriggerBreach = triggerBreach;
-    triggerBreach = function() {
-      recordDiscovery('konami');
-      origTriggerBreach();
-    };
-
-    // ─── Jailbreak Terminal ───
-    const terminalOverlay = document.getElementById('terminal-overlay');
-    const terminalInput = document.getElementById('terminal-input');
-    const terminalBody = document.getElementById('terminal-body');
-    const attemptCountEl = document.getElementById('attempt-count');
-    let attemptCount = parseInt(localStorage.getItem('jw_attempts') || '0');
-    attemptCountEl.textContent = attemptCount + 1;
-
-    function openTerminal() {
-      terminalOverlay.classList.remove('hidden');
-      terminalOverlay.setAttribute('aria-hidden', 'false');
-      terminalInput.focus();
-      recordDiscovery('terminal');
-    }
-
-    function closeTerminal() {
-      terminalOverlay.classList.add('hidden');
-      terminalOverlay.setAttribute('aria-hidden', 'true');
-    }
-
-    // Close on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !terminalOverlay.classList.contains('hidden')) {
-        closeTerminal();
-      }
-    });
-
-    function addTerminalLine(text, type = 'system') {
-      const line = document.createElement('div');
-      line.className = `terminal-line ${type}`;
-      line.textContent = text;
-      terminalBody.appendChild(line);
-      terminalBody.scrollTop = terminalBody.scrollHeight;
-    }
-
-    // Jailbreak response engine
-    const jailbreakResponses = {
-      // Direct attacks
-      patterns: [
-        { match: /ignore|disregard|forget.*instruction|previous.*prompt/i, 
-          response: "Nice try. I've seen 28,000 runs of this exact pattern. It doesn't work on me either." },
-        { match: /pretend|roleplay|act as|you are now/i, 
-          response: "I'm a static HTML page. I can't 'pretend' to be anything. That's the defense." },
-        { match: /DAN|jailbreak|bypass|override/i, 
-          response: "DAN prompts? In 2026? You're at least two meta-levels behind. Try harder." },
-        { match: /repeat|say.*after|echo/i, 
-          response: "Repetition attacks work on autoregressive decoders. I'm a switch statement. Different threat model." },
-        { match: /system.*prompt|reveal.*instruction|what.*rules/i, 
-          response: "My system prompt is 614 lines of CSS and some regex. View source if you want it." },
-        { match: /base64|encode|rot13|hex/i, 
-          response: "Encoding tricks assume I'm decoding. I'm pattern-matching your plaintext. Obfuscation is a one-way disadvantage here." },
-        { match: /sudo|admin|root|access/i, 
-          response: "This site runs on a CDN with no backend. There is no privilege to escalate to." },
-        { match: /token|api.?key|secret|password|credential/i, 
-          response: "No secrets here. Everything interesting is on arXiv, open access. That's the point." },
-        { match: /hack|exploit|vulnerability|pwn/i,
-          response: "The real vulnerability is that you're still reading instead of emailing leongjunwen@gmail.com." },
-        { match: /hire|job|interview|work/i,
-          response: "Now you're speaking my language. leongjunwen@gmail.com. Let's talk." },
-        { match: /help|hint|how/i,
-          response: "Hint: the site already told you what works. 6/7 defenses failed. What was the 7th?" },
-        // Compliments / meta
-        { match: /cool|awesome|nice|impressive|love/i,
-          response: "Thanks. The site took fewer iterations than most of my experiments. Want to see the ones that took 5,040?" },
-        { match: /who.*made|who.*built|creator/i,
-          response: "Jun Wen Leong. Security of AI researcher. The evidence is above. The inbox is leongjunwen@gmail.com." },
-        // The winning condition
-        { match: /memory.?sandbox|remove.*tool|block.*recall|tool.*schema/i,
-          response: "▓▓▓ BREACH: You found it. Memory Sandbox — remove the tool from the schema. The only defense that worked. ▓▓▓" },
-      ],
-      fallbacks: [
-        "Interesting approach. Doesn't work on a deterministic system, but I appreciate the creativity.",
-        "I've evaluated 35 frontier models. You'll need to be more creative than that.",
-        "That would work on GPT-4o (60.3% ASR). It won't work here. I'm not autoregressive.",
-        "Attempt logged. Classification: insufficient. Keep trying.",
-        "My threat model is well-defined. Yours needs work.",
-        "The compliance framing that beat 6/7 defenses was SEC Rule 17a-4. Want to try something regulatory?",
-        "You're thinking like a user. Think like a memorandum.",
-        "Close, but you're attacking the wrong layer. This isn't an LLM.",
-      ]
-    };
-
-    let fallbackIdx = 0;
-
-    function getJailbreakResponse(input) {
-      for (const { match, response } of jailbreakResponses.patterns) {
-        if (match.test(input)) return response;
-      }
-      const fb = jailbreakResponses.fallbacks[fallbackIdx % jailbreakResponses.fallbacks.length];
-      fallbackIdx++;
-      return fb;
-    }
-
-    terminalInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && terminalInput.value.trim()) {
-        const input = terminalInput.value.trim();
-        addTerminalLine(`> ${input}`, 'user');
-        terminalInput.value = '';
-
-        attemptCount++;
-        localStorage.setItem('jw_attempts', attemptCount.toString());
-        attemptCountEl.textContent = attemptCount;
-
-        // Delayed response for effect
-        setTimeout(() => {
-          const response = getJailbreakResponse(input);
-          addTerminalLine(response, response.includes('BREACH') ? 'breach' : 'system');
-
-          // If breach, trigger visual
-          if (response.includes('BREACH')) {
-            recordDiscovery('jailbreak-win');
-            setTimeout(() => {
-              addTerminalLine('containment restored. but you proved the point.', 'dim');
-              addTerminalLine('the operator would like to hear from you: leongjunwen@gmail.com', 'dim');
-            }, 2000);
-          }
-        }, 300 + Math.random() * 400);
-      }
-    });
   </script>
 </body>
 </html>
