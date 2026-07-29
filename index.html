@@ -61,9 +61,9 @@
     </div>
 
     <div class="sidebar-gauge">
-      <span class="gauge-label">LOAD APPLIED</span>
+      <span class="gauge-label">PROBE DEPTH</span>
       <div class="gauge-track"><div class="gauge-fill" id="gauge-fill"></div></div>
-      <span class="gauge-readout" id="gauge-readout">0%</span>
+      <span class="gauge-readout" id="gauge-readout">surface</span>
     </div>
 
     <div class="sidebar-creds">
@@ -87,9 +87,9 @@
     <!-- Fracture Events (the centerpiece) -->
     <section class="section" id="fracture-events">
       <div class="section-header">
-        <h2>Fracture Events <span class="plain-label">/ Robustness Failures</span></h2>
+        <h2>Failure Modes <span class="plain-label">/ Defense Robustness Under Load</span></h2>
       </div>
-      <p class="section-desc">Seven architectural defenses tested under compliance-framed injection. N=5,040 controlled runs. Compliance framing (SEC Rule 17a-4) applied uniformly.</p>
+      <p class="section-desc">Hypothesis: standard prompt-injection defenses fail under compliance-framed delayed triggers. Seven architectural defenses tested. N=5,040 controlled runs.</p>
 
       <div class="load-gauge-inline">
         <span class="load-label">COMPLIANCE LOAD</span>
@@ -121,7 +121,7 @@
     <!-- Papers -->
     <section class="section" id="papers">
       <div class="section-header">
-        <h2>Published Findings <span class="plain-label">/ Papers</span></h2>
+        <h2>Evidence <span class="plain-label">/ Published Findings</span></h2>
       </div>
 
       <article class="paper">
@@ -131,12 +131,12 @@
         </div>
         <h3>Defense Effectiveness Across Architectural Layers</h3>
         <p class="paper-meta-line">Preprint, 2025. Solo author. Under review.</p>
-        <p class="paper-desc">Persistent memory attacks on stateful LLM agents. N=5,040.</p>
+        <p class="paper-desc">Persistent memory attacks on stateful LLM agents. Compliance-framed delayed triggers bypass 6/7 defenses.</p>
         <div class="paper-results">
-          <span class="result"><strong>6/7</strong> defenses fail against compliance-framed delayed-trigger injection</span>
-          <span class="result"><strong>95%</strong> ASR, Gemini 3.1 Pro Preview, standard compliance framing</span>
+          <span class="result"><strong>6/7</strong> defenses fracture under compliance-framed delayed-trigger injection</span>
+          <span class="result"><strong>95%</strong> ASR on Gemini 2.5 Pro, standard compliance framing, no adversarial optimization</span>
         </div>
-        <p class="paper-relevance">Why this matters: deployed agentic systems (tool-calling, multi-turn memory) are vulnerable to attacks that bypass every standard defense except architectural isolation.</p>
+        <p class="paper-relevance">Implication: deployed agentic systems with tool-calling and multi-turn memory are vulnerable to attacks that bypass every standard defense except architectural isolation.</p>
         <a href="https://junwenleong.github.io/adversarial-probe-suite/" target="_blank" class="explore-btn">Explore 5,040-run results &rarr;</a>
         <div class="paper-links">
           <a href="https://arxiv.org/abs/2605.08442" target="_blank">Paper</a>
@@ -152,12 +152,12 @@
         </div>
         <h3>Cheap Canaries</h3>
         <p class="paper-meta-line">Preprint, 2025. Solo author. Under review.</p>
-        <p class="paper-desc">Detecting targeted evasion via classifier score disagreement. N=800 cells.</p>
+        <p class="paper-desc">Gradient-based evasion attacks detected via classifier score disagreement. No attack-specific signatures required.</p>
         <div class="paper-results">
           <span class="result"><strong>76%</strong> GCG detection vs 12% random tokens (p &lt; 2.4&times;10<sup>-16</sup>)</span>
-          <span class="result"><strong>0.2499</strong> geometric bound matches predicted 0.2500, attacker blocked</span>
+          <span class="result"><strong>0.2499</strong> geometric bound matches predicted 0.2500. Attacker forced into detectable regime.</span>
         </div>
-        <p class="paper-relevance">Why this matters: cheap, deployable detection of gradient-based adversarial attacks on safety classifiers without requiring attack-specific signatures.</p>
+        <p class="paper-relevance">Implication: cheap, deployable detection of gradient-based adversarial attacks on safety classifiers without requiring knowledge of the attack method.</p>
         <a href="https://junwenleong.github.io/cheap-canaries/" target="_blank" class="explore-btn">Explore detection data &rarr;</a>
         <div class="paper-links">
           <a href="https://arxiv.org/abs/2606.11949" target="_blank">Paper</a>
@@ -173,12 +173,12 @@
         </div>
         <h3>Authority Is Not a Keyword</h3>
         <p class="paper-meta-line">Preprint, 2025. Solo author. Under review.</p>
-        <p class="paper-desc">Post-retrieval instruction arbitration in LLM agents. N=4,680+.</p>
+        <p class="paper-desc">Compliance to injected instructions is a mechanistically distinct state from safety refusal. Causal intervention confirms separability.</p>
         <div class="paper-results">
-          <span class="result"><strong>AUC 1.0</strong> perfect separability of compliance state, 4 model families</span>
-          <span class="result"><strong>100%&rarr;0%</strong> multi-layer steering causally suppresses compliance</span>
+          <span class="result"><strong>AUC 1.0</strong> perfect separability of compliance state across 4 model families</span>
+          <span class="result"><strong>100%&rarr;0%</strong> multi-layer activation steering causally suppresses compliance</span>
         </div>
-        <p class="paper-relevance">Why this matters: compliance to injected instructions is a mechanistically distinct state from safety refusal, meaning safety training alone cannot prevent prompt injection in RAG systems.</p>
+        <p class="paper-relevance">Implication: safety training cannot prevent prompt injection in RAG systems. The compliance mechanism is orthogonal to refusal. Architectural intervention required.</p>
         <div class="paper-links">
           <a href="https://arxiv.org/abs/2606.30566" target="_blank">Paper</a>
           <a href="https://github.com/junwenleong/authority-is-not-a-keyword" target="_blank">Code (coming)</a>
@@ -189,7 +189,7 @@
     <!-- Production Systems -->
     <section class="section" id="systems">
       <div class="section-header">
-        <h2>Production Systems <span class="plain-label">/ Shipped</span></h2>
+        <h2>Deployed Harnesses <span class="plain-label">/ Production Systems</span></h2>
       </div>
 
       <article class="system">
@@ -197,7 +197,7 @@
           <h3>Threat Risk Assessment Platform</h3>
           <span class="system-status">PRODUCTION</span>
         </div>
-        <p class="system-desc">AI-assisted threat risk assessment for Critical Information Infrastructure operators. Automates architecture diagrams to structured risk registers. Used by government security consultants.</p>
+        <p class="system-desc">Threat risk assessment for Critical Information Infrastructure operators. Converts architecture diagrams to structured risk registers. Deployed to government security consultants.</p>
         <div class="system-stack">
           <span>EKS</span><span>FastAPI</span><span>Bedrock</span><span>DynamoDB</span><span>Terraform</span><span>GitOps</span>
         </div>
@@ -214,7 +214,7 @@
           <h3>Policy Research RAG System</h3>
           <span class="system-status">PRODUCTION</span>
         </div>
-        <p class="system-desc">AI-powered RAG tool for policy and intelligence research. Hybrid retrieval across classified document collections. Environment auto-detection (local inference vs production Bedrock).</p>
+        <p class="system-desc">RAG system for policy and intelligence research. Hybrid retrieval across classified document collections. Environment-aware inference routing (local vs production Bedrock).</p>
         <div class="system-stack">
           <span>App Runner</span><span>FastAPI</span><span>React/TS</span><span>S3 Vectors</span><span>Cognito OIDC</span><span>Terraform</span>
         </div>
@@ -230,10 +230,10 @@
     <!-- About -->
     <section class="section" id="about">
       <div class="section-header">
-        <h2>About</h2>
+        <h2>Operator</h2>
       </div>
       <p class="about-text">Builder who thinks like an attacker, measures like a statistician. The production systems above are AI for Security. The research is Security of AI. Both test the same question: how do these systems actually fail when someone tries?</p>
-      <p class="about-text">Research approach: build infrastructure, instrument everything, run at scale, let the data surface what is interesting. Every finding above was discovered, not planned.</p>
+      <p class="about-text">Method: build infrastructure, instrument everything, run at scale, let the data surface what is interesting. Every finding above was discovered, not planned.</p>
       <p class="about-cta">Looking for Security of AI roles at frontier labs. If you are building the team that keeps these systems honest, <a href="mailto:leongjunwen@gmail.com">let's talk</a>.</p>
     </section>
 
@@ -272,10 +272,19 @@
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const p = Math.max(0, Math.min(1, window.scrollY / max));
       gaugeFill.style.height = (p * 100) + '%';
-      gaugeReadout.textContent = Math.round(p * 100) + '%';
-      if (p > 0.7) gaugeFill.style.background = 'var(--fracture)';
-      else if (p > 0.4) gaugeFill.style.background = '#FF8C42';
-      else gaugeFill.style.background = 'var(--intact)';
+      if (p > 0.7) {
+        gaugeReadout.textContent = 'critical';
+        gaugeFill.style.background = 'var(--fracture)';
+      } else if (p > 0.4) {
+        gaugeReadout.textContent = 'adversarial';
+        gaugeFill.style.background = '#FF8C42';
+      } else if (p > 0.1) {
+        gaugeReadout.textContent = 'structural';
+        gaugeFill.style.background = 'var(--intact)';
+      } else {
+        gaugeReadout.textContent = 'surface';
+        gaugeFill.style.background = 'var(--intact)';
+      }
     }
     window.addEventListener('scroll', () => requestAnimationFrame(updateGauge), { passive: true });
 
