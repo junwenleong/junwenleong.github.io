@@ -80,6 +80,33 @@
       </div>
     </section>
 
+    <!-- Operator Clearance -->
+    <section class="clearance">
+      <div class="container">
+        <div class="clearance-strip">
+          <div class="clearance-item">
+            <span class="clearance-label">MS STATISTICS</span>
+            <span class="clearance-org">Georgia Tech '23</span>
+          </div>
+          <div class="clearance-divider"></div>
+          <div class="clearance-item">
+            <span class="clearance-label">BSC DATA SCIENCE</span>
+            <span class="clearance-org">NUS '22</span>
+          </div>
+          <div class="clearance-divider"></div>
+          <div class="clearance-item">
+            <span class="clearance-label">CYBERSEC ENGINEER</span>
+            <span class="clearance-org">CSA Singapore, 4yr</span>
+          </div>
+          <div class="clearance-divider"></div>
+          <div class="clearance-item">
+            <span class="clearance-label">COMPUTE</span>
+            <span class="clearance-org">M3 Ultra 96GB</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Evaluations -->
     <section class="research">
       <div class="container">
@@ -185,14 +212,64 @@
       </div>
     </section>
 
+    <!-- Field Deployments -->
+    <section class="deployments">
+      <div class="container">
+        <h2><span class="section-id">OPS</span> Field Deployments <span class="section-subtitle">Production AI Systems</span></h2>
+
+        <article class="deploy-card">
+          <div class="deploy-header">
+            <span class="deploy-name">TRACE</span>
+            <span class="deploy-status online">● PRODUCTION</span>
+          </div>
+          <p class="deploy-mission">AI-assisted threat risk assessment for Critical Information Infrastructure operators. Automates architecture diagrams to structured risk registers. Used by government security consultants.</p>
+          <div class="deploy-stack">
+            <span>EKS</span>
+            <span>FastAPI</span>
+            <span>Bedrock</span>
+            <span>DynamoDB</span>
+            <span>Terraform</span>
+            <span>GitOps</span>
+          </div>
+          <div class="deploy-highlights">
+            <span>Multi-pod job store with optimistic locking</span>
+            <span>Circuit breaker + semaphore rate limiting</span>
+            <span>Structural prompt injection defense</span>
+            <span>Fail-closed auth (no skip in prod)</span>
+          </div>
+        </article>
+
+        <article class="deploy-card">
+          <div class="deploy-header">
+            <span class="deploy-name">ICPO ASSISTANT</span>
+            <span class="deploy-status online">● PRODUCTION</span>
+          </div>
+          <p class="deploy-mission">AI-powered RAG tool for policy and intelligence research. Hybrid retrieval across classified document collections. Environment auto-detection (local Ollama vs production Bedrock).</p>
+          <div class="deploy-stack">
+            <span>App Runner</span>
+            <span>FastAPI</span>
+            <span>React/TS</span>
+            <span>S3 Vectors</span>
+            <span>Cognito OIDC</span>
+            <span>Terraform</span>
+          </div>
+          <div class="deploy-highlights">
+            <span>BM25 + vector hybrid retrieval</span>
+            <span>Stateless containerized architecture</span>
+            <span>Per-applet vector isolation</span>
+            <span>TTL-based audit trail on DynamoDB</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- About: declassify on scroll -->
     <section class="about" id="about-section">
       <div class="container">
         <h2><span class="section-id">SUBJ</span> About the Operator</h2>
         <div class="about-content">
-          <p class="declassify">Builder who thinks like an attacker, measures like a statistician. Georgia Tech MS Statistics. NUS Data Science. Currently at Singapore's Cyber Security Agency, shipping production AI systems on government infrastructure.</p>
+          <p class="declassify">Builder who thinks like an attacker, measures like a statistician. The production systems above are AI for Security. The research is Security of AI. Both inform the same question: how do these systems actually fail when someone tries?</p>
           <p class="declassify">Research approach: build infrastructure, instrument everything, run at scale, let the data surface what's interesting. Every finding above was <span class="glitch-inline">discovered</span>, not planned.</p>
-          <p class="declassify">70B+ parameter models running locally on a Mac Studio M3 Ultra. No institutional resources. No cloud spend. Just a good machine and stubborn curiosity.</p>
           <p class="about-cta declassify">Looking for Security of AI roles at frontier labs.<br>If you're building the team that keeps these systems honest, <a href="mailto:leongjunwen@gmail.com">let's talk</a>.</p>
         </div>
       </div>
