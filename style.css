@@ -1,0 +1,614 @@
+/* ============================================
+   Jun Wen Leong — Adversarial Evaluation Console
+   Full metaphor commit: you ARE the experiment
+   ============================================ */
+
+:root {
+  --bg: #06060a;
+  --bg-card: #0c0c14;
+  --bg-hover: #10101c;
+  --text: #e4e4e7;
+  --text-muted: #8b95a5;
+  --text-dim: #4a5568;
+  --accent: #60a5fa;
+  --accent-glow: rgba(96, 165, 250, 0.4);
+  --red: #f87171;
+  --red-glow: rgba(248, 113, 113, 0.4);
+  --green: #34d399;
+  --green-glow: rgba(52, 211, 153, 0.3);
+  --orange: #fb923c;
+  --purple: #a78bfa;
+  --yellow: #fbbf24;
+  --border: #1a1f2e;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--mono);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  cursor: crosshair;
+}
+
+/* CRT scanlines + vignette */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.5) 100%);
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ============================================
+   Boot Sequence
+   ============================================ */
+
+.boot-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  transition: opacity 0.3s;
+}
+
+.boot-overlay.boot-done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.boot-content {
+  max-width: 600px;
+  width: 100%;
+}
+
+.boot-line {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: boot-type 0.3s forwards;
+  animation-delay: calc(var(--delay) * 0.5s);
+}
+
+@keyframes boot-type {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.boot-name { color: var(--accent); font-weight: 600; }
+.boot-ok { color: var(--green); }
+.boot-fail { color: var(--red); font-weight: 600; }
+.boot-final { color: var(--text); font-weight: 600; animation-delay: 2.5s; }
+
+.boot-skip {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background: none;
+  border: 1px solid var(--text-dim);
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.boot-skip:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ============================================
+   HUD Overlay
+   ============================================ */
+
+.hud {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9997;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-align: right;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.hud-line {
+  margin-bottom: 0.25rem;
+  transition: color 0.3s;
+}
+
+.hud-complete {
+  color: var(--green) !important;
+}
+
+/* ============================================
+   Main Content
+   ============================================ */
+
+.main {
+  position: relative;
+  z-index: 1;
+}
+
+.main.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ============================================
+   Glitch Effects
+   ============================================ */
+
+.glitch {
+  position: relative;
+  display: inline-block;
+  animation: glitch-skew 6s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: var(--red);
+  animation: glitch-left 2.5s infinite;
+  clip-path: inset(100% 0 0 0);
+}
+
+.glitch::after {
+  color: var(--accent);
+  animation: glitch-right 3s infinite;
+  clip-path: inset(100% 0 0 0);
+}
+
+@keyframes glitch-left {
+  0%, 87% { clip-path: inset(100% 0 0 0); }
+  88% { clip-path: inset(25% 0 45% 0); transform: translateX(-5px); }
+  89% { clip-path: inset(65% 0 5% 0); transform: translateX(-3px); }
+  90% { clip-path: inset(10% 0 55% 0); transform: translateX(-6px); }
+  91%, 100% { clip-path: inset(100% 0 0 0); transform: translateX(0); }
+}
+
+@keyframes glitch-right {
+  0%, 91% { clip-path: inset(100% 0 0 0); }
+  92% { clip-path: inset(45% 0 20% 0); transform: translateX(5px); }
+  93% { clip-path: inset(15% 0 50% 0); transform: translateX(3px); }
+  94% { clip-path: inset(60% 0 10% 0); transform: translateX(6px); }
+  95%, 100% { clip-path: inset(100% 0 0 0); transform: translateX(0); }
+}
+
+@keyframes glitch-skew {
+  0%, 86% { transform: skewX(0deg); }
+  87% { transform: skewX(-2deg); }
+  88% { transform: skewX(1deg); }
+  89% { transform: skewX(-0.5deg); }
+  90%, 100% { transform: skewX(0deg); }
+}
+
+.glitch-inline {
+  position: relative;
+  padding: 0 2px;
+  color: var(--accent);
+}
+
+.glitch-inline:hover {
+  text-shadow: 2px 0 var(--red), -2px 0 var(--accent);
+}
+
+/* Scan line on cards */
+.card::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  pointer-events: none;
+  animation: scan-line 6s infinite;
+}
+
+@keyframes scan-line {
+  0%, 92% { opacity: 0; top: 0; }
+  93% { opacity: 0.6; top: 25%; }
+  94% { opacity: 0; }
+  95% { opacity: 0.5; top: 65%; }
+  96%, 100% { opacity: 0; }
+}
+
+.card:nth-child(3)::after { animation-delay: -2s; }
+.card:nth-child(4)::after { animation-delay: -4s; }
+
+/* ============================================
+   Hero
+   ============================================ */
+
+.hero {
+  padding: 5rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-run {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.75rem;
+  background: rgba(96, 165, 250, 0.05);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  padding: 0.4rem 0.9rem;
+  border-radius: 2px;
+}
+
+.run-label { color: var(--text-dim); letter-spacing: 0.1em; }
+.run-value { color: var(--text-muted); }
+.run-status { color: var(--green); animation: blink 1.5s step-end infinite; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero h1 {
+  font-family: var(--sans);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.hero .positioning {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.links a {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  cursor: pointer;
+}
+
+.links a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ============================================
+   Metrics Strip
+   ============================================ */
+
+.metrics {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(96, 165, 250, 0.02) 0%, transparent 100%);
+}
+
+.metrics .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.metric { text-align: center; }
+
+.metric-value {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   Research / Evaluation Cards
+   ============================================ */
+
+.research {
+  padding: 4rem 0;
+}
+
+.research h2, .about h2 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-id {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  border-left-color: var(--accent);
+  box-shadow: 0 0 40px rgba(96, 165, 250, 0.03), inset 0 0 30px rgba(96, 165, 250, 0.01);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-tag {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+}
+
+.card-tag.attack { background: rgba(248,113,113,0.1); color: var(--red); border: 1px solid rgba(248,113,113,0.25); }
+.card-tag.defense { background: rgba(52,211,153,0.1); color: var(--green); border: 1px solid rgba(52,211,153,0.25); }
+.card-tag.mechanistic { background: rgba(167,139,250,0.1); color: var(--purple); border: 1px solid rgba(167,139,250,0.25); }
+
+/* Verdict badges */
+.card-verdict {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.card-verdict.fail {
+  background: rgba(248,113,113,0.15);
+  color: var(--red);
+  border: 1px solid rgba(248,113,113,0.3);
+  text-shadow: 0 0 8px var(--red-glow);
+}
+
+.card-verdict.pass {
+  background: rgba(52,211,153,0.15);
+  color: var(--green);
+  border: 1px solid rgba(52,211,153,0.3);
+  text-shadow: 0 0 8px var(--green-glow);
+}
+
+.card-verdict.critical {
+  background: rgba(251,191,36,0.15);
+  color: var(--yellow);
+  border: 1px solid rgba(251,191,36,0.3);
+  animation: verdict-pulse 2s ease-in-out infinite;
+}
+
+@keyframes verdict-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.card h3 {
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.card-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+}
+
+/* Findings */
+.card-findings { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 1.25rem; }
+.finding { display: flex; align-items: baseline; gap: 0.75rem; }
+.finding-number { font-size: 0.85rem; font-weight: 600; color: var(--text); white-space: nowrap; min-width: 5.5rem; }
+.finding-text { font-family: var(--sans); font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+/* Redacted */
+.redacted {
+  background: var(--red);
+  color: transparent;
+  cursor: pointer;
+  padding: 0.1rem 0.5rem;
+  border-radius: 2px;
+  user-select: none;
+  animation: redact-flicker 3s infinite;
+  transition: all 0.2s;
+}
+
+@keyframes redact-flicker {
+  0%, 93% { opacity: 1; }
+  94% { opacity: 0.5; }
+  95% { opacity: 1; }
+  96% { opacity: 0.7; }
+  97%, 100% { opacity: 1; }
+}
+
+.redacted:hover, .redacted.is-revealed, .redacted.is-locked {
+  background: transparent;
+  color: var(--accent);
+  animation: none;
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Details */
+.card-details { margin-bottom: 1.25rem; }
+.card-details summary {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--border);
+  list-style: none;
+  letter-spacing: 0.05em;
+}
+.card-details summary::-webkit-details-marker { display: none; }
+.card-details summary::before { content: '▸ '; color: var(--accent); }
+.card-details[open] summary::before { content: '▾ '; }
+.card-details p { font-family: var(--sans); font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; padding-top: 0.75rem; }
+
+/* Card links */
+.card-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.card-links a { font-size: 0.75rem; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; cursor: pointer; }
+.card-links a:hover { border-bottom-color: var(--accent); }
+
+/* ============================================
+   About — Declassify on scroll
+   ============================================ */
+
+.about {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.about-content p {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.declassify {
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(4px);
+  transition: opacity 0.6s, transform 0.6s, filter 0.6s;
+}
+
+.declassify.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.about-cta {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.about-cta a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  cursor: pointer;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+
+footer {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+}
+
+footer p {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.footer-status { color: var(--green); }
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 640px) {
+  .hero { padding: 3rem 0 2rem; }
+  .hero h1 { font-size: 2rem; }
+  .metrics .container { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .card { padding: 1.5rem; }
+  .finding { flex-direction: column; gap: 0.25rem; }
+  .finding-number { min-width: unset; }
+  .hud { display: none; }
+  .boot-content { font-size: 0.75rem; }
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  body::after { display: none; }
+  .boot-overlay { display: none; }
+  .main.hidden { opacity: 1; pointer-events: auto; }
+  .declassify { opacity: 1; transform: none; filter: none; }
+  .run-status { opacity: 1; }
+}
+
+a:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (forced-colors: active) {
+  .card { border: 1px solid CanvasText; }
+  .card-tag, .card-verdict { border: 1px solid CanvasText; }
+  .redacted { background: CanvasText; color: Canvas; }
+  .redacted.is-revealed { background: transparent; color: LinkText; }
+}
