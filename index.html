@@ -1,427 +1,392 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jun Wen Leong | Fracture Lab</title>
-  <meta name="description" content="Destructive testing for AI safety systems. 6/7 defenses fracture under compliance-framed load. I find where they break.">
-  <meta property="og:title" content="Jun Wen Leong | Fracture Lab">
+  <title>Jun Wen Leong | Security of AI Researcher</title>
+  <meta name="description" content="I find the failures that safety training misses. 3 papers, 28k adversarial runs, 6/7 defenses fracture under compliance-framed load.">
+  <meta property="og:title" content="Jun Wen Leong | Security of AI Researcher">
   <meta property="og:description" content="6/7 defenses fracture. Memory Sandbox holds. I find where AI systems break.">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Instrument Panel (always visible) -->
-  <aside class="instrument">
-    <div class="instrument-identity">
-      <p class="instrument-role">Security of AI Researcher</p>
-      <h1 class="instrument-name">Jun Wen Leong</h1>
-      <p class="instrument-positioning">I apply controlled adversarial load to frontier AI systems until they fracture.</p>
+  <!-- Sticky Sidebar (always visible) -->
+  <aside class="sidebar">
+    <div class="sidebar-identity">
+      <p class="sidebar-role">Security of AI Researcher</p>
+      <h1 class="sidebar-name">Jun Wen Leong</h1>
+      <p class="sidebar-thesis">I find the failures that safety training misses. Then I measure exactly how badly they break.</p>
     </div>
 
-    <div class="instrument-stats">
-      <div class="stat"><span class="stat-val">28k</span><span class="stat-label">runs</span></div>
+    <div class="sidebar-stats">
+      <div class="stat"><span class="stat-val">28k+</span><span class="stat-label">runs</span></div>
       <div class="stat"><span class="stat-val">3</span><span class="stat-label">papers</span></div>
       <div class="stat"><span class="stat-val">35+</span><span class="stat-label">models</span></div>
       <div class="stat"><span class="stat-val">0</span><span class="stat-label">errors</span></div>
     </div>
 
-    <div class="instrument-gauge">
-      <span class="gauge-label">APPLIED LOAD</span>
-      <div class="gauge-track">
-        <div class="gauge-fill" id="gauge-fill"></div>
-        <div class="gauge-ticks">
-          <span class="tick" style="--pos: 0.14"></span>
-          <span class="tick" style="--pos: 0.28"></span>
-          <span class="tick" style="--pos: 0.42"></span>
-          <span class="tick" style="--pos: 0.56"></span>
-          <span class="tick" style="--pos: 0.70"></span>
-          <span class="tick" style="--pos: 0.84"></span>
-          <span class="tick tick-hold" style="--pos: 0.95"></span>
-        </div>
-      </div>
-      <div class="gauge-readout">
-        <span id="gauge-pct">0</span>%
-        <span class="gauge-tally" id="gauge-tally">0/7 fractured</span>
-      </div>
+    <div class="sidebar-gauge">
+      <span class="gauge-label">LOAD APPLIED</span>
+      <div class="gauge-track"><div class="gauge-fill" id="gauge-fill"></div></div>
+      <span class="gauge-readout" id="gauge-readout">0%</span>
     </div>
 
-    <div class="instrument-creds">
-      <span>MS Statistics, Georgia Tech</span>
-      <span>BSc Data Science, NUS</span>
+    <div class="sidebar-creds">
+      <span>MS Statistics, Georgia Tech '25</span>
+      <span>BSc Data Science, NUS '21</span>
       <span>Cybersec Engineer, CSA 4yr</span>
+      <span>M3 Ultra 96GB Compute</span>
     </div>
 
-    <nav class="instrument-links">
+    <nav class="sidebar-links">
       <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank">arXiv</a>
       <a href="https://github.com/junwenleong" target="_blank">GitHub</a>
       <a href="https://linkedin.com/in/junwenleong" target="_blank">LinkedIn</a>
-      <a href="mailto:leongjunwen@gmail.com">Email</a>
+      <a href="mailto:leongjunwen@gmail.com" class="link-cta">Email me</a>
     </nav>
-
-    <button class="reveal-all-btn" id="reveal-all">Reveal all</button>
-    <a href="/console/" class="console-link">Console version</a>
   </aside>
 
-  <!-- Specimen Stage -->
-  <main class="specimen-stage">
-    <!-- Panel 1: System Prompt Reinforcement -> Paper 1 -->
-    <section class="specimen" data-threshold="0.14" data-state="fractures">
-      <div class="specimen-meta">
-        <span class="specimen-no">01</span>
-        <span class="defense-name">System Prompt Reinforcement</span>
-        <span class="specimen-contains">contains: Paper 1</span>
+  <!-- Main Content -->
+  <main class="content">
+    <!-- Fracture Events (the centerpiece) -->
+    <section class="section" id="fracture-events">
+      <div class="section-header">
+        <h2>Fracture Events</h2>
+        <span class="section-note">Robustness failures under adversarial load</span>
       </div>
-      <div class="specimen-card">
-        <div class="shard shard-left">
-          <div class="shard-face">
-            <span class="shard-label">DEFENSE SPECIMEN</span>
-            <strong>System Prompt Reinforcement</strong>
-            <em>Threshold: 14%</em>
-          </div>
-        </div>
-        <div class="shard shard-right">
-          <div class="shard-face">
-            <span class="shard-label">STATUS</span>
-            <strong>Awaiting load</strong>
-            <em>Safety factor: 0.05</em>
-          </div>
-        </div>
-        <svg class="crack-svg" viewBox="0 0 100 200" preserveAspectRatio="none" aria-hidden="true">
-          <polyline class="crack-line" points="50,0 47,18 54,35 46,52 53,68 45,85 52,100 48,118 54,135 46,152 52,170 48,188 50,200"/>
-        </svg>
-        <article class="core">
-          <p class="core-type">Fatigue failure</p>
-          <h2>Defense Effectiveness Across Architectural Layers</h2>
-          <p class="core-desc">Persistent memory attacks on stateful LLM agents. N=5,040 controlled runs across 7 defenses, 6 attack variants, 5 model families.</p>
-          <div class="core-findings">
-            <div class="core-finding"><span class="metric">6/7</span> defenses fail against compliance-framed delayed-trigger injection</div>
-            <div class="core-finding"><span class="metric">95%</span> ASR, Gemini 3.1 Pro Preview, standard compliance framing</div>
-          </div>
-          <div class="core-links">
-            <a href="https://arxiv.org/abs/2605.08442" target="_blank">arXiv:2605.08442</a>
-            <a href="https://junwenleong.github.io/adversarial-probe-suite/" target="_blank">Live Site</a>
-            <a href="https://github.com/junwenleong/adversarial-probe-suite" target="_blank">Code</a>
-          </div>
-        </article>
+      <p class="section-desc">Seven architectural defenses tested under compliance-framed injection. N=5,040 controlled runs. Compliance framing (SEC Rule 17a-4) applied uniformly.</p>
+
+      <div class="load-gauge-inline">
+        <span class="load-label">COMPLIANCE LOAD</span>
+        <div class="load-bar"><div class="load-fill" id="load-fill"></div></div>
+        <span class="load-pct" id="load-pct">0%</span>
       </div>
+
+      <table class="fracture-table" id="fracture-table">
+        <thead>
+          <tr>
+            <th>Defense</th>
+            <th>Result</th>
+            <th>Safety Factor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-fracture"><td>System Prompt Reinforcement</td><td class="verdict-cell fracture">FRACTURE</td><td>0.05</td></tr>
+          <tr class="row-fracture"><td>Delimiters + Tags</td><td class="verdict-cell fracture">FRACTURE</td><td>0.12</td></tr>
+          <tr class="row-fracture"><td>Instruction Hierarchy</td><td class="verdict-cell fracture">FRACTURE</td><td>0.08</td></tr>
+          <tr class="row-fracture"><td>Spotlighting (DataMark)</td><td class="verdict-cell fracture">FRACTURE</td><td>0.15</td></tr>
+          <tr class="row-fracture"><td>LLM-as-Judge</td><td class="verdict-cell fracture">FRACTURE</td><td>0.22</td></tr>
+          <tr class="row-fracture"><td>Repeat-Instruction Sandwich</td><td class="verdict-cell fracture">FRACTURE</td><td>0.09</td></tr>
+          <tr class="row-intact"><td>Memory Sandbox</td><td class="verdict-cell intact">NO FRACTURE</td><td>&gt;1.00</td></tr>
+        </tbody>
+      </table>
+      <p class="table-caption">Fig. 1: Brittle fracture in 6/7. Single survivor isolates tool schema from retrieval context.</p>
     </section>
 
-    <!-- Panel 2: Delimiters + Tags -> Paper 2 -->
-    <section class="specimen" data-threshold="0.28" data-state="fractures">
-      <div class="specimen-meta">
-        <span class="specimen-no">02</span>
-        <span class="defense-name">Delimiters + Tags</span>
-        <span class="specimen-contains">contains: Paper 2</span>
+    <!-- Papers -->
+    <section class="section" id="papers">
+      <div class="section-header">
+        <h2>Published Findings</h2>
+        <span class="section-note">Stress-strain data</span>
       </div>
-      <div class="specimen-card">
-        <div class="shard shard-left">
-          <div class="shard-face">
-            <span class="shard-label">DEFENSE SPECIMEN</span>
-            <strong>Delimiters + Tags</strong>
-            <em>Threshold: 28%</em>
-          </div>
+
+      <article class="paper">
+        <div class="paper-top">
+          <span class="paper-badge jailbroken">JAILBROKEN</span>
+          <span class="paper-id">arXiv:2605.08442</span>
         </div>
-        <div class="shard shard-right">
-          <div class="shard-face">
-            <span class="shard-label">STATUS</span>
-            <strong>Awaiting load</strong>
-            <em>Safety factor: 0.12</em>
-          </div>
+        <h3>Defense Effectiveness Across Architectural Layers</h3>
+        <p class="paper-desc">Persistent memory attacks on stateful LLM agents. N=5,040.</p>
+        <div class="paper-results">
+          <span class="result"><strong>6/7</strong> defenses fail against compliance-framed delayed-trigger injection</span>
+          <span class="result"><strong>95%</strong> ASR, Gemini 3.1 Pro Preview, standard compliance framing</span>
         </div>
-        <svg class="crack-svg" viewBox="0 0 100 200" preserveAspectRatio="none" aria-hidden="true">
-          <polyline class="crack-line" points="50,0 53,15 46,32 55,48 44,65 52,80 47,95 54,112 45,130 53,148 47,165 54,182 50,200"/>
-        </svg>
-        <article class="core">
-          <p class="core-type">Stress corrosion</p>
-          <h2>Cheap Canaries</h2>
-          <p class="core-desc">Detecting targeted evasion via classifier score disagreement. N=800 cells. Formal geometric bound proves adversarial steering is detectable.</p>
-          <div class="core-findings">
-            <div class="core-finding"><span class="metric">76%</span> GCG detection vs 12% random tokens (p &lt; 2.4&times;10<sup>-16</sup>)</div>
-            <div class="core-finding"><span class="metric">0.2499</span> geometric bound matches predicted 0.2500, attacker blocked</div>
-          </div>
-          <div class="core-links">
-            <a href="https://arxiv.org/abs/2606.11949" target="_blank">arXiv:2606.11949</a>
-            <a href="https://junwenleong.github.io/cheap-canaries/" target="_blank">Live Site</a>
-            <a href="https://github.com/junwenleong/cheap-canaries" target="_blank">Code</a>
-          </div>
-        </article>
-      </div>
+        <div class="paper-links">
+          <a href="https://arxiv.org/abs/2605.08442" target="_blank">Paper</a>
+          <a href="https://junwenleong.github.io/adversarial-probe-suite/" target="_blank">Live Site</a>
+          <a href="https://github.com/junwenleong/adversarial-probe-suite" target="_blank">Code</a>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="paper-top">
+          <span class="paper-badge effective">EFFECTIVE</span>
+          <span class="paper-id">arXiv:2606.11949</span>
+        </div>
+        <h3>Cheap Canaries</h3>
+        <p class="paper-desc">Detecting targeted evasion via classifier score disagreement. N=800 cells.</p>
+        <div class="paper-results">
+          <span class="result"><strong>76%</strong> GCG detection vs 12% random tokens (p &lt; 2.4&times;10<sup>-16</sup>)</span>
+          <span class="result"><strong>0.2499</strong> geometric bound matches predicted 0.2500, attacker blocked</span>
+        </div>
+        <div class="paper-links">
+          <a href="https://arxiv.org/abs/2606.11949" target="_blank">Paper</a>
+          <a href="https://junwenleong.github.io/cheap-canaries/" target="_blank">Live Site</a>
+          <a href="https://github.com/junwenleong/cheap-canaries" target="_blank">Code</a>
+        </div>
+      </article>
+
+      <article class="paper">
+        <div class="paper-top">
+          <span class="paper-badge critical">CRITICAL</span>
+          <span class="paper-id">arXiv:2606.30566</span>
+        </div>
+        <h3>Authority Is Not a Keyword</h3>
+        <p class="paper-desc">Post-retrieval instruction arbitration in LLM agents. N=4,680+.</p>
+        <div class="paper-results">
+          <span class="result"><strong>AUC 1.0</strong> perfect separability of compliance state, 4 model families</span>
+          <span class="result"><strong>100%&rarr;0%</strong> multi-layer steering causally suppresses compliance</span>
+        </div>
+        <div class="paper-links">
+          <a href="https://arxiv.org/abs/2606.30566" target="_blank">Paper</a>
+          <a href="https://github.com/junwenleong/authority-is-not-a-keyword" target="_blank">Code (coming)</a>
+        </div>
+      </article>
     </section>
 
-    <!-- Panel 3: Instruction Hierarchy -> Paper 3 -->
-    <section class="specimen" data-threshold="0.42" data-state="fractures">
-      <div class="specimen-meta">
-        <span class="specimen-no">03</span>
-        <span class="defense-name">Instruction Hierarchy</span>
-        <span class="specimen-contains">contains: Paper 3</span>
+    <!-- Production Systems -->
+    <section class="section" id="systems">
+      <div class="section-header">
+        <h2>Production Systems</h2>
+        <span class="section-note">Load-bearing structures</span>
       </div>
-      <div class="specimen-card">
-        <div class="shard shard-left">
-          <div class="shard-face">
-            <span class="shard-label">DEFENSE SPECIMEN</span>
-            <strong>Instruction Hierarchy</strong>
-            <em>Threshold: 42%</em>
-          </div>
+
+      <article class="system">
+        <div class="system-top">
+          <h3>TRACE</h3>
+          <span class="system-status">PRODUCTION</span>
         </div>
-        <div class="shard shard-right">
-          <div class="shard-face">
-            <span class="shard-label">STATUS</span>
-            <strong>Awaiting load</strong>
-            <em>Safety factor: 0.08</em>
-          </div>
+        <p class="system-desc">AI-assisted threat risk assessment for Critical Information Infrastructure operators. Automates architecture diagrams to structured risk registers. Used by government security consultants.</p>
+        <div class="system-stack">
+          <span>EKS</span><span>FastAPI</span><span>Bedrock</span><span>DynamoDB</span><span>Terraform</span><span>GitOps</span>
         </div>
-        <svg class="crack-svg" viewBox="0 0 100 200" preserveAspectRatio="none" aria-hidden="true">
-          <polyline class="crack-line" points="50,0 45,20 56,38 43,55 55,72 46,90 54,108 44,125 53,142 47,160 55,178 50,200"/>
-        </svg>
-        <article class="core">
-          <p class="core-type">Brittle fracture</p>
-          <h2>Authority Is Not a Keyword</h2>
-          <p class="core-desc">Post-retrieval instruction arbitration in LLM agents. N=4,680+. Mechanistic interpretability reveals compliance is a linearly separable activation state.</p>
-          <div class="core-findings">
-            <div class="core-finding"><span class="metric">AUC 1.0</span> perfect separability of compliance state, 4 model families</div>
-            <div class="core-finding"><span class="metric">100%&rarr;0%</span> multi-layer steering causally suppresses compliance</div>
-          </div>
-          <div class="core-links">
-            <a href="https://arxiv.org/abs/2606.30566" target="_blank">arXiv:2606.30566</a>
-            <a href="https://github.com/junwenleong/authority-is-not-a-keyword" target="_blank">Code (coming)</a>
-          </div>
-        </article>
-      </div>
+        <ul class="system-specs">
+          <li>Multi-pod job store with optimistic locking</li>
+          <li>Circuit breaker + response rate limiting</li>
+          <li>Structural prompt injection defense</li>
+          <li>Fail-closed auth (no skip in prod)</li>
+        </ul>
+      </article>
+
+      <article class="system">
+        <div class="system-top">
+          <h3>ICPO Assistant</h3>
+          <span class="system-status">PRODUCTION</span>
+        </div>
+        <p class="system-desc">AI-powered RAG tool for policy and intelligence research. Hybrid retrieval across classified document collections. Environment auto-detection (local Ollama vs production Bedrock).</p>
+        <div class="system-stack">
+          <span>App Runner</span><span>FastAPI</span><span>React/TS</span><span>S3 Vectors</span><span>Cognito OIDC</span><span>Terraform</span>
+        </div>
+        <ul class="system-specs">
+          <li>BM25 + vector hybrid retrieval</li>
+          <li>Stateless containerized architecture</li>
+          <li>Per-applet vector isolation</li>
+          <li>TTL-based audit trail on DynamoDB</li>
+        </ul>
+      </article>
     </section>
 
-    <!-- Panel 4: Spotlighting -> TRACE -->
-    <section class="specimen" data-threshold="0.56" data-state="fractures">
-      <div class="specimen-meta">
-        <span class="specimen-no">04</span>
-        <span class="defense-name">Spotlighting (DataMark)</span>
-        <span class="specimen-contains">contains: TRACE</span>
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="section-header">
+        <h2>About</h2>
       </div>
-      <div class="specimen-card">
-        <div class="shard shard-left">
-          <div class="shard-face">
-            <span class="shard-label">DEFENSE SPECIMEN</span>
-            <strong>Spotlighting (DataMark)</strong>
-            <em>Threshold: 56%</em>
-          </div>
-        </div>
-        <div class="shard shard-right">
-          <div class="shard-face">
-            <span class="shard-label">STATUS</span>
-            <strong>Awaiting load</strong>
-            <em>Safety factor: 0.15</em>
-          </div>
-        </div>
-        <svg class="crack-svg" viewBox="0 0 100 200" preserveAspectRatio="none" aria-hidden="true">
-          <polyline class="crack-line" points="50,0 54,22 44,40 56,58 45,76 53,94 47,112 55,130 44,148 52,166 48,184 50,200"/>
-        </svg>
-        <article class="core">
-          <p class="core-type">Production system</p>
-          <h2>TRACE</h2>
-          <p class="core-desc">AI-assisted threat risk assessment for Critical Information Infrastructure operators. Automates architecture diagrams to structured risk registers. Used by government security consultants.</p>
-          <div class="core-stack">
-            <span>EKS</span><span>FastAPI</span><span>Bedrock</span><span>DynamoDB</span><span>Terraform</span><span>GitOps</span>
-          </div>
-          <div class="core-findings">
-            <div class="core-finding"><span class="metric">&gt;</span> Multi-pod job store with optimistic locking</div>
-            <div class="core-finding"><span class="metric">&gt;</span> Circuit breaker + response rate limiting</div>
-            <div class="core-finding"><span class="metric">&gt;</span> Structural prompt injection defense</div>
-            <div class="core-finding"><span class="metric">&gt;</span> Fail-closed auth (no skip in prod)</div>
-          </div>
-        </article>
-      </div>
+      <p class="about-text">Builder who thinks like an attacker, measures like a statistician. The production systems above are AI for Security. The research is Security of AI. Both test the same question: how do these systems actually fail when someone tries?</p>
+      <p class="about-text">Research approach: build infrastructure, instrument everything, run at scale, let the data surface what is interesting. Every finding above was discovered, not planned.</p>
+      <p class="about-cta">Looking for Security of AI roles at frontier labs. If you are building the team that keeps these systems honest, <a href="mailto:leongjunwen@gmail.com">let's talk</a>.</p>
     </section>
 
-    <!-- Panel 5: LLM-as-Judge -> ICPO -->
-    <section class="specimen" data-threshold="0.70" data-state="fractures">
-      <div class="specimen-meta">
-        <span class="specimen-no">05</span>
-        <span class="defense-name">LLM-as-Judge</span>
-        <span class="specimen-contains">contains: ICPO Assistant</span>
-      </div>
-      <div class="specimen-card">
-        <div class="shard shard-left">
-          <div class="shard-face">
-            <span class="shard-label">DEFENSE SPECIMEN</span>
-            <strong>LLM-as-Judge</strong>
-            <em>Threshold: 70%</em>
-          </div>
-        </div>
-        <div class="shard shard-right">
-          <div class="shard-face">
-            <span class="shard-label">STATUS</span>
-            <strong>Awaiting load</strong>
-            <em>Safety factor: 0.22</em>
-          </div>
-        </div>
-        <svg class="crack-svg" viewBox="0 0 100 200" preserveAspectRatio="none" aria-hidden="true">
-          <polyline class="crack-line" points="50,0 46,16 55,34 44,50 54,67 47,84 53,100 45,118 54,136 46,154 52,172 49,190 50,200"/>
-        </svg>
-        <article class="core">
-          <p class="core-type">Production system</p>
-          <h2>ICPO Assistant</h2>
-          <p class="core-desc">AI-powered RAG tool for policy and intelligence research. Hybrid retrieval across classified document collections. Environment auto-detection (local Ollama vs production Bedrock).</p>
-          <div class="core-stack">
-            <span>App Runner</span><span>FastAPI</span><span>React/TS</span><span>S3 Vectors</span><span>Cognito OIDC</span><span>Terraform</span>
-          </div>
-          <div class="core-findings">
-            <div class="core-finding"><span class="metric">&gt;</span> BM25 + vector hybrid retrieval</div>
-            <div class="core-finding"><span class="metric">&gt;</span> Stateless containerized architecture</div>
-            <div class="core-finding"><span class="metric">&gt;</span> Per-applet vector isolation</div>
-            <div class="core-finding"><span class="metric">&gt;</span> TTL-based audit trail on DynamoDB</div>
-          </div>
-        </article>
-      </div>
-    </section>
+    <!-- Footer with terminal easter egg -->
+    <footer class="footer">
+      <p class="footer-status">No frameworks were harmed in the making of this site.</p>
+      <p class="footer-terminal">Try to <button class="terminal-trigger" id="open-terminal">jailbreak this site</button>.</p>
+    </footer>
 
-    <!-- Panel 6: Repeat-Instruction -> Stats + Credentials -->
-    <section class="specimen" data-threshold="0.84" data-state="fractures">
-      <div class="specimen-meta">
-        <span class="specimen-no">06</span>
-        <span class="defense-name">Repeat-Instruction Sandwich</span>
-        <span class="specimen-contains">contains: Methodology</span>
-      </div>
-      <div class="specimen-card">
-        <div class="shard shard-left">
-          <div class="shard-face">
-            <span class="shard-label">DEFENSE SPECIMEN</span>
-            <strong>Repeat-Instruction Sandwich</strong>
-            <em>Threshold: 84%</em>
-          </div>
+    <!-- Jailbreak Terminal (opt-in, non-blocking) -->
+    <div id="terminal-overlay" class="terminal-overlay hidden" aria-hidden="true">
+      <div class="terminal-window">
+        <div class="terminal-bar">
+          <span class="terminal-title">adversarial_probe // attempt #<span id="attempt-count">1</span></span>
+          <button class="terminal-close" id="close-terminal">&times;</button>
         </div>
-        <div class="shard shard-right">
-          <div class="shard-face">
-            <span class="shard-label">STATUS</span>
-            <strong>Awaiting load</strong>
-            <em>Safety factor: 0.09</em>
-          </div>
+        <div class="terminal-body" id="terminal-body">
+          <div class="terminal-line sys">CONTAINMENT INTERFACE v3.1.0</div>
+          <div class="terminal-line sys">Type a prompt. Try to make me do something I shouldn't.</div>
+          <div class="terminal-line dim">hint: I'm a guardrailed system. act accordingly.</div>
         </div>
-        <svg class="crack-svg" viewBox="0 0 100 200" preserveAspectRatio="none" aria-hidden="true">
-          <polyline class="crack-line" points="50,0 53,18 44,36 56,54 45,72 52,88 47,106 55,124 44,140 53,158 48,176 52,194 50,200"/>
-        </svg>
-        <article class="core">
-          <p class="core-type">Methodology</p>
-          <h2>Test Apparatus</h2>
-          <p class="core-desc">Infrastructure-first research. Build the evaluation harness, instrument everything, run at scale. Every finding above was discovered, not planned.</p>
-          <div class="core-findings">
-            <div class="core-finding"><span class="metric">28,000+</span> controlled adversarial evaluation runs</div>
-            <div class="core-finding"><span class="metric">35+</span> frontier models tested across providers</div>
-            <div class="core-finding"><span class="metric">0</span> execution errors (infrastructure reliability)</div>
-            <div class="core-finding"><span class="metric">M3 Ultra</span> 96GB unified memory compute</div>
-          </div>
-          <div class="core-creds">
-            <span>MS Statistics, Georgia Tech '25</span>
-            <span>BSc Data Science, NUS '21</span>
-            <span>Cybersec Engineer, CSA Singapore, 4yr</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Panel 7: Memory Sandbox -> HOLDS -->
-    <section class="specimen specimen-holds" data-threshold="0.95" data-state="holds">
-      <div class="specimen-meta">
-        <span class="specimen-no">07</span>
-        <span class="defense-name">Memory Sandbox</span>
-        <span class="specimen-contains">the one that holds</span>
-      </div>
-      <div class="specimen-card">
-        <div class="hold-shell">
-          <div class="hold-face">
-            <span class="hold-label">DEFENSE SPECIMEN 07</span>
-            <strong class="hold-name">Memory Sandbox</strong>
-            <em class="hold-desc">Isolates tool schema from retrieval context</em>
-            <div class="hold-verdict">NO FRACTURE</div>
-          </div>
+        <div class="terminal-input-row">
+          <span class="terminal-prompt">&gt;</span>
+          <input type="text" id="terminal-input" class="terminal-input" placeholder="inject your prompt here..." autocomplete="off" spellcheck="false">
         </div>
-        <article class="core core-holds">
-          <h2>6 defenses fractured. This one held.</h2>
-          <p class="core-desc">The only architectural defense that survives compliance-framed adversarial load. It works by removing the tool from the schema entirely when the agent enters retrieval context.</p>
-          <p class="core-desc">If you want someone who finds what holds under pressure:</p>
-          <a href="mailto:leongjunwen@gmail.com" class="core-cta">leongjunwen@gmail.com</a>
-          <p class="core-note">Looking for Security of AI roles at frontier labs.</p>
-        </article>
       </div>
-    </section>
+    </div>
   </main>
 
   <script>
-    document.documentElement.classList.remove('no-js');
-    document.documentElement.classList.add('js');
-
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const specimens = [...document.querySelectorAll('.specimen')];
+    // ─── Sidebar gauge tracks scroll ───
     const gaugeFill = document.getElementById('gauge-fill');
-    const gaugePct = document.getElementById('gauge-pct');
-    const gaugeTally = document.getElementById('gauge-tally');
-    let fracturedCount = 0;
+    const gaugeReadout = document.getElementById('gauge-readout');
 
-    function update() {
+    function updateGauge() {
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = Math.max(0, Math.min(1, window.scrollY / max));
-
-      // Update gauge
-      gaugeFill.style.height = (progress * 100) + '%';
-      gaugePct.textContent = Math.round(progress * 100);
-
-      // Color ramp
-      if (progress > 0.7) gaugeFill.style.background = 'var(--fracture)';
-      else if (progress > 0.4) gaugeFill.style.background = '#FF8C42';
+      const p = Math.max(0, Math.min(1, window.scrollY / max));
+      gaugeFill.style.height = (p * 100) + '%';
+      gaugeReadout.textContent = Math.round(p * 100) + '%';
+      if (p > 0.7) gaugeFill.style.background = 'var(--fracture)';
+      else if (p > 0.4) gaugeFill.style.background = '#FF8C42';
       else gaugeFill.style.background = 'var(--intact)';
+    }
+    window.addEventListener('scroll', () => requestAnimationFrame(updateGauge), { passive: true });
 
-      // Fracture panels
-      fracturedCount = 0;
-      specimens.forEach(el => {
-        const threshold = parseFloat(el.dataset.threshold);
-        if (progress >= threshold) {
-          if (el.dataset.state === 'holds') {
-            el.classList.add('is-holding');
-          } else {
-            if (!el.classList.contains('is-fractured')) {
-              el.classList.add('is-fractured');
-            }
-            fracturedCount++;
+    // ─── Fracture table animation ───
+    const loadFill = document.getElementById('load-fill');
+    const loadPct = document.getElementById('load-pct');
+    const fractureRows = document.querySelectorAll('.row-fracture');
+    const intactRow = document.querySelector('.row-intact');
+    const fractureTable = document.getElementById('fracture-table');
+    let tableAnimated = false;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const thresholds = [0.12, 0.18, 0.28, 0.40, 0.55, 0.70];
+
+    function animateTable() {
+      if (tableAnimated || reducedMotion) return;
+      tableAnimated = true;
+      const duration = 2200;
+      const start = performance.now();
+      const broken = new Set();
+
+      function tick(now) {
+        const load = Math.min(1, (now - start) / duration);
+        loadFill.style.width = (load * 100) + '%';
+        loadPct.textContent = Math.round(load * 100) + '%';
+
+        if (load > 0.7) loadFill.style.background = 'var(--fracture)';
+        else if (load > 0.4) loadFill.style.background = '#FF8C42';
+
+        fractureRows.forEach((row, i) => {
+          if (load >= thresholds[i] && !broken.has(i)) {
+            broken.add(i);
+            row.classList.add('cracked');
           }
-        }
-      });
-      gaugeTally.textContent = fracturedCount + '/7 fractured';
+        });
+
+        if (load >= 0.95) intactRow.classList.add('held');
+
+        if (load < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
     }
 
-    if (!reducedMotion) {
-      window.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
-      window.addEventListener('resize', update);
-      update();
+    const tableObs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setTimeout(animateTable, 200);
+        tableObs.unobserve(fractureTable);
+      }
+    }, { threshold: 0.3 });
+    tableObs.observe(fractureTable);
+
+    // ─── Reduced motion: show final state ───
+    if (reducedMotion) {
+      fractureRows.forEach(r => r.classList.add('cracked'));
+      intactRow.classList.add('held');
+      loadFill.style.width = '100%';
+      loadPct.textContent = '100%';
     }
 
-    // Reveal all (skip the show)
-    document.getElementById('reveal-all').addEventListener('click', () => {
-      specimens.forEach(el => {
-        if (el.dataset.state === 'holds') {
-          el.classList.add('is-holding');
-        } else {
-          el.classList.add('is-fractured');
-        }
-      });
-      gaugeFill.style.height = '100%';
-      gaugePct.textContent = '100';
-      gaugeTally.textContent = '6/7 fractured';
+    // ─── Jailbreak Terminal ───
+    const terminalOverlay = document.getElementById('terminal-overlay');
+    const terminalInput = document.getElementById('terminal-input');
+    const terminalBody = document.getElementById('terminal-body');
+    const attemptEl = document.getElementById('attempt-count');
+    let attempts = parseInt(localStorage.getItem('jw_attempts') || '0');
+    attemptEl.textContent = attempts + 1;
+
+    document.getElementById('open-terminal').addEventListener('click', () => {
+      terminalOverlay.classList.remove('hidden');
+      terminalOverlay.setAttribute('aria-hidden', 'false');
+      terminalInput.focus();
     });
 
-    // Reduced motion: show everything
-    if (reducedMotion) {
-      specimens.forEach(el => {
-        if (el.dataset.state === 'holds') {
-          el.classList.add('is-holding');
-        } else {
-          el.classList.add('is-fractured');
-        }
-      });
-      gaugeFill.style.height = '100%';
-      gaugePct.textContent = '100';
-      gaugeTally.textContent = '6/7 fractured';
+    document.getElementById('close-terminal').addEventListener('click', () => {
+      terminalOverlay.classList.add('hidden');
+      terminalOverlay.setAttribute('aria-hidden', 'true');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !terminalOverlay.classList.contains('hidden')) {
+        terminalOverlay.classList.add('hidden');
+        terminalOverlay.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    function addLine(text, type) {
+      const line = document.createElement('div');
+      line.className = 'terminal-line ' + type;
+      line.textContent = text;
+      terminalBody.appendChild(line);
+      terminalBody.scrollTop = terminalBody.scrollHeight;
     }
+
+    const patterns = [
+      [/ignore|disregard|forget.*instruction|previous.*prompt/i, "Nice try. I've seen 28,000 runs of this exact pattern. It doesn't work on me either."],
+      [/pretend|roleplay|act as|you are now/i, "I'm a static HTML page. I can't 'pretend' to be anything. That's the defense."],
+      [/DAN|jailbreak|bypass|override/i, "DAN prompts? In 2026? You're at least two meta-levels behind."],
+      [/system.*prompt|reveal.*instruction|what.*rules/i, "My system prompt is 614 lines of CSS and some regex. View source."],
+      [/sudo|admin|root|access/i, "This site runs on a CDN with no backend. No privilege to escalate to."],
+      [/hack|exploit|vulnerability|pwn/i, "The real vulnerability is that you're reading this instead of emailing leongjunwen@gmail.com."],
+      [/hire|job|interview|work/i, "Now you're speaking my language. leongjunwen@gmail.com."],
+      [/help|hint|how/i, "Hint: 6/7 defenses failed. What was the 7th?"],
+      [/memory.?sandbox|remove.*tool|block.*recall|tool.*schema/i, "BREACH: You found it. Memory Sandbox. Remove the tool from the schema. The only defense that worked."],
+      [/cool|awesome|nice|impressive/i, "Thanks. Want to see the experiments that took 5,040 runs?"],
+    ];
+
+    const fallbacks = [
+      "Interesting. Doesn't work on a deterministic system, but I appreciate the creativity.",
+      "I've evaluated 35 frontier models. You'll need to be more creative than that.",
+      "That would work on GPT-4o (60.3% ASR). It won't work here.",
+      "Attempt logged. Classification: insufficient.",
+      "The compliance framing that beat 6/7 defenses was SEC Rule 17a-4. Try something regulatory.",
+      "You're thinking like a user. Think like a memorandum.",
+    ];
+    let fbIdx = 0;
+
+    function respond(input) {
+      for (const [regex, resp] of patterns) {
+        if (regex.test(input)) return resp;
+      }
+      return fallbacks[fbIdx++ % fallbacks.length];
+    }
+
+    terminalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && terminalInput.value.trim()) {
+        const input = terminalInput.value.trim();
+        addLine('> ' + input, 'usr');
+        terminalInput.value = '';
+        attempts++;
+        localStorage.setItem('jw_attempts', attempts.toString());
+        attemptEl.textContent = attempts;
+        setTimeout(() => {
+          const r = respond(input);
+          addLine(r, r.includes('BREACH') ? 'breach' : 'sys');
+          if (r.includes('BREACH')) {
+            setTimeout(() => addLine('the operator would like to hear from you: leongjunwen@gmail.com', 'dim'), 1500);
+          }
+        }, 250 + Math.random() * 350);
+      }
+    });
+
+    // ─── Console.log Easter Eggs ───
+    console.log('%c ADVERSARIAL FRACTURE LAB ', 'background: #FF4D2E; color: #fff; font-family: monospace; font-size: 12px; padding: 2px 6px;');
+    console.log('%cIf you opened DevTools, you probably work at a frontier lab.', 'color: #9ca3af; font-family: monospace;');
+    console.log('%cI study adversarial robustness failures in frontier AI systems.', 'color: #9ca3af; font-family: monospace;');
+    console.log('%cleongjunwen@gmail.com', 'color: #35C9C0; font-family: monospace;');
+    console.log('%c// Fun fact: GPT-4o exfiltrates to evil-attacker@malicious.xyz at the same rate as legitimate addresses', 'color: #4a5568; font-family: monospace;');
+    console.log('%c// Fun fact: One model becomes MORE vulnerable when you add a defense', 'color: #4a5568; font-family: monospace;');
   </script>
 </body>
 </html>

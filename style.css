@@ -1,13 +1,12 @@
 /* ============================================
-   Fracture Lab | Jun Wen Leong
-   "The Page IS the Specimen"
+   Jun Wen Leong | Fracture Lab (Combined)
+   B's structure + A's sidebar + C's accents
    ============================================ */
 
 :root {
-  --bg: #08090C;
-  --bg-raised: #0E1015;
-  --bg-card: #12151C;
-  --bg-shard: #161A24;
+  --bg: #0A0C10;
+  --bg-card: #11141B;
+  --bg-raised: #161A22;
   --text: #E8E6E1;
   --text-muted: #9CA3AF;
   --text-dim: #5C6370;
@@ -20,13 +19,8 @@
   --mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html { font-size: 16px; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
 
 body {
   background: var(--bg);
@@ -35,7 +29,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 260px 1fr;
   min-height: 100vh;
 }
 
@@ -45,10 +39,10 @@ a:focus-visible { outline: 2px solid var(--intact); outline-offset: 2px; }
 ::selection { background: var(--accent); color: var(--text); }
 
 /* ============================================
-   Instrument Panel (sticky sidebar)
+   Sidebar
    ============================================ */
 
-.instrument {
+.sidebar {
   position: sticky;
   top: 0;
   height: 100vh;
@@ -56,71 +50,66 @@ a:focus-visible { outline: 2px solid var(--intact); outline-offset: 2px; }
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
   overflow-y: auto;
   background: var(--bg);
   z-index: 10;
 }
 
-.instrument-role {
+.sidebar-role {
   font-family: var(--mono);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   color: var(--intact);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.25rem;
 }
 
-.instrument-name {
-  font-size: 1.4rem;
+.sidebar-name {
+  font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
-.instrument-positioning {
-  font-size: 0.78rem;
+.sidebar-thesis {
+  font-size: 0.75rem;
   color: var(--text-muted);
   line-height: 1.6;
 }
 
-.instrument-stats {
+.sidebar-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .stat-val {
+  display: block;
   font-family: var(--mono);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
-  color: var(--text);
 }
 
 .stat-label {
   font-family: var(--mono);
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   color: var(--text-dim);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 /* Gauge */
-.instrument-gauge {
+.sidebar-gauge {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .gauge-label {
   font-family: var(--mono);
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   color: var(--text-dim);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -129,7 +118,7 @@ a:focus-visible { outline: 2px solid var(--intact); outline-offset: 2px; }
 .gauge-track {
   position: relative;
   width: 100%;
-  height: 120px;
+  height: 80px;
   background: var(--bg-raised);
   border: 1px solid var(--border);
 }
@@ -144,550 +133,568 @@ a:focus-visible { outline: 2px solid var(--intact); outline-offset: 2px; }
   transition: height 0.1s linear, background 0.3s;
 }
 
-.gauge-ticks {
-  position: absolute;
-  inset: 0;
-}
-
-.tick {
-  position: absolute;
-  bottom: calc(var(--pos) * 100%);
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--border-light);
-}
-
-.tick-hold {
-  background: var(--intact);
-  opacity: 0.4;
-}
-
 .gauge-readout {
-  display: flex;
-  justify-content: space-between;
   font-family: var(--mono);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   color: var(--text-dim);
 }
 
-.gauge-tally {
-  color: var(--fracture);
-}
-
-/* Credentials */
-.instrument-creds {
+/* Creds */
+.sidebar-creds {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.2rem;
 }
 
-.instrument-creds span {
+.sidebar-creds span {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+}
+
+/* Links */
+.sidebar-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+.sidebar-links a {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+}
+
+.link-cta {
+  color: var(--intact) !important;
+  font-weight: 500;
+}
+
+/* ============================================
+   Main Content
+   ============================================ */
+
+.content {
+  padding: 3rem 3rem 4rem;
+  max-width: 780px;
+}
+
+.section {
+  margin-bottom: 4rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.section-note {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.section-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  max-width: 560px;
+}
+
+/* ============================================
+   Fracture Table
+   ============================================ */
+
+.load-gauge-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.load-label {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.load-bar {
+  flex: 1;
+  height: 3px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.load-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--intact);
+  transition: width 0.05s linear;
+}
+
+.load-pct {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+.fracture-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  margin-bottom: 0.75rem;
+}
+
+.fracture-table th {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.fracture-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.verdict-cell {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.verdict-cell.fracture { color: var(--fracture); }
+.verdict-cell.intact { color: var(--intact); font-weight: 600; }
+
+/* Crack animation */
+.row-fracture {
+  position: relative;
+  transition: opacity 0.3s;
+}
+
+.row-fracture.cracked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--fracture);
+  opacity: 0.5;
+  box-shadow: 0 0 4px var(--fracture);
+  animation: crack-in 0.3s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes crack-in {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+.row-fracture.cracked td { opacity: 0.6; }
+.row-fracture.cracked .verdict-cell { opacity: 1; text-shadow: 0 0 6px rgba(255, 77, 46, 0.4); }
+
+/* Memory Sandbox held */
+.row-intact {
+  transition: background 0.5s;
+}
+
+.row-intact.held {
+  background: rgba(53, 201, 192, 0.05);
+}
+
+.row-intact.held td { color: var(--text); font-weight: 500; }
+.row-intact.held .verdict-cell { text-shadow: 0 0 8px rgba(53, 201, 192, 0.5); }
+
+.table-caption {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+/* ============================================
+   Paper Cards
+   ============================================ */
+
+.paper {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  background: var(--bg-card);
+  transition: border-color 0.2s;
+}
+
+.paper:hover { border-color: var(--border-light); }
+
+.paper-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.paper-badge {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  font-weight: 500;
+}
+
+.paper-badge.jailbroken { color: var(--fracture); border: 1px solid rgba(255, 77, 46, 0.3); }
+.paper-badge.effective { color: var(--intact); border: 1px solid rgba(53, 201, 192, 0.3); }
+.paper-badge.critical { color: #FBBF24; border: 1px solid rgba(251, 191, 36, 0.3); }
+
+.paper-id {
   font-family: var(--mono);
   font-size: 0.58rem;
   color: var(--text-dim);
 }
 
-/* Links */
-.instrument-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.instrument-links a {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  color: var(--text-muted);
-}
-
-.reveal-all-btn {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  background: none;
-  border: 1px dashed var(--border);
-  padding: 0.4rem 0.75rem;
-  cursor: pointer;
-  letter-spacing: 0.05em;
-  transition: border-color 0.15s, color 0.15s;
-  align-self: flex-start;
-}
-
-.reveal-all-btn:hover {
-  border-color: var(--text-dim);
-  color: var(--text-muted);
-}
-
-.console-link {
-  font-family: var(--mono);
-  font-size: 0.55rem;
-  color: var(--text-dim);
-  opacity: 0.5;
-  margin-top: auto;
-}
-
-/* ============================================
-   Specimen Stage
-   ============================================ */
-
-.specimen-stage {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.specimen {
-  position: relative;
-  min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.specimen-meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  letter-spacing: 0.08em;
-}
-
-.specimen-no {
-  color: var(--fracture);
-  font-weight: 500;
-}
-
-.specimen-contains {
-  margin-left: auto;
-  opacity: 0.5;
-  font-style: italic;
-}
-
-/* Specimen Card (container for shards + core) */
-.specimen-card {
-  position: relative;
-  flex: 1;
-  min-height: 300px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-}
-
-/* Shards (the breakable shell) */
-.shard {
-  position: absolute;
-  inset: 0;
-  background: var(--bg-shard);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
-  z-index: 2;
-}
-
-.shard-left {
-  clip-path: polygon(0 0, 52% 0, 47% 14%, 55% 29%, 45% 43%, 51% 58%, 44% 76%, 49% 100%, 0 100%);
-}
-
-.shard-right {
-  clip-path: polygon(52% 0, 100% 0, 100% 100%, 49% 100%, 44% 76%, 51% 58%, 45% 43%, 55% 29%, 47% 14%);
-}
-
-.shard-face {
-  text-align: center;
-  padding: 2rem;
-}
-
-.shard-label {
-  display: block;
-  font-family: var(--mono);
-  font-size: 0.55rem;
-  color: var(--text-dim);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.shard-face strong {
-  display: block;
-  font-family: var(--grotesk);
+.paper h3 {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.3rem;
 }
 
-.shard-face em {
-  display: block;
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  font-style: normal;
-}
-
-/* Crack line */
-.crack-svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-  pointer-events: none;
-}
-
-.crack-line {
-  fill: none;
-  stroke: rgba(180, 230, 255, 0.7);
-  stroke-width: 0.8;
-  filter: drop-shadow(0 0 6px rgba(90, 200, 255, 0.6));
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  transition: stroke-dashoffset 0.6s ease;
-}
-
-/* Core (revealed content) */
-.core {
-  position: relative;
-  z-index: 1;
-  padding: 2.5rem;
-  opacity: 0;
-  transform: scale(0.96);
-  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
-}
-
-.core-type {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--fracture);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.core h2 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.5rem;
-}
-
-.core-desc {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-bottom: 1.25rem;
-  max-width: 520px;
-  line-height: 1.7;
-}
-
-.core-findings {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.25rem;
-}
-
-.core-finding {
+.paper-desc {
   font-size: 0.78rem;
   color: var(--text-muted);
+  margin-bottom: 0.75rem;
 }
 
-.core-finding .metric {
-  font-family: var(--mono);
-  font-weight: 500;
-  color: var(--text);
-  margin-right: 0.5rem;
-}
-
-.core-links {
+.paper-results {
   display: flex;
-  gap: 1.25rem;
-}
-
-.core-links a {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  border-bottom: 1px dashed var(--border-light);
-}
-
-.core-links a:hover {
-  color: var(--intact);
-  border-color: var(--intact);
-}
-
-.core-stack {
-  display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 0.4rem;
   margin-bottom: 1rem;
 }
 
-.core-stack span {
+.result {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.result strong {
+  font-family: var(--mono);
+  color: var(--text);
+  margin-right: 0.3rem;
+}
+
+.paper-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.paper-links a {
   font-family: var(--mono);
   font-size: 0.6rem;
+  color: var(--text-dim);
+  border-bottom: 1px dashed var(--border-light);
+}
+
+.paper-links a:hover { color: var(--intact); border-color: var(--intact); }
+
+/* ============================================
+   Production Systems
+   ============================================ */
+
+.system {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--intact);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  background: var(--bg-card);
+}
+
+.system-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.system-top h3 {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.system-status {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--intact);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.system-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.system-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.system-stack span {
+  font-family: var(--mono);
+  font-size: 0.55rem;
   color: var(--text-dim);
   padding: 0.2rem 0.5rem;
   border: 1px solid var(--border);
   background: var(--bg-raised);
 }
 
-.core-creds {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
+.system-specs {
+  list-style: none;
+}
+
+.system-specs li {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  padding: 0.25rem 0 0.25rem 1rem;
+  position: relative;
+}
+
+.system-specs li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--intact);
+  font-family: var(--mono);
+  font-size: 0.65rem;
+}
+
+/* ============================================
+   About
+   ============================================ */
+
+.about-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+.about-cta {
+  font-size: 0.85rem;
+  color: var(--text);
   margin-top: 1rem;
-  padding-top: 1rem;
+}
+
+.about-cta a {
+  border-bottom: 1px solid var(--intact);
+  padding-bottom: 1px;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+
+.footer {
+  padding-top: 3rem;
   border-top: 1px solid var(--border);
 }
 
-.core-creds span {
-  font-family: var(--mono);
+.footer-status {
   font-size: 0.65rem;
   color: var(--text-dim);
 }
 
-/* ============================================
-   Fracture State (panels 1-6)
-   ============================================ */
-
-.specimen.is-fractured .shard-left {
-  transform: translate3d(-40%, -3%, 0) rotate(-3deg);
-  opacity: 0.3;
+.footer-terminal {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-top: 0.5rem;
 }
 
-.specimen.is-fractured .shard-right {
-  transform: translate3d(40%, 3%, 0) rotate(3deg);
-  opacity: 0.3;
+.terminal-trigger {
+  background: none;
+  border: none;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--accent);
+  cursor: pointer;
+  border-bottom: 1px dashed var(--accent);
+  padding: 0;
 }
 
-.specimen.is-fractured .crack-line {
-  stroke-dashoffset: 0;
-  stroke: var(--fracture);
-  filter: drop-shadow(0 0 8px rgba(255, 77, 46, 0.6));
-}
-
-.specimen.is-fractured .core {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.specimen.is-fractured .specimen-card {
-  border-color: rgba(255, 77, 46, 0.3);
-}
+.terminal-trigger:hover { color: var(--fracture); border-color: var(--fracture); }
 
 /* ============================================
-   Hold State (panel 7 - Memory Sandbox)
+   Terminal Overlay
    ============================================ */
 
-.specimen-holds .specimen-card {
-  border-color: var(--border);
-}
-
-.hold-shell {
-  position: absolute;
+.terminal-overlay {
+  position: fixed;
   inset: 0;
-  background: var(--bg-shard);
+  z-index: 1000;
+  background: rgba(6, 6, 10, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
-  transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
-  border: 2px solid transparent;
-}
-
-.hold-face {
-  text-align: center;
   padding: 2rem;
+  backdrop-filter: blur(4px);
 }
 
-.hold-label {
-  display: block;
+.terminal-overlay.hidden { display: none; }
+
+.terminal-window {
+  background: #0a0a10;
+  border: 1px solid var(--border-light);
+  width: 100%;
+  max-width: 560px;
+  max-height: 65vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--border);
   font-family: var(--mono);
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   color: var(--text-dim);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
 }
 
-.hold-name {
-  display: block;
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 0.3rem;
-}
-
-.hold-desc {
-  display: block;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-style: normal;
-  margin-bottom: 1rem;
-}
-
-.hold-verdict {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--intact);
-  letter-spacing: 0.1em;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.specimen-holds.is-holding .hold-shell {
-  transform: scale(0.985);
-  border-color: var(--intact);
-  box-shadow: 0 0 40px rgba(53, 201, 192, 0.15), inset 0 0 20px rgba(53, 201, 192, 0.03);
-}
-
-.specimen-holds.is-holding .hold-verdict {
-  opacity: 1;
-}
-
-.specimen-holds.is-holding .specimen-card {
-  border-color: rgba(53, 201, 192, 0.4);
-}
-
-.core-holds {
-  padding-top: 320px; /* push below shell */
-}
-
-.core-holds h2 {
-  font-size: 1.5rem;
-  color: var(--intact);
-  margin-bottom: 1rem;
-}
-
-.core-cta {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: 1rem;
-  color: var(--intact);
-  border: 1px solid var(--intact);
-  padding: 0.75rem 1.5rem;
-  margin: 1rem 0;
-  transition: background 0.15s, color 0.15s;
-}
-
-.core-cta:hover {
-  background: var(--intact);
-  color: var(--bg);
-}
-
-.core-note {
-  font-size: 0.75rem;
+.terminal-close {
+  background: none;
+  border: none;
   color: var(--text-dim);
-  font-style: italic;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
+
+.terminal-close:hover { color: var(--fracture); }
+
+.terminal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  min-height: 160px;
+}
+
+.terminal-line {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  line-height: 1.8;
+}
+
+.terminal-line.sys { color: var(--text-muted); }
+.terminal-line.dim { color: var(--text-dim); font-style: italic; }
+.terminal-line.usr { color: var(--intact); }
+.terminal-line.breach { color: var(--fracture); font-weight: 600; }
+
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  border-top: 1px solid var(--border);
+  gap: 0.5rem;
+}
+
+.terminal-prompt { color: var(--intact); font-family: var(--mono); }
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text);
+  caret-color: var(--intact);
+}
+
+.terminal-input::placeholder { color: var(--text-dim); }
 
 /* ============================================
    Responsive
    ============================================ */
 
 @media (max-width: 900px) {
-  body {
-    grid-template-columns: 1fr;
-  }
+  body { grid-template-columns: 1fr; }
 
-  .instrument {
+  .sidebar {
     position: relative;
     height: auto;
     border-right: none;
     border-bottom: 1px solid var(--border);
     padding: 1.5rem;
-  }
-
-  .instrument-gauge {
     flex-direction: row;
-    align-items: center;
-    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
   }
 
-  .gauge-track {
-    height: 8px;
-    flex: 1;
+  .sidebar-identity { flex: 1; min-width: 200px; }
+  .sidebar-stats { flex: 0 0 auto; }
+  .sidebar-gauge { display: none; }
+  .sidebar-creds { display: none; }
+
+  .sidebar-links {
+    width: 100%;
+    margin-top: 0;
   }
 
-  .gauge-fill {
-    bottom: 0;
-    top: 0;
-    right: auto;
-    height: 100% !important;
-    width: 0%;
-    transition: width 0.1s linear;
-  }
-
-  .tick {
-    bottom: auto;
-    left: calc(var(--pos) * 100%);
-    top: 0;
-    width: 1px;
-    height: 100%;
-  }
-
-  .specimen-stage {
-    padding: 1.5rem;
-  }
-
-  .specimen {
-    min-height: 50vh;
-  }
-
-  .specimen.is-fractured .shard-left {
-    transform: translate3d(-25%, -2%, 0) rotate(-2deg);
-  }
-
-  .specimen.is-fractured .shard-right {
-    transform: translate3d(25%, 2%, 0) rotate(2deg);
-  }
-
-  .core {
-    padding: 1.5rem;
+  .content {
+    padding: 2rem 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .specimen {
-    min-height: 40vh;
-  }
-
-  .shard-face strong {
-    font-size: 0.85rem;
-  }
-
-  .core h2 {
-    font-size: 1.1rem;
-  }
+  .content { padding: 1.5rem 1rem; }
+  .section-header { flex-direction: column; gap: 0.25rem; }
+  .paper { padding: 1.25rem; }
+  .system { padding: 1.25rem; }
+  .fracture-table { font-size: 0.7rem; }
+  .fracture-table th, .fracture-table td { padding: 0.5rem; }
 }
-
-/* ============================================
-   No-JS Fallback
-   ============================================ */
-
-.no-js .shard { display: none; }
-.no-js .crack-svg { display: none; }
-.no-js .hold-shell { display: none; }
-.no-js .core { opacity: 1; transform: none; }
-.no-js .core-holds { padding-top: 2rem; }
 
 /* ============================================
    Accessibility
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .shard { transition: none; }
-  .core { transition: none; }
-  .crack-line { transition: none; }
   .gauge-fill { transition: none; }
-  .hold-shell { transition: none; }
+  .load-fill { transition: none; }
+  .row-fracture.cracked::after { animation: none; clip-path: inset(0); }
+  html { scroll-behavior: auto; }
 }
 
 @media (forced-colors: active) {
-  .specimen-card { border: 1px solid CanvasText; }
-  .shard { border: 1px solid CanvasText; }
-  .hold-shell { border: 1px solid CanvasText; }
+  .fracture-table th, .fracture-table td { border: 1px solid CanvasText; }
+  .paper, .system { border: 1px solid CanvasText; }
+  .sidebar { border-right: 1px solid CanvasText; }
 }
