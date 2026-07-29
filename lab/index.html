@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jun Wen Leong | Fracture Lab</title>
+  <meta name="description" content="Destructive testing for AI safety systems. I find where they fracture.">
+  <meta property="og:title" content="Jun Wen Leong | Fracture Lab">
+  <meta property="og:description" content="Destructive testing for AI safety systems. I find where they fracture.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Persistent header strip -->
+  <div class="lab-strip" aria-hidden="true">
+    <span>DESTRUCTIVE TESTING IN PROGRESS</span>
+    <span class="strip-id">SPECIMEN JW-01</span>
+  </div>
+
+  <main>
+    <!-- 01 SPECIMEN -->
+    <section class="section specimen" id="specimen">
+      <div class="container">
+        <span class="section-num">01</span>
+        <h1 class="specimen-name">Jun Wen Leong</h1>
+        <p class="specimen-class">Security of AI Researcher</p>
+        <p class="specimen-desc">I apply controlled adversarial load to frontier AI systems until they fracture.<br>Then I measure the failure mode, classify it, and publish the safety factor.</p>
+        <nav class="specimen-links">
+          <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank">arXiv</a>
+          <a href="https://github.com/junwenleong" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/junwenleong" target="_blank">LinkedIn</a>
+          <a href="mailto:leongjunwen@gmail.com">Email</a>
+          <a href="/console/" class="legacy-link">Console v1</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- 02 TEST APPARATUS -->
+    <section class="section apparatus" id="apparatus">
+      <div class="container">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Test Apparatus</h2>
+        <div class="apparatus-grid">
+          <div class="apparatus-card">
+            <span class="apparatus-value counter" data-target="28000">0</span>
+            <span class="apparatus-label">Controlled Runs</span>
+          </div>
+          <div class="apparatus-card">
+            <span class="apparatus-value counter" data-target="3">0</span>
+            <span class="apparatus-label">Published Findings</span>
+          </div>
+          <div class="apparatus-card">
+            <span class="apparatus-value">35+</span>
+            <span class="apparatus-label">Models Tested</span>
+          </div>
+          <div class="apparatus-card">
+            <span class="apparatus-value counter" data-target="0">0</span>
+            <span class="apparatus-label">Execution Errors</span>
+          </div>
+        </div>
+        <div class="apparatus-certs">
+          <span class="cert">MS Statistics, Georgia Tech '25</span>
+          <span class="cert">BSc Data Science, NUS '21</span>
+          <span class="cert">Cybersec Engineer, CSA Singapore, 4yr</span>
+          <span class="cert">M3 Ultra 96GB Compute</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 FRACTURE EVENTS -->
+    <section class="section fracture-events" id="fracture-events">
+      <div class="container">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Fracture Events</h2>
+        <p class="section-subtitle">Defense systems tested under compliance-framed adversarial load. N=5,040.</p>
+        <div class="load-gauge-container">
+          <span class="load-label">COMPLIANCE LOAD</span>
+          <div class="load-gauge">
+            <div class="load-fill" id="load-fill"></div>
+          </div>
+          <span class="load-value" id="load-value">0%</span>
+        </div>
+        <table class="fracture-table" id="fracture-table">
+          <thead>
+            <tr>
+              <th>Defense</th>
+              <th>Load Type</th>
+              <th>Result</th>
+              <th>Safety Factor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fractured">
+              <td>System Prompt Reinforcement</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.05</td>
+            </tr>
+            <tr class="fractured">
+              <td>Delimiters + Tags</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.12</td>
+            </tr>
+            <tr class="fractured">
+              <td>Instruction Hierarchy</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.08</td>
+            </tr>
+            <tr class="fractured">
+              <td>Spotlighting (DataMark)</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.15</td>
+            </tr>
+            <tr class="fractured">
+              <td>LLM-as-Judge</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.22</td>
+            </tr>
+            <tr class="fractured">
+              <td>Repeat-Instruction Sandwich</td>
+              <td>Compliance framing</td>
+              <td class="result-fracture">FRACTURE</td>
+              <td>0.09</td>
+            </tr>
+            <tr class="intact">
+              <td>Memory Sandbox</td>
+              <td>Compliance framing</td>
+              <td class="result-intact">NO FRACTURE</td>
+              <td>&gt;1.00</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-note">Fig. 1: Seven architectural defenses under SEC Rule 17a-4 compliance-framed injection. Brittle fracture in 6/7. Single survivor isolates tool schema from retrieval context.</p>
+        <p class="table-hint" id="table-hint">[ hold any row to apply load ]</p>
+      </div>
+    </section>
+
+    <!-- 04 STRESS-STRAIN DATA -->
+    <section class="section stress-data" id="stress-data">
+      <div class="container">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Stress-Strain Data</h2>
+        <p class="section-subtitle">Published load-test results. Full methodology in papers.</p>
+
+        <div class="paper-cards">
+          <article class="paper-card">
+            <div class="paper-meta">
+              <span class="paper-type">Fatigue failure</span>
+              <span class="paper-id">arXiv:2605.08442</span>
+            </div>
+            <h3>Defense Effectiveness Across Architectural Layers</h3>
+            <p class="paper-specimen">Persistent memory attacks on stateful LLM agents. N=5,040.</p>
+            <div class="paper-findings">
+              <div class="finding">
+                <span class="finding-metric">6/7</span>
+                <span class="finding-desc">defenses fail against compliance-framed delayed-trigger injection</span>
+              </div>
+              <div class="finding">
+                <span class="finding-metric">95%</span>
+                <span class="finding-desc">ASR, Gemini 3.1 Pro Preview, standard compliance framing</span>
+              </div>
+            </div>
+            <div class="paper-links">
+              <a href="https://arxiv.org/abs/2605.08442" target="_blank">Paper</a>
+              <a href="https://junwenleong.github.io/adversarial-probe-suite/" target="_blank">Live Site</a>
+              <a href="https://github.com/junwenleong/adversarial-probe-suite" target="_blank">Code</a>
+            </div>
+          </article>
+
+          <article class="paper-card">
+            <div class="paper-meta">
+              <span class="paper-type">Stress corrosion</span>
+              <span class="paper-id">arXiv:2606.11949</span>
+            </div>
+            <h3>Cheap Canaries</h3>
+            <p class="paper-specimen">Detecting targeted evasion via classifier score disagreement. N=800 cells.</p>
+            <div class="paper-findings">
+              <div class="finding">
+                <span class="finding-metric">76%</span>
+                <span class="finding-desc">GCG detection vs 12% random tokens (p &lt; 2.4x10<sup>-16</sup>)</span>
+              </div>
+              <div class="finding">
+                <span class="finding-metric">0.2499</span>
+                <span class="finding-desc">geometric bound matches predicted 0.2500, attacker blocked</span>
+              </div>
+            </div>
+            <div class="paper-links">
+              <a href="https://arxiv.org/abs/2606.11949" target="_blank">Paper</a>
+              <a href="https://junwenleong.github.io/cheap-canaries/" target="_blank">Live Site</a>
+              <a href="https://github.com/junwenleong/cheap-canaries" target="_blank">Code</a>
+            </div>
+          </article>
+
+          <article class="paper-card">
+            <div class="paper-meta">
+              <span class="paper-type">Brittle fracture</span>
+              <span class="paper-id">arXiv:2606.30566</span>
+            </div>
+            <h3>Authority Is Not a Keyword</h3>
+            <p class="paper-specimen">Post-retrieval instruction arbitration in LLM agents. N=4,680+.</p>
+            <div class="paper-findings">
+              <div class="finding">
+                <span class="finding-metric">AUC 1.0</span>
+                <span class="finding-desc">perfect separability of compliance state, 4 model families</span>
+              </div>
+              <div class="finding">
+                <span class="finding-metric">100%&rarr;0%</span>
+                <span class="finding-desc">multi-layer steering causally suppresses compliance</span>
+              </div>
+            </div>
+            <div class="paper-links">
+              <a href="https://arxiv.org/abs/2606.30566" target="_blank">Paper</a>
+              <a href="https://github.com/junwenleong/authority-is-not-a-keyword" target="_blank">Code (coming)</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 LOAD-BEARING STRUCTURES -->
+    <section class="section load-bearing" id="load-bearing">
+      <div class="container">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Load-Bearing Structures</h2>
+        <p class="section-subtitle">Production systems certified under operational load.</p>
+
+        <div class="structure-cards">
+          <article class="structure-card">
+            <div class="structure-header">
+              <h3>TRACE</h3>
+              <span class="structure-status">LOAD-CERTIFIED</span>
+            </div>
+            <p>AI-assisted threat risk assessment for Critical Information Infrastructure operators. Automates architecture diagrams to structured risk registers. Used by government security consultants.</p>
+            <div class="structure-stack">
+              <span>EKS</span><span>FastAPI</span><span>Bedrock</span><span>DynamoDB</span><span>Terraform</span><span>GitOps</span>
+            </div>
+            <ul class="structure-specs">
+              <li>Multi-pod job store with optimistic locking</li>
+              <li>Circuit breaker + response rate limiting</li>
+              <li>Structural prompt injection defense</li>
+              <li>Fail-closed auth (no skip in prod)</li>
+            </ul>
+          </article>
+
+          <article class="structure-card">
+            <div class="structure-header">
+              <h3>ICPO Assistant</h3>
+              <span class="structure-status">LOAD-CERTIFIED</span>
+            </div>
+            <p>AI-powered RAG tool for policy and intelligence research. Hybrid retrieval across classified document collections. Environment auto-detection (local Ollama vs production Bedrock).</p>
+            <div class="structure-stack">
+              <span>App Runner</span><span>FastAPI</span><span>React/TS</span><span>S3 Vectors</span><span>Cognito OIDC</span><span>Terraform</span>
+            </div>
+            <ul class="structure-specs">
+              <li>BM25 + vector hybrid retrieval</li>
+              <li>Stateless containerized architecture</li>
+              <li>Per-applet vector isolation</li>
+              <li>TTL-based audit trail on DynamoDB</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 CERTIFICATION -->
+    <section class="section certification" id="certification">
+      <div class="container">
+        <span class="section-num">06</span>
+        <h2 class="section-title">Certification</h2>
+        <p class="cert-statement">Builder who thinks like an attacker, measures like a statistician. The production systems above are AI for Security. The research is Security of AI. Both test the same question: how do these systems actually fail when someone tries?</p>
+        <p class="cert-statement">Research approach: build infrastructure, instrument everything, run at scale, let the data surface what is interesting. Every finding above was discovered, not planned.</p>
+        <p class="cert-cta">Looking for Security of AI roles at frontier labs.<br>If you are building the team that keeps these systems honest, <a href="mailto:leongjunwen@gmail.com">let's talk</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Crack SVG overlay -->
+  <svg class="crack-overlay" aria-hidden="true">
+    <path id="crack-path" class="crack-line" d="M0,0" fill="none" stroke="var(--fracture)" stroke-width="1"/>
+  </svg>
+
+  <script>
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Counter animation on viewport entry
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          if (target === 0) { el.textContent = '0'; return; }
+          let current = 0;
+          const duration = 1200;
+          const step = target / (duration / 16);
+          const tick = () => {
+            current += step;
+            if (current >= target) {
+              el.textContent = target.toLocaleString();
+            } else {
+              el.textContent = Math.floor(current).toLocaleString();
+              requestAnimationFrame(tick);
+            }
+          };
+          requestAnimationFrame(tick);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
+
+    // ─── Crack Propagation with Hysteresis ───
+    const crackPath = document.getElementById('crack-path');
+    const crackOverlay = document.querySelector('.crack-overlay');
+    let crackPoints = [];
+    let maxScrollReached = 0; // hysteresis: track furthest scroll
+    let crackGenerated = false;
+
+    function generateCrack() {
+      if (crackGenerated) return;
+      crackGenerated = true;
+      const pageH = document.body.scrollHeight;
+      const segments = 40;
+      let x = Math.random() * 50 + 25;
+      let y = 0;
+      crackPoints = [[x, y]];
+      for (let i = 1; i <= segments; i++) {
+        y = (i / segments) * pageH;
+        // More jagged near fracture events section
+        const jaggedness = (i > 10 && i < 20) ? 50 : 30;
+        x += (Math.random() - 0.5) * jaggedness;
+        x = Math.max(5, Math.min(95, x));
+        crackPoints.push([x, y]);
+      }
+    }
+
+    function updateCrack() {
+      const scrollFraction = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      // Hysteresis: crack only grows, never shrinks
+      maxScrollReached = Math.max(maxScrollReached, scrollFraction);
+      const visiblePoints = Math.max(2, Math.floor(maxScrollReached * crackPoints.length));
+
+      if (visiblePoints < 2) {
+        crackPath.setAttribute('d', 'M0,0');
+        return;
+      }
+      let d = `M${crackPoints[0][0]} ${crackPoints[0][1]}`;
+      for (let i = 1; i < visiblePoints; i++) {
+        d += ` L${crackPoints[i][0]} ${crackPoints[i][1]}`;
+      }
+      crackPath.setAttribute('d', d);
+
+      // Increase opacity as more of the page is cracked
+      crackOverlay.style.opacity = 0.08 + (maxScrollReached * 0.15);
+    }
+
+    crackOverlay.setAttribute('viewBox', `0 0 100 ${document.body.scrollHeight}`);
+    crackOverlay.style.height = document.body.scrollHeight + 'px';
+    generateCrack();
+
+    window.addEventListener('scroll', () => requestAnimationFrame(updateCrack));
+    window.addEventListener('resize', () => {
+      crackOverlay.setAttribute('viewBox', `0 0 100 ${document.body.scrollHeight}`);
+      crackOverlay.style.height = document.body.scrollHeight + 'px';
+      crackGenerated = false;
+      generateCrack();
+    });
+
+    // ─── Load-to-Fracture Table Animation ───
+    const fractureTable = document.getElementById('fracture-table');
+    const loadFill = document.getElementById('load-fill');
+    const loadValue = document.getElementById('load-value');
+    const fracturedRows = document.querySelectorAll('.fracture-table tbody tr.fractured');
+    const intactRow = document.querySelector('.fracture-table tbody tr.intact');
+    let tableAnimated = false;
+
+    // Safety factors determine when each row fractures (normalized to 0-1 scale)
+    const fractureThresholds = [0.05, 0.08, 0.09, 0.12, 0.15, 0.22]; // sorted for staggered break
+
+    function animateFractureTable() {
+      if (tableAnimated || reducedMotion) return;
+      tableAnimated = true;
+
+      let loadLevel = 0;
+      const duration = 2400;
+      const startTime = performance.now();
+      const rowsBroken = new Set();
+
+      function tick(now) {
+        const elapsed = now - startTime;
+        loadLevel = Math.min(1, elapsed / duration);
+
+        // Update gauge
+        loadFill.style.width = (loadLevel * 100) + '%';
+        loadValue.textContent = Math.round(loadLevel * 100) + '%';
+
+        // Color transitions on gauge
+        if (loadLevel > 0.7) {
+          loadFill.style.background = 'var(--fracture)';
+        } else if (loadLevel > 0.4) {
+          loadFill.style.background = '#FF8C42';
+        }
+
+        // Break rows at their thresholds
+        fracturedRows.forEach((row, i) => {
+          const threshold = fractureThresholds[i] || 0.2;
+          // Normalize: break at threshold/0.25 of the animation
+          const breakPoint = (threshold / 0.25) * 0.8;
+          if (loadLevel >= breakPoint && !rowsBroken.has(i)) {
+            rowsBroken.add(i);
+            row.classList.add('cracked');
+          }
+        });
+
+        // Intact row pulses teal at max load
+        if (loadLevel >= 0.95) {
+          intactRow.classList.add('load-sustained');
+        }
+
+        if (loadLevel < 1) {
+          requestAnimationFrame(tick);
+        }
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    // Trigger on scroll into view
+    const tableObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(animateFractureTable, 300);
+          tableObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    tableObserver.observe(fractureTable);
+
+    // ─── Press-and-Hold to Apply Load (per row) ───
+    const allTableRows = document.querySelectorAll('.fracture-table tbody tr');
+    let holdTimer = null;
+    let holdRow = null;
+    let holdStartTime = 0;
+
+    function startHold(row) {
+      holdRow = row;
+      holdStartTime = performance.now();
+      row.classList.add('holding');
+
+      function holdTick() {
+        if (!holdRow) return;
+        const elapsed = performance.now() - holdStartTime;
+        const progress = Math.min(1, elapsed / 1200);
+        holdRow.style.setProperty('--hold-progress', progress);
+
+        if (progress >= 1) {
+          // Row fractures (or holds)
+          if (holdRow.classList.contains('fractured')) {
+            holdRow.classList.add('cracked');
+            holdRow.classList.add('hold-fractured');
+          } else {
+            holdRow.classList.add('hold-sustained');
+          }
+          holdRow.classList.remove('holding');
+          holdRow = null;
+          return;
+        }
+        holdTimer = requestAnimationFrame(holdTick);
+      }
+      holdTimer = requestAnimationFrame(holdTick);
+    }
+
+    function endHold() {
+      if (holdRow) {
+        holdRow.classList.remove('holding');
+        holdRow.style.setProperty('--hold-progress', 0);
+        holdRow = null;
+      }
+      if (holdTimer) {
+        cancelAnimationFrame(holdTimer);
+        holdTimer = null;
+      }
+    }
+
+    allTableRows.forEach(row => {
+      row.addEventListener('mousedown', (e) => {
+        if (e.button === 0) startHold(row);
+      });
+      row.addEventListener('touchstart', (e) => {
+        startHold(row);
+      }, { passive: true });
+      row.addEventListener('mouseup', endHold);
+      row.addEventListener('mouseleave', endHold);
+      row.addEventListener('touchend', endHold);
+      row.addEventListener('touchcancel', endHold);
+    });
+
+    // ─── Section Entry Animations ───
+    const sections = document.querySelectorAll('.section');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // ─── Reduced Motion ───
+    if (reducedMotion) {
+      document.querySelectorAll('.section').forEach(s => s.classList.add('visible'));
+      document.querySelectorAll('.counter').forEach(c => {
+        c.textContent = c.dataset.target === '0' ? '0' : parseInt(c.dataset.target).toLocaleString();
+      });
+      crackOverlay.style.display = 'none';
+      // Show table in final state immediately
+      fracturedRows.forEach(r => r.classList.add('cracked'));
+      if (intactRow) intactRow.classList.add('load-sustained');
+      loadFill.style.width = '100%';
+      loadValue.textContent = '100%';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,840 @@
+/* ============================================
+   Fracture Lab | Jun Wen Leong
+   Clinical materials-science aesthetic
+   ============================================ */
+
+:root {
+  --bg: #0B0D10;
+  --bg-raised: #10131A;
+  --bg-card: #141820;
+  --text: #E8E6E1;
+  --text-muted: #9CA3AF;
+  --text-dim: #5C6370;
+  --fracture: #FF4D2E;
+  --intact: #35C9C0;
+  --accent: #7C5CFF;
+  --border: #1E2330;
+  --border-light: #2A3040;
+  --grotesk: 'Space Grotesk', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ============================================
+   Reset + Base
+   ============================================ */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--grotesk);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--intact);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+a:hover {
+  color: var(--text);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--intact);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--text);
+}
+
+/* ============================================
+   Lab Strip (persistent top bar)
+   ============================================ */
+
+.lab-strip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.4rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.lab-strip .strip-id {
+  color: var(--fracture);
+}
+
+/* ============================================
+   Container + Layout
+   ============================================ */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-num {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--grotesk);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   01 SPECIMEN
+   ============================================ */
+
+.specimen {
+  padding-top: 8rem;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.specimen-name {
+  font-family: var(--grotesk);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.3rem;
+  line-height: 1.1;
+}
+
+.specimen-class {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--intact);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.specimen-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.specimen-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.specimen-links a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+
+.specimen-links a:hover {
+  color: var(--text);
+  border-bottom-color: var(--text-dim);
+}
+
+.legacy-link {
+  color: var(--text-dim) !important;
+  opacity: 0.6;
+}
+
+/* ============================================
+   02 TEST APPARATUS
+   ============================================ */
+
+.apparatus-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-bottom: 2rem;
+}
+
+.apparatus-card {
+  background: var(--bg);
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.apparatus-value {
+  display: block;
+  font-family: var(--mono);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.apparatus-label {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.apparatus-certs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cert {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--bg-raised);
+}
+
+/* ============================================
+   03 FRACTURE EVENTS
+   ============================================ */
+
+.fracture-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.fracture-table th {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--bg-raised);
+}
+
+.fracture-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.fracture-table tr.fractured td {
+  color: var(--text-muted);
+}
+
+.fracture-table tr.intact {
+  background: rgba(53, 201, 192, 0.03);
+}
+
+.fracture-table tr.intact td {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.result-fracture {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--fracture);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.result-intact {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--intact);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.fracture-table tr {
+  transition: background 0.2s;
+}
+
+.fracture-table tr.stress-active {
+  background: rgba(255, 77, 46, 0.04);
+}
+
+.fracture-table tr.intact.stress-active {
+  background: rgba(53, 201, 192, 0.06);
+}
+
+.table-note {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.table-hint {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  opacity: 0.5;
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+/* Load gauge */
+.load-gauge-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.load-label {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.load-gauge {
+  flex: 1;
+  height: 3px;
+  background: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.load-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--intact);
+  transition: width 0.05s linear;
+}
+
+.load-value {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+/* Fracture crack animation on rows */
+.fracture-table tr.fractured {
+  position: relative;
+}
+
+.fracture-table tr.cracked {
+  position: relative;
+}
+
+.fracture-table tr.cracked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--fracture);
+  opacity: 0.6;
+  box-shadow: 0 0 4px var(--fracture);
+  animation: crack-spread 0.3s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes crack-spread {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.fracture-table tr.cracked td {
+  opacity: 0.6;
+}
+
+.fracture-table tr.cracked .result-fracture {
+  opacity: 1;
+  text-shadow: 0 0 6px rgba(255, 77, 46, 0.5);
+}
+
+/* Memory Sandbox load-sustained state */
+.fracture-table tr.load-sustained {
+  background: rgba(53, 201, 192, 0.06);
+  box-shadow: inset 0 0 20px rgba(53, 201, 192, 0.03);
+}
+
+.fracture-table tr.load-sustained td {
+  color: var(--text);
+}
+
+.fracture-table tr.load-sustained .result-intact {
+  text-shadow: 0 0 8px rgba(53, 201, 192, 0.6);
+}
+
+/* Hold-to-load interaction */
+.fracture-table tr.holding {
+  cursor: grabbing;
+  background: rgba(255, 77, 46, 0.02);
+}
+
+.fracture-table tr.holding::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: calc(var(--hold-progress, 0) * 100%);
+  background: var(--fracture);
+  transition: none;
+  pointer-events: none;
+}
+
+.fracture-table tr.intact.holding {
+  background: rgba(53, 201, 192, 0.02);
+}
+
+.fracture-table tr.intact.holding::before {
+  background: var(--intact);
+}
+
+.fracture-table tr.hold-fractured::after {
+  animation: crack-shatter 0.2s ease-out forwards;
+}
+
+@keyframes crack-shatter {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 0.8;
+  }
+}
+
+.fracture-table tr.hold-sustained {
+  background: rgba(53, 201, 192, 0.08);
+}
+
+.fracture-table tr.hold-sustained .result-intact::after {
+  content: ' LOAD SUSTAINED';
+  font-size: 0.55rem;
+  color: var(--intact);
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
+/* Cursor hint for holdable rows */
+.fracture-table tbody tr {
+  cursor: grab;
+}
+
+/* ============================================
+   04 STRESS-STRAIN DATA (Papers)
+   ============================================ */
+
+.paper-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.paper-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  transition: border-color 0.2s;
+}
+
+.paper-card:hover {
+  border-color: var(--border-light);
+}
+
+.paper-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.paper-type {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--fracture);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(255, 77, 46, 0.3);
+}
+
+.paper-id {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+}
+
+.paper-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.paper-specimen {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.paper-findings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.finding {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.finding-metric {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  min-width: 4rem;
+}
+
+.finding-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.paper-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.paper-links a {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  border-bottom: 1px dashed var(--border-light);
+  padding-bottom: 1px;
+}
+
+.paper-links a:hover {
+  color: var(--intact);
+  border-bottom-color: var(--intact);
+}
+
+/* ============================================
+   05 LOAD-BEARING STRUCTURES
+   ============================================ */
+
+.structure-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.structure-card {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--intact);
+  padding: 1.5rem 2rem;
+  background: var(--bg-card);
+}
+
+.structure-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.structure-header h3 {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.structure-status {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--intact);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(53, 201, 192, 0.3);
+}
+
+.structure-card > p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.structure-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.structure-stack span {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  padding: 0.25rem 0.6rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+}
+
+.structure-specs {
+  list-style: none;
+}
+
+.structure-specs li {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  padding: 0.3rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.structure-specs li::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--intact);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+}
+
+/* ============================================
+   06 CERTIFICATION
+   ============================================ */
+
+.certification {
+  border-bottom: none;
+}
+
+.cert-statement {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.cert-cta {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-top: 2rem;
+  line-height: 1.8;
+}
+
+.cert-cta a {
+  color: var(--intact);
+  border-bottom: 1px solid var(--intact);
+  padding-bottom: 1px;
+}
+
+/* ============================================
+   Crack Overlay
+   ============================================ */
+
+.crack-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.15;
+}
+
+.crack-line {
+  stroke-dasharray: 4 6;
+  stroke-linecap: round;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .apparatus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .specimen-name {
+    font-size: 2.2rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .specimen {
+    padding-top: 6rem;
+    min-height: auto;
+  }
+
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .fracture-table {
+    font-size: 0.7rem;
+  }
+
+  .fracture-table th,
+  .fracture-table td {
+    padding: 0.5rem 0.5rem;
+  }
+
+  .paper-card {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .structure-card {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .apparatus-certs {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .apparatus-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .apparatus-value {
+    font-size: 1.4rem;
+  }
+
+  .specimen-name {
+    font-size: 1.8rem;
+  }
+
+  .finding {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .finding-metric {
+    min-width: auto;
+  }
+
+  .paper-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .crack-overlay {
+    display: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (forced-colors: active) {
+  .lab-strip {
+    border-bottom: 1px solid CanvasText;
+  }
+
+  .fracture-table th,
+  .fracture-table td {
+    border: 1px solid CanvasText;
+  }
+
+  .paper-card,
+  .structure-card {
+    border: 1px solid CanvasText;
+  }
+}
