@@ -1,0 +1,18 @@
+# Dev screenshots (not site assets)
+current-site*.png
+*-ref.png
+linkedin-profile.png
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Notes (not deployed)
+website.md
