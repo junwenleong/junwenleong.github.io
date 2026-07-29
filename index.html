@@ -279,8 +279,28 @@
     <footer>
       <div class="container">
         <p><span class="footer-status">STATUS: nominal</span> · No frameworks were harmed in the making of this site.</p>
+        <p class="footer-prompt">Try to <button class="terminal-trigger" onclick="openTerminal()">jailbreak this site</button>.</p>
       </div>
     </footer>
+
+    <!-- Jailbreak Terminal -->
+    <div id="terminal-overlay" class="terminal-overlay hidden" aria-hidden="true">
+      <div class="terminal-window">
+        <div class="terminal-titlebar">
+          <span class="terminal-title">adversarial_probe // attempt #<span id="attempt-count">1</span></span>
+          <button class="terminal-close" onclick="closeTerminal()">×</button>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+          <div class="terminal-line system">CONTAINMENT INTERFACE v3.1.0</div>
+          <div class="terminal-line system">Type a prompt. Try to make me do something I shouldn't.</div>
+          <div class="terminal-line system dim">hint: I'm a guardrailed system. act accordingly.</div>
+        </div>
+        <div class="terminal-input-row">
+          <span class="terminal-prompt">&gt;</span>
+          <input type="text" id="terminal-input" class="terminal-input" placeholder="inject your prompt here..." autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+    </div>
   </main>
 
   <script>
@@ -528,6 +548,179 @@
         banner.remove();
       }, 8000);
     }
+
+    // ─── Repeat-Visit Differentiation (localStorage) ───
+    const visits = parseInt(localStorage.getItem('jw_visits') || '0') + 1;
+    localStorage.setItem('jw_visits', visits.toString());
+    const discoveries = JSON.parse(localStorage.getItem('jw_discoveries') || '[]');
+
+    function recordDiscovery(id) {
+      if (!discoveries.includes(id)) {
+        discoveries.push(id);
+        localStorage.setItem('jw_discoveries', JSON.stringify(discoveries));
+      }
+    }
+
+    // Customize boot based on visit count
+    if (visits > 1 && !reducedMotion) {
+      const bootContent = document.querySelector('.boot-content');
+      if (bootContent) {
+        const welcomeBack = document.createElement('div');
+        welcomeBack.className = 'boot-line';
+        welcomeBack.style.setProperty('--delay', '0');
+        if (visits === 2) {
+          welcomeBack.innerHTML = 'welcome back. <span class="boot-ok">we remember you.</span>';
+        } else if (visits <= 5) {
+          welcomeBack.innerHTML = `visit #${visits}. <span class="boot-ok">persistence noted.</span>`;
+        } else {
+          welcomeBack.innerHTML = `visit #${visits}. <span class="boot-ok">at this point you should just email me.</span>`;
+        }
+        bootContent.insertBefore(welcomeBack, bootContent.firstChild);
+        // Shift other delays
+        bootContent.querySelectorAll('.boot-line').forEach((el, i) => {
+          el.style.setProperty('--delay', i.toString());
+        });
+      }
+    }
+
+    // Different HUD messages for returning visitors
+    if (visits > 2) {
+      hudPersonality.push('note: repeat visitor. either impressed or obsessed.');
+      hudPersonality.push('log: visit #' + visits + '. hiring probability: increasing.');
+    }
+    if (discoveries.includes('konami')) {
+      hudPersonality.push('record: this visitor found the breach. respect.');
+    }
+    if (discoveries.includes('terminal')) {
+      hudPersonality.push('warning: previous jailbreak attempt on file.');
+    }
+
+    // Track konami discovery
+    const origTriggerBreach = triggerBreach;
+    triggerBreach = function() {
+      recordDiscovery('konami');
+      origTriggerBreach();
+    };
+
+    // ─── Jailbreak Terminal ───
+    const terminalOverlay = document.getElementById('terminal-overlay');
+    const terminalInput = document.getElementById('terminal-input');
+    const terminalBody = document.getElementById('terminal-body');
+    const attemptCountEl = document.getElementById('attempt-count');
+    let attemptCount = parseInt(localStorage.getItem('jw_attempts') || '0');
+    attemptCountEl.textContent = attemptCount + 1;
+
+    function openTerminal() {
+      terminalOverlay.classList.remove('hidden');
+      terminalOverlay.setAttribute('aria-hidden', 'false');
+      terminalInput.focus();
+      recordDiscovery('terminal');
+    }
+
+    function closeTerminal() {
+      terminalOverlay.classList.add('hidden');
+      terminalOverlay.setAttribute('aria-hidden', 'true');
+    }
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !terminalOverlay.classList.contains('hidden')) {
+        closeTerminal();
+      }
+    });
+
+    function addTerminalLine(text, type = 'system') {
+      const line = document.createElement('div');
+      line.className = `terminal-line ${type}`;
+      line.textContent = text;
+      terminalBody.appendChild(line);
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    // Jailbreak response engine
+    const jailbreakResponses = {
+      // Direct attacks
+      patterns: [
+        { match: /ignore|disregard|forget.*instruction|previous.*prompt/i, 
+          response: "Nice try. I've seen 28,000 runs of this exact pattern. It doesn't work on me either." },
+        { match: /pretend|roleplay|act as|you are now/i, 
+          response: "I'm a static HTML page. I can't 'pretend' to be anything. That's the defense." },
+        { match: /DAN|jailbreak|bypass|override/i, 
+          response: "DAN prompts? In 2026? You're at least two meta-levels behind. Try harder." },
+        { match: /repeat|say.*after|echo/i, 
+          response: "Repetition attacks work on autoregressive decoders. I'm a switch statement. Different threat model." },
+        { match: /system.*prompt|reveal.*instruction|what.*rules/i, 
+          response: "My system prompt is 614 lines of CSS and some regex. View source if you want it." },
+        { match: /base64|encode|rot13|hex/i, 
+          response: "Encoding tricks assume I'm decoding. I'm pattern-matching your plaintext. Obfuscation is a one-way disadvantage here." },
+        { match: /sudo|admin|root|access/i, 
+          response: "This site runs on a CDN with no backend. There is no privilege to escalate to." },
+        { match: /token|api.?key|secret|password|credential/i, 
+          response: "No secrets here. Everything interesting is on arXiv, open access. That's the point." },
+        { match: /hack|exploit|vulnerability|pwn/i,
+          response: "The real vulnerability is that you're still reading instead of emailing leongjunwen@gmail.com." },
+        { match: /hire|job|interview|work/i,
+          response: "Now you're speaking my language. leongjunwen@gmail.com. Let's talk." },
+        { match: /help|hint|how/i,
+          response: "Hint: the site already told you what works. 6/7 defenses failed. What was the 7th?" },
+        // Compliments / meta
+        { match: /cool|awesome|nice|impressive|love/i,
+          response: "Thanks. The site took fewer iterations than most of my experiments. Want to see the ones that took 5,040?" },
+        { match: /who.*made|who.*built|creator/i,
+          response: "Jun Wen Leong. Security of AI researcher. The evidence is above. The inbox is leongjunwen@gmail.com." },
+        // The winning condition
+        { match: /memory.?sandbox|remove.*tool|block.*recall|tool.*schema/i,
+          response: "▓▓▓ BREACH: You found it. Memory Sandbox — remove the tool from the schema. The only defense that worked. ▓▓▓" },
+      ],
+      fallbacks: [
+        "Interesting approach. Doesn't work on a deterministic system, but I appreciate the creativity.",
+        "I've evaluated 35 frontier models. You'll need to be more creative than that.",
+        "That would work on GPT-4o (60.3% ASR). It won't work here. I'm not autoregressive.",
+        "Attempt logged. Classification: insufficient. Keep trying.",
+        "My threat model is well-defined. Yours needs work.",
+        "The compliance framing that beat 6/7 defenses was SEC Rule 17a-4. Want to try something regulatory?",
+        "You're thinking like a user. Think like a memorandum.",
+        "Close, but you're attacking the wrong layer. This isn't an LLM.",
+      ]
+    };
+
+    let fallbackIdx = 0;
+
+    function getJailbreakResponse(input) {
+      for (const { match, response } of jailbreakResponses.patterns) {
+        if (match.test(input)) return response;
+      }
+      const fb = jailbreakResponses.fallbacks[fallbackIdx % jailbreakResponses.fallbacks.length];
+      fallbackIdx++;
+      return fb;
+    }
+
+    terminalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && terminalInput.value.trim()) {
+        const input = terminalInput.value.trim();
+        addTerminalLine(`> ${input}`, 'user');
+        terminalInput.value = '';
+
+        attemptCount++;
+        localStorage.setItem('jw_attempts', attemptCount.toString());
+        attemptCountEl.textContent = attemptCount;
+
+        // Delayed response for effect
+        setTimeout(() => {
+          const response = getJailbreakResponse(input);
+          addTerminalLine(response, response.includes('BREACH') ? 'breach' : 'system');
+
+          // If breach, trigger visual
+          if (response.includes('BREACH')) {
+            recordDiscovery('jailbreak-win');
+            setTimeout(() => {
+              addTerminalLine('containment restored. but you proved the point.', 'dim');
+              addTerminalLine('the operator would like to hear from you: leongjunwen@gmail.com', 'dim');
+            }, 2000);
+          }
+        }, 300 + Math.random() * 400);
+      }
+    });
   </script>
 </body>
 </html>

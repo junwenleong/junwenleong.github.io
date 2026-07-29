@@ -572,6 +572,149 @@ footer p {
 
 .footer-status { color: var(--green); }
 
+.footer-prompt {
+  margin-top: 0.75rem;
+}
+
+.terminal-trigger {
+  background: none;
+  border: none;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  cursor: pointer;
+  border-bottom: 1px dashed var(--accent);
+  padding: 0;
+  transition: color 0.15s;
+}
+
+.terminal-trigger:hover {
+  color: var(--red);
+  border-bottom-color: var(--red);
+}
+
+/* ============================================
+   Jailbreak Terminal
+   ============================================ */
+
+.terminal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(6, 6, 10, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  backdrop-filter: blur(4px);
+}
+
+.terminal-overlay.hidden {
+  display: none;
+}
+
+.terminal-window {
+  background: #0a0a10;
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 40px rgba(96, 165, 250, 0.1), 0 0 80px rgba(96, 165, 250, 0.05);
+  width: 100%;
+  max-width: 600px;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(96, 165, 250, 0.03);
+}
+
+.terminal-title {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+.terminal-close {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 0.3rem;
+  line-height: 1;
+}
+
+.terminal-close:hover {
+  color: var(--red);
+}
+
+.terminal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  min-height: 200px;
+  max-height: 50vh;
+}
+
+.terminal-line {
+  font-size: 0.78rem;
+  line-height: 1.8;
+  word-wrap: break-word;
+}
+
+.terminal-line.system {
+  color: var(--text-muted);
+}
+
+.terminal-line.dim {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.terminal-line.user {
+  color: var(--green);
+}
+
+.terminal-line.breach {
+  color: var(--red);
+  font-weight: 600;
+  text-shadow: 0 0 8px var(--red-glow);
+}
+
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+  gap: 0.5rem;
+}
+
+.terminal-prompt {
+  color: var(--green);
+  font-size: 0.85rem;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  caret-color: var(--green);
+}
+
+.terminal-input::placeholder {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
 /* ============================================
    Operator Clearance Strip
    ============================================ */
