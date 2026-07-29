@@ -1,27 +1,24 @@
 /* ============================================
    Fracture Lab | Jun Wen Leong
-   Clinical materials-science aesthetic
+   "The Page IS the Specimen"
    ============================================ */
 
 :root {
-  --bg: #0B0D10;
-  --bg-raised: #10131A;
-  --bg-card: #141820;
+  --bg: #08090C;
+  --bg-raised: #0E1015;
+  --bg-card: #12151C;
+  --bg-shard: #161A24;
   --text: #E8E6E1;
   --text-muted: #9CA3AF;
   --text-dim: #5C6370;
   --fracture: #FF4D2E;
   --intact: #35C9C0;
   --accent: #7C5CFF;
-  --border: #1E2330;
+  --border: #1C2030;
   --border-light: #2A3040;
   --grotesk: 'Space Grotesk', system-ui, sans-serif;
   --mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
-
-/* ============================================
-   Reset + Base
-   ============================================ */
 
 *, *::before, *::after {
   margin: 0;
@@ -29,10 +26,7 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
+html { font-size: 16px; }
 
 body {
   background: var(--bg);
@@ -40,801 +34,660 @@ body {
   font-family: var(--grotesk);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
 }
 
-a {
-  color: var(--intact);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-a:hover {
-  color: var(--text);
-}
-
-a:focus-visible {
-  outline: 2px solid var(--intact);
-  outline-offset: 2px;
-}
-
-::selection {
-  background: var(--accent);
-  color: var(--text);
-}
+a { color: var(--intact); text-decoration: none; transition: color 0.15s; }
+a:hover { color: var(--text); }
+a:focus-visible { outline: 2px solid var(--intact); outline-offset: 2px; }
+::selection { background: var(--accent); color: var(--text); }
 
 /* ============================================
-   Lab Strip (persistent top bar)
+   Instrument Panel (sticky sidebar)
    ============================================ */
 
-.lab-strip {
-  position: fixed;
+.instrument {
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  padding: 0.4rem 1.5rem;
+  height: 100vh;
+  padding: 2rem 1.5rem;
+  border-right: 1px solid var(--border);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+  background: var(--bg);
+  z-index: 10;
+}
+
+.instrument-role {
   font-family: var(--mono);
   font-size: 0.6rem;
+  color: var(--intact);
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.instrument-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.instrument-positioning {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.instrument-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-val {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.stat-label {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Gauge */
+.instrument-gauge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gauge-label {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.gauge-track {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+}
+
+.gauge-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0%;
+  background: var(--intact);
+  transition: height 0.1s linear, background 0.3s;
+}
+
+.gauge-ticks {
+  position: absolute;
+  inset: 0;
+}
+
+.tick {
+  position: absolute;
+  bottom: calc(var(--pos) * 100%);
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-light);
+}
+
+.tick-hold {
+  background: var(--intact);
+  opacity: 0.4;
+}
+
+.gauge-readout {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.65rem;
   color: var(--text-dim);
 }
 
-.lab-strip .strip-id {
+.gauge-tally {
   color: var(--fracture);
 }
 
+/* Credentials */
+.instrument-creds {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.instrument-creds span {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--text-dim);
+}
+
+/* Links */
+.instrument-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.instrument-links a {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.reveal-all-btn {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  background: none;
+  border: 1px dashed var(--border);
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: border-color 0.15s, color 0.15s;
+  align-self: flex-start;
+}
+
+.reveal-all-btn:hover {
+  border-color: var(--text-dim);
+  color: var(--text-muted);
+}
+
+.console-link {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  opacity: 0.5;
+  margin-top: auto;
+}
+
 /* ============================================
-   Container + Layout
+   Specimen Stage
    ============================================ */
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 2rem;
+.specimen-stage {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.section {
-  padding: 6rem 0;
-  border-bottom: 1px solid var(--border);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+.specimen {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
+.specimen-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
 }
 
-.section-num {
+.specimen-no {
+  color: var(--fracture);
+  font-weight: 500;
+}
+
+.specimen-contains {
+  margin-left: auto;
+  opacity: 0.5;
+  font-style: italic;
+}
+
+/* Specimen Card (container for shards + core) */
+.specimen-card {
+  position: relative;
+  flex: 1;
+  min-height: 300px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+}
+
+/* Shards (the breakable shell) */
+.shard {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-shard);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
+  z-index: 2;
+}
+
+.shard-left {
+  clip-path: polygon(0 0, 52% 0, 47% 14%, 55% 29%, 45% 43%, 51% 58%, 44% 76%, 49% 100%, 0 100%);
+}
+
+.shard-right {
+  clip-path: polygon(52% 0, 100% 0, 100% 100%, 49% 100%, 44% 76%, 51% 58%, 45% 43%, 55% 29%, 47% 14%);
+}
+
+.shard-face {
+  text-align: center;
+  padding: 2rem;
+}
+
+.shard-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.shard-face strong {
+  display: block;
+  font-family: var(--grotesk);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.shard-face em {
   display: block;
   font-family: var(--mono);
   font-size: 0.65rem;
   color: var(--text-dim);
-  letter-spacing: 0.15em;
-  margin-bottom: 1rem;
+  font-style: normal;
 }
 
-.section-title {
-  font-family: var(--grotesk);
+/* Crack line */
+.crack-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.crack-line {
+  fill: none;
+  stroke: rgba(180, 230, 255, 0.7);
+  stroke-width: 0.8;
+  filter: drop-shadow(0 0 6px rgba(90, 200, 255, 0.6));
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+/* Core (revealed content) */
+.core {
+  position: relative;
+  z-index: 1;
+  padding: 2.5rem;
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+}
+
+.core-type {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--fracture);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.core h2 {
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   margin-bottom: 0.5rem;
 }
 
-.section-subtitle {
-  font-size: 0.8rem;
+.core-desc {
+  font-size: 0.82rem;
   color: var(--text-muted);
-  margin-bottom: 2rem;
-}
-
-/* ============================================
-   01 SPECIMEN
-   ============================================ */
-
-.specimen {
-  padding-top: 8rem;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-}
-
-.specimen-name {
-  font-family: var(--grotesk);
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  margin-bottom: 0.3rem;
-  line-height: 1.1;
-}
-
-.specimen-class {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--intact);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-
-.specimen-desc {
-  font-size: 1rem;
-  color: var(--text-muted);
-  max-width: 560px;
+  margin-bottom: 1.25rem;
+  max-width: 520px;
   line-height: 1.7;
-  margin-bottom: 2rem;
 }
 
-.specimen-links {
+.core-findings {
   display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.specimen-links a {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-}
-
-.specimen-links a:hover {
-  color: var(--text);
-  border-bottom-color: var(--text-dim);
-}
-
-.legacy-link {
-  color: var(--text-dim) !important;
-  opacity: 0.6;
-}
-
-/* ============================================
-   02 TEST APPARATUS
-   ============================================ */
-
-.apparatus-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  margin-bottom: 2rem;
-}
-
-.apparatus-card {
-  background: var(--bg);
-  padding: 1.5rem 1rem;
-  text-align: center;
-}
-
-.apparatus-value {
-  display: block;
-  font-family: var(--mono);
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 0.3rem;
-}
-
-.apparatus-label {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.apparatus-certs {
-  display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 0.5rem;
-}
-
-.cert {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  padding: 0.35rem 0.75rem;
-  border: 1px solid var(--border);
-  background: var(--bg-raised);
-}
-
-/* ============================================
-   03 FRACTURE EVENTS
-   ============================================ */
-
-.fracture-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
-}
-
-.fracture-table th {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-align: left;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border-light);
-  background: var(--bg-raised);
-}
-
-.fracture-table td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border);
-  color: var(--text-muted);
-}
-
-.fracture-table tr.fractured td {
-  color: var(--text-muted);
-}
-
-.fracture-table tr.intact {
-  background: rgba(53, 201, 192, 0.03);
-}
-
-.fracture-table tr.intact td {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.result-fracture {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--fracture);
-  font-weight: 500;
-  letter-spacing: 0.05em;
-}
-
-.result-intact {
-  font-family: var(--mono);
-  font-size: 0.7rem;
-  color: var(--intact);
-  font-weight: 600;
-  letter-spacing: 0.05em;
-}
-
-.fracture-table tr {
-  transition: background 0.2s;
-}
-
-.fracture-table tr.stress-active {
-  background: rgba(255, 77, 46, 0.04);
-}
-
-.fracture-table tr.intact.stress-active {
-  background: rgba(53, 201, 192, 0.06);
-}
-
-.table-note {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  font-style: italic;
-  line-height: 1.6;
-}
-
-.table-hint {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  opacity: 0.5;
-  margin-top: 0.5rem;
-  letter-spacing: 0.05em;
-}
-
-/* Load gauge */
-.load-gauge-container {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.load-label {
-  font-family: var(--mono);
-  font-size: 0.55rem;
-  color: var(--text-dim);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.load-gauge {
-  flex: 1;
-  height: 3px;
-  background: var(--border);
-  position: relative;
-  overflow: hidden;
-}
-
-.load-fill {
-  height: 100%;
-  width: 0%;
-  background: var(--intact);
-  transition: width 0.05s linear;
-}
-
-.load-value {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  min-width: 2.5rem;
-  text-align: right;
-}
-
-/* Fracture crack animation on rows */
-.fracture-table tr.fractured {
-  position: relative;
-}
-
-.fracture-table tr.cracked {
-  position: relative;
-}
-
-.fracture-table tr.cracked::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--fracture);
-  opacity: 0.6;
-  box-shadow: 0 0 4px var(--fracture);
-  animation: crack-spread 0.3s ease-out forwards;
-  pointer-events: none;
-}
-
-@keyframes crack-spread {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-.fracture-table tr.cracked td {
-  opacity: 0.6;
-}
-
-.fracture-table tr.cracked .result-fracture {
-  opacity: 1;
-  text-shadow: 0 0 6px rgba(255, 77, 46, 0.5);
-}
-
-/* Memory Sandbox load-sustained state */
-.fracture-table tr.load-sustained {
-  background: rgba(53, 201, 192, 0.06);
-  box-shadow: inset 0 0 20px rgba(53, 201, 192, 0.03);
-}
-
-.fracture-table tr.load-sustained td {
-  color: var(--text);
-}
-
-.fracture-table tr.load-sustained .result-intact {
-  text-shadow: 0 0 8px rgba(53, 201, 192, 0.6);
-}
-
-/* Hold-to-load interaction */
-.fracture-table tr.holding {
-  cursor: grabbing;
-  background: rgba(255, 77, 46, 0.02);
-}
-
-.fracture-table tr.holding::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: calc(var(--hold-progress, 0) * 100%);
-  background: var(--fracture);
-  transition: none;
-  pointer-events: none;
-}
-
-.fracture-table tr.intact.holding {
-  background: rgba(53, 201, 192, 0.02);
-}
-
-.fracture-table tr.intact.holding::before {
-  background: var(--intact);
-}
-
-.fracture-table tr.hold-fractured::after {
-  animation: crack-shatter 0.2s ease-out forwards;
-}
-
-@keyframes crack-shatter {
-  0% {
-    clip-path: inset(0 100% 0 0);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    clip-path: inset(0 0 0 0);
-    opacity: 0.8;
-  }
-}
-
-.fracture-table tr.hold-sustained {
-  background: rgba(53, 201, 192, 0.08);
-}
-
-.fracture-table tr.hold-sustained .result-intact::after {
-  content: ' LOAD SUSTAINED';
-  font-size: 0.55rem;
-  color: var(--intact);
-  letter-spacing: 0.1em;
-  opacity: 0.8;
-}
-
-/* Cursor hint for holdable rows */
-.fracture-table tbody tr {
-  cursor: grab;
-}
-
-/* ============================================
-   04 STRESS-STRAIN DATA (Papers)
-   ============================================ */
-
-.paper-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.paper-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 1.5rem 2rem;
-  transition: border-color 0.2s;
-}
-
-.paper-card:hover {
-  border-color: var(--border-light);
-}
-
-.paper-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
-
-.paper-type {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--fracture);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.5rem;
-  border: 1px solid rgba(255, 77, 46, 0.3);
-}
-
-.paper-id {
-  font-family: var(--mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-}
-
-.paper-card h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-  letter-spacing: -0.01em;
-}
-
-.paper-specimen {
-  font-size: 0.8rem;
-  color: var(--text-muted);
   margin-bottom: 1.25rem;
 }
 
-.paper-findings {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-bottom: 1.25rem;
-}
-
-.finding {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-}
-
-.finding-metric {
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text);
-  min-width: 4rem;
-}
-
-.finding-desc {
+.core-finding {
   font-size: 0.78rem;
   color: var(--text-muted);
 }
 
-.paper-links {
+.core-finding .metric {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--text);
+  margin-right: 0.5rem;
+}
+
+.core-links {
   display: flex;
   gap: 1.25rem;
 }
 
-.paper-links a {
+.core-links a {
   font-family: var(--mono);
   font-size: 0.65rem;
-  letter-spacing: 0.05em;
   color: var(--text-dim);
   border-bottom: 1px dashed var(--border-light);
-  padding-bottom: 1px;
 }
 
-.paper-links a:hover {
+.core-links a:hover {
   color: var(--intact);
-  border-bottom-color: var(--intact);
+  border-color: var(--intact);
 }
 
-/* ============================================
-   05 LOAD-BEARING STRUCTURES
-   ============================================ */
-
-.structure-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.structure-card {
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--intact);
-  padding: 1.5rem 2rem;
-  background: var(--bg-card);
-}
-
-.structure-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
-
-.structure-header h3 {
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-}
-
-.structure-status {
-  font-family: var(--mono);
-  font-size: 0.55rem;
-  color: var(--intact);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.6rem;
-  border: 1px solid rgba(53, 201, 192, 0.3);
-}
-
-.structure-card > p {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.structure-stack {
+.core-stack {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
   margin-bottom: 1rem;
 }
 
-.structure-stack span {
+.core-stack span {
   font-family: var(--mono);
   font-size: 0.6rem;
   color: var(--text-dim);
-  padding: 0.25rem 0.6rem;
-  background: var(--bg-raised);
+  padding: 0.2rem 0.5rem;
   border: 1px solid var(--border);
+  background: var(--bg-raised);
 }
 
-.structure-specs {
-  list-style: none;
+.core-creds {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
 }
 
-.structure-specs li {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  padding: 0.3rem 0;
-  padding-left: 1rem;
-  position: relative;
-}
-
-.structure-specs li::before {
-  content: '>';
-  position: absolute;
-  left: 0;
-  color: var(--intact);
+.core-creds span {
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
+  color: var(--text-dim);
 }
 
 /* ============================================
-   06 CERTIFICATION
+   Fracture State (panels 1-6)
    ============================================ */
 
-.certification {
-  border-bottom: none;
+.specimen.is-fractured .shard-left {
+  transform: translate3d(-40%, -3%, 0) rotate(-3deg);
+  opacity: 0.3;
 }
 
-.cert-statement {
-  font-size: 0.9rem;
+.specimen.is-fractured .shard-right {
+  transform: translate3d(40%, 3%, 0) rotate(3deg);
+  opacity: 0.3;
+}
+
+.specimen.is-fractured .crack-line {
+  stroke-dashoffset: 0;
+  stroke: var(--fracture);
+  filter: drop-shadow(0 0 8px rgba(255, 77, 46, 0.6));
+}
+
+.specimen.is-fractured .core {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.specimen.is-fractured .specimen-card {
+  border-color: rgba(255, 77, 46, 0.3);
+}
+
+/* ============================================
+   Hold State (panel 7 - Memory Sandbox)
+   ============================================ */
+
+.specimen-holds .specimen-card {
+  border-color: var(--border);
+}
+
+.hold-shell {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-shard);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+  border: 2px solid transparent;
+}
+
+.hold-face {
+  text-align: center;
+  padding: 2rem;
+}
+
+.hold-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.hold-name {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.hold-desc {
+  display: block;
+  font-size: 0.75rem;
   color: var(--text-muted);
-  max-width: 600px;
-  line-height: 1.8;
+  font-style: normal;
   margin-bottom: 1rem;
 }
 
-.cert-cta {
-  font-size: 0.9rem;
-  color: var(--text);
-  margin-top: 2rem;
-  line-height: 1.8;
-}
-
-.cert-cta a {
+.hold-verdict {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 600;
   color: var(--intact);
-  border-bottom: 1px solid var(--intact);
-  padding-bottom: 1px;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
-/* ============================================
-   Crack Overlay
-   ============================================ */
-
-.crack-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.15;
+.specimen-holds.is-holding .hold-shell {
+  transform: scale(0.985);
+  border-color: var(--intact);
+  box-shadow: 0 0 40px rgba(53, 201, 192, 0.15), inset 0 0 20px rgba(53, 201, 192, 0.03);
 }
 
-.crack-line {
-  stroke-dasharray: 4 6;
-  stroke-linecap: round;
+.specimen-holds.is-holding .hold-verdict {
+  opacity: 1;
+}
+
+.specimen-holds.is-holding .specimen-card {
+  border-color: rgba(53, 201, 192, 0.4);
+}
+
+.core-holds {
+  padding-top: 320px; /* push below shell */
+}
+
+.core-holds h2 {
+  font-size: 1.5rem;
+  color: var(--intact);
+  margin-bottom: 1rem;
+}
+
+.core-cta {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 1rem;
+  color: var(--intact);
+  border: 1px solid var(--intact);
+  padding: 0.75rem 1.5rem;
+  margin: 1rem 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.core-cta:hover {
+  background: var(--intact);
+  color: var(--bg);
+}
+
+.core-note {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-style: italic;
 }
 
 /* ============================================
    Responsive
    ============================================ */
 
-@media (max-width: 768px) {
-  .apparatus-grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 900px) {
+  body {
+    grid-template-columns: 1fr;
   }
 
-  .specimen-name {
-    font-size: 2.2rem;
+  .instrument {
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem;
   }
 
-  .section {
-    padding: 4rem 0;
+  .instrument-gauge {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .gauge-track {
+    height: 8px;
+    flex: 1;
+  }
+
+  .gauge-fill {
+    bottom: 0;
+    top: 0;
+    right: auto;
+    height: 100% !important;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  .tick {
+    bottom: auto;
+    left: calc(var(--pos) * 100%);
+    top: 0;
+    width: 1px;
+    height: 100%;
+  }
+
+  .specimen-stage {
+    padding: 1.5rem;
   }
 
   .specimen {
-    padding-top: 6rem;
-    min-height: auto;
+    min-height: 50vh;
   }
 
-  .container {
-    padding: 0 1.25rem;
+  .specimen.is-fractured .shard-left {
+    transform: translate3d(-25%, -2%, 0) rotate(-2deg);
   }
 
-  .fracture-table {
-    font-size: 0.7rem;
+  .specimen.is-fractured .shard-right {
+    transform: translate3d(25%, 2%, 0) rotate(2deg);
   }
 
-  .fracture-table th,
-  .fracture-table td {
-    padding: 0.5rem 0.5rem;
-  }
-
-  .paper-card {
-    padding: 1.25rem 1.5rem;
-  }
-
-  .structure-card {
-    padding: 1.25rem 1.5rem;
-  }
-
-  .apparatus-certs {
-    flex-direction: column;
+  .core {
+    padding: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .apparatus-grid {
-    grid-template-columns: 1fr 1fr;
+  .specimen {
+    min-height: 40vh;
   }
 
-  .apparatus-value {
-    font-size: 1.4rem;
+  .shard-face strong {
+    font-size: 0.85rem;
   }
 
-  .specimen-name {
-    font-size: 1.8rem;
-  }
-
-  .finding {
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .finding-metric {
-    min-width: auto;
-  }
-
-  .paper-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.3rem;
+  .core h2 {
+    font-size: 1.1rem;
   }
 }
+
+/* ============================================
+   No-JS Fallback
+   ============================================ */
+
+.no-js .shard { display: none; }
+.no-js .crack-svg { display: none; }
+.no-js .hold-shell { display: none; }
+.no-js .core { opacity: 1; transform: none; }
+.no-js .core-holds { padding-top: 2rem; }
 
 /* ============================================
    Accessibility
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .section {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  .crack-overlay {
-    display: none;
-  }
-
-  html {
-    scroll-behavior: auto;
-  }
+  .shard { transition: none; }
+  .core { transition: none; }
+  .crack-line { transition: none; }
+  .gauge-fill { transition: none; }
+  .hold-shell { transition: none; }
 }
 
 @media (forced-colors: active) {
-  .lab-strip {
-    border-bottom: 1px solid CanvasText;
-  }
-
-  .fracture-table th,
-  .fracture-table td {
-    border: 1px solid CanvasText;
-  }
-
-  .paper-card,
-  .structure-card {
-    border: 1px solid CanvasText;
-  }
+  .specimen-card { border: 1px solid CanvasText; }
+  .shard { border: 1px solid CanvasText; }
+  .hold-shell { border: 1px solid CanvasText; }
 }
