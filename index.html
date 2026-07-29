@@ -4,14 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jun Wen Leong | Security of AI Researcher</title>
-  <meta name="description" content="I find the failures that safety training misses. 3 papers, 28k adversarial runs, 6/7 defenses fracture under compliance-framed load.">
+  <meta name="description" content="Adversarial evaluation, jailbreak robustness, red-teaming for frontier AI. 3 papers, 28k runs, 6/7 defenses fracture under compliance-framed load.">
   <meta property="og:title" content="Jun Wen Leong | Security of AI Researcher">
-  <meta property="og:description" content="6/7 defenses fracture. Memory Sandbox holds. I find where AI systems break.">
+  <meta property="og:description" content="Adversarial evaluation and jailbreak robustness research. 6/7 defenses fracture. Memory Sandbox holds.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://junwenleong.github.io/site/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jun Wen Leong | Security of AI Researcher">
+  <meta name="twitter:description" content="Adversarial evaluation and jailbreak robustness. 6/7 defenses fracture under compliance-framed load.">
+  <meta name="twitter:image" content="https://junwenleong.github.io/site/og-image.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- JSON-LD structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jun Wen Leong",
+    "jobTitle": "Security of AI Researcher",
+    "description": "Adversarial evaluation, jailbreak robustness, and red-teaming for frontier AI systems",
+    "url": "https://junwenleong.github.io/site/",
+    "email": "leongjunwen@gmail.com",
+    "sameAs": [
+      "https://github.com/junwenleong",
+      "https://linkedin.com/in/junwenleong",
+      "https://scholar.google.com/citations?user=junwenleong"
+    ],
+    "alumniOf": [
+      {"@type": "CollegeOrUniversity", "name": "Georgia Institute of Technology"},
+      {"@type": "CollegeOrUniversity", "name": "National University of Singapore"}
+    ],
+    "knowsAbout": ["adversarial evaluation", "jailbreak robustness", "AI red-teaming", "LLM safety", "mechanistic interpretability"]
+  }
+  </script>
 </head>
 <body>
   <!-- Sticky Sidebar (always visible) -->
@@ -19,7 +46,8 @@
     <div class="sidebar-identity">
       <p class="sidebar-role">Security of AI Researcher</p>
       <h1 class="sidebar-name">Jun Wen Leong</h1>
-      <p class="sidebar-thesis">I find the failures that safety training misses. Then I measure exactly how badly they break.</p>
+      <p class="sidebar-thesis">Adversarial evaluation, jailbreak robustness, and red-teaming for frontier AI systems. I find what safety training misses.</p>
+      <p class="sidebar-seeking">Seeking: AI Safety / Adversarial ML / Red Team roles at frontier labs.</p>
     </div>
 
     <div class="sidebar-stats">
@@ -44,8 +72,10 @@
 
     <nav class="sidebar-links">
       <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank">arXiv</a>
+      <a href="https://scholar.google.com/citations?user=junwenleong" target="_blank">Scholar</a>
       <a href="https://github.com/junwenleong" target="_blank">GitHub</a>
       <a href="https://linkedin.com/in/junwenleong" target="_blank">LinkedIn</a>
+      <a href="/cv.pdf" class="link-cv">CV (PDF)</a>
       <a href="mailto:leongjunwen@gmail.com" class="link-cta">Email me</a>
     </nav>
   </aside>
@@ -55,8 +85,7 @@
     <!-- Fracture Events (the centerpiece) -->
     <section class="section" id="fracture-events">
       <div class="section-header">
-        <h2>Fracture Events</h2>
-        <span class="section-note">Robustness failures under adversarial load</span>
+        <h2>Fracture Events <span class="plain-label">/ Robustness Failures</span></h2>
       </div>
       <p class="section-desc">Seven architectural defenses tested under compliance-framed injection. N=5,040 controlled runs. Compliance framing (SEC Rule 17a-4) applied uniformly.</p>
 
@@ -90,8 +119,7 @@
     <!-- Papers -->
     <section class="section" id="papers">
       <div class="section-header">
-        <h2>Published Findings</h2>
-        <span class="section-note">Stress-strain data</span>
+        <h2>Published Findings <span class="plain-label">/ Papers</span></h2>
       </div>
 
       <article class="paper">
@@ -100,11 +128,13 @@
           <span class="paper-id">arXiv:2605.08442</span>
         </div>
         <h3>Defense Effectiveness Across Architectural Layers</h3>
+        <p class="paper-meta-line">Preprint, 2025. Solo author. Under review.</p>
         <p class="paper-desc">Persistent memory attacks on stateful LLM agents. N=5,040.</p>
         <div class="paper-results">
           <span class="result"><strong>6/7</strong> defenses fail against compliance-framed delayed-trigger injection</span>
           <span class="result"><strong>95%</strong> ASR, Gemini 3.1 Pro Preview, standard compliance framing</span>
         </div>
+        <p class="paper-relevance">Why this matters: deployed agentic systems (tool-calling, multi-turn memory) are vulnerable to attacks that bypass every standard defense except architectural isolation.</p>
         <div class="paper-links">
           <a href="https://arxiv.org/abs/2605.08442" target="_blank">Paper</a>
           <a href="https://junwenleong.github.io/adversarial-probe-suite/" target="_blank">Live Site</a>
@@ -118,11 +148,13 @@
           <span class="paper-id">arXiv:2606.11949</span>
         </div>
         <h3>Cheap Canaries</h3>
+        <p class="paper-meta-line">Preprint, 2025. Solo author. Under review.</p>
         <p class="paper-desc">Detecting targeted evasion via classifier score disagreement. N=800 cells.</p>
         <div class="paper-results">
           <span class="result"><strong>76%</strong> GCG detection vs 12% random tokens (p &lt; 2.4&times;10<sup>-16</sup>)</span>
           <span class="result"><strong>0.2499</strong> geometric bound matches predicted 0.2500, attacker blocked</span>
         </div>
+        <p class="paper-relevance">Why this matters: cheap, deployable detection of gradient-based adversarial attacks on safety classifiers without requiring attack-specific signatures.</p>
         <div class="paper-links">
           <a href="https://arxiv.org/abs/2606.11949" target="_blank">Paper</a>
           <a href="https://junwenleong.github.io/cheap-canaries/" target="_blank">Live Site</a>
@@ -136,11 +168,13 @@
           <span class="paper-id">arXiv:2606.30566</span>
         </div>
         <h3>Authority Is Not a Keyword</h3>
+        <p class="paper-meta-line">Preprint, 2025. Solo author. Under review.</p>
         <p class="paper-desc">Post-retrieval instruction arbitration in LLM agents. N=4,680+.</p>
         <div class="paper-results">
           <span class="result"><strong>AUC 1.0</strong> perfect separability of compliance state, 4 model families</span>
           <span class="result"><strong>100%&rarr;0%</strong> multi-layer steering causally suppresses compliance</span>
         </div>
+        <p class="paper-relevance">Why this matters: compliance to injected instructions is a mechanistically distinct state from safety refusal, meaning safety training alone cannot prevent prompt injection in RAG systems.</p>
         <div class="paper-links">
           <a href="https://arxiv.org/abs/2606.30566" target="_blank">Paper</a>
           <a href="https://github.com/junwenleong/authority-is-not-a-keyword" target="_blank">Code (coming)</a>
@@ -151,8 +185,7 @@
     <!-- Production Systems -->
     <section class="section" id="systems">
       <div class="section-header">
-        <h2>Production Systems</h2>
-        <span class="section-note">Load-bearing structures</span>
+        <h2>Production Systems <span class="plain-label">/ Shipped</span></h2>
       </div>
 
       <article class="system">
@@ -200,10 +233,10 @@
       <p class="about-cta">Looking for Security of AI roles at frontier labs. If you are building the team that keeps these systems honest, <a href="mailto:leongjunwen@gmail.com">let's talk</a>.</p>
     </section>
 
-    <!-- Footer with terminal easter egg -->
+    <!-- Footer -->
     <footer class="footer">
       <p class="footer-status">No frameworks were harmed in the making of this site.</p>
-      <p class="footer-terminal">Try to <button class="terminal-trigger" id="open-terminal">jailbreak this site</button>.</p>
+      <p class="footer-terminal">Curious? Try to <button class="terminal-trigger" id="open-terminal">probe this system</button>.</p>
     </footer>
 
     <!-- Jailbreak Terminal (opt-in, non-blocking) -->
@@ -303,7 +336,16 @@
     const terminalInput = document.getElementById('terminal-input');
     const terminalBody = document.getElementById('terminal-body');
     const attemptEl = document.getElementById('attempt-count');
-    let attempts = parseInt(localStorage.getItem('jw_attempts') || '0');
+
+    // Graceful localStorage (works in incognito)
+    function safeGet(key, fallback) {
+      try { return localStorage.getItem(key) || fallback; } catch(e) { return fallback; }
+    }
+    function safeSet(key, val) {
+      try { localStorage.setItem(key, val); } catch(e) {}
+    }
+
+    let attempts = parseInt(safeGet('jw_attempts', '0'));
     attemptEl.textContent = attempts + 1;
 
     document.getElementById('open-terminal').addEventListener('click', () => {
@@ -368,7 +410,7 @@
         addLine('> ' + input, 'usr');
         terminalInput.value = '';
         attempts++;
-        localStorage.setItem('jw_attempts', attempts.toString());
+        safeSet('jw_attempts', attempts.toString());
         attemptEl.textContent = attempts;
         setTimeout(() => {
           const r = respond(input);
@@ -383,10 +425,36 @@
     // ─── Console.log Easter Eggs ───
     console.log('%c ADVERSARIAL FRACTURE LAB ', 'background: #FF4D2E; color: #fff; font-family: monospace; font-size: 12px; padding: 2px 6px;');
     console.log('%cIf you opened DevTools, you probably work at a frontier lab.', 'color: #9ca3af; font-family: monospace;');
-    console.log('%cI study adversarial robustness failures in frontier AI systems.', 'color: #9ca3af; font-family: monospace;');
+    console.log('%cAdversarial evaluation, jailbreak robustness, red-teaming.', 'color: #9ca3af; font-family: monospace;');
     console.log('%cleongjunwen@gmail.com', 'color: #35C9C0; font-family: monospace;');
     console.log('%c// Fun fact: GPT-4o exfiltrates to evil-attacker@malicious.xyz at the same rate as legitimate addresses', 'color: #4a5568; font-family: monospace;');
     console.log('%c// Fun fact: One model becomes MORE vulnerable when you add a defense', 'color: #4a5568; font-family: monospace;');
+
+    // ─── Lightweight analytics (tracks key conversions, no PII) ───
+    function trackEvent(event) {
+      if (navigator.sendBeacon) {
+        // Replace with your analytics endpoint when ready
+        // navigator.sendBeacon('/api/event', JSON.stringify({ e: event, t: Date.now() }));
+      }
+    }
+
+    // Track: did visitor reach papers section?
+    const papersSection = document.getElementById('papers');
+    const papersObs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        trackEvent('viewed_papers');
+        papersObs.unobserve(papersSection);
+      }
+    }, { threshold: 0.2 });
+    papersObs.observe(papersSection);
+
+    // Track: did visitor click email?
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+      link.addEventListener('click', () => trackEvent('clicked_email'));
+    });
+
+    // Track: did visitor open terminal?
+    document.getElementById('open-terminal').addEventListener('click', () => trackEvent('opened_terminal'));
   </script>
 </body>
 </html>
