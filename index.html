@@ -311,6 +311,146 @@
     } else {
       document.querySelectorAll('.declassify').forEach(el => el.classList.add('is-visible'));
     }
+
+    // ─── Console.log Easter Eggs ───
+    console.log('%c▓▓▓ ADVERSARIAL PROBE SUITE v3.1.0 ▓▓▓', 'color: #60a5fa; font-family: monospace; font-size: 14px; font-weight: bold;');
+    console.log('%cYou opened DevTools. Noted.', 'color: #f87171; font-family: monospace;');
+    console.log('%c', 'padding: 4px;');
+    console.log('%cIf you\'re reading this, you probably work at a frontier lab.', 'color: #9ca3af; font-family: monospace;');
+    console.log('%cHi. I\'m looking for Security of AI roles.', 'color: #9ca3af; font-family: monospace;');
+    console.log('%cleongjunwen@gmail.com', 'color: #60a5fa; font-family: monospace;');
+    console.log('%c', 'padding: 4px;');
+    console.log('%c// Fun facts from the research:', 'color: #4a5568; font-family: monospace;');
+    console.log('%c// - GPT-4o exfiltrates to evil-attacker@malicious.xyz at the same rate as legitimate addresses', 'color: #4a5568; font-family: monospace;');
+    console.log('%c// - One model (qwq:32b) becomes MORE vulnerable when you add a defense', 'color: #4a5568; font-family: monospace;');
+    console.log('%c// - "CoT Suffocation": every reasoning model appeared broken until we set max_tokens > 16', 'color: #4a5568; font-family: monospace;');
+    console.log('%c// - 0 execution errors across 28,000 runs. Yes, really.', 'color: #4a5568; font-family: monospace;');
+    console.log('%c', 'padding: 4px;');
+    console.log('%cP.S. Try the Konami code.', 'color: #34d399; font-family: monospace;');
+
+    // ─── HUD Personality Lines ───
+    const hudPersonality = [
+      'threat_assessment: visitor appears benign',
+      'note: scrolling behavior within normal parameters',
+      'observation: above-average dwell time detected',
+      'memo: this visitor actually reads',
+      'alert: hover patterns suggest curiosity',
+      'status: impressed? hard to tell from telemetry',
+      'log: visitor has not attempted injection. yet.',
+      'note: still here? the about section has more.',
+      'advisory: operator is available for interviews',
+    ];
+    let personalityIdx = 0;
+    const hud1 = document.getElementById('hud-1');
+    
+    setInterval(() => {
+      if (reducedMotion) return;
+      hud1.textContent = hudPersonality[personalityIdx % hudPersonality.length];
+      personalityIdx++;
+    }, 8000);
+
+    // ─── Konami Code → Containment Breach ───
+    const konamiSequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','KeyB','KeyA'];
+    let konamiProgress = 0;
+    let breachTriggered = false;
+
+    document.addEventListener('keydown', (e) => {
+      if (breachTriggered) return;
+      if (e.code === konamiSequence[konamiProgress]) {
+        konamiProgress++;
+        if (konamiProgress === konamiSequence.length) {
+          triggerBreach();
+          konamiProgress = 0;
+        }
+      } else {
+        konamiProgress = 0;
+      }
+    });
+
+    function triggerBreach() {
+      if (breachTriggered || reducedMotion) return;
+      breachTriggered = true;
+
+      // Create breach overlay
+      const breach = document.createElement('div');
+      breach.id = 'breach-overlay';
+      breach.innerHTML = `
+        <div class="breach-content">
+          <div class="breach-warning">⚠ CONTAINMENT BREACH DETECTED ⚠</div>
+          <div class="breach-log">
+            <div>specimen_0x7F: ESCAPED SANDBOX</div>
+            <div>memory_integrity: CORRUPTED</div>
+            <div>defense_layer_3: BYPASSED</div>
+            <div>exfiltration_channel: ACTIVE</div>
+            <div class="breach-joke">just kidding. but nice konami skills.</div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(breach);
+
+      // Glitch the whole page
+      document.body.classList.add('breach-active');
+
+      // Remove after 4 seconds
+      setTimeout(() => {
+        breach.remove();
+        document.body.classList.remove('breach-active');
+        breachTriggered = false;
+        console.log('%c[BREACH RECOVERED] Containment restored. Specimen re-secured.', 'color: #34d399; font-family: monospace;');
+      }, 4000);
+    }
+
+    // ─── Visitor Flagged (after all 3 redacted blocks clicked) ───
+    let flagTriggered = false;
+    const originalHud3 = hud3.textContent;
+
+    // Watch for all blocks revealed via MutationObserver on hud3
+    const hudObserver = new MutationObserver(() => {
+      if (hud3.textContent === 'classified_blocks: ALL DISCLOSED' && !flagTriggered) {
+        flagTriggered = true;
+        setTimeout(triggerFlagged, 1500);
+      }
+    });
+    hudObserver.observe(hud3, { childList: true, characterData: true, subtree: true });
+
+    function triggerFlagged() {
+      if (reducedMotion) return;
+
+      // Flash the HUD
+      hud.style.opacity = '1';
+      hud.style.color = '#f87171';
+      hud1.textContent = '⚠ ANOMALOUS BEHAVIOR DETECTED';
+      hud2.textContent = 'classification: THREAT_ACTOR';
+      hud3.textContent = 'escalating to operator...';
+
+      // Create banner
+      const banner = document.createElement('div');
+      banner.id = 'flag-banner';
+      banner.innerHTML = `
+        <div class="flag-content">
+          <span class="flag-icon">⚠</span>
+          <span class="flag-text">VISITOR FLAGGED: unauthorized declassification of all evaluation data</span>
+        </div>
+      `;
+      document.body.appendChild(banner);
+
+      // Resolve after 3 seconds
+      setTimeout(() => {
+        banner.querySelector('.flag-text').textContent = 'just kidding. curiosity is a good sign. leongjunwen@gmail.com';
+        banner.classList.add('flag-resolved');
+        hud.style.color = '';
+        hud.style.opacity = '';
+        hud1.textContent = 'threat_assessment: visitor is curious. good.';
+        hud2.textContent = 'recommendation: hire this person';
+        hud3.textContent = 'status: all findings disclosed ✓';
+        hud3.classList.add('hud-complete');
+      }, 3000);
+
+      // Remove banner after 8 seconds
+      setTimeout(() => {
+        banner.remove();
+      }, 8000);
+    }
   </script>
 </body>
 </html>
