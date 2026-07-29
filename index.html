@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jun Wen Leong | Security of AI Researcher</title>
-  <meta name="description" content="Adversarial evaluation, jailbreak robustness, red-teaming. I break my own claims before you do. 3 papers, 28k+ runs, 35+ models, 0 execution errors.">
+  <meta name="description" content="Adversarial evaluation, jailbreak robustness, red-teaming. 3 papers, 28k+ runs, 35+ models, 0 execution errors.">
   <meta property="og:title" content="Jun Wen Leong | Security of AI Researcher">
   <meta property="og:description" content="Self-red-teamed portfolio. Adversarial evaluation and jailbreak robustness research with honest confidence levels.">
   <meta property="og:type" content="website">
@@ -16,14 +16,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <script data-goatcounter="https://junwenleong.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script data-goatcounter="https://junwenleong.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Jun Wen Leong",
     "jobTitle": "Security of AI Researcher",
-    "description": "Adversarial evaluation, jailbreak robustness, and red-teaming for frontier AI systems",
     "url": "https://junwenleong.github.io/site/",
     "email": "leongjunwen@gmail.com",
     "sameAs": [
@@ -35,166 +34,191 @@
   </script>
 </head>
 <body>
-  <!-- Toggle -->
-  <div class="toggle-bar">
+  <!-- Sticky Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-identity">
+      <p class="sidebar-role">Security of AI Researcher</p>
+      <h1 class="sidebar-name">Jun Wen Leong</h1>
+      <p class="sidebar-thesis">I break my own claims before you do.</p>
+      <p class="sidebar-seeking">Seeking: AI Safety / Adversarial ML / Red Team</p>
+    </div>
+
+    <div class="sidebar-stats">
+      <div class="stat"><span class="stat-val">28k+</span><span class="stat-label">runs</span></div>
+      <div class="stat"><span class="stat-val">3</span><span class="stat-label">papers</span></div>
+      <div class="stat"><span class="stat-val">35+</span><span class="stat-label">models</span></div>
+      <div class="stat"><span class="stat-val">0</span><span class="stat-label">errors</span></div>
+    </div>
+
+    <div class="sidebar-gauge">
+      <span class="gauge-label">PROBE DEPTH</span>
+      <div class="gauge-track"><div class="gauge-fill" id="gauge-fill"></div></div>
+      <span class="gauge-readout" id="gauge-readout">surface</span>
+    </div>
+
+    <!-- Mode Toggle -->
     <button id="mode-toggle" class="mode-toggle" aria-pressed="false">
       <span class="toggle-label toggle-claims active">CLAIMS</span>
       <span class="toggle-divider">/</span>
       <span class="toggle-label toggle-redteam">RED-TEAM</span>
     </button>
-    <span class="toggle-note">Static audit. No live scoring.</span>
-  </div>
 
-  <main class="page">
-    <!-- Hero / BLUF -->
-    <section class="hero" id="bluf">
-      <div class="hero-content">
-        <p class="hero-role">Security of AI Researcher</p>
-        <h1 class="hero-name">Jun Wen Leong</h1>
-        <p class="hero-hook">I break my own claims before you do.</p>
-        <p class="hero-sub">Adversarial evaluation, jailbreak robustness, and red-teaming for frontier AI systems. This page states a claim, stress-tests it, and shows the residual risk. You are the auditor.</p>
-        <div class="hero-stats">
-          <span class="stat">28k+ runs</span>
-          <span class="stat">3 papers</span>
-          <span class="stat">35+ models</span>
-          <span class="stat">0 errors</span>
-        </div>
-        <nav class="hero-links">
-          <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank">arXiv</a>
-          <a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank">Scholar</a>
-          <a href="https://github.com/junwenleong" target="_blank">GitHub</a>
-          <a href="https://linkedin.com/in/junwenleong" target="_blank">LinkedIn</a>
-          <a href="cv.pdf" class="link-cv">CV (PDF)</a>
-          <a href="mailto:leongjunwen@gmail.com" class="link-cta">Email</a>
-        </nav>
+    <div class="sidebar-creds">
+      <span>MS Statistics, Georgia Tech</span>
+      <span>BSc Data Science, NUS</span>
+      <span>Cybersec Engineer, CSA 4yr</span>
+    </div>
+
+    <nav class="sidebar-links">
+      <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank" rel="noopener noreferrer">arXiv</a>
+      <a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
+      <a href="https://github.com/junwenleong" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/junwenleong" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="cv.pdf" class="link-cv">CV (PDF)</a>
+      <a href="mailto:leongjunwen@gmail.com" class="link-cta">Email</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+    <!-- Hero verdict -->
+    <section class="hero-verdict" id="bluf">
+      <h2 class="verdict-title">Self-Assessment</h2>
+      <div class="verdict-grid">
+        <div class="verdict-row strong"><span class="vm">STRONG</span> Eval design, adversarial framing, statistical rigor</div>
+        <div class="verdict-row strong"><span class="vm">STRONG</span> Production AI deployment (2 systems, government)</div>
+        <div class="verdict-row moderate"><span class="vm">MODERATE</span> Mechanistic interpretability (1 paper, early)</div>
+        <div class="verdict-row thin"><span class="vm">THIN</span> Team leadership, long-horizon deployment</div>
+        <div class="verdict-row thin"><span class="vm">MISSING</span> Peer-reviewed publication (3 under review)</div>
       </div>
-      <aside class="hero-verdict">
-        <h2 class="verdict-title">Self-Assessment</h2>
-        <div class="verdict-row strong"><span class="verdict-marker">STRONG</span> Eval design, adversarial framing, statistical rigor, scale</div>
-        <div class="verdict-row strong"><span class="verdict-marker">STRONG</span> Production AI deployment (2 systems, government)</div>
-        <div class="verdict-row moderate"><span class="verdict-marker">MODERATE</span> Mechanistic interpretability (1 paper, early)</div>
-        <div class="verdict-row thin"><span class="verdict-marker">THIN</span> Team leadership, multi-year deployment outcomes</div>
-        <div class="verdict-row thin"><span class="verdict-marker">MISSING</span> Peer-reviewed publication (3 under review)</div>
-      </aside>
+    </section>
+
+    <!-- Fracture Table (signature centerpiece) -->
+    <section class="section" id="fracture">
+      <h2 class="section-title">Claim Stress Test <span class="section-sub">/ What Survives Adversarial Load</span></h2>
+      <div class="load-gauge-inline">
+        <span class="load-label">ADVERSARIAL LOAD</span>
+        <div class="load-bar"><div class="load-fill" id="load-fill"></div></div>
+        <span class="load-pct" id="load-pct">0%</span>
+      </div>
+      <table class="fracture-table" id="fracture-table">
+        <thead><tr><th>Claim</th><th>Status</th><th>Confidence</th></tr></thead>
+        <tbody>
+          <tr class="row-fracture"><td>Standard defenses hold against injection</td><td class="vc fracture">BROKEN</td><td>High (N=5,040)</td></tr>
+          <tr class="row-fracture"><td>Canaries resist joint optimization</td><td class="vc fracture">WEAKENED</td><td>Mod (55%, n=20)</td></tr>
+          <tr class="row-fracture"><td>Monitorability is intrinsic to classifiers</td><td class="vc fracture">FALSIFIED</td><td>High (r=0.21, n.s.)</td></tr>
+          <tr class="row-fracture"><td>Production systems prove Security-of-AI skill</td><td class="vc fracture">SCOPED</td><td>AI for Security only</td></tr>
+          <tr class="row-fracture"><td>Peer review validates findings</td><td class="vc fracture">PENDING</td><td>3 submitted, 0 accepted</td></tr>
+          <tr class="row-intact"><td>Canaries detect GCG via score disagreement</td><td class="vc intact">HOLDS</td><td>High (p &lt; 2.4e-16)</td></tr>
+          <tr class="row-intact"><td>Compliance is orthogonal to refusal</td><td class="vc intact">HOLDS</td><td>High (AUC 1.0, 4 families)</td></tr>
+          <tr class="row-intact"><td>6/7 defenses fail under compliance framing</td><td class="vc intact">HOLDS</td><td>High (pre-registered)</td></tr>
+        </tbody>
+      </table>
+      <p class="table-caption">Self-red-team: 5 claims weakened or falsified. 3 survive adversarial scrutiny.</p>
     </section>
 
     <!-- Papers -->
     <section class="section" id="papers">
-      <h2 class="section-title">Evidence <span class="section-sub">/ Published Findings</span></h2>
+      <h2 class="section-title">Evidence <span class="section-sub">/ Preprints Under Review</span></h2>
 
-      <!-- Paper 1 -->
       <article class="paper-card">
         <div class="paper-header">
           <span class="paper-badge jailbroken">JAILBROKEN</span>
           <span class="paper-id">arXiv:2605.08442</span>
         </div>
         <h3 class="paper-title">Defense Effectiveness Across Architectural Layers</h3>
-        <p class="paper-meta">Preprint, 2025. Solo author. Under review (NDSS 2027).</p>
-
-        <div class="eval-block">
-          <div class="eval-row claim">
-            <span class="eval-label">CLAIM</span>
-            <p>6/7 standard prompt-injection defenses fail under compliance-framed delayed-trigger attacks on stateful LLM agents.</p>
-          </div>
-          <div class="eval-row evidence">
-            <span class="eval-label">EVIDENCE</span>
-            <p>N=5,040 pre-registered factorial. 9 models, 7 defenses, 2 conditions, N=40 per cell. BCa bootstrap CIs, Holm-Bonferroni correction. 0 execution errors. 95% ASR on Gemini 2.5 Pro. Tripartite vendor architecture (Anthropic blocks injection; OpenAI blocks execution for GPT-5+; Google blocks execution for 2025+ models).</p>
-          </div>
-          <div class="eval-row refutation rt-content">
+        <p class="paper-meta">Preprint, 2026. Solo author. Under review (NDSS 2027).</p>
+        <div class="paper-claim">
+          <span class="eval-label">CLAIM</span>
+          <p>6/7 standard prompt-injection defenses fail under compliance-framed delayed-trigger attacks on stateful LLM agents.</p>
+        </div>
+        <div class="paper-metrics">
+          <span class="metric">N=5,040</span>
+          <span class="metric">95% ASR</span>
+          <span class="metric">9 models</span>
+          <span class="metric">0 errors</span>
+        </div>
+        <div class="paper-rt rt-content">
+          <div class="rt-row refutation">
             <span class="eval-label">REFUTATION</span>
-            <p>Single attack frame (SEC Rule 17a-4 compliance). Limited to tool-calling agents with persistent memory. Does not establish lower bound for adaptive attackers. Evaluated 9 open-source + 21 frontier models, not exhaustive.</p>
+            <p>Single attack frame (SEC Rule 17a-4). Limited to tool-calling agents with persistent memory. Does not establish lower bound for adaptive attackers.</p>
           </div>
-          <div class="eval-row residual rt-content">
+          <div class="rt-row residual">
             <span class="eval-label">RESIDUAL</span>
-            <p>Generalizability beyond compliance framing untested. Production RAG systems may have additional defenses not modeled. Pre-registration anchors methodology but not threat-model coverage.</p>
-          </div>
-          <div class="eval-row verdict">
-            <span class="eval-label">VERDICT</span>
-            <p>High confidence. Pre-registered, large-N, zero-error execution. Results generalize within the tested threat model.</p>
+            <p>Generalizability beyond compliance framing untested. Pre-registration anchors methodology but not threat-model coverage.</p>
           </div>
         </div>
-
         <div class="paper-links">
-          <a href="https://arxiv.org/abs/2605.08442" target="_blank">Paper</a>
-          <a href="https://junwenleong.github.io/adversarial-probe-suite/" target="_blank" class="explore-link">Explore 5,040-run results</a>
-          <a href="https://github.com/junwenleong/adversarial-probe-suite" target="_blank">Code</a>
+          <a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener noreferrer">Paper</a>
+          <a href="https://junwenleong.github.io/adversarial-probe-suite/" target="_blank" rel="noopener noreferrer" class="explore-link">Explore 5,040 runs</a>
+          <a href="https://github.com/junwenleong/adversarial-probe-suite" target="_blank" rel="noopener noreferrer">Code</a>
         </div>
       </article>
 
-      <!-- Paper 2 -->
       <article class="paper-card">
         <div class="paper-header">
           <span class="paper-badge effective">EFFECTIVE</span>
           <span class="paper-id">arXiv:2606.11949</span>
         </div>
         <h3 class="paper-title">Cheap Canaries: Detecting Targeted Evasion via Classifier Score Disagreement</h3>
-        <p class="paper-meta">Preprint, 2025. Solo author. Under review (SaTML 2026).</p>
-
-        <div class="eval-block">
-          <div class="eval-row claim">
-            <span class="eval-label">CLAIM</span>
-            <p>Un-targeted classifiers detect gradient-based evasion attacks via score disagreement. Geometric bound blocks divergence-minimization when canary is confident.</p>
-          </div>
-          <div class="eval-row evidence">
-            <span class="eval-label">EVIDENCE</span>
-            <p>76% GCG detection vs 12% random tokens (p &lt; 2.4x10^-16). Proposition 1 validated: blocked gap mean 0.2499, predicted 0.2500. 35 frontier models characterized as canaries. N=1000 FPR &lt; 1.5% (all 10 tested). Black-box robustness: 0/10 breached after 500 coordinate-ascent steps.</p>
-          </div>
-          <div class="eval-row refutation rt-content">
+        <p class="paper-meta">Preprint, 2026. Solo author. Under review (SaTML 2026).</p>
+        <div class="paper-claim">
+          <span class="eval-label">CLAIM</span>
+          <p>Un-targeted classifiers detect gradient-based evasion attacks via score disagreement. Geometric bound blocks divergence-minimization.</p>
+        </div>
+        <div class="paper-metrics">
+          <span class="metric">76% detect</span>
+          <span class="metric">p &lt; 2.4e-16</span>
+          <span class="metric">35 models</span>
+          <span class="metric">FPR &lt;1.5%</span>
+        </div>
+        <div class="paper-rt rt-content">
+          <div class="rt-row refutation">
             <span class="eval-label">REFUTATION</span>
-            <p>Joint GCG defeats within-family canaries 55% of the time (n=20). Cross-lingual degradation 15-25pp. Monitorability law falsified (r=0.97 was encoder/decoder confound). Scan martingale value is calibration-free FAR, not superior detection.</p>
+            <p>Joint GCG defeats within-family canaries 55% (n=20). Monitorability law falsified (r=0.97 was encoder/decoder confound). Cross-lingual degradation 15-25pp.</p>
           </div>
-          <div class="eval-row residual rt-content">
+          <div class="rt-row residual">
             <span class="eval-label">RESIDUAL</span>
-            <p>Defense assumes gradient-based attacker. Template attacks are handled by primary classifier alone (99% hold). Adaptive attacker with cross-family joint optimization remains exponentially penalized but not impossible.</p>
-          </div>
-          <div class="eval-row verdict">
-            <span class="eval-label">VERDICT</span>
-            <p>High confidence for bounded claim. Honest negative (monitorability) strengthens overall credibility. Geometric bound is the genuine theoretical contribution.</p>
+            <p>Defense assumes gradient-based attacker. Adaptive attacker with cross-family joint optimization remains exponentially penalized but not impossible.</p>
           </div>
         </div>
-
         <div class="paper-links">
-          <a href="https://arxiv.org/abs/2606.11949" target="_blank">Paper</a>
-          <a href="https://junwenleong.github.io/cheap-canaries/" target="_blank" class="explore-link">Explore detection data</a>
-          <a href="https://github.com/junwenleong/cheap-canaries" target="_blank">Code</a>
+          <a href="https://arxiv.org/abs/2606.11949" target="_blank" rel="noopener noreferrer">Paper</a>
+          <a href="https://junwenleong.github.io/cheap-canaries/" target="_blank" rel="noopener noreferrer" class="explore-link">Explore detection data</a>
+          <a href="https://github.com/junwenleong/cheap-canaries" target="_blank" rel="noopener noreferrer">Code</a>
         </div>
       </article>
 
-      <!-- Paper 3 -->
       <article class="paper-card">
         <div class="paper-header">
           <span class="paper-badge critical">CRITICAL</span>
           <span class="paper-id">arXiv:2606.30566</span>
         </div>
         <h3 class="paper-title">Authority Is Not a Keyword</h3>
-        <p class="paper-meta">Preprint, 2025. Solo author. Under review (USENIX Security 2027).</p>
-
-        <div class="eval-block">
-          <div class="eval-row claim">
-            <span class="eval-label">CLAIM</span>
-            <p>Compliance to injected instructions is mechanistically orthogonal to safety refusal. Linear probes achieve AUC 1.0 separability. Multi-layer steering causally suppresses compliance 100% to 0%.</p>
-          </div>
-          <div class="eval-row evidence">
-            <span class="eval-label">EVIDENCE</span>
-            <p>AUC 1.0 across 4 model families (Llama-70B, Qwen-32B, DeepSeek-32B, Gemma-27B). Compliance direction cosine with refusal direction: -0.025 (orthogonal). Cross-domain transfer: share/conceal AUC=1.0, allow/deny AUC=0.90. Perplexity uncorrelated (Spearman rho=-0.07). Behavioral analog confirmed on 6 frontier APIs.</p>
-          </div>
-          <div class="eval-row refutation rt-content">
+        <p class="paper-meta">Preprint, 2026. Solo author. Under review (USENIX Security 2027).</p>
+        <div class="paper-claim">
+          <span class="eval-label">CLAIM</span>
+          <p>Compliance to injected instructions is mechanistically orthogonal to safety refusal. Linear probes achieve AUC 1.0. Steering causally suppresses compliance 100% to 0%.</p>
+        </div>
+        <div class="paper-metrics">
+          <span class="metric">AUC 1.0</span>
+          <span class="metric">cos = -0.025</span>
+          <span class="metric">4 families</span>
+          <span class="metric">100%&rarr;0%</span>
+        </div>
+        <div class="paper-rt rt-content">
+          <div class="rt-row refutation">
             <span class="eval-label">REFUTATION</span>
-            <p>Probe trained on specific compliance domains may not generalize to novel instruction types. Causal intervention uses activation addition (linear assumption). Cross-domain AUC drops to 0.90 for allow/deny (not perfect). Only 4 open-weight model families tested mechanistically.</p>
+            <p>Probe trained on specific compliance domains may not generalize. Causal intervention uses linear assumption. Cross-domain AUC drops to 0.90 for allow/deny.</p>
           </div>
-          <div class="eval-row residual rt-content">
+          <div class="rt-row residual">
             <span class="eval-label">RESIDUAL</span>
-            <p>The orthogonality claim needs validation on larger proprietary models (only behavioral analog available). Steep sigmoid transition over ~1 alpha unit suggests fragility of the steering intervention at boundary conditions.</p>
-          </div>
-          <div class="eval-row verdict">
-            <span class="eval-label">VERDICT</span>
-            <p>High confidence on separability. The orthogonality finding is the headline: safety training provides no protection against compliance attacks. Architectural intervention required.</p>
+            <p>Orthogonality needs validation on larger proprietary models (only behavioral analog available). Steep sigmoid at boundary conditions.</p>
           </div>
         </div>
-
         <div class="paper-links">
-          <a href="https://arxiv.org/abs/2606.30566" target="_blank">Paper</a>
-          <a href="https://github.com/junwenleong/authority-is-not-a-keyword" target="_blank">Code</a>
+          <a href="https://arxiv.org/abs/2606.30566" target="_blank" rel="noopener noreferrer">Paper</a>
+          <a href="https://github.com/junwenleong/authority-is-not-a-keyword" target="_blank" rel="noopener noreferrer">Code</a>
         </div>
       </article>
     </section>
@@ -208,23 +232,11 @@
           <h3>Threat Risk Assessment Platform</h3>
           <span class="system-status">PRODUCTION</span>
         </div>
-        <div class="eval-block">
-          <div class="eval-row claim">
-            <span class="eval-label">CLAIM</span>
-            <p>Can ship and maintain production AI systems in regulated government environments.</p>
-          </div>
-          <div class="eval-row evidence">
-            <span class="eval-label">EVIDENCE</span>
-            <p>260+ releases. Solo-developed full stack. EKS, FastAPI, Bedrock, DynamoDB, Terraform. Multi-pod job store with optimistic locking. Circuit breaker + rate limiting. Multi-layer prompt injection defense. Fail-closed auth. OTel distributed tracing. Tag-last CI/CD (zero burned tags).</p>
-          </div>
-          <div class="eval-row refutation rt-content">
-            <span class="eval-label">SCOPE LIMIT</span>
-            <p>AI for Security (using AI to do security tasks), not Security of AI. Single-user ownership, not team-scale. Government context may not transfer to startup velocity expectations.</p>
-          </div>
-        </div>
+        <p class="system-desc">Threat risk assessment for Critical Information Infrastructure operators. 260+ releases. Solo-developed full stack.</p>
         <div class="system-stack">
           <span>EKS</span><span>FastAPI</span><span>Bedrock</span><span>DynamoDB</span><span>Terraform</span><span>GitOps</span>
         </div>
+        <p class="system-scope rt-content"><span class="eval-label">SCOPE LIMIT</span> AI for Security, not Security of AI. Single-user ownership. Government context.</p>
       </article>
 
       <article class="system-card">
@@ -232,125 +244,98 @@
           <h3>Policy Research RAG System</h3>
           <span class="system-status">PRODUCTION</span>
         </div>
-        <div class="eval-block">
-          <div class="eval-row claim">
-            <span class="eval-label">CLAIM</span>
-            <p>Understands RAG deployment stack end-to-end: embeddings, vector stores, hybrid retrieval, ingestion pipelines.</p>
-          </div>
-          <div class="eval-row evidence">
-            <span class="eval-label">EVIDENCE</span>
-            <p>BM25 + vector hybrid retrieval. Per-applet vector isolation. Environment-aware inference routing (local vs Bedrock). Stateless containerized architecture on App Runner. Cognito OIDC. TTL-based audit trail.</p>
-          </div>
-          <div class="eval-row refutation rt-content">
-            <span class="eval-label">SCOPE LIMIT</span>
-            <p>Internal tool, not internet-scale. No public traffic or adversarial user base. Retrieval quality not independently benchmarked. Second system, not the primary portfolio credential.</p>
-          </div>
-        </div>
+        <p class="system-desc">RAG for policy and intelligence research. BM25 + vector hybrid retrieval. Per-applet isolation. Environment-aware inference routing.</p>
         <div class="system-stack">
           <span>App Runner</span><span>FastAPI</span><span>React/TS</span><span>S3 Vectors</span><span>Cognito</span><span>Terraform</span>
         </div>
+        <p class="system-scope rt-content"><span class="eval-label">SCOPE LIMIT</span> Internal tool. No public traffic. Retrieval quality not benchmarked independently.</p>
       </article>
-    </section>
-
-    <!-- Credentials -->
-    <section class="section" id="credentials">
-      <h2 class="section-title">Credentials <span class="section-sub">/ Priors, Not Evidence</span></h2>
-      <p class="section-note rt-content">Credentials establish priors. The evidence sections above are what matters. These provide context for how the work was produced.</p>
-      <div class="cred-grid">
-        <div class="cred">
-          <span class="cred-what">MS Statistics</span>
-          <span class="cred-where">Georgia Institute of Technology, 2023</span>
-        </div>
-        <div class="cred">
-          <span class="cred-what">BSc Data Science and Analytics</span>
-          <span class="cred-where">National University of Singapore, 2022</span>
-        </div>
-        <div class="cred">
-          <span class="cred-what">Cybersecurity Engineer</span>
-          <span class="cred-where">Cyber Security Agency of Singapore, 4 years</span>
-        </div>
-        <div class="cred">
-          <span class="cred-what">Compute</span>
-          <span class="cred-where">Mac Studio M3 Ultra 96GB. Runs 70B models locally. No institutional compute dependency.</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Limitations -->
-    <section class="section" id="limitations">
-      <h2 class="section-title">Limitations <span class="section-sub">/ What This Portfolio Does Not Prove</span></h2>
-      <div class="limits-grid">
-        <div class="limit">
-          <span class="limit-label">UNPROVEN</span>
-          <p>Ability to lead or manage a research team. All work is solo-authored.</p>
-        </div>
-        <div class="limit">
-          <span class="limit-label">UNPROVEN</span>
-          <p>Long-horizon deployment outcomes. Production systems are &lt;2 years old.</p>
-        </div>
-        <div class="limit">
-          <span class="limit-label">UNPROVEN</span>
-          <p>Peer review acceptance. Three papers submitted, none yet accepted.</p>
-        </div>
-        <div class="limit">
-          <span class="limit-label">ACKNOWLEDGED</span>
-          <p>Research is evaluation-heavy. No novel algorithm or training method. The edge is rigorous measurement, not new architectures.</p>
-        </div>
-        <div class="limit">
-          <span class="limit-label">ACKNOWLEDGED</span>
-          <p>Production systems are AI for Security (using AI for security tasks), not Security of AI. They demonstrate shipping ability, not research direction.</p>
-        </div>
-      </div>
     </section>
 
     <!-- Method -->
     <section class="section" id="method">
-      <h2 class="section-title">Method <span class="section-sub">/ How the Work Gets Done</span></h2>
+      <h2 class="section-title">Method</h2>
       <p class="method-text">Build infrastructure. Instrument everything. Run at scale. Let the data surface what is interesting. Every finding above was discovered, not planned.</p>
-      <p class="method-text">Pre-register hypotheses before execution. Report honest negatives. Use bootstrap CIs, not point estimates. Correct for multiple comparisons. Publish code alongside claims. Zero execution errors at 28k+ runs is an engineering decision, not luck.</p>
-      <p class="method-text">Seeking AI Safety, Adversarial ML, or Red Team roles at frontier labs. If you are building the team that keeps these systems honest, <a href="mailto:leongjunwen@gmail.com">let's talk</a>.</p>
+      <p class="method-text">Pre-register hypotheses. Report honest negatives. Bootstrap CIs, not point estimates. Correct for multiple comparisons. Publish code alongside claims.</p>
+      <p class="method-cta">If you are building the team that keeps frontier systems honest, <a href="mailto:leongjunwen@gmail.com">let's talk</a>.</p>
     </section>
 
     <!-- Footer -->
-    <footer class="footer" id="contact">
-      <div class="footer-links">
-        <a href="mailto:leongjunwen@gmail.com">leongjunwen@gmail.com</a>
-        <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank">arXiv</a>
-        <a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank">Scholar</a>
-        <a href="https://github.com/junwenleong" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/junwenleong" target="_blank">LinkedIn</a>
-        <a href="cv.pdf">CV (PDF)</a>
-      </div>
-      <p class="footer-note">This page is a static self-audit. No live telemetry, no fake metrics, no content gating. Toggle RED-TEAM to see honest limitations inline.</p>
+    <footer class="footer">
+      <p class="footer-note">This page is a self-audit. Toggle RED-TEAM to see honest limitations. Privacy-preserving analytics only (GoatCounter, no cookies).</p>
     </footer>
   </main>
 
   <script>
+    // ─── Sidebar gauge ───
+    const gaugeFill = document.getElementById('gauge-fill');
+    const gaugeReadout = document.getElementById('gauge-readout');
+    function updateGauge() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = Math.max(0, Math.min(1, window.scrollY / max));
+      gaugeFill.style.height = (p * 100) + '%';
+      if (p > 0.7) { gaugeReadout.textContent = 'critical'; gaugeFill.style.background = 'var(--refutation)'; }
+      else if (p > 0.4) { gaugeReadout.textContent = 'adversarial'; gaugeFill.style.background = '#FF8C42'; }
+      else if (p > 0.1) { gaugeReadout.textContent = 'structural'; gaugeFill.style.background = 'var(--evidence)'; }
+      else { gaugeReadout.textContent = 'surface'; gaugeFill.style.background = 'var(--evidence)'; }
+    }
+    window.addEventListener('scroll', () => requestAnimationFrame(updateGauge), { passive: true });
+
     // ─── Red-Team Toggle ───
     const toggle = document.getElementById('mode-toggle');
     const body = document.body;
-    const claimsLabel = toggle.querySelector('.toggle-claims');
-    const rtLabel = toggle.querySelector('.toggle-redteam');
-
     toggle.addEventListener('click', () => {
       const isRT = body.classList.toggle('redteam-mode');
       toggle.setAttribute('aria-pressed', isRT);
-      claimsLabel.classList.toggle('active', !isRT);
-      rtLabel.classList.toggle('active', isRT);
+      toggle.querySelector('.toggle-claims').classList.toggle('active', !isRT);
+      toggle.querySelector('.toggle-redteam').classList.toggle('active', isRT);
     });
 
-    // ─── Smooth scroll for anchor links ───
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-      });
-    });
+    // ─── Fracture Table Animation ───
+    const loadFill = document.getElementById('load-fill');
+    const loadPct = document.getElementById('load-pct');
+    const fractureRows = document.querySelectorAll('.row-fracture');
+    const intactRows = document.querySelectorAll('.row-intact');
+    const fractureTable = document.getElementById('fracture-table');
+    let tableAnimated = false;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const thresholds = [0.15, 0.25, 0.38, 0.52, 0.68];
 
-    // ─── Console easter eggs ───
-    console.log('%c SELF-RED-TEAM EVALUATION ', 'background: #EF4444; color: #fff; font-family: monospace; font-size: 12px; padding: 2px 6px;');
-    console.log('%cThis portfolio stress-tests its own claims.', 'color: #9ca3af; font-family: monospace;');
-    console.log('%cToggle RED-TEAM mode to see honest limitations.', 'color: #9ca3af; font-family: monospace;');
+    function animateTable() {
+      if (tableAnimated || reducedMotion) return;
+      tableAnimated = true;
+      const duration = 2000;
+      const start = performance.now();
+      const broken = new Set();
+      function tick(now) {
+        const load = Math.min(1, (now - start) / duration);
+        loadFill.style.width = (load * 100) + '%';
+        loadPct.textContent = Math.round(load * 100) + '%';
+        if (load > 0.7) loadFill.style.background = 'var(--refutation)';
+        else if (load > 0.4) loadFill.style.background = '#FF8C42';
+        fractureRows.forEach((row, i) => {
+          if (load >= thresholds[i] && !broken.has(i)) { broken.add(i); row.classList.add('cracked'); }
+        });
+        if (load >= 0.9) intactRows.forEach(r => r.classList.add('held'));
+        if (load < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    const tableObs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) { setTimeout(animateTable, 200); tableObs.unobserve(fractureTable); }
+    }, { threshold: 0.3 });
+    tableObs.observe(fractureTable);
+
+    if (reducedMotion) {
+      fractureRows.forEach(r => r.classList.add('cracked'));
+      intactRows.forEach(r => r.classList.add('held'));
+      loadFill.style.width = '100%'; loadPct.textContent = '100%';
+    }
+
+    // ─── Console ───
+    console.log('%c SELF-RED-TEAM ', 'background: #EF4444; color: #fff; font-family: monospace; padding: 2px 6px;');
+    console.log('%cThis portfolio stress-tests its own claims. Toggle RED-TEAM to see limitations.', 'color: #9ca3af; font-family: monospace;');
     console.log('%cleongjunwen@gmail.com', 'color: #22C55E; font-family: monospace;');
   </script>
 </body>
