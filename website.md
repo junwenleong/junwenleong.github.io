@@ -118,3 +118,8 @@ cd /Users/junwenleong/projects/website
 # edit files
 git add -A && git commit -S -m "description" && git push
 ```
+
+## TODO
+
+- [ ] Upload `cv.pdf` to the website directory (linked from sidebar as "CV (PDF)")
+- [ ] Sign up at https://www.goatcounter.com/ (free) to activate analytics. Site code: `junwenleong`
