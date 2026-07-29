@@ -698,3 +698,99 @@ a:focus-visible { outline: 2px solid var(--intact); outline-offset: 2px; }
   .paper, .system { border: 1px solid CanvasText; }
   .sidebar { border-right: 1px solid CanvasText; }
 }
+
+/* ============================================
+   Print Stylesheet (recruiters save to PDF)
+   ============================================ */
+
+@media print {
+  body {
+    display: block;
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .sidebar {
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+    page-break-after: avoid;
+  }
+
+  .sidebar-gauge { display: none; }
+  .sidebar-name { color: #111; }
+  .sidebar-role { color: #333; }
+  .sidebar-thesis { color: #333; }
+  .sidebar-seeking { color: #111; font-weight: 600; }
+
+  .content {
+    padding: 1rem;
+    max-width: none;
+  }
+
+  .section { margin-bottom: 1.5rem; page-break-inside: avoid; }
+
+  .paper, .system {
+    border: 1px solid #ccc;
+    background: #fff;
+    page-break-inside: avoid;
+  }
+
+  .paper-badge { border: 1px solid #666; color: #333; }
+  .verdict-cell.fracture { color: #c00; }
+  .verdict-cell.intact { color: #070; }
+  .system-status { color: #070; }
+
+  .row-fracture.cracked::after { display: none; }
+  .load-gauge-inline { display: none; }
+  .terminal-overlay { display: none; }
+  .footer-terminal { display: none; }
+
+  a { color: #111; text-decoration: underline; }
+  a::after { content: " (" attr(href) ")"; font-size: 8pt; color: #666; }
+  a[href^="mailto:"]::after { content: ""; }
+  a[href^="#"]::after { content: ""; }
+}
+
+/* ============================================
+   New element styles
+   ============================================ */
+
+.plain-label {
+  font-weight: 400;
+  color: var(--text-dim);
+  font-size: 0.85em;
+}
+
+.sidebar-seeking {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--intact);
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.link-cv {
+  border: 1px dashed var(--border-light);
+  padding: 0.15rem 0.4rem;
+}
+
+.paper-meta-line {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  margin-bottom: 0.3rem;
+}
+
+.paper-relevance {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--border-light);
+}
