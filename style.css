@@ -573,6 +573,160 @@ footer p {
 .footer-status { color: var(--green); }
 
 /* ============================================
+   Operator Clearance Strip
+   ============================================ */
+
+.clearance {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.clearance-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.clearance-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.clearance-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.clearance-org {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+.clearance-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+}
+
+/* ============================================
+   Field Deployments
+   ============================================ */
+
+.deployments {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.deployments h2 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-subtitle {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  margin-left: 0.5rem;
+}
+
+.deploy-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.2s;
+}
+
+.deploy-card:hover {
+  border-left-color: var(--accent);
+}
+
+.deploy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.deploy-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.08em;
+}
+
+.deploy-status {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+}
+
+.deploy-status.online {
+  color: var(--green);
+}
+
+.deploy-mission {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.deploy-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.deploy-stack span {
+  font-size: 0.6rem;
+  padding: 0.2rem 0.5rem;
+  background: rgba(96, 165, 250, 0.06);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: 2px;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+.deploy-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.deploy-highlights span {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.deploy-highlights span::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+}
+
+/* ============================================
    Containment Breach (Konami Code)
    ============================================ */
 
@@ -702,9 +856,13 @@ body.breach-active {
   .hero { padding: 3rem 0 2rem; }
   .hero h1 { font-size: 2rem; }
   .metrics .container { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .clearance-strip { gap: 1rem; }
+  .clearance-divider { display: none; }
+  .clearance-item { flex-basis: 40%; }
   .card { padding: 1.5rem; }
   .finding { flex-direction: column; gap: 0.25rem; }
   .finding-number { min-width: unset; }
+  .deploy-card { padding: 1.25rem 1.5rem; }
   .hud { display: none; }
   .boot-content { font-size: 0.75rem; }
 }
