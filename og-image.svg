@@ -1,0 +1,10 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0A0C10"/>
+  <text x="80" y="200" font-family="monospace" font-size="18" fill="#35C9C0" letter-spacing="2">SECURITY OF AI RESEARCHER</text>
+  <text x="80" y="270" font-family="system-ui, sans-serif" font-size="56" fill="#E8E6E1" font-weight="700">Jun Wen Leong</text>
+  <text x="80" y="340" font-family="system-ui, sans-serif" font-size="24" fill="#9CA3AF">Adversarial evaluation. Jailbreak robustness. Red-teaming.</text>
+  <text x="80" y="420" font-family="monospace" font-size="20" fill="#FF4D2E">6/7 defenses fracture under compliance-framed load.</text>
+  <text x="80" y="460" font-family="monospace" font-size="20" fill="#35C9C0">Memory Sandbox holds.</text>
+  <text x="80" y="540" font-family="monospace" font-size="16" fill="#5C6370">28k+ runs | 3 papers | 35+ models | 0 errors</text>
+  <line x1="80" y1="380" x2="1120" y2="380" stroke="#1C2030" stroke-width="1"/>
+</svg>
