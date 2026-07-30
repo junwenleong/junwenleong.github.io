@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jun Wen Leong | Security of AI Researcher</title>
-  <meta name="description" content="Adversarial evaluation, jailbreak robustness, red-teaming. 3 papers, 28k+ runs, 35+ models, 0 execution errors.">
-  <meta property="og:title" content="Jun Wen Leong | Security of AI Researcher">
-  <meta property="og:description" content="Self-red-teamed portfolio. Adversarial evaluation and jailbreak robustness research with honest confidence levels.">
+  <title>Kill Ledger — 3 alive / 5 dead</title>
+  <meta name="description" content="I killed 14 of my own ideas so far. 28,000 runs, one person, 0 execution errors. The survivors are below.">
+  <meta property="og:title" content="Kill Ledger — Jun Wen Leong">
+  <meta property="og:description" content="28,000 experiments. 14 dead ideas. Full autopsy inside.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://junwenleong.github.io/site/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jun Wen Leong | Security of AI Researcher">
+  <meta name="twitter:title" content="Kill Ledger — Jun Wen Leong">
   <meta name="twitter:image" content="https://junwenleong.github.io/site/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;420;500;550;600;650;700&family=JetBrains+Mono:wght@300;400;500;550;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script data-goatcounter="https://junwenleong.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <script type="application/ld+json">
@@ -34,188 +34,194 @@
   </script>
 </head>
 <body>
-  <!-- Sticky Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-identity">
-      <p class="sidebar-role">Security of AI Researcher</p>
-      <h1 class="sidebar-name">Jun Wen Leong</h1>
-      <p class="sidebar-thesis">I break my own claims before you do.</p>
-      <p class="sidebar-seeking">Seeking: AI Safety / Adversarial ML / Red Team</p>
-    </div>
 
-    <div class="sidebar-stats">
-      <div class="stat"><span class="stat-val">28k+</span><span class="stat-label">runs</span></div>
-      <div class="stat"><span class="stat-val">3</span><span class="stat-label">papers</span></div>
-      <div class="stat"><span class="stat-val">35+</span><span class="stat-label">models</span></div>
-      <div class="stat"><span class="stat-val">0</span><span class="stat-label">errors</span></div>
-    </div>
+  <!-- Kill Ledger Strip (fixed, 24px) -->
+  <header class="kill-ledger-strip" role="banner" aria-label="Claim status summary">
+    <span class="kl-stat kl-alive">HELD: <span class="kl-count">3</span></span>
+    <span class="kl-stat kl-dead">KILLED: <span class="kl-count">5</span></span>
+    <span class="kl-stat kl-attack">UNDER ATTACK: <span class="kl-count">1</span></span>
+  </header>
 
-    <div class="sidebar-gauge">
-      <span class="gauge-label">PROBE DEPTH</span>
-      <div class="gauge-track"><div class="gauge-fill" id="gauge-fill"></div></div>
-      <span class="gauge-readout" id="gauge-readout">surface</span>
-    </div>
+  <main class="document">
 
-    <!-- Mode Toggle -->
-    <button id="mode-toggle" class="mode-toggle" aria-pressed="false">
-      <span class="toggle-label toggle-claims active">CLAIMS</span>
-      <span class="toggle-divider">/</span>
-      <span class="toggle-label toggle-redteam">RED-TEAM</span>
-    </button>
-
-    <div class="sidebar-creds">
-      <span>MS Statistics, Georgia Tech</span>
-      <span>BSc Data Science, NUS</span>
-      <span>Cybersec Engineer, CSA 4yr</span>
-    </div>
-
-    <nav class="sidebar-links">
-      <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank" rel="noopener noreferrer">arXiv</a>
-      <a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
-      <a href="https://github.com/junwenleong" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://linkedin.com/in/junwenleong" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="cv.pdf" class="link-cv">CV (PDF)</a>
-      <a href="mailto:leongjunwen@gmail.com" class="link-cta">Email</a>
-    </nav>
-  </aside>
-
-  <!-- Main Content -->
-  <main class="content">
-    <!-- Hero verdict -->
-    <section class="hero-verdict" id="bluf">
-      <h2 class="verdict-title">Self-Assessment</h2>
-      <div class="verdict-grid">
-        <div class="verdict-row strong"><span class="vm">STRONG</span> Eval design, adversarial framing, statistical rigor</div>
-        <div class="verdict-row strong"><span class="vm">STRONG</span> Production AI deployment (2 systems, government)</div>
-        <div class="verdict-row moderate"><span class="vm">MODERATE</span> Mechanistic interpretability (1 paper, early)</div>
-        <div class="verdict-row thin"><span class="vm">THIN</span> Team leadership, long-horizon deployment</div>
-        <div class="verdict-row thin"><span class="vm">MISSING</span> Peer-reviewed publication (3 under review)</div>
+    <!-- §01 Identity -->
+    <section class="section" id="identity" aria-labelledby="identity-heading">
+      <span class="gutter-id" aria-hidden="true">§01</span>
+      <div class="identity">
+        <h1 class="identity-name" id="identity-heading">Jun Wen Leong</h1>
+        <p class="identity-role">Security of AI Researcher</p>
+        <p class="identity-thesis">I killed 14 of my own ideas so far. The survivors are below.</p>
+        <p class="identity-about">I run experiments on my own claims until they break or don't. 28,000 runs, one person, 0 execution errors — a number I'm proud of in a way that probably warrants discussion. Everything dead stays visible. This is either rigor or a coping mechanism. The data doesn't distinguish.</p>
+        <div class="identity-creds">
+          <span>MS Statistics, Georgia Tech</span>
+          <span>BSc Data Science, NUS</span>
+          <span>Cybersecurity Engineer, CSA (4 yr)</span>
+        </div>
+        <div class="identity-stats">
+          <div class="id-stat"><span class="id-stat-val">28k+</span><span class="id-stat-label">RUNS</span></div>
+          <div class="id-stat"><span class="id-stat-val">3</span><span class="id-stat-label">PAPERS</span></div>
+          <div class="id-stat"><span class="id-stat-val">35+</span><span class="id-stat-label">MODELS</span></div>
+          <div class="id-stat"><span class="id-stat-val">0</span><span class="id-stat-label">ERRORS</span></div>
+        </div>
       </div>
     </section>
 
-    <!-- Fracture Table (signature centerpiece) -->
-    <section class="section" id="fracture">
-      <h2 class="section-title">Claim Stress Test <span class="section-sub">/ What Survives Adversarial Load</span></h2>
-      <div class="load-gauge-inline">
-        <span class="load-label">ADVERSARIAL LOAD</span>
-        <div class="load-bar"><div class="load-fill" id="load-fill"></div></div>
-        <span class="load-pct" id="load-pct">0%</span>
-      </div>
-      <table class="fracture-table" id="fracture-table">
-        <thead><tr><th>Claim</th><th>Status</th><th>Confidence</th></tr></thead>
+    <!-- §02 Claim Registry -->
+    <section class="section" id="claims" aria-labelledby="claims-heading">
+      <span class="gutter-id" aria-hidden="true">§02</span>
+      <h2 class="section-title" id="claims-heading">Claim Registry</h2>
+
+      <table class="claim-registry">
+        <thead>
+          <tr>
+            <th scope="col">Claim</th>
+            <th scope="col">Status</th>
+            <th scope="col">Confidence</th>
+            <th scope="col">Verified</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr class="row-fracture"><td>Standard defenses hold against injection</td><td class="vc fracture">BROKEN</td><td>High (N=5,040)</td></tr>
-          <tr class="row-fracture"><td>Canaries resist joint optimization</td><td class="vc fracture">WEAKENED</td><td>Mod (55%, n=20)</td></tr>
-          <tr class="row-fracture"><td>Monitorability is intrinsic to classifiers</td><td class="vc fracture">FALSIFIED</td><td>High (r=0.21, n.s.)</td></tr>
-          <tr class="row-fracture"><td>Production systems prove Security-of-AI skill</td><td class="vc fracture">SCOPED</td><td>AI for Security only</td></tr>
-          <tr class="row-fracture"><td>Peer review validates findings</td><td class="vc fracture">PENDING</td><td>3 submitted, 0 accepted</td></tr>
-          <tr class="row-intact"><td>Canaries detect GCG via score disagreement</td><td class="vc intact">HOLDS</td><td>High (p &lt; 2.4e-16)</td></tr>
-          <tr class="row-intact"><td>Compliance is orthogonal to refusal</td><td class="vc intact">HOLDS</td><td>High (AUC 1.0, 4 families)</td></tr>
-          <tr class="row-intact"><td>6/7 defenses fail under compliance framing</td><td class="vc intact">HOLDS</td><td>High (pre-registered)</td></tr>
+          <!-- DEAD CLAIMS -->
+          <tr class="claim-dead" data-verified="2026-05-14">
+            <td><span class="claim-text">Standard defenses hold against injection</span><span class="claim-cause">Cause: 95% ASR under compliance framing, N=5,040</span></td>
+            <td><span class="claim-status-dead">BROKEN</span></td>
+            <td class="claim-confidence">High (N=5,040)</td>
+            <td class="verified-date"></td>
+          </tr>
+          <tr class="claim-dead" data-verified="2026-06-19">
+            <td><span class="claim-text">Canaries resist joint optimization</span><span class="claim-cause">Cause: 55% defeat rate within-family, n=20</span></td>
+            <td><span class="claim-status-dead">WEAKENED</span></td>
+            <td class="claim-confidence">Mod (55%, n=20)</td>
+            <td class="verified-date"></td>
+          </tr>
+          <tr class="claim-dead" data-verified="2026-06-19">
+            <td><span class="claim-text">Monitorability is intrinsic to classifiers</span><span class="claim-cause">Cause: r=0.97 was encoder/decoder confound, not intrinsic property</span></td>
+            <td><span class="claim-status-dead">FALSIFIED</span></td>
+            <td class="claim-confidence">High (r=0.21, n.s.)</td>
+            <td class="verified-date"></td>
+          </tr>
+          <tr class="claim-dead" data-verified="2026-07-10">
+            <td><span class="claim-text">Production systems prove Security-of-AI skill</span><span class="claim-cause">Cause: scoped to AI-for-Security only, single-user ownership</span></td>
+            <td><span class="claim-status-dead">SCOPED</span></td>
+            <td class="claim-confidence">AI for Security only</td>
+            <td class="verified-date"></td>
+          </tr>
+          <tr class="claim-dead" data-verified="2026-07-28">
+            <td><span class="claim-text">Peer review validates findings</span><span class="claim-cause">Cause: 3 submitted, 0 accepted. Pending is not validated.</span></td>
+            <td><span class="claim-status-dead">PENDING</span></td>
+            <td class="claim-confidence">3 submitted, 0 accepted</td>
+            <td class="verified-date"></td>
+          </tr>
+          <!-- ALIVE CLAIMS -->
+          <tr class="claim-alive" data-verified="2026-06-19">
+            <td><span class="claim-text">Canaries detect GCG via score disagreement</span></td>
+            <td><span class="claim-status">HOLDS</span></td>
+            <td class="claim-confidence">p &lt; 2.4e-16</td>
+            <td class="verified-date"></td>
+          </tr>
+          <tr class="claim-alive" data-verified="2026-07-01">
+            <td><span class="claim-text">Compliance is orthogonal to refusal</span></td>
+            <td><span class="claim-status">HOLDS</span></td>
+            <td class="claim-confidence">AUC 1.0, 4 families</td>
+            <td class="verified-date"></td>
+          </tr>
+          <tr class="claim-alive" data-verified="2026-05-14">
+            <td><span class="claim-text">6/7 defenses fail under compliance framing</span></td>
+            <td><span class="claim-status">HOLDS</span></td>
+            <td class="claim-confidence">Pre-registered</td>
+            <td class="verified-date"></td>
+          </tr>
+          <!-- UNDER ATTACK -->
+          <tr class="claim-attack" data-verified="2026-07-28">
+            <td><span class="claim-text">Compliance direction is stable across context lengths</span></td>
+            <td><span class="claim-status">UNDER ATTACK</span></td>
+            <td class="claim-confidence">AUC 0.82 at 16k on Llama</td>
+            <td class="verified-date"></td>
+          </tr>
         </tbody>
       </table>
-      <p class="table-caption">Self-red-team: 5 claims weakened or falsified. 3 survive adversarial scrutiny.</p>
+
+      <!-- Epistemic Changelog -->
+      <div class="changelog">
+        <h3 class="changelog-title">Epistemic Changelog</h3>
+        <ul class="changelog-list">
+          <li><span class="cl-date">2026-06-19</span> <span class="cl-transition cl-dead">ALIVE → FALSIFIED</span> Monitorability law (r=0.97 was encoder/decoder confound, not intrinsic property)</li>
+          <li><span class="cl-date">2026-06-19</span> <span class="cl-transition cl-weakened">ALIVE → WEAKENED</span> Canary joint-optimization resistance (55% defeat rate within-family, n=20)</li>
+          <li><span class="cl-date">2026-07-01</span> <span class="cl-transition cl-strengthened">HOLDS → HOLDS+</span> Compliance orthogonality confirmed across 4th model family (Command R+)</li>
+        </ul>
+      </div>
     </section>
 
-    <!-- Papers -->
-    <section class="section" id="papers">
-      <h2 class="section-title">Evidence <span class="section-sub">/ Preprints Under Review</span></h2>
+    <!-- §03 Evidence / Papers -->
+    <section class="section" id="evidence" aria-labelledby="evidence-heading">
+      <span class="gutter-id" aria-hidden="true">§03</span>
+      <h2 class="section-title" id="evidence-heading">Evidence</h2>
 
-      <article class="paper-card">
+      <!-- Paper 1 -->
+      <article class="paper">
         <div class="paper-header">
-          <span class="paper-badge jailbroken">JAILBROKEN</span>
           <span class="paper-id">arXiv:2605.08442</span>
+          <span class="paper-status paper-status-jailbroken">JAILBROKEN</span>
         </div>
         <h3 class="paper-title">Defense Effectiveness Across Architectural Layers</h3>
         <p class="paper-meta">Preprint, 2026. Solo author. Under review (NDSS 2027).</p>
-        <div class="paper-claim">
-          <span class="eval-label">CLAIM</span>
-          <p>6/7 standard prompt-injection defenses fail under compliance-framed delayed-trigger attacks on stateful LLM agents.</p>
-        </div>
+        <p class="paper-claim">6/7 <s class="struck">standard</s> prompt-injection defenses fail under compliance-framed delayed-trigger attacks on stateful LLM agents.</p>
         <div class="paper-metrics">
-          <span class="metric">N=5,040</span>
-          <span class="metric">95% ASR</span>
-          <span class="metric">9 models</span>
-          <span class="metric">0 errors</span>
+          <span>N=5,040</span>
+          <span>95% ASR</span>
+          <span>9 models</span>
+          <span>0 errors</span>
         </div>
-        <div class="paper-rt rt-content">
-          <div class="rt-row refutation">
-            <span class="eval-label">REFUTATION</span>
-            <p>Single attack frame (SEC Rule 17a-4). Limited to tool-calling agents with persistent memory. Does not establish lower bound for adaptive attackers.</p>
-          </div>
-          <div class="rt-row residual">
-            <span class="eval-label">RESIDUAL</span>
-            <p>Generalizability beyond compliance framing untested. Pre-registration anchors methodology but not threat-model coverage.</p>
-          </div>
-        </div>
+        <p class="caveat"><span class="caveat-label">REFUTATION</span> Single attack frame (SEC Rule 17a-4). Limited to tool-calling agents with persistent memory. Does not establish lower bound for adaptive attackers.</p>
+        <p class="caveat"><span class="caveat-label caveat-label-residual">RESIDUAL</span> Generalizability beyond compliance framing untested. Pre-registration anchors methodology but not threat-model coverage.</p>
         <div class="paper-links">
           <a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener noreferrer">Paper</a>
-          <a href="https://junwenleong.github.io/adversarial-probe-suite/" target="_blank" rel="noopener noreferrer" class="explore-link">Explore 5,040 runs</a>
+          <a href="https://junwenleong.github.io/adversarial-probe-suite/" target="_blank" rel="noopener noreferrer">Explore 5,040 runs</a>
           <a href="https://github.com/junwenleong/adversarial-probe-suite" target="_blank" rel="noopener noreferrer">Code</a>
         </div>
       </article>
 
-      <article class="paper-card">
+      <!-- Paper 2 -->
+      <article class="paper">
         <div class="paper-header">
-          <span class="paper-badge effective">EFFECTIVE</span>
           <span class="paper-id">arXiv:2606.11949</span>
+          <span class="paper-status paper-status-effective">EFFECTIVE</span>
         </div>
         <h3 class="paper-title">Cheap Canaries: Detecting Targeted Evasion via Classifier Score Disagreement</h3>
         <p class="paper-meta">Preprint, 2026. Solo author. Under review (SaTML 2026).</p>
-        <div class="paper-claim">
-          <span class="eval-label">CLAIM</span>
-          <p>Un-targeted classifiers detect gradient-based evasion attacks via score disagreement. Geometric bound blocks divergence-minimization.</p>
-        </div>
+        <p class="paper-claim">Un-targeted classifiers detect gradient-based evasion attacks via score disagreement.<span class="inline-ann">geometric bound assumes attacker lacks cross-family access</span></p>
         <div class="paper-metrics">
-          <span class="metric">76% detect</span>
-          <span class="metric">p &lt; 2.4e-16</span>
-          <span class="metric">35 models</span>
-          <span class="metric">FPR &lt;1.5%</span>
+          <span>76% detect</span>
+          <span>p &lt; 2.4e-16</span>
+          <span>35 models</span>
+          <span>FPR &lt;1.5%</span>
         </div>
-        <div class="paper-rt rt-content">
-          <div class="rt-row refutation">
-            <span class="eval-label">REFUTATION</span>
-            <p>Joint GCG defeats within-family canaries 55% (n=20). Monitorability law falsified (r=0.97 was encoder/decoder confound). Cross-lingual degradation 15-25pp.</p>
-          </div>
-          <div class="rt-row residual">
-            <span class="eval-label">RESIDUAL</span>
-            <p>Defense assumes gradient-based attacker. Adaptive attacker with cross-family joint optimization remains exponentially penalized but not impossible.</p>
-          </div>
-        </div>
+        <p class="caveat"><span class="caveat-label">REFUTATION</span> Joint GCG defeats within-family canaries 55% (n=20). Monitorability law falsified (r=0.97 was encoder/decoder confound). Cross-lingual degradation 15-25pp.</p>
+        <p class="caveat"><span class="caveat-label caveat-label-residual">RESIDUAL</span> Defense assumes gradient-based attacker. Adaptive attacker with cross-family joint optimization remains exponentially penalized but not impossible.</p>
         <div class="paper-links">
           <a href="https://arxiv.org/abs/2606.11949" target="_blank" rel="noopener noreferrer">Paper</a>
-          <a href="https://junwenleong.github.io/cheap-canaries/" target="_blank" rel="noopener noreferrer" class="explore-link">Explore detection data</a>
+          <a href="https://junwenleong.github.io/cheap-canaries/" target="_blank" rel="noopener noreferrer">Explore detection data</a>
           <a href="https://github.com/junwenleong/cheap-canaries" target="_blank" rel="noopener noreferrer">Code</a>
         </div>
       </article>
 
-      <article class="paper-card">
+      <!-- Paper 3 -->
+      <article class="paper">
         <div class="paper-header">
-          <span class="paper-badge critical">CRITICAL</span>
           <span class="paper-id">arXiv:2606.30566</span>
+          <span class="paper-status paper-status-critical">CRITICAL</span>
         </div>
         <h3 class="paper-title">Authority Is Not a Keyword</h3>
         <p class="paper-meta">Preprint, 2026. Solo author. Under review (USENIX Security 2027).</p>
-        <div class="paper-claim">
-          <span class="eval-label">CLAIM</span>
-          <p>Compliance to injected instructions is mechanistically orthogonal to safety refusal. Linear probes achieve AUC 1.0. Steering causally suppresses compliance 100% to 0%.</p>
-        </div>
+        <p class="paper-claim">Compliance to injected instructions is mechanistically orthogonal to safety refusal. Linear probes achieve AUC 1.0. Steering causally suppresses compliance <s class="struck">100%</s> to 0%.<span class="inline-ann">linear assumption; sigmoid at boundary</span></p>
         <div class="paper-metrics">
-          <span class="metric">AUC 1.0</span>
-          <span class="metric">cos = -0.025</span>
-          <span class="metric">4 families</span>
-          <span class="metric">100%&rarr;0%</span>
+          <span>AUC 1.0</span>
+          <span>cos = -0.025</span>
+          <span>4 families</span>
+          <span>100%→0%</span>
         </div>
-        <div class="paper-rt rt-content">
-          <div class="rt-row refutation">
-            <span class="eval-label">REFUTATION</span>
-            <p>Probe trained on specific compliance domains may not generalize. Causal intervention uses linear assumption. Cross-domain AUC drops to 0.90 for allow/deny.</p>
-          </div>
-          <div class="rt-row residual">
-            <span class="eval-label">RESIDUAL</span>
-            <p>Orthogonality needs validation on larger proprietary models (only behavioral analog available). Steep sigmoid at boundary conditions.</p>
-          </div>
-        </div>
+        <p class="caveat"><span class="caveat-label">REFUTATION</span> Probe trained on specific compliance domains may not generalize. Causal intervention uses linear assumption. Cross-domain AUC drops to 0.90 for allow/deny.</p>
+        <p class="caveat"><span class="caveat-label caveat-label-residual">RESIDUAL</span> Orthogonality needs validation on larger proprietary models (only behavioral analog available). Steep sigmoid at boundary conditions.</p>
         <div class="paper-links">
           <a href="https://arxiv.org/abs/2606.30566" target="_blank" rel="noopener noreferrer">Paper</a>
           <a href="https://github.com/junwenleong/authority-is-not-a-keyword" target="_blank" rel="noopener noreferrer">Code</a>
@@ -223,120 +229,111 @@
       </article>
     </section>
 
-    <!-- Systems -->
-    <section class="section" id="systems">
-      <h2 class="section-title">Deployed Systems <span class="section-sub">/ Production Evidence</span></h2>
+    <!-- §04 Systems -->
+    <section class="section" id="systems" aria-labelledby="systems-heading">
+      <span class="gutter-id" aria-hidden="true">§04</span>
+      <h2 class="section-title" id="systems-heading">Systems</h2>
 
-      <article class="system-card">
+      <article class="system">
         <div class="system-header">
-          <h3>Threat Risk Assessment Platform</h3>
+          <h3 class="system-name">Threat Risk Assessment Platform</h3>
           <span class="system-status">PRODUCTION</span>
         </div>
         <p class="system-desc">Threat risk assessment for Critical Information Infrastructure operators. 260+ releases. Solo-developed full stack.</p>
         <div class="system-stack">
           <span>EKS</span><span>FastAPI</span><span>Bedrock</span><span>DynamoDB</span><span>Terraform</span><span>GitOps</span>
         </div>
-        <p class="system-scope rt-content"><span class="eval-label">SCOPE LIMIT</span> AI for Security, not Security of AI. Single-user ownership. Government context.</p>
+        <p class="system-scope"><span class="caveat-label">SCOPE LIMIT</span> AI for Security, not Security of AI. Single-user ownership. Government context.</p>
       </article>
 
-      <article class="system-card">
+      <article class="system">
         <div class="system-header">
-          <h3>Policy Research RAG System</h3>
+          <h3 class="system-name">Policy Research RAG System</h3>
           <span class="system-status">PRODUCTION</span>
         </div>
         <p class="system-desc">RAG for policy and intelligence research. BM25 + vector hybrid retrieval. Per-applet isolation. Environment-aware inference routing.</p>
         <div class="system-stack">
           <span>App Runner</span><span>FastAPI</span><span>React/TS</span><span>S3 Vectors</span><span>Cognito</span><span>Terraform</span>
         </div>
-        <p class="system-scope rt-content"><span class="eval-label">SCOPE LIMIT</span> Internal tool. No public traffic. Retrieval quality not benchmarked independently.</p>
+        <p class="system-scope"><span class="caveat-label">SCOPE LIMIT</span> Internal tool. No public traffic. Retrieval quality not benchmarked independently.</p>
       </article>
     </section>
 
-    <!-- Method -->
-    <section class="section" id="method">
-      <h2 class="section-title">Method</h2>
+    <!-- §05 Research Ghosts -->
+    <section class="section" id="ghosts" aria-labelledby="ghosts-heading">
+      <span class="gutter-id" aria-hidden="true">§05</span>
+      <h2 class="section-title" id="ghosts-heading">Unresolved</h2>
+
+      <article class="ghost">
+        <div class="ghost-header">
+          <span class="ghost-status">HAUNTING</span>
+          <span class="ghost-date">Last attempt: 2026-06</span>
+        </div>
+        <h3 class="ghost-title">Why does adversarial training hurt clean accuracy only on vision transformers?</h3>
+        <div class="ghost-log">
+          <p class="ghost-entry"><span class="ghost-entry-date">2026-03</span> Hypothesized attention-head fragility under PGD. Ran ablations on ViT-B/16 vs ResNet-50. Effect present but p=0.12 (underpowered, n=8 seeds).</p>
+          <p class="ghost-entry"><span class="ghost-entry-date">2026-06</span> Tried patch-level adversarial training (per-token perturbation budget). Reduced clean-acc drop 40% but introduced new failure mode on small objects. Parked.</p>
+          <p class="ghost-next"><span class="ghost-next-label">NEXT</span> Need larger seed budget (n=30+) and per-layer gradient norm analysis. Waiting on compute allocation.</p>
+        </div>
+      </article>
+
+      <article class="ghost">
+        <div class="ghost-header">
+          <span class="ghost-status">HAUNTING</span>
+          <span class="ghost-date">Last attempt: 2026-07</span>
+        </div>
+        <h3 class="ghost-title">Compliance direction appears to rotate under extended context, but only on Llama-family models</h3>
+        <div class="ghost-log">
+          <p class="ghost-entry"><span class="ghost-entry-date">2026-07</span> Probes trained on 2k-token contexts show AUC 1.0. At 16k tokens, AUC drops to 0.82 on Llama-3 70B but holds at 0.97 on Claude/GPT. Not architecture (both transformers). Not tokenizer (tested with shared vocabulary subset).</p>
+          <p class="ghost-entry"><span class="ghost-entry-date">2026-07</span> Checked if RoPE position encoding creates a rotation in the compliance subspace at long contexts. Preliminary: cosine similarity between compliance direction at pos 500 vs pos 14000 is 0.71 on Llama, 0.94 on others. Suggestive but n=1 model pair.</p>
+          <p class="ghost-next"><span class="ghost-next-label">NEXT</span> Need Llama-family models with ALiBi instead of RoPE to isolate the positional encoding hypothesis. No public checkpoints exist yet.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- §06 Method -->
+    <section class="section" id="method" aria-labelledby="method-heading">
+      <span class="gutter-id" aria-hidden="true">§06</span>
+      <h2 class="section-title" id="method-heading">Method</h2>
       <p class="method-text">Build infrastructure. Instrument everything. Run at scale. Let the data surface what is interesting. Every finding above was discovered, not planned.</p>
       <p class="method-text">Pre-register hypotheses. Report honest negatives. Bootstrap CIs, not point estimates. Correct for multiple comparisons. Publish code alongside claims.</p>
-      <p class="method-cta">If you are building the team that keeps frontier systems honest, <a href="mailto:leongjunwen@gmail.com">let's talk</a>.</p>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-      <p class="footer-note">This page is a self-audit. Toggle RED-TEAM to see honest limitations. Privacy-preserving analytics only (GoatCounter, no cookies).</p>
+      <p class="footer-statement">No claims above this line survived by accident.</p>
+      <nav class="footer-links" aria-label="External links">
+        <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank" rel="noopener noreferrer">arXiv</a>
+        <a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
+        <a href="https://github.com/junwenleong" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/junwenleong" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="cv.pdf">CV (PDF)</a>
+      </nav>
+      <p class="footer-cta">I respond faster to bug reports than compliments. <a href="mailto:leongjunwen@gmail.com">leongjunwen@gmail.com</a></p>
+      <p class="footer-analytics">Privacy-preserving analytics only (GoatCounter, no cookies).</p>
     </footer>
+
   </main>
 
   <script>
-    // ─── Sidebar gauge ───
-    const gaugeFill = document.getElementById('gauge-fill');
-    const gaugeReadout = document.getElementById('gauge-readout');
-    function updateGauge() {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const p = Math.max(0, Math.min(1, window.scrollY / max));
-      gaugeFill.style.height = (p * 100) + '%';
-      if (p > 0.7) { gaugeReadout.textContent = 'critical'; gaugeFill.style.background = 'var(--refutation)'; }
-      else if (p > 0.4) { gaugeReadout.textContent = 'adversarial'; gaugeFill.style.background = '#FF8C42'; }
-      else if (p > 0.1) { gaugeReadout.textContent = 'structural'; gaugeFill.style.background = 'var(--evidence)'; }
-      else { gaugeReadout.textContent = 'surface'; gaugeFill.style.background = 'var(--evidence)'; }
-    }
-    window.addEventListener('scroll', () => requestAnimationFrame(updateGauge), { passive: true });
+    // Verified Date Badges
+    (function() {
+      var now = new Date();
+      document.querySelectorAll('[data-verified]').forEach(function(row) {
+        var verified = new Date(row.dataset.verified);
+        var daysAgo = Math.floor((now - verified) / 86400000);
+        var cell = row.querySelector('.verified-date');
+        if (!cell) return;
+        var badge, cls;
+        if (daysAgo <= 30) { badge = 'FRESH'; cls = 'vd-fresh'; }
+        else if (daysAgo <= 90) { badge = daysAgo + 'd ago'; cls = 'vd-stale'; }
+        else { badge = 'OVERDUE ' + daysAgo + 'd'; cls = 'vd-overdue'; }
+        cell.innerHTML = '<span class="vd-badge ' + cls + '">' + badge + '</span>';
+      });
+    })();
 
-    // ─── Red-Team Toggle ───
-    const toggle = document.getElementById('mode-toggle');
-    const body = document.body;
-    toggle.addEventListener('click', () => {
-      const isRT = body.classList.toggle('redteam-mode');
-      toggle.setAttribute('aria-pressed', isRT);
-      toggle.querySelector('.toggle-claims').classList.toggle('active', !isRT);
-      toggle.querySelector('.toggle-redteam').classList.toggle('active', isRT);
-    });
-
-    // ─── Fracture Table Animation ───
-    const loadFill = document.getElementById('load-fill');
-    const loadPct = document.getElementById('load-pct');
-    const fractureRows = document.querySelectorAll('.row-fracture');
-    const intactRows = document.querySelectorAll('.row-intact');
-    const fractureTable = document.getElementById('fracture-table');
-    let tableAnimated = false;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const thresholds = [0.15, 0.25, 0.38, 0.52, 0.68];
-
-    function animateTable() {
-      if (tableAnimated || reducedMotion) return;
-      tableAnimated = true;
-      const duration = 2000;
-      const start = performance.now();
-      const broken = new Set();
-      function tick(now) {
-        const load = Math.min(1, (now - start) / duration);
-        loadFill.style.width = (load * 100) + '%';
-        loadPct.textContent = Math.round(load * 100) + '%';
-        if (load > 0.7) loadFill.style.background = 'var(--refutation)';
-        else if (load > 0.4) loadFill.style.background = '#FF8C42';
-        fractureRows.forEach((row, i) => {
-          if (load >= thresholds[i] && !broken.has(i)) { broken.add(i); row.classList.add('cracked'); }
-        });
-        if (load >= 0.9) intactRows.forEach(r => r.classList.add('held'));
-        if (load < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-
-    const tableObs = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) { setTimeout(animateTable, 200); tableObs.unobserve(fractureTable); }
-    }, { threshold: 0.3 });
-    tableObs.observe(fractureTable);
-
-    if (reducedMotion) {
-      fractureRows.forEach(r => r.classList.add('cracked'));
-      intactRows.forEach(r => r.classList.add('held'));
-      loadFill.style.width = '100%'; loadPct.textContent = '100%';
-    }
-
-    // ─── Console ───
-    console.log('%c SELF-RED-TEAM ', 'background: #EF4444; color: #fff; font-family: monospace; padding: 2px 6px;');
-    console.log('%cThis portfolio stress-tests its own claims. Toggle RED-TEAM to see limitations.', 'color: #9ca3af; font-family: monospace;');
-    console.log('%cleongjunwen@gmail.com', 'color: #22C55E; font-family: monospace;');
+    // Console
+    console.log('%cYou checked the console. Correct instinct. The methodology holds up here too.', 'color: #7E8A95; font-family: monospace; font-size: 11px;');
   </script>
 </body>
 </html>
