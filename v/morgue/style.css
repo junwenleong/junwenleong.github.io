@@ -149,7 +149,7 @@ a:hover {
 }
 
 .autopsy-rail__filter-dot--dead { background: #B84A4A; }
-.autopsy-rail__filter-dot--alive { background: #5FA37A; }
+.autopsy-rail__filter-dot--alive { background: #8A9B8F; }
 .autopsy-rail__filter-dot--attack { background: #D6A84F; }
 .autopsy-rail__filter-dot--papers { background: #AEB7BA; }
 .autopsy-rail__filter-dot--systems { background: #7E8FA8; }
@@ -295,7 +295,7 @@ a:hover {
 }
 
 .drawer__led--dead { background: #B84A4A; }
-.drawer__led--alive { background: #5FA37A; }
+.drawer__led--alive { background: #8A9B8F; }
 .drawer__led--attack { background: #D6A84F; }
 .drawer__led--papers { background: #AEB7BA; }
 .drawer__led--systems { background: #7E8FA8; }
@@ -423,9 +423,9 @@ a:hover {
 }
 
 .drawer__verdict--confirmed {
-  background: rgba(95, 163, 122, 0.15);
-  color: #5FA37A;
-  border: 1px solid rgba(95, 163, 122, 0.3);
+  background: rgba(138, 155, 143, 0.15);
+  color: #8A9B8F;
+  border: 1px solid rgba(138, 155, 143, 0.3);
 }
 
 .drawer__verdict--plausible {
@@ -713,12 +713,12 @@ a:hover {
 }
 
 .morgue-contact a {
-  color: #7E8A95;
+  color: #9B6B6B;
   text-decoration: none;
 }
 
 .morgue-contact a:hover {
-  color: #C8D0D4;
+  color: #B84A4A;
 }
 
 .morgue-footer {

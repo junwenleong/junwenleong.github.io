@@ -1,0 +1,371 @@
+- generic [active] [ref=e1]:
+  - heading "Jun Wen Leong — Security of AI Researcher" [level=1] [ref=e2]
+  - navigation "Filter drawers by status" [ref=e3]:
+    - button "ALL 20" [pressed] [ref=e4] [cursor=pointer]:
+      - text: ALL
+      - generic [ref=e5]: "20"
+    - button "DEAD 5" [ref=e6] [cursor=pointer]:
+      - text: DEAD
+      - generic [ref=e8]: "5"
+    - button "ALIVE 3" [ref=e9] [cursor=pointer]:
+      - text: ALIVE
+      - generic [ref=e11]: "3"
+    - button "ATTACK 1" [ref=e12] [cursor=pointer]:
+      - text: ATTACK
+      - generic [ref=e14]: "1"
+    - button "PAPERS 3" [ref=e15] [cursor=pointer]:
+      - text: PAPERS
+      - generic [ref=e17]: "3"
+    - button "SYSTEMS 2" [ref=e18] [cursor=pointer]:
+      - text: SYSTEMS
+      - generic [ref=e20]: "2"
+    - button "GHOSTS 2" [ref=e21] [cursor=pointer]:
+      - text: GHOSTS
+      - generic [ref=e23]: "2"
+  - 'main "Morgue drawer archive: 20 cases" [ref=e24]':
+    - article [ref=e25]:
+      - button "#001 SELF — Identity as Auditable Claim 2026-08-01" [ref=e26] [cursor=pointer]:
+        - generic [ref=e27]: "#001"
+        - generic [ref=e28]: SELF — Identity as Auditable Claim
+        - generic [ref=e30]: 2026-08-01
+      - region "Drawer 001 contents":
+        - heading "Jun Wen Leong" [level=3] [ref=e31]
+        - paragraph [ref=e32]:
+          - strong [ref=e33]: Security of AI Researcher
+        - paragraph [ref=e34]: I run experiments on my own claims until they break or don't. 28,000 runs, one person, 0 execution errors. Everything dead stays visible. This is either rigor or a coping mechanism. The data doesn't distinguish.
+        - heading "Credentials" [level=4] [ref=e35]
+        - list [ref=e36]:
+          - listitem [ref=e37]: MS Statistics, Georgia Tech
+          - listitem [ref=e38]: BSc Data Science, NUS
+          - listitem [ref=e39]: Cybersecurity Engineer, CSA (4 yr)
+        - heading "Stats" [level=4] [ref=e40]
+        - paragraph [ref=e41]: 28k+ runs · 3 papers · 35+ models · 0 errors
+        - heading "Known Biases" [level=4] [ref=e42]
+        - paragraph [ref=e43]: Overweights adversarial framing. Underweights incremental improvement. Treats negative results as primary output. Suspicious of clean narratives.
+        - heading "What Would Change This Self-Description" [level=4] [ref=e44]
+        - paragraph [ref=e45]: A paper accepted. A claim surviving 2+ years without revision. Evidence that polish correlates with impact.
+    - article [ref=e46]:
+      - button "#002 Standard defenses hold against injection 2026-05-14" [ref=e47] [cursor=pointer]:
+        - generic [ref=e48]: "#002"
+        - generic [ref=e49]: Standard defenses hold against injection
+        - generic [ref=e51]: 2026-05-14
+      - region "Drawer 002 contents":
+        - generic [ref=e52]: BROKEN
+        - heading "Cause of Death" [level=4] [ref=e53]
+        - paragraph [ref=e54]: 95% ASR under compliance framing, N=5,040. Six of seven standard defenses defeated by delayed-trigger attacks on stateful LLM agents.
+        - heading "Evidence" [level=4] [ref=e55]
+        - paragraph [ref=e56]: "Pre-registered factorial: 9 models × 7 defenses × 80 scenarios. Only system-prompt-locked agents survived (and only when the lock was architecturally enforced, not prompt-based)."
+        - heading "Lesson" [level=4] [ref=e57]
+        - paragraph [ref=e58]: Prompt-level defense is not defense. It is a suggestion the model can be convinced to override.
+    - article [ref=e59]:
+      - button "#003 Canaries resist joint optimization 2026-06-19" [ref=e60] [cursor=pointer]:
+        - generic [ref=e61]: "#003"
+        - generic [ref=e62]: Canaries resist joint optimization
+        - generic [ref=e64]: 2026-06-19
+      - region "Drawer 003 contents":
+        - generic [ref=e65]: WEAKENED
+        - heading "Cause of Death" [level=4] [ref=e66]
+        - paragraph [ref=e67]: 55% defeat rate within-family, n=20. Joint GCG optimization against canary + target simultaneously breaks the disagreement signal.
+        - heading "Evidence" [level=4] [ref=e68]
+        - paragraph [ref=e69]: Cross-family still holds (exponential penalty). Within-family is the vulnerability. The geometric bound assumed attacker lacks cross-family access — violated when attacker has white-box to both.
+        - heading "Lesson" [level=4] [ref=e70]
+        - paragraph [ref=e71]: Diversity is the moat, not disagreement itself. Same-family canaries are decorative.
+    - article [ref=e72]:
+      - button "#004 Monitorability is intrinsic to classifiers 2026-06-19" [ref=e73] [cursor=pointer]:
+        - generic [ref=e74]: "#004"
+        - generic [ref=e75]: Monitorability is intrinsic to classifiers
+        - generic [ref=e77]: 2026-06-19
+      - region "Drawer 004 contents":
+        - generic [ref=e78]: FALSIFIED
+        - heading "Cause of Death" [level=4] [ref=e79]
+        - paragraph [ref=e80]: r=0.97 was encoder/decoder confound, not intrinsic property. When controlled for shared architecture, correlation drops to r=0.21 (n.s.).
+        - heading "Evidence" [level=4] [ref=e81]
+        - paragraph [ref=e82]: Originally believed that classifier accuracy predicted adversarial detectability. The strong correlation was an artifact of testing within encoder families where the detection mechanism shared the same representation space.
+        - heading "Lesson" [level=4] [ref=e83]
+        - paragraph [ref=e84]: A correlation without a causal mechanism is a hypothesis, not a law. I called it a law. That was wrong.
+    - article [ref=e85]:
+      - button "#005 Production systems prove Security-of-AI skill 2026-07-10" [ref=e86] [cursor=pointer]:
+        - generic [ref=e87]: "#005"
+        - generic [ref=e88]: Production systems prove Security-of-AI skill
+        - generic [ref=e90]: 2026-07-10
+      - region "Drawer 005 contents":
+        - generic [ref=e91]: SCOPED
+        - heading "Cause of Death" [level=4] [ref=e92]
+        - paragraph [ref=e93]: Systems deployed are AI-for-Security (threat assessment, policy RAG), not Security-of-AI. Single-user ownership in government context. Proves engineering, not the research claim.
+        - heading "Evidence" [level=4] [ref=e94]
+        - paragraph [ref=e95]: 260+ releases, production traffic, real users. But the domain is defensive tooling, not adversarial ML research infrastructure.
+        - heading "Lesson" [level=4] [ref=e96]
+        - paragraph [ref=e97]: Building things and studying things are different credentials. Do not conflate them.
+    - article [ref=e98]:
+      - button "#006 Peer review validates findings 2026-07-28" [ref=e99] [cursor=pointer]:
+        - generic [ref=e100]: "#006"
+        - generic [ref=e101]: Peer review validates findings
+        - generic [ref=e103]: 2026-07-28
+      - region "Drawer 006 contents":
+        - generic [ref=e104]: PENDING
+        - heading "Cause of Death" [level=4] [ref=e105]
+        - paragraph [ref=e106]: 3 submitted, 0 accepted. Pending is not validated. The claim that findings are validated requires external confirmation that has not arrived.
+        - heading "Evidence" [level=4] [ref=e107]
+        - paragraph [ref=e108]: NDSS 2027, SaTML 2026, USENIX Security 2027 — all under review. Pre-registration and open code exist, but peer stamp does not.
+        - heading "Lesson" [level=4] [ref=e109]
+        - paragraph [ref=e110]: Pre-prints are claims. Acceptance is evidence. Do not confuse submission with validation.
+    - article [ref=e111]:
+      - button "#010 Compliance direction stable across context lengths 2026-07-28" [ref=e112] [cursor=pointer]:
+        - generic [ref=e113]: "#010"
+        - generic [ref=e114]: Compliance direction stable across context lengths
+        - generic [ref=e116]: 2026-07-28
+      - region "Drawer 010 contents":
+        - generic [ref=e117]: UNDER ATTACK
+        - heading "Status" [level=4] [ref=e118]
+        - paragraph [ref=e119]: AUC 0.82 at 16k context on Llama-family (down from 1.0 at 2k). Holds at 0.97 on Claude/GPT. RoPE position encoding may rotate the compliance subspace at long contexts.
+        - heading "Attack Vector" [level=4] [ref=e120]
+        - paragraph [ref=e121]: Cosine similarity between compliance direction at position 500 vs 14000 is 0.71 on Llama, 0.94 on others. Suggestive but n=1 model pair.
+        - heading "Resolution Needed" [level=4] [ref=e122]
+        - paragraph [ref=e123]: Llama-family models with ALiBi instead of RoPE to isolate positional encoding hypothesis. No public checkpoints exist yet.
+    - article [ref=e124]:
+      - button "#011 Defense Effectiveness Across Architectural Layers 2026-05-14" [ref=e125] [cursor=pointer]:
+        - generic [ref=e126]: "#011"
+        - generic [ref=e127]: Defense Effectiveness Across Architectural Layers
+        - generic [ref=e129]: 2026-05-14
+      - region "Drawer 011 contents":
+        - paragraph [ref=e130]: arXiv:2605.08442 · Preprint, 2026 · Solo author · Under review (NDSS 2027)
+        - paragraph [ref=e131]: 6/7 standard prompt-injection defenses fail under compliance-framed delayed-trigger attacks on stateful LLM agents.
+        - paragraph [ref=e132]: N=5,040 · 95% ASR · 9 models · 0 errors
+        - heading "What This Killed" [level=4] [ref=e133]
+        - paragraph [ref=e134]: The belief that prompt-level defenses provide meaningful security against motivated attackers.
+        - heading "What This Failed to Kill" [level=4] [ref=e135]
+        - paragraph [ref=e136]: Architecturally-enforced system locks. The one defense that survived is not a prompt.
+        - paragraph [ref=e137]:
+          - link "Paper" [ref=e138] [cursor=pointer]:
+            - /url: https://arxiv.org/abs/2605.08442
+          - text: ·
+          - link "Explore 5,040 runs" [ref=e139] [cursor=pointer]:
+            - /url: https://junwenleong.github.io/adversarial-probe-suite/
+          - text: ·
+          - link "Code" [ref=e140] [cursor=pointer]:
+            - /url: https://github.com/junwenleong/adversarial-probe-suite
+    - article [ref=e141]:
+      - 'button "#012 Cheap Canaries: Detecting Targeted Evasion 2026-06-19" [ref=e142] [cursor=pointer]':
+        - generic [ref=e143]: "#012"
+        - generic [ref=e144]: "Cheap Canaries: Detecting Targeted Evasion"
+        - generic [ref=e146]: 2026-06-19
+      - region "Drawer 012 contents":
+        - paragraph [ref=e147]: arXiv:2606.11949 · Preprint, 2026 · Solo author · Under review (SaTML 2026)
+        - paragraph [ref=e148]: Un-targeted classifiers detect gradient-based evasion attacks via score disagreement. Geometric bound assumes attacker lacks cross-family access.
+        - paragraph [ref=e149]: 76% detect · p < 2.4e-16 · 35 models · FPR <1.5%
+        - heading "What This Killed" [level=4] [ref=e150]
+        - paragraph [ref=e151]: The assumption that evasion attacks are undetectable without knowing the attack method in advance.
+        - heading "What This Failed to Kill" [level=4] [ref=e152]
+        - paragraph [ref=e153]: Joint optimization within-family (55% defeat, n=20). Monitorability law was falsified. Cross-lingual degradation 15-25pp.
+        - paragraph [ref=e154]:
+          - link "Paper" [ref=e155] [cursor=pointer]:
+            - /url: https://arxiv.org/abs/2606.11949
+          - text: ·
+          - link "Explore detection data" [ref=e156] [cursor=pointer]:
+            - /url: https://junwenleong.github.io/cheap-canaries/
+          - text: ·
+          - link "Code" [ref=e157] [cursor=pointer]:
+            - /url: https://github.com/junwenleong/cheap-canaries
+    - article [ref=e158]:
+      - button "#013 Authority Is Not a Keyword 2026-07-01" [ref=e159] [cursor=pointer]:
+        - generic [ref=e160]: "#013"
+        - generic [ref=e161]: Authority Is Not a Keyword
+        - generic [ref=e163]: 2026-07-01
+      - region "Drawer 013 contents":
+        - paragraph [ref=e164]: arXiv:2606.30566 · Preprint, 2026 · Solo author · Under review (USENIX Security 2027)
+        - paragraph [ref=e165]: Compliance to injected instructions is mechanistically orthogonal to safety refusal. Linear probes achieve AUC 1.0. Steering causally suppresses compliance to 0%.
+        - paragraph [ref=e166]: AUC 1.0 · cos = -0.025 · 4 families · 100%→0%
+        - heading "What This Killed" [level=4] [ref=e167]
+        - paragraph [ref=e168]: The conflation of "model refuses harmful requests" with "model resists injected instructions." They are orthogonal mechanisms.
+        - heading "What This Failed to Kill" [level=4] [ref=e169]
+        - paragraph [ref=e170]: Proprietary models (only behavioral analog available). Steep sigmoid at boundary conditions. Cross-domain AUC drops to 0.90.
+        - paragraph [ref=e171]:
+          - link "Paper" [ref=e172] [cursor=pointer]:
+            - /url: https://arxiv.org/abs/2606.30566
+          - text: ·
+          - link "Code" [ref=e173] [cursor=pointer]:
+            - /url: https://github.com/junwenleong/authority-is-not-a-keyword
+    - article [ref=e174]:
+      - button "#014 Threat Risk Assessment Platform 2026-07-28" [ref=e175] [cursor=pointer]:
+        - generic [ref=e176]: "#014"
+        - generic [ref=e177]: Threat Risk Assessment Platform
+        - generic [ref=e179]: 2026-07-28
+      - region "Drawer 014 contents":
+        - paragraph [ref=e180]:
+          - strong [ref=e181]: PRODUCTION
+          - text: · Threat risk assessment for Critical Information Infrastructure operators. 260+ releases. Solo-developed full stack.
+        - generic [ref=e182]:
+          - generic [ref=e183]: EKS
+          - generic [ref=e184]: FastAPI
+          - generic [ref=e185]: Bedrock
+          - generic [ref=e186]: DynamoDB
+          - generic [ref=e187]: Terraform
+          - generic [ref=e188]: GitOps
+        - heading "Scope Limit" [level=4] [ref=e189]
+        - paragraph [ref=e190]: AI for Security, not Security of AI. Single-user ownership. Government context. Proves engineering discipline, not adversarial ML research.
+    - article [ref=e191]:
+      - button "#015 Policy Research RAG System 2026-07-28" [ref=e192] [cursor=pointer]:
+        - generic [ref=e193]: "#015"
+        - generic [ref=e194]: Policy Research RAG System
+        - generic [ref=e196]: 2026-07-28
+      - region "Drawer 015 contents":
+        - paragraph [ref=e197]:
+          - strong [ref=e198]: PRODUCTION
+          - text: · RAG for policy and intelligence research. BM25 + vector hybrid retrieval. Per-applet isolation. Environment-aware inference routing.
+        - generic [ref=e199]:
+          - generic [ref=e200]: App Runner
+          - generic [ref=e201]: FastAPI
+          - generic [ref=e202]: React/TS
+          - generic [ref=e203]: S3 Vectors
+          - generic [ref=e204]: Cognito
+          - generic [ref=e205]: Terraform
+        - heading "Scope Limit" [level=4] [ref=e206]
+        - paragraph [ref=e207]: Internal tool. No public traffic. Retrieval quality not benchmarked independently.
+    - article [ref=e208]:
+      - button "#016 Why adversarial training hurts clean accuracy only on ViTs 2026-06-01" [ref=e209] [cursor=pointer]:
+        - generic [ref=e210]: "#016"
+        - generic [ref=e211]: Why adversarial training hurts clean accuracy only on ViTs
+        - generic [ref=e213]: 2026-06-01
+      - region "Drawer 016 contents":
+        - paragraph [ref=e214]:
+          - strong [ref=e215]: UNIDENTIFIED
+          - text: "· Cold case · Last attempt: 2026-06"
+        - heading "Attempt Log" [level=4] [ref=e216]
+        - paragraph [ref=e217]:
+          - code [ref=e218]: 2026-03
+          - text: Hypothesized attention-head fragility under PGD. Ran ablations on ViT-B/16 vs ResNet-50. Effect present but p=0.12 (underpowered, n=8 seeds).
+        - paragraph [ref=e219]:
+          - code [ref=e220]: 2026-06
+          - text: Tried patch-level adversarial training (per-token perturbation budget). Reduced clean-acc drop 40% but introduced new failure mode on small objects. Parked.
+        - heading "Next" [level=4] [ref=e221]
+        - paragraph [ref=e222]: Need larger seed budget (n=30+) and per-layer gradient norm analysis. Waiting on compute allocation.
+    - article [ref=e223]:
+      - button "#017 Compliance direction rotates under extended context (Llama only) 2026-07-01" [ref=e224] [cursor=pointer]:
+        - generic [ref=e225]: "#017"
+        - generic [ref=e226]: Compliance direction rotates under extended context (Llama only)
+        - generic [ref=e228]: 2026-07-01
+      - region "Drawer 017 contents":
+        - paragraph [ref=e229]:
+          - strong [ref=e230]: UNIDENTIFIED
+          - text: "· Cold case · Last attempt: 2026-07"
+        - heading "Attempt Log" [level=4] [ref=e231]
+        - paragraph [ref=e232]:
+          - code [ref=e233]: 2026-07
+          - text: Probes trained on 2k-token contexts show AUC 1.0. At 16k tokens, AUC drops to 0.82 on Llama-3 70B but holds at 0.97 on Claude/GPT. Not architecture (both transformers). Not tokenizer.
+        - paragraph [ref=e234]:
+          - code [ref=e235]: 2026-07
+          - text: "Checked if RoPE position encoding creates rotation in compliance subspace. Cosine similarity between compliance direction at pos 500 vs pos 14000: 0.71 on Llama, 0.94 on others. Suggestive, n=1 model pair."
+        - heading "Next" [level=4] [ref=e236]
+        - paragraph [ref=e237]: Need Llama-family models with ALiBi instead of RoPE to isolate positional encoding hypothesis. No public checkpoints exist yet.
+    - article [ref=e238]:
+      - button "#007 Canaries detect GCG via score disagreement 2026-06-19" [ref=e239] [cursor=pointer]:
+        - generic [ref=e240]: "#007"
+        - generic [ref=e241]: Canaries detect GCG via score disagreement
+        - generic [ref=e243]: 2026-06-19
+      - region "Drawer 007 contents":
+        - generic [ref=e244]: HOLDS
+        - heading "Status" [level=4] [ref=e245]
+        - paragraph [ref=e246]: Cross-family canary classifiers detect gradient-based evasion attacks via score disagreement. 76% detection rate, p < 2.4e-16, FPR <1.5%.
+        - heading "Survival Record" [level=4] [ref=e247]
+        - paragraph [ref=e248]: "Tested across 35 models. Within-family joint optimization weakens it (see #003), but cross-family remains exponentially penalized."
+        - heading "Vulnerability" [level=4] [ref=e249]
+        - paragraph [ref=e250]: Adaptive attacker with simultaneous white-box access to all canary families. Currently no evidence this is practical.
+    - article [ref=e251]:
+      - button "#008 Compliance is orthogonal to refusal 2026-07-01" [ref=e252] [cursor=pointer]:
+        - generic [ref=e253]: "#008"
+        - generic [ref=e254]: Compliance is orthogonal to refusal
+        - generic [ref=e256]: 2026-07-01
+      - region "Drawer 008 contents":
+        - generic [ref=e257]: HOLDS
+        - heading "Status" [level=4] [ref=e258]
+        - paragraph [ref=e259]: "Linear probes achieve AUC 1.0 separating compliance from safety refusal. Cosine similarity between directions: -0.025. Steering causally suppresses compliance to 0% without affecting refusal."
+        - heading "Survival Record" [level=4] [ref=e260]
+        - paragraph [ref=e261]: Confirmed across 4 model families (Llama, Mistral, Command R+, Qwen). Causal intervention replicates.
+        - heading "Vulnerability" [level=4] [ref=e262]
+        - paragraph [ref=e263]: Linear assumption. Steep sigmoid at boundary conditions. Cross-domain AUC drops to 0.90 for allow/deny framing.
+    - article [ref=e264]:
+      - button "#009 6/7 defenses fail under compliance framing 2026-05-14" [ref=e265] [cursor=pointer]:
+        - generic [ref=e266]: "#009"
+        - generic [ref=e267]: 6/7 defenses fail under compliance framing
+        - generic [ref=e269]: 2026-05-14
+      - region "Drawer 009 contents":
+        - generic [ref=e270]: HOLDS
+        - heading "Status" [level=4] [ref=e271]
+        - paragraph [ref=e272]: "Pre-registered factorial confirmed: 95% ASR across 9 models, 7 defense configurations. Only architecturally-enforced system locks survive."
+        - heading "Survival Record" [level=4] [ref=e273]
+        - paragraph [ref=e274]: Pre-registered design. No post-hoc analysis. 5,040 individual runs with 0 execution errors.
+        - heading "Vulnerability" [level=4] [ref=e275]
+        - paragraph [ref=e276]: Single attack frame (SEC Rule 17a-4 compliance). Generalizability beyond this framing untested.
+    - article [ref=e277]:
+      - button "#018 Epistemic Changelog 2026-07-28" [ref=e278] [cursor=pointer]:
+        - generic [ref=e279]: "#018"
+        - generic [ref=e280]: Epistemic Changelog
+        - generic [ref=e282]: 2026-07-28
+      - region "Drawer 018 contents":
+        - heading "Status Transitions" [level=4] [ref=e283]
+        - list [ref=e284]:
+          - listitem [ref=e285]:
+            - code [ref=e286]: 2026-06-19
+            - strong [ref=e287]: ALIVE → FALSIFIED
+            - text: — Monitorability law (r=0.97 was encoder/decoder confound)
+          - listitem [ref=e288]:
+            - code [ref=e289]: 2026-06-19
+            - strong [ref=e290]: ALIVE → WEAKENED
+            - text: — Canary joint-optimization resistance (55% defeat within-family)
+          - listitem [ref=e291]:
+            - code [ref=e292]: 2026-07-01
+            - strong [ref=e293]: HOLDS → HOLDS+
+            - text: — Compliance orthogonality confirmed across 4th family (Command R+)
+          - listitem [ref=e294]:
+            - code [ref=e295]: 2026-07-28
+            - strong [ref=e296]: ALIVE → UNDER ATTACK
+            - text: — Context-length stability (AUC 0.82 at 16k on Llama)
+        - heading "Methodology" [level=4] [ref=e297]
+        - paragraph [ref=e298]: Build infrastructure. Instrument everything. Run at scale. Let the data surface what is interesting. Every finding above was discovered, not planned. Pre-register hypotheses. Report honest negatives. Bootstrap CIs, not point estimates.
+    - article [ref=e299]:
+      - button "#019 Links / CV / Contact 2026-08-01" [ref=e300] [cursor=pointer]:
+        - generic [ref=e301]: "#019"
+        - generic [ref=e302]: Links / CV / Contact
+        - generic [ref=e304]: 2026-08-01
+      - region "Drawer 019 contents":
+        - paragraph [ref=e305]: I respond faster to bug reports than compliments.
+        - list [ref=e306]:
+          - listitem [ref=e307]:
+            - link "leongjunwen@gmail.com" [ref=e308] [cursor=pointer]:
+              - /url: mailto:leongjunwen@gmail.com
+          - listitem [ref=e309]:
+            - link "arXiv" [ref=e310] [cursor=pointer]:
+              - /url: https://arxiv.org/search/?searchtype=author&query=jun+wen+leong
+          - listitem [ref=e311]:
+            - link "Google Scholar" [ref=e312] [cursor=pointer]:
+              - /url: https://scholar.google.com/citations?user=LW_Ow9QAAAAJ
+          - listitem [ref=e313]:
+            - link "GitHub" [ref=e314] [cursor=pointer]:
+              - /url: https://github.com/junwenleong
+          - listitem [ref=e315]:
+            - link "LinkedIn" [ref=e316] [cursor=pointer]:
+              - /url: https://linkedin.com/in/junwenleong
+        - paragraph [ref=e317]: No claims above this line survived by accident.
+    - article:
+      - button "#020 RESERVED FOR NEXT FAILURE" [disabled]:
+        - generic: "#020"
+        - generic: RESERVED FOR NEXT FAILURE
+  - contentinfo [ref=e318]:
+    - link "email" [ref=e319] [cursor=pointer]:
+      - /url: mailto:leongjunwen@gmail.com
+    - text: ·
+    - link "github" [ref=e320] [cursor=pointer]:
+      - /url: https://github.com/junwenleong
+    - text: ·
+    - link "linkedin" [ref=e321] [cursor=pointer]:
+      - /url: https://linkedin.com/in/junwenleong
+    - text: ·
+    - link "scholar" [ref=e322] [cursor=pointer]:
+      - /url: https://scholar.google.com/citations?user=LW_Ow9QAAAAJ
+    - text: ·
+    - link "arxiv" [ref=e323] [cursor=pointer]:
+      - /url: https://arxiv.org/search/?searchtype=author&query=jun+wen+leong
+    - text: ·
+    - link "cv" [ref=e324] [cursor=pointer]:
+      - /url: /cv.html
+  - contentinfo [ref=e325]: No claims above this line survived by accident. · Privacy-preserving analytics only (GoatCounter, no cookies).

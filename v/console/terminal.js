@@ -742,6 +742,11 @@ input.addEventListener('keydown', function(e) {
     var val = input.value;
     input.value = '';
     executeCommand(val);
+    // Fade out chips after first typed command
+    var chips = document.querySelector('.terminal__chips');
+    if (chips && !chips.classList.contains('is-fading')) {
+      chips.classList.add('is-fading');
+    }
   } else if (e.key === 'ArrowUp') {
     e.preventDefault();
     if (state.historyIndex > 0) {
