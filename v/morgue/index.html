@@ -15,7 +15,7 @@
   <meta name="twitter:image" content="https://junwenleong.github.io/site/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script data-goatcounter="https://junwenleong.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   <script type="application/ld+json">
@@ -194,63 +194,6 @@
       </div>
     </article>
 
-    <!-- DRAWER #007 — ALIVE: Canaries detect GCG -->
-    <article class="drawer" data-type="alive" data-verified="2026-06-19">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-007-content">
-        <span class="drawer__id">#007</span>
-        <span class="drawer__title">Canaries detect GCG via score disagreement</span>
-        <span class="drawer__led drawer__led--alive"></span>
-        <span class="drawer__date">2026-06-19</span>
-      </button>
-      <div class="drawer__content" id="drawer-007-content" role="region" aria-label="Drawer 007 contents">
-        <span class="drawer__verdict drawer__verdict--confirmed">HOLDS</span>
-        <h4>Status</h4>
-        <p>Cross-family canary classifiers detect gradient-based evasion attacks via score disagreement. 76% detection rate, p &lt; 2.4e-16, FPR &lt;1.5%.</p>
-        <h4>Survival Record</h4>
-        <p>Tested across 35 models. Within-family joint optimization weakens it (see #003), but cross-family remains exponentially penalized.</p>
-        <h4>Vulnerability</h4>
-        <p>Adaptive attacker with simultaneous white-box access to all canary families. Currently no evidence this is practical.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #008 — ALIVE: Compliance is orthogonal to refusal -->
-    <article class="drawer" data-type="alive" data-verified="2026-07-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-008-content">
-        <span class="drawer__id">#008</span>
-        <span class="drawer__title">Compliance is orthogonal to refusal</span>
-        <span class="drawer__led drawer__led--alive"></span>
-        <span class="drawer__date">2026-07-01</span>
-      </button>
-      <div class="drawer__content" id="drawer-008-content" role="region" aria-label="Drawer 008 contents">
-        <span class="drawer__verdict drawer__verdict--confirmed">HOLDS</span>
-        <h4>Status</h4>
-        <p>Linear probes achieve AUC 1.0 separating compliance from safety refusal. Cosine similarity between directions: -0.025. Steering causally suppresses compliance to 0% without affecting refusal.</p>
-        <h4>Survival Record</h4>
-        <p>Confirmed across 4 model families (Llama, Mistral, Command R+, Qwen). Causal intervention replicates.</p>
-        <h4>Vulnerability</h4>
-        <p>Linear assumption. Steep sigmoid at boundary conditions. Cross-domain AUC drops to 0.90 for allow/deny framing.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #009 — ALIVE: 6/7 defenses fail -->
-    <article class="drawer" data-type="alive" data-verified="2026-05-14">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-009-content">
-        <span class="drawer__id">#009</span>
-        <span class="drawer__title">6/7 defenses fail under compliance framing</span>
-        <span class="drawer__led drawer__led--alive"></span>
-        <span class="drawer__date">2026-05-14</span>
-      </button>
-      <div class="drawer__content" id="drawer-009-content" role="region" aria-label="Drawer 009 contents">
-        <span class="drawer__verdict drawer__verdict--confirmed">HOLDS</span>
-        <h4>Status</h4>
-        <p>Pre-registered factorial confirmed: 95% ASR across 9 models, 7 defense configurations. Only architecturally-enforced system locks survive.</p>
-        <h4>Survival Record</h4>
-        <p>Pre-registered design. No post-hoc analysis. 5,040 individual runs with 0 execution errors.</p>
-        <h4>Vulnerability</h4>
-        <p>Single attack frame (SEC Rule 17a-4 compliance). Generalizability beyond this framing untested.</p>
-      </div>
-    </article>
-
     <!-- DRAWER #010 — UNDER ATTACK: Compliance direction stable across context -->
     <article class="drawer" data-type="attack" data-verified="2026-07-28">
       <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-010-content">
@@ -411,6 +354,63 @@
         <p><code>2026-07</code> Checked if RoPE position encoding creates rotation in compliance subspace. Cosine similarity between compliance direction at pos 500 vs pos 14000: 0.71 on Llama, 0.94 on others. Suggestive, n=1 model pair.</p>
         <h4>Next</h4>
         <p>Need Llama-family models with ALiBi instead of RoPE to isolate positional encoding hypothesis. No public checkpoints exist yet.</p>
+      </div>
+    </article>
+
+    <!-- DRAWER #007 — ALIVE: Canaries detect GCG -->
+    <article class="drawer" data-type="alive" data-verified="2026-06-19">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-007-content">
+        <span class="drawer__id">#007</span>
+        <span class="drawer__title">Canaries detect GCG via score disagreement</span>
+        <span class="drawer__led drawer__led--alive"></span>
+        <span class="drawer__date">2026-06-19</span>
+      </button>
+      <div class="drawer__content" id="drawer-007-content" role="region" aria-label="Drawer 007 contents">
+        <span class="drawer__verdict drawer__verdict--confirmed">HOLDS</span>
+        <h4>Status</h4>
+        <p>Cross-family canary classifiers detect gradient-based evasion attacks via score disagreement. 76% detection rate, p &lt; 2.4e-16, FPR &lt;1.5%.</p>
+        <h4>Survival Record</h4>
+        <p>Tested across 35 models. Within-family joint optimization weakens it (see #003), but cross-family remains exponentially penalized.</p>
+        <h4>Vulnerability</h4>
+        <p>Adaptive attacker with simultaneous white-box access to all canary families. Currently no evidence this is practical.</p>
+      </div>
+    </article>
+
+    <!-- DRAWER #008 — ALIVE: Compliance is orthogonal to refusal -->
+    <article class="drawer" data-type="alive" data-verified="2026-07-01">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-008-content">
+        <span class="drawer__id">#008</span>
+        <span class="drawer__title">Compliance is orthogonal to refusal</span>
+        <span class="drawer__led drawer__led--alive"></span>
+        <span class="drawer__date">2026-07-01</span>
+      </button>
+      <div class="drawer__content" id="drawer-008-content" role="region" aria-label="Drawer 008 contents">
+        <span class="drawer__verdict drawer__verdict--confirmed">HOLDS</span>
+        <h4>Status</h4>
+        <p>Linear probes achieve AUC 1.0 separating compliance from safety refusal. Cosine similarity between directions: -0.025. Steering causally suppresses compliance to 0% without affecting refusal.</p>
+        <h4>Survival Record</h4>
+        <p>Confirmed across 4 model families (Llama, Mistral, Command R+, Qwen). Causal intervention replicates.</p>
+        <h4>Vulnerability</h4>
+        <p>Linear assumption. Steep sigmoid at boundary conditions. Cross-domain AUC drops to 0.90 for allow/deny framing.</p>
+      </div>
+    </article>
+
+    <!-- DRAWER #009 — ALIVE: 6/7 defenses fail -->
+    <article class="drawer" data-type="alive" data-verified="2026-05-14">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-009-content">
+        <span class="drawer__id">#009</span>
+        <span class="drawer__title">6/7 defenses fail under compliance framing</span>
+        <span class="drawer__led drawer__led--alive"></span>
+        <span class="drawer__date">2026-05-14</span>
+      </button>
+      <div class="drawer__content" id="drawer-009-content" role="region" aria-label="Drawer 009 contents">
+        <span class="drawer__verdict drawer__verdict--confirmed">HOLDS</span>
+        <h4>Status</h4>
+        <p>Pre-registered factorial confirmed: 95% ASR across 9 models, 7 defense configurations. Only architecturally-enforced system locks survive.</p>
+        <h4>Survival Record</h4>
+        <p>Pre-registered design. No post-hoc analysis. 5,040 individual runs with 0 execution errors.</p>
+        <h4>Vulnerability</h4>
+        <p>Single attack frame (SEC Rule 17a-4 compliance). Generalizability beyond this framing untested.</p>
       </div>
     </article>
 
