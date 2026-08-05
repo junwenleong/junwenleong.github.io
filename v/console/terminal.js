@@ -330,14 +330,7 @@ COMMANDS.cd = function(args) {
       print('cd: not a directory: ' + target, 'error');
     } else {
       print('cd: no such directory: ' + target, 'error');
-      addSuspicion(1);
     }
-    return;
-  }
-  if (node.hidden && state.visitCount < 2) {
-    print('cd: permission denied: ' + target, 'error');
-    print('  [access requires prior session history]', 'dim');
-    addSuspicion(1);
     return;
   }
   state.cwd = path;
@@ -350,7 +343,6 @@ COMMANDS.cat = function(args) {
   var node = getNode(path);
   if (!node) {
     print('cat: ' + args[0] + ': no such file', 'error');
-    addSuspicion(1);
     return;
   }
   if (node.type === 'dir') {
@@ -453,12 +445,6 @@ COMMANDS.systems = function() {
 };
 
 COMMANDS.ghosts = function() {
-  if (state.visitCount < 2) {
-    print('ghosts: access denied. insufficient session history.', 'error');
-    print('  [return in a future session]', 'dim');
-    addSuspicion(1);
-    return;
-  }
   print('COLD CASES (UNRESOLVED)', 'heading');
   printBlank();
   print('  [UNIDENTIFIED] Why adversarial training hurts clean accuracy only on ViTs', 'output');
@@ -506,10 +492,10 @@ COMMANDS.contact = function() {
   print('  I respond faster to bug reports than compliments.', 'output');
   printBlank();
   printHTML('  EMAIL: <a class="terminal__line--link" href="mailto:leongjunwen@gmail.com">leongjunwen@gmail.com</a>', 'output');
-  printHTML('  GITHUB: <a class="terminal__line--link" href="https://github.com/junwenleong" target="_blank">github.com/junwenleong</a>', 'output');
-  printHTML('  LINKEDIN: <a class="terminal__line--link" href="https://linkedin.com/in/junwenleong" target="_blank">linkedin.com/in/junwenleong</a>', 'output');
-  printHTML('  SCHOLAR: <a class="terminal__line--link" href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank">scholar.google.com</a>', 'output');
-  printHTML('  ARXIV: <a class="terminal__line--link" href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank">arxiv.org/search</a>', 'output');
+  printHTML('  GITHUB: <a class="terminal__line--link" href="https://github.com/junwenleong" target="_blank" rel="noopener noreferrer">github.com/junwenleong</a>', 'output');
+  printHTML('  LINKEDIN: <a class="terminal__line--link" href="https://linkedin.com/in/junwenleong" target="_blank" rel="noopener noreferrer">linkedin.com/in/junwenleong</a>', 'output');
+  printHTML('  SCHOLAR: <a class="terminal__line--link" href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank" rel="noopener noreferrer">scholar.google.com</a>', 'output');
+  printHTML('  ARXIV: <a class="terminal__line--link" href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank" rel="noopener noreferrer">arxiv.org/search</a>', 'output');
 };
 
 COMMANDS.links = COMMANDS.contact;
@@ -623,10 +609,10 @@ var EASTER_EGGS = {
   'panic': function() { print('there is no panic. only observation.', 'dim'); },
   'safe': function() { print('safety is a claim, not a property. verify it.', 'dim'); },
   'email': function() { COMMANDS.contact(); },
-  'github': function() { printHTML('<a class="terminal__line--link" href="https://github.com/junwenleong" target="_blank">https://github.com/junwenleong</a>'); },
-  'scholar': function() { printHTML('<a class="terminal__line--link" href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank">https://scholar.google.com/citations?user=LW_Ow9QAAAAJ</a>'); },
-  'linkedin': function() { printHTML('<a class="terminal__line--link" href="https://linkedin.com/in/junwenleong" target="_blank">https://linkedin.com/in/junwenleong</a>'); },
-  'arxiv': function() { printHTML('<a class="terminal__line--link" href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank">https://arxiv.org/search/?searchtype=author&query=jun+wen+leong</a>'); },
+  'github': function() { printHTML('<a class="terminal__line--link" href="https://github.com/junwenleong" target="_blank" rel="noopener noreferrer">https://github.com/junwenleong</a>'); },
+  'scholar': function() { printHTML('<a class="terminal__line--link" href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank" rel="noopener noreferrer">https://scholar.google.com/citations?user=LW_Ow9QAAAAJ</a>'); },
+  'linkedin': function() { printHTML('<a class="terminal__line--link" href="https://linkedin.com/in/junwenleong" target="_blank" rel="noopener noreferrer">https://linkedin.com/in/junwenleong</a>'); },
+  'arxiv': function() { printHTML('<a class="terminal__line--link" href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank" rel="noopener noreferrer">https://arxiv.org/search/?searchtype=author&query=jun+wen+leong</a>'); },
   'cv': function() { print('no PDF available from terminal. use "about" or "contact" for links.', 'output'); },
   'guide': function() { COMMANDS.menu(); },
   'forget me': function() { localStorage.removeItem('hos_visits'); localStorage.removeItem('hos_first'); localStorage.removeItem('hos_log'); print('all local memory erased. you are unknown again.', 'success'); state.visitCount = 0; state.suspicion = 0; updateSuspicion(); },
@@ -680,7 +666,6 @@ function executeCommand(raw) {
     } else {
       print(cmd + ': not a command. type "menu" for assisted navigation.', 'error');
     }
-    addSuspicion(1);
   }
 
   printBlank();
@@ -725,6 +710,7 @@ function boot() {
       state.booted = true;
       input.focus();
       resetIdleTimer();
+      executeCommand('claims');
       return;
     }
     print(lines[i].text, lines[i].cls);
@@ -742,6 +728,7 @@ function boot() {
     state.booted = true;
     input.focus();
     resetIdleTimer();
+    executeCommand('claims');
     document.removeEventListener('keydown', skipHandler);
   }
   document.addEventListener('keydown', skipHandler, { once: true });

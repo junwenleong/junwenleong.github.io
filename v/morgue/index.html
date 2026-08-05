@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kill Ledger — 3 alive / 5 dead</title>
+  <title>Jun Wen Leong — Security of AI Research</title>
   <meta name="description" content="I killed 14 of my own ideas so far. 28,000 runs, one person, 0 execution errors. The survivors are below.">
   <meta property="og:title" content="Kill Ledger — Jun Wen Leong">
-  <meta property="og:description" content="28,000 experiments. 14 dead ideas. Full autopsy inside.">
+  <meta property="og:description" content="9 claims. 3 alive, 5 dead, 1 contested. Full autopsy inside.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://junwenleong.github.io/site/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kill Ledger — Jun Wen Leong">
+  <meta name="twitter:description" content="9 claims. 3 alive, 5 dead, 1 contested. Full autopsy inside.">
   <meta name="twitter:image" content="https://junwenleong.github.io/site/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,32 +36,34 @@
 </head>
 <body>
 
+  <h1 class="sr-only">Jun Wen Leong — Security of AI Researcher</h1>
+
   <!-- Autopsy Rail (fixed filter header) -->
   <nav class="autopsy-rail" role="navigation" aria-label="Filter drawers by status">
-    <button class="autopsy-rail__filter is-active" data-filter="all">
+    <button class="autopsy-rail__filter is-active" data-filter="all" aria-pressed="true">
       ALL <span class="autopsy-rail__count">20</span>
     </button>
-    <button class="autopsy-rail__filter" data-filter="dead">
+    <button class="autopsy-rail__filter" data-filter="dead" aria-pressed="false">
       <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--dead"></span>
       DEAD <span class="autopsy-rail__count">5</span>
     </button>
-    <button class="autopsy-rail__filter" data-filter="alive">
+    <button class="autopsy-rail__filter" data-filter="alive" aria-pressed="false">
       <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--alive"></span>
       ALIVE <span class="autopsy-rail__count">3</span>
     </button>
-    <button class="autopsy-rail__filter" data-filter="attack">
+    <button class="autopsy-rail__filter" data-filter="attack" aria-pressed="false">
       <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--attack"></span>
       ATTACK <span class="autopsy-rail__count">1</span>
     </button>
-    <button class="autopsy-rail__filter" data-filter="papers">
+    <button class="autopsy-rail__filter" data-filter="papers" aria-pressed="false">
       <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--papers"></span>
       PAPERS <span class="autopsy-rail__count">3</span>
     </button>
-    <button class="autopsy-rail__filter" data-filter="systems">
+    <button class="autopsy-rail__filter" data-filter="systems" aria-pressed="false">
       <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--systems"></span>
       SYSTEMS <span class="autopsy-rail__count">2</span>
     </button>
-    <button class="autopsy-rail__filter" data-filter="ghosts">
+    <button class="autopsy-rail__filter" data-filter="ghosts" aria-pressed="false">
       <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--ghosts"></span>
       GHOSTS <span class="autopsy-rail__count">2</span>
     </button>
@@ -464,7 +467,40 @@
 
   </main>
 
-  <footer style="text-align:center; padding:24px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#5A6568; letter-spacing:0.05em; text-transform:uppercase;">
+  <!-- Noscript fallback for JS-disabled users -->
+  <noscript>
+    <div style="max-width:700px;margin:2rem auto;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:13px;color:#C8D0D4;">
+      <h2>Papers</h2>
+      <ul>
+        <li><a href="https://arxiv.org/abs/2605.08442">Defense Effectiveness Across Architectural Layers</a> (arXiv:2605.08442, 2026)</li>
+        <li><a href="https://arxiv.org/abs/2606.11949">Cheap Canaries: Detecting Targeted Evasion</a> (arXiv:2606.11949, 2026)</li>
+        <li><a href="https://arxiv.org/abs/2606.30566">Authority Is Not a Keyword</a> (arXiv:2606.30566, 2026)</li>
+      </ul>
+      <h2>Claims Summary</h2>
+      <p>9 claims total: 3 alive, 5 dead, 1 contested. All drawers above are interactive (JS required to expand).</p>
+      <h2>Contact</h2>
+      <ul>
+        <li><a href="mailto:leongjunwen@gmail.com">leongjunwen@gmail.com</a></li>
+        <li><a href="https://github.com/junwenleong">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/junwenleong">LinkedIn</a></li>
+        <li><a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ">Google Scholar</a></li>
+        <li><a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong">arXiv</a></li>
+        <li><a href="/cv.html">CV</a></li>
+      </ul>
+    </div>
+  </noscript>
+
+  <!-- Persistent contact links -->
+  <footer class="morgue-contact">
+    <a href="mailto:leongjunwen@gmail.com">email</a> ·
+    <a href="https://github.com/junwenleong" target="_blank" rel="noopener noreferrer">github</a> ·
+    <a href="https://linkedin.com/in/junwenleong" target="_blank" rel="noopener noreferrer">linkedin</a> ·
+    <a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank" rel="noopener noreferrer">scholar</a> ·
+    <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank" rel="noopener noreferrer">arxiv</a> ·
+    <a href="/cv.html">cv</a>
+  </footer>
+
+  <footer class="morgue-footer">
     No claims above this line survived by accident. · Privacy-preserving analytics only (GoatCounter, no cookies).
   </footer>
 
@@ -510,21 +546,24 @@
       btn.addEventListener('click', function() {
         var filter = this.dataset.filter;
 
-        // Update active state
-        filters.forEach(function(f) { f.classList.remove('is-active'); });
+        // Update active state and aria-pressed
+        filters.forEach(function(f) {
+          f.classList.remove('is-active');
+          f.setAttribute('aria-pressed', 'false');
+        });
         this.classList.add('is-active');
+        this.setAttribute('aria-pressed', 'true');
+
+        // Types that are always visible regardless of filter
+        var alwaysVisible = ['self', 'links', 'changelog'];
 
         // Show/hide drawers
         allDrawers.forEach(function(drawer) {
-          if (filter === 'all') {
+          var type = drawer.dataset.type;
+          if (filter === 'all' || type === filter || alwaysVisible.indexOf(type) !== -1) {
             drawer.classList.remove('drawer--hidden');
           } else {
-            var type = drawer.dataset.type;
-            if (type === filter) {
-              drawer.classList.remove('drawer--hidden');
-            } else {
-              drawer.classList.add('drawer--hidden');
-            }
+            drawer.classList.add('drawer--hidden');
           }
         });
       });
