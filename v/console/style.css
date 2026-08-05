@@ -220,14 +220,21 @@ body {
   padding: 8px 20px;
   border-top: 1px solid #1a1a1a;
   background: #0d0d0d;
+  opacity: 0.4;
+  transition: opacity 0.6s ease;
+}
+
+.terminal__chips.is-fading {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .terminal__chip {
   padding: 5px 10px;
-  border: 1px solid #2a2a2a;
+  border: 1px solid #1a1a1a;
   border-radius: 3px;
   background: transparent;
-  color: #888;
+  color: #555;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   cursor: pointer;
