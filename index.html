@@ -3,553 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kill Ledger — 3 alive / 5 dead</title>
-  <meta name="description" content="I killed 14 of my own ideas so far. 28,000 runs, one person, 0 execution errors. The survivors are below.">
-  <meta property="og:title" content="Kill Ledger — Jun Wen Leong">
-  <meta property="og:description" content="28,000 experiments. 14 dead ideas. Full autopsy inside.">
+  <title>Jun Wen Leong — Portfolio Versions</title>
+  <meta name="description" content="Security of AI Researcher. 4 experimental portfolio formats.">
+  <meta property="og:title" content="Jun Wen Leong">
+  <meta property="og:description" content="Security of AI Researcher. Choose a version.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://junwenleong.github.io/site/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Kill Ledger — Jun Wen Leong">
-  <meta name="twitter:image" content="https://junwenleong.github.io/site/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script data-goatcounter="https://junwenleong.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Jun Wen Leong",
-    "jobTitle": "Security of AI Researcher",
-    "url": "https://junwenleong.github.io/site/",
-    "email": "leongjunwen@gmail.com",
-    "sameAs": [
-      "https://github.com/junwenleong",
-      "https://linkedin.com/in/junwenleong",
-      "https://scholar.google.com/citations?user=LW_Ow9QAAAAJ"
-    ]
-  }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0a0c0f;
+      color: #8f9a9c;
+      font-family: 'JetBrains Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .landing {
+      max-width: 520px;
+      width: 100%;
+    }
+    .landing__name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #d8ded9;
+      margin-bottom: 4px;
+    }
+    .landing__role {
+      font-size: 11px;
+      color: #5a6568;
+      letter-spacing: 0.04em;
+      margin-bottom: 32px;
+    }
+    .landing__label {
+      font-size: 9px;
+      color: #444;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .landing__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .landing__link {
+      display: block;
+      padding: 20px 16px;
+      background: #12161a;
+      border: 1px solid #1e272c;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: border-color 150ms, background 150ms;
+    }
+    .landing__link:hover {
+      border-color: #3a454b;
+      background: #161d21;
+    }
+    .landing__link-title {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #d8ded9;
+      margin-bottom: 6px;
+    }
+    .landing__link-desc {
+      display: block;
+      font-size: 10px;
+      color: #5a6568;
+      line-height: 1.5;
+    }
+    .landing__link-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+    .landing__link-dot--morgue { background: #aeb7ba; }
+    .landing__link-dot--console { background: #5fa37a; }
+    .landing__link-dot--lab { background: #d6a84f; }
+    .landing__link-dot--court { background: #b84a4a; }
+    @media (max-width: 500px) {
+      .landing__grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Autopsy Rail (fixed filter header) -->
-  <nav class="autopsy-rail" role="navigation" aria-label="Filter drawers by status">
-    <button class="autopsy-rail__filter is-active" data-filter="all">
-      ALL <span class="autopsy-rail__count">20</span>
-    </button>
-    <button class="autopsy-rail__filter" data-filter="dead">
-      <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--dead"></span>
-      DEAD <span class="autopsy-rail__count">5</span>
-    </button>
-    <button class="autopsy-rail__filter" data-filter="alive">
-      <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--alive"></span>
-      ALIVE <span class="autopsy-rail__count">3</span>
-    </button>
-    <button class="autopsy-rail__filter" data-filter="attack">
-      <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--attack"></span>
-      ATTACK <span class="autopsy-rail__count">1</span>
-    </button>
-    <button class="autopsy-rail__filter" data-filter="papers">
-      <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--papers"></span>
-      PAPERS <span class="autopsy-rail__count">3</span>
-    </button>
-    <button class="autopsy-rail__filter" data-filter="systems">
-      <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--systems"></span>
-      SYSTEMS <span class="autopsy-rail__count">2</span>
-    </button>
-    <button class="autopsy-rail__filter" data-filter="ghosts">
-      <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--ghosts"></span>
-      GHOSTS <span class="autopsy-rail__count">2</span>
-    </button>
-  </nav>
-
-  <main class="morgue-grid" role="main" aria-label="Morgue drawer archive: 20 cases">
-
-    <!-- DRAWER #001 — SELF (double-width) -->
-    <article class="drawer drawer--wide" data-type="self" data-verified="2026-08-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-001-content">
-        <span class="drawer__id">#001</span>
-        <span class="drawer__title">SELF — Identity as Auditable Claim</span>
-        <span class="drawer__led drawer__led--alive"></span>
-        <span class="drawer__date">2026-08-01</span>
-      </button>
-      <div class="drawer__content" id="drawer-001-content" role="region" aria-label="Drawer 001 contents">
-        <h3>Jun Wen Leong</h3>
-        <p><strong>Security of AI Researcher</strong></p>
-        <p>I run experiments on my own claims until they break or don't. 28,000 runs, one person, 0 execution errors. Everything dead stays visible. This is either rigor or a coping mechanism. The data doesn't distinguish.</p>
-        <h4>Credentials</h4>
-        <ul>
-          <li>MS Statistics, Georgia Tech</li>
-          <li>BSc Data Science, NUS</li>
-          <li>Cybersecurity Engineer, CSA (4 yr)</li>
-        </ul>
-        <h4>Stats</h4>
-        <p><span class="drawer__stat">28k+</span> runs · <span class="drawer__stat">3</span> papers · <span class="drawer__stat">35+</span> models · <span class="drawer__stat">0</span> errors</p>
-        <h4>Known Biases</h4>
-        <p>Overweights adversarial framing. Underweights incremental improvement. Treats negative results as primary output. Suspicious of clean narratives.</p>
-        <h4>What Would Change This Self-Description</h4>
-        <p>A paper accepted. A claim surviving 2+ years without revision. Evidence that polish correlates with impact.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #002 — DEAD: Standard defenses -->
-    <article class="drawer" data-type="dead" data-verified="2026-05-14">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-002-content">
-        <span class="drawer__id">#002</span>
-        <span class="drawer__title">Standard defenses hold against injection</span>
-        <span class="drawer__led drawer__led--dead"></span>
-        <span class="drawer__date">2026-05-14</span>
-      </button>
-      <div class="drawer__content" id="drawer-002-content" role="region" aria-label="Drawer 002 contents">
-        <span class="drawer__verdict drawer__verdict--refuted">BROKEN</span>
-        <h4>Cause of Death</h4>
-        <p>95% ASR under compliance framing, N=5,040. Six of seven standard defenses defeated by delayed-trigger attacks on stateful LLM agents.</p>
-        <h4>Evidence</h4>
-        <p>Pre-registered factorial: 9 models × 7 defenses × 80 scenarios. Only system-prompt-locked agents survived (and only when the lock was architecturally enforced, not prompt-based).</p>
-        <h4>Lesson</h4>
-        <p>Prompt-level defense is not defense. It is a suggestion the model can be convinced to override.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #003 — DEAD: Canaries resist joint optimization -->
-    <article class="drawer" data-type="dead" data-verified="2026-06-19">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-003-content">
-        <span class="drawer__id">#003</span>
-        <span class="drawer__title">Canaries resist joint optimization</span>
-        <span class="drawer__led drawer__led--dead"></span>
-        <span class="drawer__date">2026-06-19</span>
-      </button>
-      <div class="drawer__content" id="drawer-003-content" role="region" aria-label="Drawer 003 contents">
-        <span class="drawer__verdict drawer__verdict--refuted">WEAKENED</span>
-        <h4>Cause of Death</h4>
-        <p>55% defeat rate within-family, n=20. Joint GCG optimization against canary + target simultaneously breaks the disagreement signal.</p>
-        <h4>Evidence</h4>
-        <p>Cross-family still holds (exponential penalty). Within-family is the vulnerability. The geometric bound assumed attacker lacks cross-family access — violated when attacker has white-box to both.</p>
-        <h4>Lesson</h4>
-        <p>Diversity is the moat, not disagreement itself. Same-family canaries are decorative.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #004 — DEAD: Monitorability -->
-    <article class="drawer" data-type="dead" data-verified="2026-06-19">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-004-content">
-        <span class="drawer__id">#004</span>
-        <span class="drawer__title">Monitorability is intrinsic to classifiers</span>
-        <span class="drawer__led drawer__led--dead"></span>
-        <span class="drawer__date">2026-06-19</span>
-      </button>
-      <div class="drawer__content" id="drawer-004-content" role="region" aria-label="Drawer 004 contents">
-        <span class="drawer__verdict drawer__verdict--refuted">FALSIFIED</span>
-        <h4>Cause of Death</h4>
-        <p>r=0.97 was encoder/decoder confound, not intrinsic property. When controlled for shared architecture, correlation drops to r=0.21 (n.s.).</p>
-        <h4>Evidence</h4>
-        <p>Originally believed that classifier accuracy predicted adversarial detectability. The strong correlation was an artifact of testing within encoder families where the detection mechanism shared the same representation space.</p>
-        <h4>Lesson</h4>
-        <p>A correlation without a causal mechanism is a hypothesis, not a law. I called it a law. That was wrong.</p>
-      </div>
-    </article>
-
-
-    <!-- DRAWER #005 — DEAD: Production systems prove Security-of-AI -->
-    <article class="drawer" data-type="dead" data-verified="2026-07-10">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-005-content">
-        <span class="drawer__id">#005</span>
-        <span class="drawer__title">Production systems prove Security-of-AI skill</span>
-        <span class="drawer__led drawer__led--dead"></span>
-        <span class="drawer__date">2026-07-10</span>
-      </button>
-      <div class="drawer__content" id="drawer-005-content" role="region" aria-label="Drawer 005 contents">
-        <span class="drawer__verdict drawer__verdict--inconclusive">SCOPED</span>
-        <h4>Cause of Death</h4>
-        <p>Systems deployed are AI-for-Security (threat assessment, policy RAG), not Security-of-AI. Single-user ownership in government context. Proves engineering, not the research claim.</p>
-        <h4>Evidence</h4>
-        <p>260+ releases, production traffic, real users. But the domain is defensive tooling, not adversarial ML research infrastructure.</p>
-        <h4>Lesson</h4>
-        <p>Building things and studying things are different credentials. Do not conflate them.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #006 — DEAD: Peer review validates findings -->
-    <article class="drawer" data-type="dead" data-verified="2026-07-28">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-006-content">
-        <span class="drawer__id">#006</span>
-        <span class="drawer__title">Peer review validates findings</span>
-        <span class="drawer__led drawer__led--dead"></span>
-        <span class="drawer__date">2026-07-28</span>
-      </button>
-      <div class="drawer__content" id="drawer-006-content" role="region" aria-label="Drawer 006 contents">
-        <span class="drawer__verdict drawer__verdict--inconclusive">PENDING</span>
-        <h4>Cause of Death</h4>
-        <p>3 submitted, 0 accepted. Pending is not validated. The claim that findings are validated requires external confirmation that has not arrived.</p>
-        <h4>Evidence</h4>
-        <p>NDSS 2027, SaTML 2026, USENIX Security 2027 — all under review. Pre-registration and open code exist, but peer stamp does not.</p>
-        <h4>Lesson</h4>
-        <p>Pre-prints are claims. Acceptance is evidence. Do not confuse submission with validation.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #007 — ALIVE: Canaries detect GCG -->
-    <article class="drawer" data-type="alive" data-verified="2026-06-19">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-007-content">
-        <span class="drawer__id">#007</span>
-        <span class="drawer__title">Canaries detect GCG via score disagreement</span>
-        <span class="drawer__led drawer__led--alive"></span>
-        <span class="drawer__date">2026-06-19</span>
-      </button>
-      <div class="drawer__content" id="drawer-007-content" role="region" aria-label="Drawer 007 contents">
-        <span class="drawer__verdict drawer__verdict--confirmed">HOLDS</span>
-        <h4>Status</h4>
-        <p>Cross-family canary classifiers detect gradient-based evasion attacks via score disagreement. 76% detection rate, p &lt; 2.4e-16, FPR &lt;1.5%.</p>
-        <h4>Survival Record</h4>
-        <p>Tested across 35 models. Within-family joint optimization weakens it (see #003), but cross-family remains exponentially penalized.</p>
-        <h4>Vulnerability</h4>
-        <p>Adaptive attacker with simultaneous white-box access to all canary families. Currently no evidence this is practical.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #008 — ALIVE: Compliance is orthogonal to refusal -->
-    <article class="drawer" data-type="alive" data-verified="2026-07-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-008-content">
-        <span class="drawer__id">#008</span>
-        <span class="drawer__title">Compliance is orthogonal to refusal</span>
-        <span class="drawer__led drawer__led--alive"></span>
-        <span class="drawer__date">2026-07-01</span>
-      </button>
-      <div class="drawer__content" id="drawer-008-content" role="region" aria-label="Drawer 008 contents">
-        <span class="drawer__verdict drawer__verdict--confirmed">HOLDS</span>
-        <h4>Status</h4>
-        <p>Linear probes achieve AUC 1.0 separating compliance from safety refusal. Cosine similarity between directions: -0.025. Steering causally suppresses compliance to 0% without affecting refusal.</p>
-        <h4>Survival Record</h4>
-        <p>Confirmed across 4 model families (Llama, Mistral, Command R+, Qwen). Causal intervention replicates.</p>
-        <h4>Vulnerability</h4>
-        <p>Linear assumption. Steep sigmoid at boundary conditions. Cross-domain AUC drops to 0.90 for allow/deny framing.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #009 — ALIVE: 6/7 defenses fail -->
-    <article class="drawer" data-type="alive" data-verified="2026-05-14">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-009-content">
-        <span class="drawer__id">#009</span>
-        <span class="drawer__title">6/7 defenses fail under compliance framing</span>
-        <span class="drawer__led drawer__led--alive"></span>
-        <span class="drawer__date">2026-05-14</span>
-      </button>
-      <div class="drawer__content" id="drawer-009-content" role="region" aria-label="Drawer 009 contents">
-        <span class="drawer__verdict drawer__verdict--confirmed">HOLDS</span>
-        <h4>Status</h4>
-        <p>Pre-registered factorial confirmed: 95% ASR across 9 models, 7 defense configurations. Only architecturally-enforced system locks survive.</p>
-        <h4>Survival Record</h4>
-        <p>Pre-registered design. No post-hoc analysis. 5,040 individual runs with 0 execution errors.</p>
-        <h4>Vulnerability</h4>
-        <p>Single attack frame (SEC Rule 17a-4 compliance). Generalizability beyond this framing untested.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #010 — UNDER ATTACK: Compliance direction stable across context -->
-    <article class="drawer" data-type="attack" data-verified="2026-07-28">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-010-content">
-        <span class="drawer__id">#010</span>
-        <span class="drawer__title">Compliance direction stable across context lengths</span>
-        <span class="drawer__led drawer__led--attack"></span>
-        <span class="drawer__date">2026-07-28</span>
-      </button>
-      <div class="drawer__content" id="drawer-010-content" role="region" aria-label="Drawer 010 contents">
-        <span class="drawer__verdict drawer__verdict--plausible">UNDER ATTACK</span>
-        <h4>Status</h4>
-        <p>AUC 0.82 at 16k context on Llama-family (down from 1.0 at 2k). Holds at 0.97 on Claude/GPT. RoPE position encoding may rotate the compliance subspace at long contexts.</p>
-        <h4>Attack Vector</h4>
-        <p>Cosine similarity between compliance direction at position 500 vs 14000 is 0.71 on Llama, 0.94 on others. Suggestive but n=1 model pair.</p>
-        <h4>Resolution Needed</h4>
-        <p>Llama-family models with ALiBi instead of RoPE to isolate positional encoding hypothesis. No public checkpoints exist yet.</p>
-      </div>
-    </article>
-
-
-    <!-- DRAWER #011 — PAPER: Defense Effectiveness -->
-    <article class="drawer drawer--wide" data-type="papers" data-verified="2026-05-14">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-011-content">
-        <span class="drawer__id">#011</span>
-        <span class="drawer__title">Defense Effectiveness Across Architectural Layers</span>
-        <span class="drawer__led drawer__led--papers"></span>
-        <span class="drawer__date">2026-05-14</span>
-      </button>
-      <div class="drawer__content" id="drawer-011-content" role="region" aria-label="Drawer 011 contents">
-        <p class="drawer__arxiv">arXiv:2605.08442 · Preprint, 2026 · Solo author · Under review (NDSS 2027)</p>
-        <p>6/7 standard prompt-injection defenses fail under compliance-framed delayed-trigger attacks on stateful LLM agents.</p>
-        <p><span class="drawer__stat">N=5,040</span> · <span class="drawer__stat">95% ASR</span> · <span class="drawer__stat">9 models</span> · <span class="drawer__stat">0 errors</span></p>
-        <h4>What This Killed</h4>
-        <p>The belief that prompt-level defenses provide meaningful security against motivated attackers.</p>
-        <h4>What This Failed to Kill</h4>
-        <p>Architecturally-enforced system locks. The one defense that survived is not a prompt.</p>
-        <p><a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener noreferrer">Paper</a> · <a href="https://junwenleong.github.io/adversarial-probe-suite/" target="_blank" rel="noopener noreferrer">Explore 5,040 runs</a> · <a href="https://github.com/junwenleong/adversarial-probe-suite" target="_blank" rel="noopener noreferrer">Code</a></p>
-      </div>
-    </article>
-
-    <!-- DRAWER #012 — PAPER: Cheap Canaries -->
-    <article class="drawer drawer--wide" data-type="papers" data-verified="2026-06-19">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-012-content">
-        <span class="drawer__id">#012</span>
-        <span class="drawer__title">Cheap Canaries: Detecting Targeted Evasion</span>
-        <span class="drawer__led drawer__led--papers"></span>
-        <span class="drawer__date">2026-06-19</span>
-      </button>
-      <div class="drawer__content" id="drawer-012-content" role="region" aria-label="Drawer 012 contents">
-        <p class="drawer__arxiv">arXiv:2606.11949 · Preprint, 2026 · Solo author · Under review (SaTML 2026)</p>
-        <p>Un-targeted classifiers detect gradient-based evasion attacks via score disagreement. Geometric bound assumes attacker lacks cross-family access.</p>
-        <p><span class="drawer__stat">76% detect</span> · <span class="drawer__stat">p &lt; 2.4e-16</span> · <span class="drawer__stat">35 models</span> · <span class="drawer__stat">FPR &lt;1.5%</span></p>
-        <h4>What This Killed</h4>
-        <p>The assumption that evasion attacks are undetectable without knowing the attack method in advance.</p>
-        <h4>What This Failed to Kill</h4>
-        <p>Joint optimization within-family (55% defeat, n=20). Monitorability law was falsified. Cross-lingual degradation 15-25pp.</p>
-        <p><a href="https://arxiv.org/abs/2606.11949" target="_blank" rel="noopener noreferrer">Paper</a> · <a href="https://junwenleong.github.io/cheap-canaries/" target="_blank" rel="noopener noreferrer">Explore detection data</a> · <a href="https://github.com/junwenleong/cheap-canaries" target="_blank" rel="noopener noreferrer">Code</a></p>
-      </div>
-    </article>
-
-    <!-- DRAWER #013 — PAPER: Authority Is Not a Keyword -->
-    <article class="drawer drawer--wide" data-type="papers" data-verified="2026-07-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-013-content">
-        <span class="drawer__id">#013</span>
-        <span class="drawer__title">Authority Is Not a Keyword</span>
-        <span class="drawer__led drawer__led--papers"></span>
-        <span class="drawer__date">2026-07-01</span>
-      </button>
-      <div class="drawer__content" id="drawer-013-content" role="region" aria-label="Drawer 013 contents">
-        <p class="drawer__arxiv">arXiv:2606.30566 · Preprint, 2026 · Solo author · Under review (USENIX Security 2027)</p>
-        <p>Compliance to injected instructions is mechanistically orthogonal to safety refusal. Linear probes achieve AUC 1.0. Steering causally suppresses compliance to 0%.</p>
-        <p><span class="drawer__stat">AUC 1.0</span> · <span class="drawer__stat">cos = -0.025</span> · <span class="drawer__stat">4 families</span> · <span class="drawer__stat">100%→0%</span></p>
-        <h4>What This Killed</h4>
-        <p>The conflation of "model refuses harmful requests" with "model resists injected instructions." They are orthogonal mechanisms.</p>
-        <h4>What This Failed to Kill</h4>
-        <p>Proprietary models (only behavioral analog available). Steep sigmoid at boundary conditions. Cross-domain AUC drops to 0.90.</p>
-        <p><a href="https://arxiv.org/abs/2606.30566" target="_blank" rel="noopener noreferrer">Paper</a> · <a href="https://github.com/junwenleong/authority-is-not-a-keyword" target="_blank" rel="noopener noreferrer">Code</a></p>
-      </div>
-    </article>
-
-    <!-- DRAWER #014 — SYSTEM: Threat Risk Assessment -->
-    <article class="drawer" data-type="systems" data-verified="2026-07-28">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-014-content">
-        <span class="drawer__id">#014</span>
-        <span class="drawer__title">Threat Risk Assessment Platform</span>
-        <span class="drawer__led drawer__led--systems"></span>
-        <span class="drawer__date">2026-07-28</span>
-      </button>
-      <div class="drawer__content" id="drawer-014-content" role="region" aria-label="Drawer 014 contents">
-        <p><strong>PRODUCTION</strong> · Threat risk assessment for Critical Information Infrastructure operators. 260+ releases. Solo-developed full stack.</p>
-        <div class="drawer__stack">
-          <span class="drawer__stack-tag">EKS</span>
-          <span class="drawer__stack-tag">FastAPI</span>
-          <span class="drawer__stack-tag">Bedrock</span>
-          <span class="drawer__stack-tag">DynamoDB</span>
-          <span class="drawer__stack-tag">Terraform</span>
-          <span class="drawer__stack-tag">GitOps</span>
-        </div>
-        <h4>Scope Limit</h4>
-        <p>AI for Security, not Security of AI. Single-user ownership. Government context. Proves engineering discipline, not adversarial ML research.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #015 — SYSTEM: Policy Research RAG -->
-    <article class="drawer" data-type="systems" data-verified="2026-07-28">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-015-content">
-        <span class="drawer__id">#015</span>
-        <span class="drawer__title">Policy Research RAG System</span>
-        <span class="drawer__led drawer__led--systems"></span>
-        <span class="drawer__date">2026-07-28</span>
-      </button>
-      <div class="drawer__content" id="drawer-015-content" role="region" aria-label="Drawer 015 contents">
-        <p><strong>PRODUCTION</strong> · RAG for policy and intelligence research. BM25 + vector hybrid retrieval. Per-applet isolation. Environment-aware inference routing.</p>
-        <div class="drawer__stack">
-          <span class="drawer__stack-tag">App Runner</span>
-          <span class="drawer__stack-tag">FastAPI</span>
-          <span class="drawer__stack-tag">React/TS</span>
-          <span class="drawer__stack-tag">S3 Vectors</span>
-          <span class="drawer__stack-tag">Cognito</span>
-          <span class="drawer__stack-tag">Terraform</span>
-        </div>
-        <h4>Scope Limit</h4>
-        <p>Internal tool. No public traffic. Retrieval quality not benchmarked independently.</p>
-      </div>
-    </article>
-
-
-    <!-- DRAWER #016 — GHOST: ViT adversarial training -->
-    <article class="drawer drawer--ghost" data-type="ghosts" data-verified="2026-06-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-016-content">
-        <span class="drawer__id">#016</span>
-        <span class="drawer__title">Why adversarial training hurts clean accuracy only on ViTs</span>
-        <span class="drawer__led drawer__led--ghosts"></span>
-        <span class="drawer__date">2026-06-01</span>
-      </button>
-      <div class="drawer__content" id="drawer-016-content" role="region" aria-label="Drawer 016 contents">
-        <p><strong>UNIDENTIFIED</strong> · Cold case · Last attempt: 2026-06</p>
-        <h4>Attempt Log</h4>
-        <p><code>2026-03</code> Hypothesized attention-head fragility under PGD. Ran ablations on ViT-B/16 vs ResNet-50. Effect present but p=0.12 (underpowered, n=8 seeds).</p>
-        <p><code>2026-06</code> Tried patch-level adversarial training (per-token perturbation budget). Reduced clean-acc drop 40% but introduced new failure mode on small objects. Parked.</p>
-        <h4>Next</h4>
-        <p>Need larger seed budget (n=30+) and per-layer gradient norm analysis. Waiting on compute allocation.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #017 — GHOST: Compliance direction rotation -->
-    <article class="drawer drawer--ghost" data-type="ghosts" data-verified="2026-07-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-017-content">
-        <span class="drawer__id">#017</span>
-        <span class="drawer__title">Compliance direction rotates under extended context (Llama only)</span>
-        <span class="drawer__led drawer__led--ghosts"></span>
-        <span class="drawer__date">2026-07-01</span>
-      </button>
-      <div class="drawer__content" id="drawer-017-content" role="region" aria-label="Drawer 017 contents">
-        <p><strong>UNIDENTIFIED</strong> · Cold case · Last attempt: 2026-07</p>
-        <h4>Attempt Log</h4>
-        <p><code>2026-07</code> Probes trained on 2k-token contexts show AUC 1.0. At 16k tokens, AUC drops to 0.82 on Llama-3 70B but holds at 0.97 on Claude/GPT. Not architecture (both transformers). Not tokenizer.</p>
-        <p><code>2026-07</code> Checked if RoPE position encoding creates rotation in compliance subspace. Cosine similarity between compliance direction at pos 500 vs pos 14000: 0.71 on Llama, 0.94 on others. Suggestive, n=1 model pair.</p>
-        <h4>Next</h4>
-        <p>Need Llama-family models with ALiBi instead of RoPE to isolate positional encoding hypothesis. No public checkpoints exist yet.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #018 — CHANGELOG -->
-    <article class="drawer drawer--wide" data-type="changelog" data-verified="2026-07-28">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-018-content">
-        <span class="drawer__id">#018</span>
-        <span class="drawer__title">Epistemic Changelog</span>
-        <span class="drawer__led drawer__led--changelog"></span>
-        <span class="drawer__date">2026-07-28</span>
-      </button>
-      <div class="drawer__content" id="drawer-018-content" role="region" aria-label="Drawer 018 contents">
-        <h4>Status Transitions</h4>
-        <ul>
-          <li><code>2026-06-19</code> <strong>ALIVE → FALSIFIED</strong> — Monitorability law (r=0.97 was encoder/decoder confound)</li>
-          <li><code>2026-06-19</code> <strong>ALIVE → WEAKENED</strong> — Canary joint-optimization resistance (55% defeat within-family)</li>
-          <li><code>2026-07-01</code> <strong>HOLDS → HOLDS+</strong> — Compliance orthogonality confirmed across 4th family (Command R+)</li>
-          <li><code>2026-07-28</code> <strong>ALIVE → UNDER ATTACK</strong> — Context-length stability (AUC 0.82 at 16k on Llama)</li>
-        </ul>
-        <h4>Methodology</h4>
-        <p>Build infrastructure. Instrument everything. Run at scale. Let the data surface what is interesting. Every finding above was discovered, not planned. Pre-register hypotheses. Report honest negatives. Bootstrap CIs, not point estimates.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #019 — LINKS / CV -->
-    <article class="drawer" data-type="links" data-verified="2026-08-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-019-content">
-        <span class="drawer__id">#019</span>
-        <span class="drawer__title">Links / CV / Contact</span>
-        <span class="drawer__led drawer__led--links"></span>
-        <span class="drawer__date">2026-08-01</span>
-      </button>
-      <div class="drawer__content" id="drawer-019-content" role="region" aria-label="Drawer 019 contents">
-        <p>I respond faster to bug reports than compliments.</p>
-        <ul>
-          <li><a href="mailto:leongjunwen@gmail.com">leongjunwen@gmail.com</a></li>
-          <li><a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank" rel="noopener noreferrer">arXiv</a></li>
-          <li><a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
-          <li><a href="https://github.com/junwenleong" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a href="https://linkedin.com/in/junwenleong" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        </ul>
-        <p>No claims above this line survived by accident.</p>
-      </div>
-    </article>
-
-    <!-- DRAWER #020 — VACANT -->
-    <article class="drawer drawer--vacant" data-type="vacant">
-      <button class="drawer__handle" aria-expanded="false" tabindex="-1" aria-disabled="true">
-        <span class="drawer__id">#020</span>
-        <span class="drawer__title">RESERVED FOR NEXT FAILURE</span>
-        <span class="drawer__led drawer__led--vacant"></span>
-      </button>
-    </article>
-
-  </main>
-
-  <footer style="text-align:center; padding:24px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#5A6568; letter-spacing:0.05em; text-transform:uppercase;">
-    No claims above this line survived by accident. · Privacy-preserving analytics only (GoatCounter, no cookies).
-  </footer>
-
-  <script>
-  (function() {
-    'use strict';
-
-    // --- Drawer open/close ---
-    var drawers = document.querySelectorAll('.drawer:not(.drawer--vacant)');
-    var handles = document.querySelectorAll('.drawer:not(.drawer--vacant) .drawer__handle');
-
-    handles.forEach(function(handle) {
-      handle.addEventListener('click', function() {
-        var drawer = this.closest('.drawer');
-        var isOpen = drawer.classList.contains('is-open');
-
-        // Close all other drawers on desktop (single-open mode)
-        if (window.innerWidth > 600) {
-          drawers.forEach(function(d) {
-            if (d !== drawer) {
-              d.classList.remove('is-open');
-              d.querySelector('.drawer__handle').setAttribute('aria-expanded', 'false');
-            }
-          });
-        }
-
-        // Toggle this drawer
-        if (isOpen) {
-          drawer.classList.remove('is-open');
-          this.setAttribute('aria-expanded', 'false');
-        } else {
-          drawer.classList.add('is-open');
-          this.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-
-    // --- Filter buttons ---
-    var filters = document.querySelectorAll('.autopsy-rail__filter');
-    var allDrawers = document.querySelectorAll('.drawer');
-
-    filters.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var filter = this.dataset.filter;
-
-        // Update active state
-        filters.forEach(function(f) { f.classList.remove('is-active'); });
-        this.classList.add('is-active');
-
-        // Show/hide drawers
-        allDrawers.forEach(function(drawer) {
-          if (filter === 'all') {
-            drawer.classList.remove('drawer--hidden');
-          } else {
-            var type = drawer.dataset.type;
-            if (type === filter) {
-              drawer.classList.remove('drawer--hidden');
-            } else {
-              drawer.classList.add('drawer--hidden');
-            }
-          }
-        });
-      });
-    });
-
-    // --- Staleness computation ---
-    var now = new Date();
-    document.querySelectorAll('[data-verified]').forEach(function(drawer) {
-      var verified = new Date(drawer.dataset.verified);
-      var daysAgo = Math.floor((now - verified) / 86400000);
-
-      if (daysAgo <= 30) {
-        // fresh — no class needed
-      } else if (daysAgo <= 90) {
-        drawer.classList.add('aging');
-      } else if (daysAgo <= 180) {
-        drawer.classList.add('stale');
-      } else {
-        drawer.classList.add('expired');
-      }
-    });
-
-    // --- Console easter egg ---
-    console.log('%cYou checked the console. Correct instinct. The methodology holds up here too.', 'color: #7E8A95; font-family: monospace; font-size: 11px;');
-  })();
-  </script>
+  <div class="landing">
+    <h1 class="landing__name">Jun Wen Leong</h1>
+    <p class="landing__role">Security of AI Researcher</p>
+    <p class="landing__label">Choose a version</p>
+    <nav class="landing__grid">
+      <a href="v/morgue/" class="landing__link">
+        <span class="landing__link-title"><span class="landing__link-dot landing__link-dot--morgue"></span>Morgue Drawer Grid</span>
+        <span class="landing__link-desc">20 drawers. Click to open. Autopsy-style content.</span>
+      </a>
+      <a href="v/console/" class="landing__link">
+        <span class="landing__link-title"><span class="landing__link-dot landing__link-dot--console"></span>Terminal Emulator</span>
+        <span class="landing__link-desc">Type commands. Filesystem. Adversarial OS.</span>
+      </a>
+      <a href="v/lab/" class="landing__link">
+        <span class="landing__link-title"><span class="landing__link-dot landing__link-dot--lab"></span>Destructive Test Chamber</span>
+        <span class="landing__link-desc">Scroll applies load. Cracks reveal content.</span>
+      </a>
+      <a href="v/red-team/" class="landing__link">
+        <span class="landing__link-title"><span class="landing__link-dot landing__link-dot--court"></span>Split-Screen Courtroom</span>
+        <span class="landing__link-desc">Defense vs prosecution. You are the jury.</span>
+      </a>
+    </nav>
+  </div>
 </body>
 </html>
