@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV: Jun Wen Leong</title>
+  <meta name="description" content="CV of Jun Wen Leong, Security of AI Researcher.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      line-height: 1.6;
+      padding: 48px 24px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    a { color: #1a6b5c; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .header { margin-bottom: 32px; }
+    .header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .header .title {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .header .links {
+      font-size: 13px;
+      color: #555;
+    }
+    .header .links a { margin-right: 16px; }
+
+    .section {
+      margin-bottom: 28px;
+    }
+    .section h2 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #333;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+    .section p, .section li {
+      font-size: 14px;
+      color: #333;
+    }
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .section li {
+      margin-bottom: 10px;
+      padding-left: 12px;
+      position: relative;
+    }
+    .section li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #999;
+    }
+    .section .sub {
+      font-size: 12px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    .paper-link {
+      font-size: 12px;
+      color: #1a6b5c;
+    }
+
+    .skills-list {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    .print-note {
+      margin-top: 40px;
+      font-size: 11px;
+      color: #999;
+      text-align: center;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 24px;
+      font-size: 12px;
+      color: #888;
+    }
+    .back-link:hover { color: #333; }
+
+    @media print {
+      body {
+        padding: 0;
+        font-size: 11pt;
+        color: #000;
+      }
+      a { color: #000; text-decoration: none; }
+      .back-link, .print-note { display: none; }
+      .header { margin-bottom: 20px; }
+      .section { margin-bottom: 18px; }
+      .section h2 { border-bottom-color: #ccc; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-link">&larr; Back</a>
+
+  <header class="header">
+    <h1>Jun Wen Leong</h1>
+    <p class="title">Security of AI Researcher</p>
+    <p class="links">
+      <a href="mailto:leongjunwen@gmail.com">leongjunwen@gmail.com</a>
+      <a href="https://github.com/junwenleong">GitHub</a>
+      <a href="https://linkedin.com/in/junwenleong">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ">Scholar</a>
+    </p>
+  </header>
+
+  <section class="section">
+    <h2>Research Focus</h2>
+    <p>Adversarial evaluation of LLM safety mechanisms. Falsification-first methodology. 28,000+ experiments across 35+ models with 9 falsifiable claims.</p>
+  </section>
+
+  <section class="section">
+    <h2>Papers (solo author, under review)</h2>
+    <ul>
+      <li>
+        Defense Effectiveness Across Architectural Layers (N=5,040, 95% ASR, 9 models)
+        <div class="sub">Submitted to NDSS 2027</div>
+        <a class="paper-link" href="https://arxiv.org/abs/2605.08442">arXiv:2605.08442</a>
+      </li>
+      <li>
+        Cheap Canaries: Detecting Targeted Evasion (76% detect, p&lt;2.4e-16, 35 models)
+        <div class="sub">Submitted to SaTML 2026</div>
+        <a class="paper-link" href="https://arxiv.org/abs/2606.11949">arXiv:2606.11949</a>
+      </li>
+      <li>
+        Authority Is Not a Keyword (AUC 1.0, 4 families)
+        <div class="sub">Submitted to USENIX Security 2027</div>
+        <a class="paper-link" href="https://arxiv.org/abs/2606.30566">arXiv:2606.30566</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Experience</h2>
+    <ul>
+      <li>
+        <strong>Cybersecurity Engineer</strong>, Cyber Security Agency of Singapore (4 years)
+        <div class="sub">Solo-developed 2 production systems:</div>
+        <div class="sub">Threat Risk Assessment Platform: EKS, FastAPI, Bedrock, Terraform, 260+ releases</div>
+        <div class="sub">Policy Research RAG: App Runner, FastAPI, React, Cognito</div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Education</h2>
+    <ul>
+      <li>MS Statistics, Georgia Institute of Technology</li>
+      <li>BSc Data Science &amp; Analytics, National University of Singapore</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Skills</h2>
+    <p class="skills-list">
+      Python, PyTorch, adversarial ML, mechanistic interpretability, Terraform, AWS (EKS, Bedrock, DynamoDB), FastAPI, React/TypeScript
+    </p>
+  </section>
+
+  <p class="print-note">To save as PDF: use your browser's Print function (Ctrl+P / Cmd+P)</p>
+
+  <!-- GoatCounter analytics -->
+  <script data-goatcounter="https://junwenleong.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

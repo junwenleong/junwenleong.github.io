@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jun Wen Leong — Portfolio Versions</title>
-  <meta name="description" content="Security of AI Researcher. 4 experimental portfolio formats.">
+  <title>Jun Wen Leong</title>
+  <meta name="description" content="Security of AI Researcher. Adversarial evaluation of LLM safety mechanisms.">
   <meta property="og:title" content="Jun Wen Leong">
-  <meta property="og:description" content="Security of AI Researcher. Choose a version.">
+  <meta property="og:description" content="Security of AI Researcher. Adversarial evaluation of LLM safety mechanisms.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://junwenleong.github.io/site/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,9 +25,11 @@
       padding: 24px;
     }
     .landing {
-      max-width: 520px;
+      max-width: 580px;
       width: 100%;
     }
+
+    /* Header / Summary */
     .landing__name {
       font-size: 16px;
       font-weight: 700;
@@ -38,8 +40,42 @@
       font-size: 11px;
       color: #5a6568;
       letter-spacing: 0.04em;
-      margin-bottom: 32px;
+      margin-bottom: 8px;
     }
+    .landing__focus {
+      font-size: 11px;
+      color: #6a7578;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    /* Papers */
+    .landing__papers {
+      margin-bottom: 12px;
+    }
+    .landing__paper {
+      font-size: 10px;
+      color: #6a7578;
+      line-height: 1.6;
+      margin-bottom: 4px;
+    }
+    .landing__paper a {
+      color: #7aa89f;
+      text-decoration: none;
+    }
+    .landing__paper a:hover {
+      text-decoration: underline;
+    }
+
+    /* Stats */
+    .landing__stats {
+      font-size: 10px;
+      color: #444;
+      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Grid label */
     .landing__label {
       font-size: 9px;
       color: #444;
@@ -47,10 +83,13 @@
       text-transform: uppercase;
       margin-bottom: 12px;
     }
+
+    /* Version grid */
     .landing__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
+      margin-bottom: 32px;
     }
     .landing__link {
       display: block;
@@ -90,15 +129,60 @@
     .landing__link-dot--console { background: #5fa37a; }
     .landing__link-dot--lab { background: #d6a84f; }
     .landing__link-dot--court { background: #b84a4a; }
+
+    /* Footer / Contact */
+    .landing__footer {
+      border-top: 1px solid #1e272c;
+      padding-top: 20px;
+    }
+    .landing__contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 10px;
+      margin-bottom: 12px;
+    }
+    .landing__contacts a {
+      color: #6a7578;
+      text-decoration: none;
+      transition: color 150ms;
+    }
+    .landing__contacts a:hover {
+      color: #d8ded9;
+    }
+    .landing__cv-link {
+      font-size: 10px;
+    }
+    .landing__cv-link a {
+      color: #7aa89f;
+      text-decoration: none;
+    }
+    .landing__cv-link a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 500px) {
       .landing__grid { grid-template-columns: 1fr; }
+      .landing__contacts { gap: 12px; }
     }
   </style>
 </head>
 <body>
   <div class="landing">
+    <!-- Summary -->
     <h1 class="landing__name">Jun Wen Leong</h1>
     <p class="landing__role">Security of AI Researcher</p>
+    <p class="landing__focus">Adversarial evaluation of LLM safety mechanisms. Falsification-first methodology.</p>
+
+    <div class="landing__papers">
+      <p class="landing__paper"><a href="https://arxiv.org/abs/2605.08442">arXiv:2605.08442</a> Defense Effectiveness Across Architectural Layers (N=5,040, 95% ASR, 9 models)</p>
+      <p class="landing__paper"><a href="https://arxiv.org/abs/2606.11949">arXiv:2606.11949</a> Cheap Canaries: Detecting Targeted Evasion (76% detect, p&lt;2.4e-16, 35 models)</p>
+      <p class="landing__paper"><a href="https://arxiv.org/abs/2606.30566">arXiv:2606.30566</a> Authority Is Not a Keyword (AUC 1.0, 4 families)</p>
+    </div>
+
+    <p class="landing__stats">28,000+ experiments | 35+ models evaluated | 9 falsifiable claims</p>
+
+    <!-- Version grid -->
     <p class="landing__label">Choose a version</p>
     <nav class="landing__grid">
       <a href="v/morgue/" class="landing__link">
@@ -118,6 +202,18 @@
         <span class="landing__link-desc">Defense vs prosecution. You are the jury.</span>
       </a>
     </nav>
+
+    <!-- Contact / CV -->
+    <footer class="landing__footer">
+      <div class="landing__contacts">
+        <a href="mailto:leongjunwen@gmail.com">email</a>
+        <a href="https://github.com/junwenleong">github</a>
+        <a href="https://linkedin.com/in/junwenleong">linkedin</a>
+        <a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ">scholar</a>
+        <a href="https://arxiv.org/search/?query=Jun+Wen+Leong&searchtype=author">arxiv</a>
+      </div>
+      <p class="landing__cv-link"><a href="cv.html">View CV</a></p>
+    </footer>
   </div>
 </body>
 </html>
