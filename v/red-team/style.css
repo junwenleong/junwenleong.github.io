@@ -2,7 +2,7 @@
    SPLIT-SCREEN COURTROOM — Red Team Version
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap');
 
 *,
 *::before,
@@ -20,13 +20,13 @@ body {
   padding: 0;
   background: #111316;
   color: #c0c4c8;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Newsreader', serif;
   font-size: 14px;
   line-height: 1.6;
 }
 
 ::selection {
-  background: #00E5FF;
+  background: #8B5CF6;
   color: #0a0a0a;
 }
 
@@ -84,12 +84,13 @@ body {
   margin: 0;
 }
 
-/* --- Defense Column (left) --- */
+/* --- Defense Column (right) --- */
 
 .defense {
+  grid-column: 3;
   padding: 24px 20px;
   background: #13161a;
-  border-right: 1px solid #1e2228;
+  border-left: 1px solid #1e2228;
 }
 
 /* --- Center Gutter --- */
@@ -132,9 +133,10 @@ body {
 .gutter__tick-status--system { color: #7E8FA8; }
 .gutter__tick-status--ghost { color: #9A8BB3; }
 
-/* --- Prosecution Column (right) --- */
+/* --- Prosecution Column (left) --- */
 
 .prosecution {
+  grid-column: 1;
   padding: 24px 20px;
   background: #1A1D23;
 }
@@ -159,7 +161,7 @@ body {
 }
 
 .card--defense .card__label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Newsreader', serif;
   font-size: 10px;
   font-weight: 600;
   color: #5FA37A;
@@ -192,7 +194,7 @@ body {
 }
 
 .card--defense a {
-  color: #00E5FF;
+  color: #8B5CF6;
   text-decoration: none;
 }
 
@@ -376,7 +378,7 @@ body {
 }
 
 .court-footer a {
-  color: #00E5FF;
+  color: #8B5CF6;
   text-decoration: none;
 }
 

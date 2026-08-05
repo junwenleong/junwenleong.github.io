@@ -4,7 +4,7 @@
 
 /* --- Reset & Base --- */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 *,
 *::before,
@@ -22,7 +22,7 @@ body {
   padding: 0;
   background-color: #0B0F12;
   color: #8F9A9C;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Newsreader', sans-serif;
   font-size: 15px;
   line-height: 1.6;
   min-height: 100vh;
@@ -324,7 +324,7 @@ a:hover {
   transition: max-height 300ms ease, padding 300ms ease, opacity 300ms ease;
   opacity: 0;
   padding: 0 18px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Newsreader', sans-serif;
   font-size: 14px;
   line-height: 1.65;
   color: #8F9A9C;
