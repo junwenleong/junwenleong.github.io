@@ -126,6 +126,7 @@ a:hover {
   font-family: 'JetBrains Mono', monospace;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -318,8 +319,8 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
-  padding: 130px 24px 40px 24px;
-  max-width: 1400px;
+  padding: 130px 40px 40px 40px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
