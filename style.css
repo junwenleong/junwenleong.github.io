@@ -130,6 +130,22 @@ body {
   color: var(--text-dim);
 }
 
+.paper__links {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  margin-top: 6px;
+}
+
+.paper__links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 120ms;
+}
+
+.paper__links a:hover {
+  color: var(--cyan);
+}
+
 /* Forthcoming papers */
 .paper--upcoming {
   margin-top: 32px;

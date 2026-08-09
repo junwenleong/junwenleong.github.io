@@ -8,7 +8,7 @@
   <meta property="og:title" content="Jun Wen Leong — Security of AI">
   <meta property="og:description" content="LLM agents detect safety signals but fail to enforce them. 6 papers, 28,000+ experiments, 35+ models.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://junwenleong.github.io/site/og-image.png">
+  <meta property="og:image" content="https://junwenleong.github.io/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -34,6 +34,7 @@
         <h3 class="paper__title">Injection-Execution Dissociation in Stateful LLM Agents</h3>
         <p class="paper__detail">6/7 defenses fail. Memory Sandbox inverts for reasoning models. Tripartite vendor architecture mapped across 5 OpenAI + 4 Google generations.</p>
         <p class="paper__meta">N=5,040 core factorial &middot; 95% ASR &middot; 9 models &middot; 7 defenses</p>
+        <p class="paper__links"><a href="https://junwenleong.github.io/stateful-agent-security-eval">live site</a> &middot; <a href="https://github.com/junwenleong/stateful-agent-security-eval">code</a> &middot; <a href="https://github.com/junwenleong/sleeperbench">SleeperBench</a></p>
       </article>
 
       <article class="paper">
@@ -41,6 +42,7 @@
         <h3 class="paper__title">Cheap Canaries: Detecting Targeted Evasion via Classifier Score Disagreement</h3>
         <p class="paper__detail">Any un-targeted classifier produces detectable divergence under GCG attack. Geometric bound on divergence-minimisation. CoT Budget Starvation artifact identified.</p>
         <p class="paper__meta">76% detection (p&lt;2.4e-16) &middot; 35 models as canaries &middot; k=2 optimal at 98%</p>
+        <p class="paper__links"><a href="https://junwenleong.github.io/safety-classifier-shift-monitor">live site</a> &middot; <a href="https://github.com/junwenleong/safety-classifier-shift-monitor">code</a></p>
       </article>
 
       <article class="paper">
@@ -52,9 +54,9 @@
 
       <div class="paper paper--upcoming">
         <p class="paper__upcoming-label">Forthcoming</p>
-        <p class="paper__upcoming-item">The Detection-Execution Dissociation (36-model provenance neglect sweep)</p>
-        <p class="paper__upcoming-item">When Memory Conflicts with Instructions (behavioral arbitration)</p>
-        <p class="paper__upcoming-item">The Causal Illusion (falsification of linear-probe causality claims)</p>
+        <p class="paper__upcoming-item">The Detection-Execution Dissociation: LLM agents detect provenance but fail to enforce it. 36 models, 5 vendors, deployable HMAC fix.</p>
+        <p class="paper__upcoming-item">The Causal Illusion: Falsification of linear-probe causality claims. AUC=1.0 directions are redundant correlates, not causal mechanisms.</p>
+        <p class="paper__upcoming-item">When Memory Conflicts with Instructions: 86k-trial behavioral study. Models detect conflicts explicitly yet fail to arbitrate safely.</p>
       </div>
     </section>
 
