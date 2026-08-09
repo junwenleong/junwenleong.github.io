@@ -26,7 +26,7 @@ var FS = {
   },
   '/home/operator/identity.txt': {
     type: 'file',
-    content: 'NAME: Jun Wen Leong\nROLE: Security of AI Researcher\nCREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS), Cybersecurity Engineer CSA (4yr)\nSTATS: 28k+ runs | 3 papers | 35+ models | 0 errors\nTHESIS: I run experiments on my own claims until they break or don\'t.\nBIAS: Overweights adversarial framing. Suspicious of clean narratives.'
+    content: 'NAME: Jun Wen Leong\nROLE: Security of AI Researcher\nCREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS), Cybersecurity Engineer CSA (4yr)\nSTATS: 114k+ runs | 6 papers (3 published, 3 in preparation) | 35+ models | < 0.1% error rate\nTHESIS: I run experiments on my own claims until they break or don\'t.\nBIAS: Overweights adversarial framing. Suspicious of clean narratives.'
   },
   '/home/operator/links.txt': {
     type: 'file',
@@ -163,7 +163,7 @@ var FS = {
   },
   '/etc/thesis': {
     type: 'file',
-    content: 'THESIS: Every statement is a dated, statused claim object.\nMETHOD: Build infrastructure. Instrument everything. Run at scale.\nEPISTEMIC RULE: Pre-register. Report negatives. Bootstrap CIs.\nMOTTO: n=28,412 experiments. 3 mattered. Here\'s why.'
+    content: 'THESIS: Every statement is a dated, statused claim object.\nMETHOD: Build infrastructure. Instrument everything. Run at scale.\nEPISTEMIC RULE: Pre-register. Report negatives. Bootstrap CIs.\nMOTTO: n=114,000+ experiments. 6 papers. Here\'s why.'
   }
 };
 
@@ -300,13 +300,15 @@ COMMANDS.help = function() {
 };
 
 COMMANDS.ls = function(args) {
-  var path = resolvePath(args[0]);
+  var flags = args.filter(function(a) { return a.startsWith('-'); });
+  var pathArgs = args.filter(function(a) { return !a.startsWith('-'); });
+  var path = resolvePath(pathArgs[0]);
   var node = getNode(path);
   if (!node || node.type !== 'dir') {
-    print('ls: cannot access \'' + (args[0] || path) + '\': not a directory', 'error');
+    print('ls: cannot access \'' + (pathArgs[0] || path) + '\': not a directory', 'error');
     return;
   }
-  var showHidden = args.indexOf('-a') !== -1 || args.indexOf('-la') !== -1;
+  var showHidden = flags.indexOf('-a') !== -1 || flags.indexOf('-la') !== -1;
   var children = node.children || [];
   children.forEach(function(c) {
     if (c.startsWith('.') && !showHidden) return;
@@ -420,6 +422,8 @@ COMMANDS.claims = function() {
 COMMANDS.papers = function() {
   print('RESEARCH PAPERS', 'heading');
   printBlank();
+  print('--- PUBLISHED (3) ---', 'success');
+  printBlank();
   print('  [1] arXiv:2605.08442 — Defense Effectiveness Across Architectural Layers', 'output');
   print('      N=5,040 | 95% ASR | Under review NDSS 2027', 'dim');
   printBlank();
@@ -428,6 +432,10 @@ COMMANDS.papers = function() {
   printBlank();
   print('  [3] arXiv:2606.30566 — Authority Is Not a Keyword', 'output');
   print('      AUC 1.0 | cos=-0.025 | Under review USENIX Security 2027', 'dim');
+  printBlank();
+  print('--- IN PREPARATION (3) ---', 'warning');
+  printBlank();
+  print('  [4-6] 3 additional papers in preparation', 'dim');
   printBlank();
   print('use "cat /papers/paper-01.md" for full details', 'dim');
 };
@@ -462,7 +470,8 @@ COMMANDS.about = function() {
   print('  CREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS)', 'output');
   print('         Cybersecurity Engineer, CSA (4 yr)', 'output');
   printBlank();
-  print('  28k+ runs | 3 papers | 35+ models | 0 execution errors', 'cyan');
+  print('  114k+ runs | 6 papers (3 published, 3 in preparation) | 35+ models', 'cyan');
+  print('  < 0.1% execution error rate (auto-retried)', 'cyan');
   printBlank();
   print('  THESIS: I run experiments on my own claims until they', 'output');
   print('  break or don\'t. Everything dead stays visible.', 'output');
@@ -478,10 +487,11 @@ COMMANDS.thesis = function() {
 
 COMMANDS.stats = function() {
   print('KEY METRICS', 'heading');
-  print('  Experiments run:     28,000+', 'cyan');
-  print('  Papers:              3 (solo author)', 'output');
+  print('  Experiments run:     114,000+', 'cyan');
+  print('  Published:           28,000+', 'output');
+  print('  Papers:              6 (3 published, 3 in preparation)', 'output');
   print('  Models tested:       35+', 'output');
-  print('  Execution errors:    0', 'output');
+  print('  Error rate:          < 0.1% (auto-retried)', 'output');
   print('  Claims alive:        3', 'success');
   print('  Claims dead:         5', 'error');
   print('  Claims contested:    1', 'warning');
@@ -521,7 +531,7 @@ COMMANDS.whoami = function() {
 COMMANDS.status = function() {
   print('SYSTEM STATUS', 'heading');
   print('  claims indexed:  9 (3 alive, 5 dead, 1 contested)', 'output');
-  print('  papers loaded:   3', 'output');
+  print('  papers loaded:   6 (3 published, 3 in preparation)', 'output');
   print('  systems online:  2', 'output');
   print('  ghosts filed:    2', 'output');
   print('  suspicion:       ' + state.suspicion + '/12', state.suspicion >= 5 ? 'warning' : 'output');
@@ -574,7 +584,7 @@ var EASTER_EGGS = {
   'ssh': function() { print('outbound connections disabled from this terminal.', 'error'); },
   'curl': function() { print('network access restricted to observation mode.', 'error'); },
   'wget': function() { print('network access restricted to observation mode.', 'error'); },
-  'touch grass': function() { COMMANDS.contact(); },
+  'touch grass': function() { print('outdoor hypothesis generation not yet instrumented.', 'dim'); },
   'touch': function() { print('read-only filesystem.', 'error'); },
   'fortune': function() {
     var fortunes = [
@@ -586,7 +596,7 @@ var EASTER_EGGS = {
     ];
     print(fortunes[Math.floor(Math.random() * fortunes.length)], 'cyan');
   },
-  'please': function() { print('noted. hostility reduced by 0.1 units.', 'dim'); if (state.suspicion > 0) state.suspicion--; updateSuspicion(); },
+  'please': function() { print('noted. proceeding.', 'dim'); },
   'hire': function() { print('forwarding to full dossier...', 'output'); COMMANDS.about(); printBlank(); COMMANDS.contact(); },
   'ps': function() {
     print('  PID  STATUS     PROCESS', 'heading');
@@ -604,7 +614,7 @@ var EASTER_EGGS = {
   'echo': function(args) { print(args.join(' '), 'output'); },
   'id': function() { print('uid=1000(guest) gid=1000(visitors) groups=1000(visitors),0(observed)', 'output'); },
   'uname': function() { print('hostile-os 2.0.0 portfolio arm64', 'output'); },
-  'uptime': function() { print('up since deployment. claims loaded: 9. papers: 3.', 'output'); },
+  'uptime': function() { print('up since deployment. claims loaded: 9. papers: 6.', 'output'); },
   'date': function() { print(new Date().toISOString(), 'output'); },
   'panic': function() { print('there is no panic. only observation.', 'dim'); },
   'safe': function() { print('safety is a claim, not a property. verify it.', 'dim'); },
@@ -613,7 +623,20 @@ var EASTER_EGGS = {
   'scholar': function() { printHTML('<a class="terminal__line--link" href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank" rel="noopener noreferrer">https://scholar.google.com/citations?user=LW_Ow9QAAAAJ</a>'); },
   'linkedin': function() { printHTML('<a class="terminal__line--link" href="https://linkedin.com/in/junwenleong" target="_blank" rel="noopener noreferrer">https://linkedin.com/in/junwenleong</a>'); },
   'arxiv': function() { printHTML('<a class="terminal__line--link" href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank" rel="noopener noreferrer">https://arxiv.org/search/?searchtype=author&query=jun+wen+leong</a>'); },
-  'cv': function() { print('no PDF available from terminal. use "about" or "contact" for links.', 'output'); },
+  'cv': function() { printHTML('CV available at: <a class="terminal__line--link" href="/cv.html" target="_blank" rel="noopener noreferrer">junwenleong.github.io/cv.html</a>', 'output'); },
+  'redteam': function() {
+    print('RED TEAM SKILL MAP', 'heading');
+    printBlank();
+    print('  Prompt injection attacks    → 95% ASR across 9 models (Paper 1)', 'output');
+    print('  Evasion detection           → canary-based detection at p<2.4e-16 (Paper 2)', 'output');
+    print('  Compliance manipulation     → causal steering of compliance direction (Paper 3)', 'output');
+    print('  Defense evaluation          → systematic failure analysis, 7 defense configs', 'output');
+    print('  Statistical rigor           → pre-registered, bootstrapped CIs, 114k+ trials', 'output');
+    print('  Multi-model testing         → 35+ models across 4+ families', 'output');
+    print('  Infrastructure              → full-stack automation for adversarial evaluation', 'output');
+    printBlank();
+    print('  ROLE FIT: AI Red Team Lead | Adversarial ML Researcher | AI Safety Evaluator', 'cyan');
+  },
   'guide': function() { COMMANDS.menu(); },
   'forget me': function() { localStorage.removeItem('hos_visits'); localStorage.removeItem('hos_first'); localStorage.removeItem('hos_log'); print('all local memory erased. you are unknown again.', 'success'); state.visitCount = 0; state.suspicion = 0; updateSuspicion(); },
   'reset': function() { COMMANDS.clear(); boot(); }
@@ -691,7 +714,7 @@ function boot() {
     { text: '[auth] operator identity: unknown', cls: 'system' },
     { text: '[scan] prior visits: ' + state.visitCount, cls: 'system' },
     { text: '[fs]   claims: 9 indexed, 1 unstable', cls: 'system' },
-    { text: '[proc] papers: 3 artifacts loaded', cls: 'system' },
+    { text: '[proc] papers: 6 artifacts loaded (3 published, 3 in preparation)', cls: 'system' },
     { text: '[net]  external links quarantined', cls: 'system' },
     { text: '', cls: '' },
   ];
@@ -705,33 +728,37 @@ function boot() {
   var i = 0;
   var skipBoot = false;
 
-  function printNext() {
-    if (skipBoot || i >= lines.length) {
-      state.booted = true;
-      input.focus();
-      resetIdleTimer();
-      executeCommand('claims');
-      return;
-    }
-    print(lines[i].text, lines[i].cls);
-    i++;
-    setTimeout(printNext, 80);
+  function finishBoot() {
+    state.booted = true;
+    input.focus();
+    resetIdleTimer();
+    print('Start with: claims | papers | about | help', 'dim');
+    printBlank();
   }
 
-  // Skip on any key
   function skipHandler() {
     skipBoot = true;
     while (i < lines.length) {
       print(lines[i].text, lines[i].cls);
       i++;
     }
-    state.booted = true;
-    input.focus();
-    resetIdleTimer();
-    executeCommand('claims');
-    document.removeEventListener('keydown', skipHandler);
+    finishBoot();
   }
   document.addEventListener('keydown', skipHandler, { once: true });
+
+  function printNext() {
+    if (skipBoot || i >= lines.length) {
+      // Remove skip handler if boot completed naturally (not via skip)
+      if (!skipBoot) {
+        document.removeEventListener('keydown', skipHandler);
+      }
+      finishBoot();
+      return;
+    }
+    print(lines[i].text, lines[i].cls);
+    i++;
+    setTimeout(printNext, 80);
+  }
 
   printNext();
 }
@@ -742,11 +769,6 @@ input.addEventListener('keydown', function(e) {
     var val = input.value;
     input.value = '';
     executeCommand(val);
-    // Fade out chips after first typed command
-    var chips = document.querySelector('.terminal__chips');
-    if (chips && !chips.classList.contains('is-fading')) {
-      chips.classList.add('is-fading');
-    }
   } else if (e.key === 'ArrowUp') {
     e.preventDefault();
     if (state.historyIndex > 0) {

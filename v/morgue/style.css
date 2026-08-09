@@ -4,8 +4,6 @@
 
 /* --- Reset & Base --- */
 
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap');
-
 *,
 *::before,
 *::after {
@@ -21,7 +19,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #0B0F12;
-  color: #8F9A9C;
+  color: #A8B2B6;
   font-family: 'Newsreader', sans-serif;
   font-size: 15px;
   line-height: 1.6;
@@ -59,13 +57,13 @@ html {
 /* --- Selection --- */
 
 ::selection {
-  background: #A98C5A;
-  color: #0B0F12;
+  background: rgba(0, 229, 255, 0.12);
+  color: #e0e5e8;
 }
 
 ::-moz-selection {
-  background: #A98C5A;
-  color: #0B0F12;
+  background: rgba(0, 229, 255, 0.12);
+  color: #e0e5e8;
 }
 
 /* --- Focus --- */
@@ -89,12 +87,130 @@ a:hover {
 }
 
 /* ============================================================
+   SKIP LINK (Accessibility)
+   ============================================================ */
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 2000;
+  padding: 8px 16px;
+  background: #0B0F12;
+  color: #D8DED9;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  border: 1px solid #AEB7BA;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: top 150ms ease;
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
+/* ============================================================
+   CASE-FILE HEADER (Above-fold identity)
+   ============================================================ */
+
+.case-file {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  background: #070A0D;
+  border-bottom: 1px solid #1A2025;
+  padding: 10px 24px;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.case-file__id {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex-shrink: 0;
+}
+
+.case-file__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #D8DED9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.case-file__role {
+  font-size: 10px;
+  color: #7E8A95;
+  letter-spacing: 0.03em;
+}
+
+.case-file__divider {
+  width: 1px;
+  height: 28px;
+  background: #1E272C;
+  flex-shrink: 0;
+}
+
+.case-file__thesis {
+  font-size: 11px;
+  color: #A8B2B6;
+  font-style: italic;
+  font-family: 'Newsreader', serif;
+  flex: 1;
+  min-width: 200px;
+}
+
+.case-file__stats {
+  font-size: 10px;
+  color: #7E8A95;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.case-file__stats strong {
+  color: #D8DED9;
+  font-weight: 600;
+}
+
+.case-file__links {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.case-file__links a {
+  font-size: 10px;
+  color: #A98C5A;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 2px 6px;
+  border: 1px solid rgba(169, 140, 90, 0.25);
+  border-radius: 2px;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.case-file__links a:hover {
+  border-color: #A98C5A;
+  color: #c4a46e;
+  text-decoration: none;
+}
+
+/* ============================================================
    AUTOPSY RAIL (Fixed Filter Header)
    ============================================================ */
 
 .autopsy-rail {
   position: fixed;
-  top: 0;
+  top: 52px;
   left: 0;
   right: 0;
   z-index: 1000;
@@ -111,6 +227,24 @@ a:hover {
   text-transform: uppercase;
 }
 
+/* Scroll affordance fade on right edge */
+.autopsy-rail::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40px;
+  background: linear-gradient(to right, transparent, #090D10);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.autopsy-rail.has-overflow::after {
+  opacity: 1;
+}
+
 .autopsy-rail__filter {
   display: inline-flex;
   align-items: center;
@@ -119,7 +253,7 @@ a:hover {
   border: 1px solid #1E272C;
   border-radius: 3px;
   background: transparent;
-  color: #8F9A9C;
+  color: #A8B2B6;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.02em;
@@ -156,8 +290,24 @@ a:hover {
 .autopsy-rail__filter-dot--ghosts { background: #9A8BB3; }
 
 .autopsy-rail__count {
-  color: #5A6568;
+  color: #6B7578;
   margin-left: 2px;
+}
+
+/* ============================================================
+   ARIA-LIVE ANNOUNCER (visually hidden)
+   ============================================================ */
+
+.filter-announcer {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ============================================================
@@ -168,7 +318,7 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
-  padding: 80px 24px 40px 24px;
+  padding: 130px 24px 40px 24px;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -267,7 +417,7 @@ a:hover {
 .drawer__id {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  color: #5A6568;
+  color: #6B7578;
   letter-spacing: 0.05em;
   flex-shrink: 0;
 }
@@ -294,22 +444,56 @@ a:hover {
   flex-shrink: 0;
 }
 
-.drawer__led--dead { background: #B84A4A; }
-.drawer__led--alive { background: #8A9B8F; }
-.drawer__led--attack { background: #D6A84F; }
-.drawer__led--papers { background: #AEB7BA; }
-.drawer__led--systems { background: #7E8FA8; }
-.drawer__led--ghosts { background: #9A8BB3; }
-.drawer__led--changelog { background: #8F9A9C; }
-.drawer__led--links { background: #AEB7BA; }
-.drawer__led--vacant { background: #8F9A9C; }
+.drawer__led--dead {
+  background: #B84A4A;
+  box-shadow: 0 0 4px #B84A4A;
+}
+
+.drawer__led--alive {
+  background: #8A9B8F;
+  box-shadow: 0 0 4px #8A9B8F;
+}
+
+.drawer__led--attack {
+  background: #D6A84F;
+  box-shadow: 0 0 4px #D6A84F;
+}
+
+.drawer__led--papers {
+  background: #AEB7BA;
+  box-shadow: 0 0 4px #AEB7BA;
+}
+
+.drawer__led--systems {
+  background: #7E8FA8;
+  box-shadow: 0 0 4px #7E8FA8;
+}
+
+.drawer__led--ghosts {
+  background: #9A8BB3;
+  box-shadow: 0 0 4px #9A8BB3;
+}
+
+.drawer__led--changelog {
+  background: #8F9A9C;
+  box-shadow: 0 0 4px #8F9A9C;
+}
+
+.drawer__led--links {
+  background: #AEB7BA;
+  box-shadow: 0 0 4px #AEB7BA;
+}
+
+.drawer__led--vacant {
+  background: #8F9A9C;
+}
 
 /* --- Verified Date --- */
 
 .drawer__date {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  color: #5A6568;
+  color: #6B7578;
   flex-shrink: 0;
   white-space: nowrap;
 }
@@ -327,13 +511,17 @@ a:hover {
   font-family: 'Newsreader', sans-serif;
   font-size: 14px;
   line-height: 1.65;
-  color: #8F9A9C;
+  color: #A8B2B6;
 }
 
 .drawer.is-open .drawer__content {
-  max-height: 1200px;
+  max-height: 3000px;
   opacity: 1;
   padding: 12px 18px 20px 18px;
+}
+
+.drawer.is-opening .drawer__content {
+  will-change: max-height;
 }
 
 .drawer.is-open {
@@ -360,7 +548,7 @@ a:hover {
 
 .drawer__content p {
   margin: 0 0 10px 0;
-  color: #8F9A9C;
+  color: #A8B2B6;
 }
 
 .drawer__content ul,
@@ -442,14 +630,14 @@ a:hover {
 
 .drawer__verdict--inconclusive {
   background: rgba(143, 154, 156, 0.12);
-  color: #8F9A9C;
+  color: #A8B2B6;
   border: 1px solid rgba(143, 154, 156, 0.25);
 }
 
 .drawer__arxiv {
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
-  color: #5A6568;
+  color: #6B7578;
   letter-spacing: 0.02em;
 }
 
@@ -476,7 +664,7 @@ a:hover {
 }
 
 /* ============================================================
-   CONTENT TYPE: GHOSTS
+   CONTENT TYPE: COLD CASES (formerly ghosts)
    ============================================================ */
 
 .drawer--ghost {
@@ -596,7 +784,7 @@ a:hover {
   .morgue-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    padding: 76px 16px 32px 16px;
+    padding: 126px 16px 32px 16px;
   }
 
   .drawer--wide {
@@ -612,6 +800,15 @@ a:hover {
     font-size: 10px;
     padding: 4px 8px;
   }
+
+  .case-file {
+    padding: 8px 16px;
+    gap: 12px;
+  }
+
+  .case-file__thesis {
+    display: none;
+  }
 }
 
 /* ============================================================
@@ -622,7 +819,7 @@ a:hover {
   .morgue-grid {
     grid-template-columns: 1fr;
     gap: 10px;
-    padding: 72px 12px 24px 12px;
+    padding: 120px 12px 24px 12px;
   }
 
   .drawer--wide {
@@ -639,8 +836,34 @@ a:hover {
 
   .autopsy-rail__filter {
     font-size: 9px;
-    padding: 4px 7px;
+    padding: 8px 12px;
+    min-height: 44px;
     flex-shrink: 0;
+  }
+
+  .case-file {
+    padding: 6px 12px;
+    gap: 8px;
+  }
+
+  .case-file__name {
+    font-size: 11px;
+  }
+
+  .case-file__role {
+    display: none;
+  }
+
+  .case-file__thesis {
+    display: none;
+  }
+
+  .case-file__stats {
+    font-size: 9px;
+  }
+
+  .case-file__links {
+    display: none;
   }
 
   .drawer__handle {
@@ -667,6 +890,86 @@ a:hover {
 
   .drawer__content {
     font-size: 13px;
+  }
+}
+
+/* ============================================================
+   PRINT STYLESHEET
+   ============================================================ */
+
+@media print {
+  body {
+    background: #fff;
+    color: #1a1a1a;
+  }
+
+  .case-file,
+  .autopsy-rail,
+  .morgue-contact,
+  .morgue-footer,
+  .skip-link {
+    display: none;
+  }
+
+  .morgue-grid {
+    display: block;
+    padding: 0;
+    max-width: none;
+  }
+
+  .drawer {
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .drawer::before {
+    display: none;
+  }
+
+  .drawer--hidden {
+    display: block;
+  }
+
+  .drawer__content {
+    max-height: none !important;
+    opacity: 1 !important;
+    padding: 12px 18px 20px 18px !important;
+    overflow: visible;
+    color: #333;
+  }
+
+  .drawer__handle {
+    color: #1a1a1a;
+  }
+
+  .drawer__title {
+    color: #1a1a1a;
+  }
+
+  .drawer__content h3,
+  .drawer__content h4 {
+    color: #1a1a1a;
+  }
+
+  .drawer__content p {
+    color: #333;
+  }
+
+  .drawer__content a::after {
+    content: ' (' attr(href) ')';
+    font-size: 10px;
+    color: #666;
+  }
+
+  .drawer__led {
+    box-shadow: none;
+  }
+
+  .drawer--vacant {
+    display: none;
   }
 }
 
@@ -726,7 +1029,7 @@ a:hover {
   padding: 24px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  color: #5A6568;
+  color: #6B7578;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }

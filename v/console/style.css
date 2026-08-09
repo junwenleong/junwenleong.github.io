@@ -2,8 +2,6 @@
    ADVERSARIAL TERMINAL EMULATOR — Console Version
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
-
 *,
 *::before,
 *::after {
@@ -70,7 +68,7 @@ body {
 }
 
 .terminal__line--system {
-  color: #5a5a5a;
+  color: #767676;
 }
 
 .terminal__line--prompt {
@@ -104,7 +102,7 @@ body {
 }
 
 .terminal__line--dim {
-  color: #444;
+  color: #767676;
 }
 
 .terminal__line--link {
@@ -157,7 +155,7 @@ body {
   bottom: 56px;
   right: 20px;
   font-size: 10px;
-  color: #444;
+  color: #767676;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   z-index: 10;
@@ -220,13 +218,8 @@ body {
   padding: 8px 20px;
   border-top: 1px solid #1a1a1a;
   background: #0d0d0d;
-  opacity: 0.4;
+  opacity: 0.7;
   transition: opacity 0.6s ease;
-}
-
-.terminal__chips.is-fading {
-  opacity: 0;
-  pointer-events: none;
 }
 
 .terminal__chip {
@@ -234,7 +227,7 @@ body {
   border: 1px solid #1a1a1a;
   border-radius: 3px;
   background: transparent;
-  color: #555;
+  color: #888;
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   cursor: pointer;
@@ -254,7 +247,7 @@ body {
   bottom: 80px;
   right: 20px;
   font-size: 10px;
-  color: #444;
+  color: #767676;
   cursor: pointer;
   border: none;
   background: none;
@@ -299,6 +292,14 @@ body {
   .terminal__visits {
     display: none;
   }
+}
+
+/* --- Focus/Keyboard Accessibility --- */
+
+a:focus-visible,
+button:focus-visible {
+  outline: 1px solid #00e5ff;
+  outline-offset: 2px;
 }
 
 /* --- Reduced Motion --- */

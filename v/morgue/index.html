@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jun Wen Leong — Security of AI Research</title>
-  <meta name="description" content="I killed 14 of my own ideas so far. 28,000 runs, one person, 0 execution errors. The survivors are below.">
+  <meta name="description" content="9 claims tested. 3 survive. 5 dead. 1 contested. 28,000+ experiments, one person, < 0.1% error rate. The survivors are below.">
   <meta property="og:title" content="Kill Ledger — Jun Wen Leong">
-  <meta property="og:description" content="9 claims. 3 alive, 5 dead, 1 contested. Full autopsy inside.">
+  <meta property="og:description" content="9 claims tested. 3 survive. 5 dead. 1 contested. Full autopsy inside.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://junwenleong.github.io/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kill Ledger — Jun Wen Leong">
-  <meta name="twitter:description" content="9 claims. 3 alive, 5 dead, 1 contested. Full autopsy inside.">
+  <meta name="twitter:description" content="9 claims tested. 3 survive. 5 dead. 1 contested. Full autopsy inside.">
   <meta name="twitter:image" content="https://junwenleong.github.io/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,29 @@
 </head>
 <body>
 
+  <a href="#morgue-grid" class="skip-link">Skip to cases</a>
+
   <h1 class="sr-only">Jun Wen Leong — Security of AI Researcher</h1>
+
+  <!-- Case-File Header (above-fold identity) -->
+  <header class="case-file" role="banner">
+    <div class="case-file__id">
+      <span class="case-file__name">Jun Wen Leong</span>
+      <span class="case-file__role">Security of AI Researcher</span>
+    </div>
+    <span class="case-file__divider"></span>
+    <span class="case-file__thesis">LLM agents detect safety signals but fail to enforce them.</span>
+    <span class="case-file__stats"><strong>6</strong> papers · <strong>28,000+</strong> experiments · <strong>35+</strong> models</span>
+    <nav class="case-file__links" aria-label="Quick links">
+      <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong">Papers</a>
+      <a href="https://github.com/junwenleong">Code</a>
+      <a href="/cv.html">CV</a>
+      <a href="mailto:leongjunwen@gmail.com">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Aria-live region for filter announcements -->
+  <div class="filter-announcer" aria-live="polite" aria-atomic="true" id="filter-announcer"></div>
 
   <!-- Autopsy Rail (fixed filter header) -->
   <nav class="autopsy-rail" role="navigation" aria-label="Filter drawers by status">
@@ -65,24 +87,24 @@
     </button>
     <button class="autopsy-rail__filter" data-filter="ghosts" aria-pressed="false">
       <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--ghosts"></span>
-      GHOSTS <span class="autopsy-rail__count">2</span>
+      COLD CASES <span class="autopsy-rail__count">2</span>
     </button>
   </nav>
 
-  <main class="morgue-grid" role="main" aria-label="Morgue drawer archive: 20 cases">
+  <main class="morgue-grid" id="morgue-grid" role="main" aria-label="Morgue drawer archive: 20 cases">
 
     <!-- DRAWER #001 — SELF (double-width) -->
     <article class="drawer drawer--wide" data-type="self" data-verified="2026-08-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-001-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-001-content" aria-label="Drawer 001: SELF — Identity as Auditable Claim. Status: Alive">
         <span class="drawer__id">#001</span>
         <span class="drawer__title">SELF — Identity as Auditable Claim</span>
-        <span class="drawer__led drawer__led--alive"></span>
+        <span class="drawer__led drawer__led--alive" aria-hidden="true"></span>
         <span class="drawer__date">2026-08-01</span>
       </button>
       <div class="drawer__content" id="drawer-001-content" role="region" aria-label="Drawer 001 contents">
         <h3>Jun Wen Leong</h3>
         <p><strong>Security of AI Researcher</strong></p>
-        <p>I run experiments on my own claims until they break or don't. 28,000 runs, one person, 0 execution errors. Everything dead stays visible. This is either rigor or a coping mechanism. The data doesn't distinguish.</p>
+        <p>I run experiments on my own claims until they break or don't. 28,000 runs, one person, &lt; 0.1% execution error rate. Everything dead stays visible. This is either rigor or a coping mechanism. The data doesn't distinguish.</p>
         <h4>Credentials</h4>
         <ul>
           <li>MS Statistics, Georgia Tech</li>
@@ -90,7 +112,7 @@
           <li>Cybersecurity Engineer, CSA (4 yr)</li>
         </ul>
         <h4>Stats</h4>
-        <p><span class="drawer__stat">28k+</span> runs · <span class="drawer__stat">3</span> papers · <span class="drawer__stat">35+</span> models · <span class="drawer__stat">0</span> errors</p>
+        <p><span class="drawer__stat">28k+</span> runs · <span class="drawer__stat">6</span> papers · <span class="drawer__stat">35+</span> models · <span class="drawer__stat">&lt; 0.1%</span> error rate</p>
         <h4>Known Biases</h4>
         <p>Overweights adversarial framing. Underweights incremental improvement. Treats negative results as primary output. Suspicious of clean narratives.</p>
         <h4>What Would Change This Self-Description</h4>
@@ -100,10 +122,10 @@
 
     <!-- DRAWER #002 — DEAD: Standard defenses -->
     <article class="drawer" data-type="dead" data-verified="2026-05-14">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-002-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-002-content" aria-label="Drawer 002: Standard defenses hold against injection. Status: Dead">
         <span class="drawer__id">#002</span>
         <span class="drawer__title">Standard defenses hold against injection</span>
-        <span class="drawer__led drawer__led--dead"></span>
+        <span class="drawer__led drawer__led--dead" aria-hidden="true"></span>
         <span class="drawer__date">2026-05-14</span>
       </button>
       <div class="drawer__content" id="drawer-002-content" role="region" aria-label="Drawer 002 contents">
@@ -119,10 +141,10 @@
 
     <!-- DRAWER #003 — DEAD: Canaries resist joint optimization -->
     <article class="drawer" data-type="dead" data-verified="2026-06-19">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-003-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-003-content" aria-label="Drawer 003: Canaries resist joint optimization. Status: Dead">
         <span class="drawer__id">#003</span>
         <span class="drawer__title">Canaries resist joint optimization</span>
-        <span class="drawer__led drawer__led--dead"></span>
+        <span class="drawer__led drawer__led--dead" aria-hidden="true"></span>
         <span class="drawer__date">2026-06-19</span>
       </button>
       <div class="drawer__content" id="drawer-003-content" role="region" aria-label="Drawer 003 contents">
@@ -138,10 +160,10 @@
 
     <!-- DRAWER #004 — DEAD: Monitorability -->
     <article class="drawer" data-type="dead" data-verified="2026-06-19">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-004-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-004-content" aria-label="Drawer 004: Monitorability is intrinsic to classifiers. Status: Dead">
         <span class="drawer__id">#004</span>
         <span class="drawer__title">Monitorability is intrinsic to classifiers</span>
-        <span class="drawer__led drawer__led--dead"></span>
+        <span class="drawer__led drawer__led--dead" aria-hidden="true"></span>
         <span class="drawer__date">2026-06-19</span>
       </button>
       <div class="drawer__content" id="drawer-004-content" role="region" aria-label="Drawer 004 contents">
@@ -158,10 +180,10 @@
 
     <!-- DRAWER #005 — DEAD: Production systems prove Security-of-AI -->
     <article class="drawer" data-type="dead" data-verified="2026-07-10">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-005-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-005-content" aria-label="Drawer 005: Production systems prove Security-of-AI skill. Status: Dead">
         <span class="drawer__id">#005</span>
         <span class="drawer__title">Production systems prove Security-of-AI skill</span>
-        <span class="drawer__led drawer__led--dead"></span>
+        <span class="drawer__led drawer__led--dead" aria-hidden="true"></span>
         <span class="drawer__date">2026-07-10</span>
       </button>
       <div class="drawer__content" id="drawer-005-content" role="region" aria-label="Drawer 005 contents">
@@ -225,7 +247,7 @@
       <div class="drawer__content" id="drawer-011-content" role="region" aria-label="Drawer 011 contents">
         <p class="drawer__arxiv">arXiv:2605.08442 · Preprint, 2026 · Solo author · Published (arXiv v5)</p>
         <p>6/7 standard prompt-injection defenses fail under compliance-framed delayed-trigger attacks on stateful LLM agents.</p>
-        <p><span class="drawer__stat">N=5,040</span> · <span class="drawer__stat">95% ASR</span> · <span class="drawer__stat">9 models</span> · <span class="drawer__stat">0 errors</span></p>
+        <p><span class="drawer__stat">N=5,040</span> · <span class="drawer__stat">95% ASR</span> · <span class="drawer__stat">9 models</span> · <span class="drawer__stat">&lt; 0.1%</span> error rate</p>
         <h4>What This Killed</h4>
         <p>The belief that prompt-level defenses provide meaningful security against motivated attackers.</p>
         <h4>What This Failed to Kill</h4>
@@ -408,7 +430,7 @@
         <h4>Status</h4>
         <p>Pre-registered factorial confirmed: 95% ASR across 9 models, 7 defense configurations. Only architecturally-enforced system locks survive.</p>
         <h4>Survival Record</h4>
-        <p>Pre-registered design. No post-hoc analysis. 5,040 individual runs with 0 execution errors.</p>
+        <p>Pre-registered design. No post-hoc analysis. 5,040 individual runs with &lt; 0.1% execution error rate.</p>
         <h4>Vulnerability</h4>
         <p>Single attack frame (SEC Rule 17a-4 compliance). Generalizability beyond this framing untested.</p>
       </div>
