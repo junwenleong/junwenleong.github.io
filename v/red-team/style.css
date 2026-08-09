@@ -2,8 +2,6 @@
    SPLIT-SCREEN COURTROOM — Red Team Version
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap');
-
 *,
 *::before,
 *::after {
@@ -26,8 +24,8 @@ body {
 }
 
 ::selection {
-  background: #8B5CF6;
-  color: #0a0a0a;
+  background: rgba(139, 92, 246, 0.15);
+  color: #e8e0f0;
 }
 
 ::-webkit-scrollbar {
@@ -41,20 +39,42 @@ body {
   border-radius: 3px;
 }
 
+/* --- Skip Link --- */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #8B5CF6;
+  color: #000;
+  padding: 4px 8px;
+  z-index: 9999;
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 /* --- Court Layout --- */
 
 .court {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr);
   max-width: 1400px;
   margin: 0 auto;
   min-height: 100vh;
 }
 
-/* --- Court Header (spans all columns) --- */
+/* --- Court Header (full width) --- */
 
 .court-header {
-  grid-column: 1 / -1;
   padding: 32px 24px 24px;
   text-align: center;
   border-bottom: 1px solid #1e2228;
@@ -64,7 +84,7 @@ body {
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   font-weight: 700;
-  color: #555;
+  color: #999;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin: 0 0 12px 0;
@@ -80,14 +100,87 @@ body {
 
 .court-header__role {
   font-size: 13px;
-  color: #777;
+  color: #999;
   margin: 0;
 }
 
-/* --- Defense Column (right) --- */
+.court-header__summary {
+  margin-top: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #999;
+  letter-spacing: 0.03em;
+}
 
-.defense {
+.court-header__summary a {
+  color: #8B5CF6;
+  text-decoration: none;
+}
+
+.court-header__summary a:hover {
+  text-decoration: underline;
+}
+
+/* --- Docket Summary --- */
+
+.docket-summary {
+  padding: 20px 24px;
+  border-bottom: 1px solid #1e2228;
+  text-align: center;
+  background: #13161a;
+}
+
+.docket-summary__stats {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #c0c4c8;
+  letter-spacing: 0.03em;
+  margin: 0 0 8px 0;
+}
+
+.docket-summary__verdict {
+  font-family: 'Newsreader', serif;
+  font-size: 14px;
+  color: #a0a8b0;
+  margin: 0 0 12px 0;
+}
+
+.docket-summary__links {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+}
+
+.docket-summary__links a {
+  color: #8B5CF6;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.docket-summary__links a:hover {
+  text-decoration: underline;
+}
+
+/* --- Court Grid (main content area) --- */
+
+.court-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr);
+}
+
+/* --- Trial Row --- */
+
+.trial-row {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+/* --- Defense Column (visually right, DOM first) --- */
+
+.trial-row .defense {
   grid-column: 3;
+  grid-row: 1;
   padding: 24px 20px;
   background: #13161a;
   border-left: 1px solid #1e2228;
@@ -95,12 +188,25 @@ body {
 
 /* --- Center Gutter --- */
 
-.gutter {
+.trial-row .gutter {
+  grid-column: 2;
+  grid-row: 1;
   background: #0e1014;
   border-left: 1px solid #1e2228;
   border-right: 1px solid #1e2228;
   position: relative;
 }
+
+/* --- Prosecution Column (visually left, DOM last) --- */
+
+.trial-row .prosecution {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 24px 20px;
+  background: #1A1D23;
+}
+
+/* --- Gutter Tick --- */
 
 .gutter__tick {
   display: flex;
@@ -110,14 +216,14 @@ body {
   padding: 12px 4px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px;
-  color: #444;
+  color: #888;
   letter-spacing: 0.05em;
   border-bottom: 1px solid #1a1e22;
   min-height: 48px;
 }
 
 .gutter__tick-num {
-  color: #555;
+  color: #aaa;
   font-weight: 700;
 }
 
@@ -133,18 +239,10 @@ body {
 .gutter__tick-status--system { color: #7E8FA8; }
 .gutter__tick-status--ghost { color: #9A8BB3; }
 
-/* --- Prosecution Column (left) --- */
+/* --- Mobile Claim Badge (hidden on desktop) --- */
 
-.prosecution {
-  grid-column: 1;
-  padding: 24px 20px;
-  background: #1A1D23;
-}
-
-/* --- Trial Row --- */
-
-.trial-row {
-  display: contents;
+.trial-row__mobile-badge {
+  display: none;
 }
 
 /* --- Cards (shared base) --- */
@@ -189,7 +287,7 @@ body {
 .card--defense .card__evidence {
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
-  color: #777;
+  color: #999;
   margin: 8px 0 0 0;
 }
 
@@ -227,7 +325,7 @@ body {
 
 .card--prosecution .card__body {
   font-size: 12px;
-  color: #999;
+  color: #aaa;
   margin: 0 0 8px 0;
   line-height: 1.5;
 }
@@ -241,43 +339,7 @@ body {
   background: rgba(214, 168, 79, 0.05);
 }
 
-/* --- Objection Anchors --- */
-
-.objection-anchor {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-  border-bottom: 1px dashed #B84A4A;
-  position: relative;
-}
-
-.objection-anchor:hover {
-  color: #B84A4A;
-}
-
-.objection-anchor::before {
-  content: 'OBJECTION';
-  position: absolute;
-  top: -14px;
-  left: 0;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 7px;
-  font-weight: 700;
-  color: #B84A4A;
-  letter-spacing: 0.08em;
-  opacity: 0;
-  transition: opacity 150ms;
-}
-
-.objection-anchor:hover::before {
-  opacity: 1;
-}
-
-/* --- Verdict Stamps --- */
+/* --- Verdict Controls --- */
 
 .verdict-controls {
   display: flex;
@@ -287,7 +349,7 @@ body {
 }
 
 .verdict-btn {
-  padding: 5px 10px;
+  padding: 10px 16px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px;
   font-weight: 700;
@@ -298,6 +360,11 @@ body {
   background: transparent;
   cursor: pointer;
   transition: border-color 150ms, color 150ms, background 150ms;
+}
+
+.verdict-btn:focus-visible {
+  outline: 2px solid #8B5CF6;
+  outline-offset: 2px;
 }
 
 .verdict-btn--sustain {
@@ -319,12 +386,12 @@ body {
 }
 
 .verdict-btn--hung {
-  color: #777;
+  color: #999;
 }
 .verdict-btn--hung:hover,
 .verdict-btn--hung.is-active {
-  border-color: #777;
-  background: rgba(119, 119, 119, 0.1);
+  border-color: #999;
+  background: rgba(153, 153, 153, 0.1);
 }
 
 /* --- Verdict Stamp Overlay --- */
@@ -359,21 +426,20 @@ body {
 }
 
 .verdict-stamp--hung {
-  color: #777;
-  border: 2px solid #555;
-  background: rgba(119, 119, 119, 0.08);
+  color: #999;
+  border: 2px solid #666;
+  background: rgba(153, 153, 153, 0.08);
 }
 
 /* --- Court Footer --- */
 
 .court-footer {
-  grid-column: 1 / -1;
   padding: 24px;
   text-align: center;
   border-top: 1px solid #1e2228;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  color: #444;
+  color: #888;
   letter-spacing: 0.05em;
 }
 
@@ -394,14 +460,36 @@ body {
   display: inline-block;
 }
 
+/* --- Focus Visible --- */
+
+a:focus-visible {
+  outline: 2px solid #8B5CF6;
+  outline-offset: 2px;
+}
+
+/* --- Screen Reader --- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* --- Responsive: Tablet --- */
 
 @media (max-width: 1024px) {
-  .court {
+  .court-grid {
     grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1fr);
   }
 
-  .defense, .prosecution {
+  .trial-row .defense,
+  .trial-row .prosecution {
     padding: 16px 14px;
   }
 }
@@ -409,16 +497,8 @@ body {
 /* --- Responsive: Mobile (stacked) --- */
 
 @media (max-width: 700px) {
-  .court {
+  .court-grid {
     display: block;
-  }
-
-  .gutter {
-    display: none;
-  }
-
-  .defense, .prosecution {
-    padding: 16px;
   }
 
   .trial-row {
@@ -427,6 +507,43 @@ body {
     padding-bottom: 16px;
     margin-bottom: 16px;
   }
+
+  .trial-row .gutter {
+    display: none;
+  }
+
+  .trial-row .defense,
+  .trial-row .prosecution {
+    padding: 16px;
+    border-left: none;
+  }
+
+  .trial-row__mobile-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #aaa;
+    border-bottom: 1px solid #1e2228;
+    background: #0e1014;
+  }
+
+  .trial-row__mobile-badge .badge-status {
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-size: 8px;
+    text-transform: uppercase;
+  }
+
+  .badge-status--alive { color: #5FA37A; border: 1px solid #5FA37A; }
+  .badge-status--dead { color: #B84A4A; border: 1px solid #B84A4A; }
+  .badge-status--attack { color: #D6A84F; border: 1px solid #D6A84F; }
+  .badge-status--system { color: #7E8FA8; border: 1px solid #7E8FA8; }
+  .badge-status--ghost { color: #9A8BB3; border: 1px solid #9A8BB3; }
 
   .card {
     border-bottom: none;
@@ -441,6 +558,18 @@ body {
 
   .card--defense .card__title {
     font-size: 15px;
+  }
+
+  .verdict-controls {
+    flex-direction: column;
+  }
+
+  .verdict-btn {
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -457,16 +586,81 @@ body {
   }
 }
 
-/* --- Screen Reader --- */
+/* --- Print --- */
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+
+  .court-grid {
+    display: block;
+  }
+
+  .trial-row {
+    display: block;
+    break-inside: avoid;
+    border-bottom: 1px solid #ccc;
+    padding: 12pt 0;
+    margin-bottom: 12pt;
+  }
+
+  .trial-row .gutter {
+    display: none;
+  }
+
+  .trial-row .defense,
+  .trial-row .prosecution {
+    background: none;
+    border: none;
+    padding: 8pt 0;
+  }
+
+  .trial-row__mobile-badge {
+    display: block;
+    color: #333;
+    font-weight: bold;
+    padding: 4pt 0;
+  }
+
+  .court-header,
+  .docket-summary,
+  .court-footer {
+    break-inside: avoid;
+    background: none;
+    border-color: #ccc;
+  }
+
+  .verdict-controls {
+    display: none;
+  }
+
+  .verdict-stamp {
+    border-color: #333 !important;
+    color: #333 !important;
+    background: none !important;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+    font-size: 9pt;
+    color: #555;
+  }
+
+  a[href^="#"]::after,
+  a[href^="mailto:"]::after {
+    content: '';
+  }
+
+  .card--defense .card__label { color: #2a7a4a; }
+  .card--prosecution .card__label { color: #a03030; }
+  .card--prosecution .card__residual {
+    border-left-color: #a07020;
+    color: #6a4a10;
+    background: none;
+  }
+
+  .skip-link { display: none; }
 }

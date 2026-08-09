@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Split-Screen Courtroom — Jun Wen Leong</title>
-  <meta name="description" content="Defense vs prosecution. Every claim on the witness stand. You are the jury.">
-  <meta property="og:title" content="Split-Screen Courtroom — Jun Wen Leong">
-  <meta property="og:description" content="9 claims. Both sides presented. Verdict is yours.">
+  <title>Jun Wen Leong — Security of AI | Courtroom</title>
+  <meta name="description" content="Security of AI researcher. Adversarial evaluation of prompt-injection defenses, canary classifiers, and compliance-frame attacks across 28k+ experiments.">
+  <meta property="og:title" content="Jun Wen Leong — Security of AI | Courtroom">
+  <meta property="og:description" content="8 claims cross-examined. Both sides presented. Verdict is yours.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://junwenleong.github.io/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
 <body>
   <a href="#court-content" class="sr-only" style="position:absolute;top:-40px;left:0;background:#8B5CF6;color:#000;padding:4px 8px;z-index:9999;font-size:12px;">Skip to content</a>
 
-  <div class="court">
+  <div class="court" role="main" id="court-content">
 
     <!-- Court Header -->
     <header class="court-header">
@@ -33,7 +33,7 @@
       <h1 class="court-header__name">Jun Wen Leong</h1>
       <p class="court-header__role">Security of AI Researcher · MS Statistics (Georgia Tech) · CSA (4 yr)</p>
       <div class="court-header__summary">
-        <p>3 solo arXiv papers | 28,000+ experiments | 35+ models tested | <a href="https://github.com/junwenleong/sleeperbench">SleeperBench</a></p>
+        <p>6 papers (3 published, 3 forthcoming) | 28,000+ experiments | 35+ models tested | <a href="https://github.com/junwenleong/sleeperbench">SleeperBench</a></p>
         <p><a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener noreferrer">arXiv:2605.08442</a> | <a href="https://arxiv.org/abs/2606.11949" target="_blank" rel="noopener noreferrer">arXiv:2606.11949</a> | <a href="https://arxiv.org/abs/2606.30566" target="_blank" rel="noopener noreferrer">arXiv:2606.30566</a> | <a href="/cv.html">CV</a> | <a href="mailto:leongjunwen@gmail.com">Email</a></p>
       </div>
     </header>
@@ -45,7 +45,7 @@
       <div class="card card--prosecution">
         <div class="card__label">Cross-Examination — Opening Statement</div>
         <h2 class="card__title">What credentials don't prove</h2>
-        <p class="card__body">4 years at CSA were AI-for-Security, not Security-of-AI. Systems deployed are defensive tooling. 3 papers submitted, 0 accepted. "28,000 runs" includes hyperparameter sweeps that any grad student automates. The number is infrastructure, not insight.</p>
+        <p class="card__body">4 years at CSA were AI-for-Security, not Security-of-AI. Systems deployed are defensive tooling. 3 papers published as preprints, 0 peer-reviewed. "28,000 runs" includes hyperparameter sweeps that any grad student automates. The number is infrastructure, not insight.</p>
         <div class="card__residual">RESIDUAL RISK: Solo author on all papers. No collaborative validation. Potentially optimizing for a single blind spot.</div>
       </div>
     </div>
@@ -63,7 +63,7 @@
       <div class="card card--defense">
         <div class="card__label">Direct Examination — Opening Statement</div>
         <h2 class="card__title">I killed 14 of my own ideas so far. The survivors are below.</h2>
-        <p class="card__body">28,000+ experimental runs. 3 solo-author papers. 35+ models tested. 0 execution errors. I run experiments on my own claims until they break or don't. Everything dead stays visible.</p>
+        <p class="card__body">28,000+ experimental runs across published work. 6 solo-author papers. 35+ models tested. &lt; 0.1% execution error rate. I run experiments on my own claims until they break or don't. Everything dead stays visible.</p>
         <p class="card__evidence">MS Statistics, Georgia Tech · BSc Data Science, NUS · Cybersecurity Engineer, CSA (4 yr)</p>
       </div>
     </div>
@@ -416,7 +416,8 @@
     'use strict';
 
     // --- Verdict System ---
-    var verdicts = JSON.parse(localStorage.getItem('court_verdicts') || '{}');
+    var verdicts;
+    try { verdicts = JSON.parse(localStorage.getItem('court_verdicts') || '{}'); } catch(err) { verdicts = {}; }
 
     // Render existing verdicts
     function renderVerdicts() {
@@ -458,7 +459,7 @@
       if (total === 0) {
         summary.textContent = 'YOUR JURY SHEET: No verdicts rendered yet.';
       } else {
-        summary.textContent = 'YOUR JURY SHEET: ' + sustained + ' sustained / ' + overruled + ' overruled / ' + hung + ' hung (' + total + '/7 decided)';
+        summary.textContent = 'YOUR JURY SHEET: ' + sustained + ' sustained / ' + overruled + ' overruled / ' + hung + ' hung (' + total + '/6 decided)';
       }
     }
 
@@ -471,7 +472,12 @@
         var verdict = btn.dataset.verdict;
 
         verdicts[claimId] = { verdict: verdict, timestamp: new Date().toISOString() };
-        localStorage.setItem('court_verdicts', JSON.stringify(verdicts));
+        try { localStorage.setItem('court_verdicts', JSON.stringify(verdicts)); } catch(err) {}
+
+        // Update aria-pressed on all buttons in this control group
+        controls.querySelectorAll('.verdict-btn').forEach(function(b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
 
         applyStamp(claimId, verdict);
         highlightBtn(claimId, verdict);
@@ -479,11 +485,14 @@
       });
     });
 
+    // Add aria-live to jury summary
+    if (summary) summary.setAttribute('aria-live', 'polite');
+
     // Init
     renderVerdicts();
 
     // Console
-    console.log('%cYou checked the console. Correct instinct. The methodology holds up here too.', 'color: #7E8A95; font-family: monospace;');
+    console.log('%cView source: https://github.com/junwenleong/junwenleong.github.io', 'color: #7E8A95; font-family: monospace;');
   })();
   </script>
 </body>
