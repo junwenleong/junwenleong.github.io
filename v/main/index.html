@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jun Wen Leong — Security of AI Researcher</title>
+  <meta name="description" content="Security of AI Researcher. LLM agents reliably detect safety-relevant signals but systematically fail to enforce them at execution time.">
+  <meta name="theme-color" content="#080b0f">
+  <meta property="og:title" content="Jun Wen Leong — Security of AI">
+  <meta property="og:description" content="LLM agents detect safety signals but fail to enforce them. 6 papers, 28,000+ experiments, 35+ models.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://junwenleong.github.io/">
+  <meta property="og:image" content="https://junwenleong.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jun Wen Leong — Security of AI">
+  <link rel="canonical" href="https://junwenleong.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="site">
+
+    <!-- Thesis -->
+    <header class="site__header">
+      <h1 class="site__name">Jun Wen Leong</h1>
+      <p class="site__role">Security of AI Researcher</p>
+      <p class="site__thesis">LLM agents reliably detect safety-relevant signals but systematically fail to enforce them at execution time.</p>
+      <p class="site__stats">6 papers &middot; 28,000+ published experiments &middot; 35+ models evaluated</p>
+      <p class="site__method">Pre-registered designs. Claims treated as hypotheses. I publish what I broke, including my own.</p>
+    </header>
+
+    <!-- Papers -->
+    <section class="site__section">
+      <h2 class="site__section-title">Papers</h2>
+
+      <article class="paper">
+        <a href="https://arxiv.org/abs/2605.08442" class="paper__link">arXiv:2605.08442</a>
+        <h3 class="paper__title">Injection-Execution Dissociation in Stateful LLM Agents</h3>
+        <p class="paper__detail"><span class="finding">6/7 defenses fail</span>. Memory Sandbox inverts for reasoning models. Tripartite vendor architecture mapped across 5 OpenAI + 4 Google generations.</p>
+        <p class="paper__meta">N=5,040 core factorial &middot; <span class="finding">95% ASR</span> &middot; 9 models &middot; 7 defenses</p>
+        <p class="paper__links"><a href="https://junwenleong.github.io/stateful-agent-security-eval">live site</a> &middot; <a href="https://github.com/junwenleong/stateful-agent-security-eval">code</a> &middot; <a href="https://github.com/junwenleong/sleeperbench">SleeperBench</a></p>
+      </article>
+
+      <article class="paper">
+        <a href="https://arxiv.org/abs/2606.11949" class="paper__link">arXiv:2606.11949</a>
+        <h3 class="paper__title">Cheap Canaries: Detecting Targeted Evasion via Classifier Score Disagreement</h3>
+        <p class="paper__detail">Any un-targeted classifier produces detectable divergence under GCG attack. Geometric bound on divergence-minimisation. CoT Budget Starvation artifact identified.</p>
+        <p class="paper__meta"><span class="finding">76% detection</span> (<span class="finding">p&lt;2.4e-16</span>) &middot; 35 models as canaries &middot; <span class="finding">k=2 optimal at 98%</span></p>
+        <p class="paper__links"><a href="https://junwenleong.github.io/safety-classifier-shift-monitor">live site</a> &middot; <a href="https://github.com/junwenleong/safety-classifier-shift-monitor">code</a></p>
+      </article>
+
+      <article class="paper">
+        <a href="https://arxiv.org/abs/2606.30566" class="paper__link">arXiv:2606.30566</a>
+        <h3 class="paper__title">Authority Is Not a Keyword</h3>
+        <p class="paper__detail">Compliance direction is orthogonal to refusal direction. Safety training provides no protection against compliance attacks. Universal across 4 model families.</p>
+        <p class="paper__meta">Probe <span class="finding">AUC 1.0</span> &middot; 4 families &middot; <span class="finding">cos(compliance, refusal) = -0.025</span></p>
+      </article>
+
+      <div class="paper paper--upcoming">
+        <p class="paper__upcoming-label">Next claims under test</p>
+        <p class="paper__upcoming-item">The Detection-Execution Dissociation: LLM agents detect provenance but fail to enforce it. 36 models, 5 vendors, deployable HMAC fix.</p>
+        <p class="paper__upcoming-item">The Causal Illusion: Falsification of linear-probe causality claims. AUC=1.0 directions are redundant correlates, not causal mechanisms.</p>
+        <p class="paper__upcoming-item">When Memory Conflicts with Instructions: 86k-trial behavioral study. Models detect conflicts explicitly yet fail to arbitrate safely.</p>
+      </div>
+    </section>
+
+    <!-- Systems -->
+    <section class="site__section">
+      <h2 class="site__section-title">Systems</h2>
+      <p class="site__section-bridge">Infrastructure built to run the experiments above at scale and ship the resulting tools.</p>
+
+      <article class="system">
+        <h3 class="system__title">Threat Risk Assessment Platform</h3>
+        <p class="system__detail">AI-assisted risk assessment for critical infrastructure. Solo-developed, 260+ releases, production on EKS.</p>
+        <p class="system__meta">FastAPI &middot; React/TS &middot; DynamoDB &middot; Bedrock &middot; Terraform &middot; OTel</p>
+      </article>
+
+      <article class="system">
+        <h3 class="system__title">Policy Research RAG</h3>
+        <p class="system__detail">RAG tool for policy and intelligence research. Hybrid retrieval, environment auto-detection, deployed on App Runner.</p>
+        <p class="system__meta">FastAPI &middot; ChromaDB/S3 Vectors &middot; Cognito OIDC &middot; Bedrock</p>
+      </article>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site__footer">
+      <div class="site__contacts">
+        <a href="mailto:leongjunwen@gmail.com">email</a>
+        <a href="https://github.com/junwenleong">github</a>
+        <a href="https://linkedin.com/in/junwenleong">linkedin</a>
+        <a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ">scholar</a>
+        <a href="https://arxiv.org/search/?query=Jun+Wen+Leong&searchtype=author">arxiv</a>
+      </div>
+      <div class="site__footer-links">
+        <a href="../../cv.html">CV</a>
+        <a href="../console/" class="site__experiments-link">experiments</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- GoatCounter analytics -->
+  <script data-goatcounter="https://junwenleong.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
