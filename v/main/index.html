@@ -53,15 +53,15 @@
 
       <article class="paper">
         <a href="https://arxiv.org/abs/2606.30566" class="paper__link">arXiv:2606.30566</a>
-        <h3 class="paper__title">Authority Is Not a Keyword</h3>
-        <p class="paper__detail">Compliance direction is orthogonal to refusal direction. Safety training provides no protection against compliance attacks. Universal across 4 model families.</p>
-        <p class="paper__meta">Probe <span class="finding">AUC 1.0</span> &middot; 4 families &middot; <span class="finding">cos(compliance, refusal) = -0.025</span></p>
+        <h3 class="paper__title">Retrieval Observability Determines the Detection Boundary for Agent Memory Poisoning</h3>
+        <p class="paper__detail">Whether memory access produces a logged tool call is the single architectural variable deciding if any trajectory-based detector can see a poisoning attack. Detector reaches <span class="finding">AUC 0.99</span> but is honestly falsified for standalone deployment (24.7&ndash;57.6% benign false positives).</p>
+        <p class="paper__meta"><span class="finding">AUC 0.99</span> &middot; provenance-graph taxonomy &middot; preregistered implicit/explicit-retrieval probes</p>
       </article>
 
       <div class="paper paper--upcoming">
         <p class="paper__upcoming-label">Next claims under test</p>
         <p class="paper__upcoming-item">The Detection-Execution Dissociation: LLM agents detect provenance but fail to enforce it. 36 models, 5 vendors, deployable HMAC fix.</p>
-        <p class="paper__upcoming-item">The Causal Illusion: Falsification of linear-probe causality claims. AUC=1.0 directions are redundant correlates, not causal mechanisms.</p>
+        <p class="paper__upcoming-item">The Causal Illusion: falsification protocol for linear-probe causality. Compliance and refusal directions are near-orthogonal (probe AUC 1.0, cos &asymp; &minus;0.03), but probe-decodable directions are often not causally necessary under generation-time ablation.</p>
         <p class="paper__upcoming-item">When Memory Conflicts with Instructions: 86k-trial behavioral study. Models detect conflicts explicitly yet fail to arbitrate safely.</p>
       </div>
     </section>
