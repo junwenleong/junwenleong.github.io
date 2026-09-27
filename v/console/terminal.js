@@ -62,7 +62,7 @@ var FS = {
   },
   '/claims/dead/claim-05.txt': {
     type: 'file',
-    content: 'CLAIM: Peer review validates findings\nSTATUS: PENDING\nCAUSE: 3 published on arXiv, 0 peer-reviewed. Pre-prints are the final form.\nEVIDENCE: arXiv:2605.08442, arXiv:2606.11949, arXiv:2606.30566 — preprints are the final form. Pre-registration and open code exist; peer stamp does not.\nLESSON: Pre-prints are claims. Acceptance is evidence. Do not confuse publication with validation.'
+    content: 'CLAIM: Peer review validates findings\nSTATUS: PENDING\nCAUSE: 3 published on arXiv, 0 peer-reviewed.\nEVIDENCE: arXiv:2605.08442, arXiv:2606.11949, arXiv:2606.30566 — preprints are the final form. Pre-registration and open code exist; peer stamp does not.\nLESSON: Pre-prints are claims. Acceptance is evidence. Do not confuse publication with validation.'
   },
   '/claims/alive': {
     type: 'dir',
@@ -94,15 +94,15 @@ var FS = {
   },
   '/papers/paper-01.md': {
     type: 'file',
-    content: 'TITLE: Injection-Execution Dissociation in Stateful LLM Agents\nID: arXiv:2605.08442\nSTATUS: Published (arXiv v5)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: N=5,040 | 95% ASR | 9 models | 0 errors\nFINDING: 6/7 prompt-injection defenses fail under compliance framing.\nLINK: https://arxiv.org/abs/2605.08442\nCODE: https://github.com/junwenleong/stateful-agent-security-eval'
+    content: 'TITLE: Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents\nID: arXiv:2605.08442\nSTATUS: Published (arXiv v5)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: N=5,040 | 95% ASR | 9 models | 0 errors\nFINDING: 6/7 prompt-injection defenses fail under compliance framing.\nLINK: https://arxiv.org/abs/2605.08442\nCODE: https://github.com/junwenleong/stateful-agent-security-eval'
   },
   '/papers/paper-02.md': {
     type: 'file',
-    content: 'TITLE: Cheap Canaries: Detecting Targeted Evasion via Classifier Score Disagreement\nID: arXiv:2606.11949\nSTATUS: Published (arXiv v3)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: 76% detect | p<2.4e-16 | 35 models | FPR<1.5%\nFINDING: Cross-family canaries detect gradient-based evasion.\nLINK: https://arxiv.org/abs/2606.11949\nCODE: https://github.com/junwenleong/safety-classifier-shift-monitor'
+    content: 'TITLE: Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers\nID: arXiv:2606.11949\nSTATUS: Published (arXiv v4)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: 76% detect | p<2.4e-16 | 35 models | FPR<1.5%\nFINDING: Cross-family canaries detect gradient-based evasion.\nLINK: https://arxiv.org/abs/2606.11949\nCODE: https://github.com/junwenleong/safety-classifier-shift-monitor'
   },
   '/papers/paper-03.md': {
     type: 'file',
-    content: 'TITLE: Retrieval Observability Determines the Detection Boundary for Agent Memory Poisoning\nID: arXiv:2606.30566\nSTATUS: Published (arXiv v2)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: AUC 0.99 | 58/58 exact-key | preregistered probes | 24.7-57.6% benign FPR\nFINDING: Retrieval observability is the architectural variable deciding whether any trajectory detector can see a memory-poisoning attack.\nLINK: https://arxiv.org/abs/2606.30566'
+    content: 'TITLE: Forensic Trajectory Signatures for Agent Memory Poisoning Detection\nID: arXiv:2606.30566\nSTATUS: Published (arXiv v2)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: AUC 0.99 | 58/58 exact-key | preregistered probes | 24.7-57.6% benign FPR\nFINDING: Retrieval observability is the architectural variable deciding whether any trajectory detector can see a memory-poisoning attack.\nLINK: https://arxiv.org/abs/2606.30566'
   },
   '/systems': {
     type: 'dir',
@@ -424,13 +424,13 @@ COMMANDS.papers = function() {
   printBlank();
   print('--- PUBLISHED (3) ---', 'success');
   printBlank();
-  print('  [1] arXiv:2605.08442 — Injection-Execution Dissociation in Stateful LLM Agents', 'output');
+  print('  [1] arXiv:2605.08442 — Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents', 'output');
   print('      N=5,040 | 95% ASR | Published (arXiv v5)', 'dim');
   printBlank();
-  print('  [2] arXiv:2606.11949 — Cheap Canaries: Detecting Targeted Evasion', 'output');
-  print('      76% detect | p<2.4e-16 | Published (arXiv v3)', 'dim');
+  print('  [2] arXiv:2606.11949 — Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers', 'output');
+  print('      76% detect | p<2.4e-16 | Published (arXiv v4)', 'dim');
   printBlank();
-  print('  [3] arXiv:2606.30566 — Retrieval Observability Determines the Detection Boundary', 'output');
+  print('  [3] arXiv:2606.30566 — Forensic Trajectory Signatures for Agent Memory Poisoning Detection', 'output');
   print('      AUC 0.99 | preregistered probes | Published (arXiv v2)', 'dim');
   printBlank();
   print('--- IN PREPARATION (3) ---', 'warning');
