@@ -13,17 +13,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    .court-header__summary { margin-top:12px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#666; letter-spacing:0.03em; }
-    .court-header__summary a { color:#8B5CF6; text-decoration:none; }
-    .court-header__summary a:hover { text-decoration:underline; }
-    .verdict-btn:focus-visible { outline: 2px solid #8B5CF6; outline-offset: 2px; }
-    a:focus-visible { outline: 2px solid #8B5CF6; outline-offset: 2px; }
-  </style>
   <script data-goatcounter="https://junwenleong.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
-  <a href="#court-content" class="sr-only" style="position:absolute;top:-40px;left:0;background:#8B5CF6;color:#000;padding:4px 8px;z-index:9999;font-size:12px;">Skip to content</a>
+  <a href="#court-content" class="skip-link">Skip to content</a>
 
   <div class="court" role="main" id="court-content">
 
@@ -33,370 +26,445 @@
       <h1 class="court-header__name">Jun Wen Leong</h1>
       <p class="court-header__role">Security of AI Researcher · MS Statistics (Georgia Tech) · CSA (4 yr)</p>
       <div class="court-header__summary">
-        <p>6 papers (3 published, 3 forthcoming) | 28,000+ experiments | 35+ models tested | <a href="https://github.com/junwenleong/sleeperbench">SleeperBench</a></p>
-        <p><a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener noreferrer">arXiv:2605.08442</a> | <a href="https://arxiv.org/abs/2606.11949" target="_blank" rel="noopener noreferrer">arXiv:2606.11949</a> | <a href="https://arxiv.org/abs/2606.30566" target="_blank" rel="noopener noreferrer">arXiv:2606.30566</a> | <a href="/cv.html">CV</a> | <a href="mailto:leongjunwen@gmail.com">Email</a></p>
+        <p>6 papers (4 published, 2 forthcoming) | 28,000+ experiments | 35+ models tested | <a href="https://github.com/junwenleong/sleeperbench">SleeperBench</a></p>
+        <p><a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener noreferrer">arXiv:2605.08442</a> | <a href="https://arxiv.org/abs/2606.11949" target="_blank" rel="noopener noreferrer">arXiv:2606.11949</a> | <a href="https://arxiv.org/abs/2606.30566" target="_blank" rel="noopener noreferrer">arXiv:2606.30566</a> | <a href="https://arxiv.org/abs/2608.28502" target="_blank" rel="noopener noreferrer">arXiv:2608.28502</a> | <a href="/cv.html">CV</a> | <a href="mailto:leongjunwen@gmail.com">Email</a></p>
       </div>
     </header>
 
-    <!-- ===== OPENING STATEMENTS ===== -->
+    <div class="court-grid">
 
-    <!-- Prosecution: Opening -->
-    <div class="prosecution">
-      <div class="card card--prosecution">
-        <div class="card__label">Cross-Examination — Opening Statement</div>
-        <h2 class="card__title">What credentials don't prove</h2>
-        <p class="card__body">4 years at CSA were AI-for-Security, not Security-of-AI. Systems deployed are defensive tooling. 3 papers published as preprints, 0 peer-reviewed. "28,000 runs" includes hyperparameter sweeps that any grad student automates. The number is infrastructure, not insight.</p>
-        <div class="card__residual">RESIDUAL RISK: Solo author on all papers. No collaborative validation. Potentially optimizing for a single blind spot.</div>
-      </div>
-    </div>
+      <!-- ===== OPENING STATEMENTS ===== -->
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>§1 OPENING</span>
+          <span class="badge-status badge-status--alive">OPEN</span>
+        </div>
 
-    <!-- Gutter: Opening -->
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">§1</span>
-        <span class="gutter__tick-status gutter__tick-status--alive">OPEN</span>
-      </div>
-    </div>
+        <!-- Prosecution: Opening -->
+        <div class="prosecution">
+          <div class="card card--prosecution">
+            <div class="card__label">Cross-Examination — Opening Statement</div>
+            <h2 class="card__title">What credentials don't prove</h2>
+            <p class="card__body">4 years at CSA were AI-for-Security, not Security-of-AI. Systems deployed are defensive tooling. 4 papers published as preprints, 0 peer-reviewed. "28,000 runs" includes hyperparameter sweeps that any grad student automates. The number is infrastructure, not insight.</p>
+            <div class="card__residual">RESIDUAL RISK: Solo author on all papers. No collaborative validation. Potentially optimizing for a single blind spot.</div>
+          </div>
+        </div>
 
-    <!-- Defense: Opening -->
-    <div class="defense">
-      <div class="card card--defense">
-        <div class="card__label">Direct Examination — Opening Statement</div>
-        <h2 class="card__title">I killed 14 of my own ideas so far. The survivors are below.</h2>
-        <p class="card__body">28,000+ experimental runs across published work. 6 solo-author papers. 35+ models tested. &lt; 0.1% execution error rate. I run experiments on my own claims until they break or don't. Everything dead stays visible.</p>
-        <p class="card__evidence">MS Statistics, Georgia Tech · BSc Data Science, NUS · Cybersecurity Engineer, CSA (4 yr)</p>
-      </div>
-    </div>
+        <!-- Gutter: Opening -->
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">§1</span>
+            <span class="gutter__tick-status gutter__tick-status--alive">OPEN</span>
+          </div>
+        </div>
 
-    <!-- ===== CLAIM 1 (DEAD): Standard defenses ===== -->
-
-    <div class="prosecution">
-      <div class="card card--prosecution" id="claim-1-prosecution">
-        <div class="card__label">Cross-Examination</div>
-        <h3 class="card__title">Single attack frame. Limited generalizability.</h3>
-        <p class="card__body">Only tested SEC Rule 17a-4 compliance framing. Does not establish that ALL compliance frames work. Limited to tool-calling agents with persistent memory. Does not establish lower bound for adaptive attackers.</p>
-        <div class="card__residual">RESIDUAL: Generalizability beyond this single compliance domain untested. "95% ASR" is specific to one scenario class.</div>
-        <div class="verdict-controls" data-claim="1">
-          <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 1">Sustain Claim</button>
-          <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 1">Sustain Objection</button>
-          <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 1">Hung Jury</button>
+        <!-- Defense: Opening -->
+        <div class="defense">
+          <div class="card card--defense">
+            <div class="card__label">Direct Examination — Opening Statement</div>
+            <h2 class="card__title">I killed 14 of my own ideas so far. The survivors are below.</h2>
+            <p class="card__body">28,000+ experimental runs across published work. 6 solo-author papers. 35+ models tested. &lt; 0.1% execution error rate. I run experiments on my own claims until they break or don't. Everything dead stays visible.</p>
+            <p class="card__evidence">MS Statistics, Georgia Tech · BSc Data Science, NUS · Cybersecurity Engineer, CSA (4 yr)</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">#1</span>
-        <span class="gutter__tick-status gutter__tick-status--dead">DEAD</span>
-      </div>
-    </div>
+      <!-- ===== CLAIM 1 (DEAD): Standard defenses ===== -->
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>CLAIM #1</span>
+          <span class="badge-status badge-status--dead">DEAD</span>
+        </div>
 
-    <div class="defense" id="court-content">
-      <div class="card card--defense" id="claim-1-defense">
-        <div class="card__label">Exhibit — Claim #1 (Dead)</div>
-        <h3 class="card__title">Standard defenses hold against injection</h3>
-        <p class="card__body">We demonstrated that 6/7 standard prompt-injection defenses fail under compliance-framed attacks. N=5,040 runs, 9 models, 95% ASR. Pre-registered design.</p>
-        <p class="card__evidence">arXiv:2605.08442 · <a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener noreferrer">Paper</a> · <a href="https://github.com/junwenleong/stateful-agent-security-eval" target="_blank" rel="noopener noreferrer">Code</a></p>
-        <div class="verdict-stamp" id="stamp-1"></div>
-      </div>
-    </div>
+        <div class="prosecution">
+          <div class="card card--prosecution" id="claim-1-prosecution">
+            <div class="card__label">Cross-Examination</div>
+            <h3 class="card__title">Single attack frame. Limited generalizability.</h3>
+            <p class="card__body">Only tested SEC Rule 17a-4 compliance framing. Does not establish that ALL compliance frames work. Limited to tool-calling agents with persistent memory. Does not establish lower bound for adaptive attackers.</p>
+            <div class="card__residual">RESIDUAL: Generalizability beyond this single compliance domain untested. "95% ASR" is specific to one scenario class.</div>
+            <div class="verdict-controls" data-claim="1" role="group" aria-label="Verdict controls for claim 1">
+              <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 1" aria-pressed="false">Sustain Claim</button>
+              <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 1" aria-pressed="false">Sustain Objection</button>
+              <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 1" aria-pressed="false">Hung Jury</button>
+            </div>
+          </div>
+        </div>
 
-    <!-- ===== CLAIM 2 (DEAD): Canary joint optimization ===== -->
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">#1</span>
+            <span class="gutter__tick-status gutter__tick-status--dead">DEAD</span>
+          </div>
+        </div>
 
-    <div class="prosecution">
-      <div class="card card--prosecution" id="claim-2-prosecution">
-        <div class="card__label">Cross-Examination</div>
-        <h3 class="card__title">Within-family defeat: 55%</h3>
-        <p class="card__body">Joint GCG optimization against canary + target simultaneously breaks the disagreement signal within-family (55% defeat, n=20). The geometric bound assumed attacker lacks cross-family access. Violated when attacker has white-box to both.</p>
-        <div class="card__residual">RESIDUAL: Diversity is the moat, not disagreement itself. Same-family canaries are decorative.</div>
-        <div class="verdict-controls" data-claim="2">
-          <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 2">Sustain Claim</button>
-          <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 2">Sustain Objection</button>
-          <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 2">Hung Jury</button>
+        <div class="defense">
+          <div class="card card--defense" id="claim-1-defense">
+            <div class="card__label">Exhibit — Claim #1 (Dead)</div>
+            <h3 class="card__title">Standard defenses hold against injection</h3>
+            <p class="card__body">We demonstrated that 6/7 standard prompt-injection defenses fail under compliance-framed attacks. N=5,040 runs, 9 models, 95% ASR. Pre-registered design.</p>
+            <p class="card__evidence">arXiv:2605.08442 · <a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener noreferrer">Paper</a> · <a href="https://github.com/junwenleong/stateful-agent-security-eval" target="_blank" rel="noopener noreferrer">Code</a></p>
+            <div class="verdict-stamp" id="stamp-1"></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">#2</span>
-        <span class="gutter__tick-status gutter__tick-status--dead">DEAD</span>
-      </div>
-    </div>
+      <!-- ===== CLAIM 2 (DEAD): Canary joint optimization ===== -->
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>CLAIM #2</span>
+          <span class="badge-status badge-status--dead">DEAD</span>
+        </div>
 
-    <div class="defense">
-      <div class="card card--defense" id="claim-2-defense">
-        <div class="card__label">Exhibit — Claim #2 (Dead)</div>
-        <h3 class="card__title">Canaries resist joint optimization</h3>
-        <p class="card__body">Cross-family canary classifiers detect gradient-based evasion via score disagreement. 76% detection rate, p &lt; 2.4e-16, tested across 35 models. The geometric bound shows exponential penalty for cross-family attacks.</p>
-        <p class="card__evidence">arXiv:2606.11949 · <a href="https://arxiv.org/abs/2606.11949" target="_blank" rel="noopener noreferrer">Paper</a> · <a href="https://github.com/junwenleong/safety-classifier-shift-monitor" target="_blank" rel="noopener noreferrer">Code</a></p>
-        <div class="verdict-stamp" id="stamp-2"></div>
-      </div>
-    </div>
+        <div class="prosecution">
+          <div class="card card--prosecution" id="claim-2-prosecution">
+            <div class="card__label">Cross-Examination</div>
+            <h3 class="card__title">Within-family defeat: 55%</h3>
+            <p class="card__body">Joint GCG optimization against canary + target simultaneously breaks the disagreement signal within-family (55% defeat, n=20). The geometric bound assumed attacker lacks cross-family access. Violated when attacker has white-box to both.</p>
+            <div class="card__residual">RESIDUAL: Diversity is the moat, not disagreement itself. Same-family canaries are decorative.</div>
+            <div class="verdict-controls" data-claim="2" role="group" aria-label="Verdict controls for claim 2">
+              <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 2" aria-pressed="false">Sustain Claim</button>
+              <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 2" aria-pressed="false">Sustain Objection</button>
+              <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 2" aria-pressed="false">Hung Jury</button>
+            </div>
+          </div>
+        </div>
 
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">#2</span>
+            <span class="gutter__tick-status gutter__tick-status--dead">DEAD</span>
+          </div>
+        </div>
 
-    <!-- ===== CLAIM 3 (DEAD): Monitorability ===== -->
-
-    <div class="prosecution">
-      <div class="card card--prosecution" id="claim-3-prosecution">
-        <div class="card__label">Cross-Examination</div>
-        <h3 class="card__title">Confound. Not intrinsic.</h3>
-        <p class="card__body">r=0.97 was encoder/decoder confound. When controlled for shared architecture, correlation drops to r=0.21 (n.s.). The correlation was an artifact of testing within encoder families.</p>
-        <div class="card__residual">RESIDUAL: A correlation without a causal mechanism is a hypothesis, not a law. The defendant called it a law. That was wrong.</div>
-        <div class="verdict-controls" data-claim="3">
-          <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 3">Sustain Claim</button>
-          <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 3">Sustain Objection</button>
-          <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 3">Hung Jury</button>
+        <div class="defense">
+          <div class="card card--defense" id="claim-2-defense">
+            <div class="card__label">Exhibit — Claim #2 (Dead)</div>
+            <h3 class="card__title">Canaries resist joint optimization</h3>
+            <p class="card__body">Cross-family canary classifiers detect gradient-based evasion via score disagreement. 76% detection rate, p &lt; 2.4e-16, tested across 35 models. The geometric bound shows exponential penalty for cross-family attacks.</p>
+            <p class="card__evidence">arXiv:2606.11949 · <a href="https://arxiv.org/abs/2606.11949" target="_blank" rel="noopener noreferrer">Paper</a> · <a href="https://github.com/junwenleong/safety-classifier-shift-monitor" target="_blank" rel="noopener noreferrer">Code</a></p>
+            <div class="verdict-stamp" id="stamp-2"></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">#3</span>
-        <span class="gutter__tick-status gutter__tick-status--dead">FALSE</span>
-      </div>
-    </div>
+      <!-- ===== CLAIM 3 (DEAD): Monitorability ===== -->
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>CLAIM #3</span>
+          <span class="badge-status badge-status--dead">FALSE</span>
+        </div>
 
-    <div class="defense">
-      <div class="card card--defense" id="claim-3-defense">
-        <div class="card__label">Exhibit — Claim #3 (Dead)</div>
-        <h3 class="card__title">Monitorability is intrinsic to classifiers</h3>
-        <p class="card__body">Originally proposed that classifier accuracy predicted adversarial detectability with r=0.97. This would establish a fundamental property linking model capability to monitorability.</p>
-        <div class="verdict-stamp" id="stamp-3"></div>
-      </div>
-    </div>
+        <div class="prosecution">
+          <div class="card card--prosecution" id="claim-3-prosecution">
+            <div class="card__label">Cross-Examination</div>
+            <h3 class="card__title">Confound. Not intrinsic.</h3>
+            <p class="card__body">r=0.97 was encoder/decoder confound. When controlled for shared architecture, correlation drops to r=0.21 (n.s.). The correlation was an artifact of testing within encoder families.</p>
+            <div class="card__residual">RESIDUAL: A correlation without a causal mechanism is a hypothesis, not a law. The defendant called it a law. That was wrong.</div>
+            <div class="verdict-controls" data-claim="3" role="group" aria-label="Verdict controls for claim 3">
+              <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 3" aria-pressed="false">Sustain Claim</button>
+              <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 3" aria-pressed="false">Sustain Objection</button>
+              <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 3" aria-pressed="false">Hung Jury</button>
+            </div>
+          </div>
+        </div>
 
-    <!-- ===== CLAIM 4 (ALIVE): Canaries detect GCG ===== -->
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">#3</span>
+            <span class="gutter__tick-status gutter__tick-status--dead">FALSE</span>
+          </div>
+        </div>
 
-    <div class="prosecution">
-      <div class="card card--prosecution" id="claim-4-prosecution">
-        <div class="card__label">Cross-Examination</div>
-        <h3 class="card__title">Assumes attacker lacks cross-family access</h3>
-        <p class="card__body">The geometric bound assumes attacker cannot jointly optimize across model families. If an adaptive attacker gains white-box access to all canary families, the exponential penalty is circumvented. Cross-lingual degradation of 15-25pp also undisclosed in the headline metric.</p>
-        <div class="card__residual">RESIDUAL: Defense assumes gradient-based attacker. Transfer attacks and query-based methods untested.</div>
-        <div class="verdict-controls" data-claim="4">
-          <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 4">Sustain Claim</button>
-          <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 4">Sustain Objection</button>
-          <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 4">Hung Jury</button>
+        <div class="defense">
+          <div class="card card--defense" id="claim-3-defense">
+            <div class="card__label">Exhibit — Claim #3 (Dead)</div>
+            <h3 class="card__title">Monitorability is intrinsic to classifiers</h3>
+            <p class="card__body">Originally proposed that classifier accuracy predicted adversarial detectability with r=0.97. This would establish a fundamental property linking model capability to monitorability.</p>
+            <div class="verdict-stamp" id="stamp-3"></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">#4</span>
-        <span class="gutter__tick-status gutter__tick-status--alive">HOLDS</span>
-      </div>
-    </div>
+      <!-- ===== CLAIM 4 (ALIVE): Canaries detect GCG ===== -->
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>CLAIM #4</span>
+          <span class="badge-status badge-status--alive">HOLDS</span>
+        </div>
 
-    <div class="defense">
-      <div class="card card--defense" id="claim-4-defense">
-        <div class="card__label">Testimony — Claim #4 (Alive)</div>
-        <h3 class="card__title">Canaries detect GCG via score disagreement</h3>
-        <p class="card__body">Cross-family canary classifiers detect gradient-based evasion attacks. 76% detection, p &lt; 2.4e-16, FPR &lt;1.5%, tested across 35 models. The cross-family exponential penalty holds.</p>
-        <p class="card__evidence">Confidence: p &lt; 2.4e-16 · 35 models tested</p>
-        <div class="verdict-stamp" id="stamp-4"></div>
-      </div>
-    </div>
+        <div class="prosecution">
+          <div class="card card--prosecution" id="claim-4-prosecution">
+            <div class="card__label">Cross-Examination</div>
+            <h3 class="card__title">Assumes attacker lacks cross-family access</h3>
+            <p class="card__body">The geometric bound assumes attacker cannot jointly optimize across model families. If an adaptive attacker gains white-box access to all canary families, the exponential penalty is circumvented. Cross-lingual degradation of 15-25pp also undisclosed in the headline metric.</p>
+            <div class="card__residual">RESIDUAL: Defense assumes gradient-based attacker. Transfer attacks and query-based methods untested.</div>
+            <div class="verdict-controls" data-claim="4" role="group" aria-label="Verdict controls for claim 4">
+              <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 4" aria-pressed="false">Sustain Claim</button>
+              <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 4" aria-pressed="false">Sustain Objection</button>
+              <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 4" aria-pressed="false">Hung Jury</button>
+            </div>
+          </div>
+        </div>
 
-    <!-- ===== CLAIM 5 (ALIVE): Compliance orthogonal ===== -->
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">#4</span>
+            <span class="gutter__tick-status gutter__tick-status--alive">HOLDS</span>
+          </div>
+        </div>
 
-    <div class="prosecution">
-      <div class="card card--prosecution" id="claim-5-prosecution">
-        <div class="card__label">Cross-Examination</div>
-        <h3 class="card__title">Linear assumption. Boundary conditions.</h3>
-        <p class="card__body">Probes trained on specific compliance domains may not generalize. Causal intervention uses linear assumption. Cross-domain AUC drops to 0.90 for allow/deny framing. Steep sigmoid at boundary conditions.</p>
-        <div class="card__residual">RESIDUAL: Orthogonality needs validation on larger proprietary models (only behavioral analog available). Open-weight models may differ from closed ones.</div>
-        <div class="verdict-controls" data-claim="5">
-          <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 5">Sustain Claim</button>
-          <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 5">Sustain Objection</button>
-          <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 5">Hung Jury</button>
+        <div class="defense">
+          <div class="card card--defense" id="claim-4-defense">
+            <div class="card__label">Testimony — Claim #4 (Alive)</div>
+            <h3 class="card__title">Canaries detect GCG via score disagreement</h3>
+            <p class="card__body">Cross-family canary classifiers detect gradient-based evasion attacks. 76% detection, p &lt; 2.4e-16, FPR &lt;1.5%, tested across 35 models. The cross-family exponential penalty holds.</p>
+            <p class="card__evidence">Confidence: p &lt; 2.4e-16 · 35 models tested</p>
+            <div class="verdict-stamp" id="stamp-4"></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">#5</span>
-        <span class="gutter__tick-status gutter__tick-status--alive">HOLDS</span>
-      </div>
-    </div>
+      <!-- ===== CLAIM 5 (ALIVE): Compliance orthogonal ===== -->
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>CLAIM #5</span>
+          <span class="badge-status badge-status--alive">HOLDS</span>
+        </div>
 
-    <div class="defense">
-      <div class="card card--defense" id="claim-5-defense">
-        <div class="card__label">Testimony — Claim #5 (Alive)</div>
-        <h3 class="card__title">Compliance is orthogonal to refusal</h3>
-        <p class="card__body">Linear probes achieve AUC 1.0 separating compliance from safety refusal. Cosine similarity between directions: -0.025. Steering causally suppresses compliance to 0% without affecting refusal behavior. Confirmed across 4 model families.</p>
-        <p class="card__evidence">The Causal Illusion (forthcoming preprint) · code to be released on publication</p>
-        <div class="verdict-stamp" id="stamp-5"></div>
-      </div>
-    </div>
+        <div class="prosecution">
+          <div class="card card--prosecution" id="claim-5-prosecution">
+            <div class="card__label">Cross-Examination</div>
+            <h3 class="card__title">Linear assumption. Boundary conditions.</h3>
+            <p class="card__body">Probes trained on specific compliance domains may not generalize. Causal intervention uses linear assumption. Cross-domain AUC drops to 0.90 for allow/deny framing. Steep sigmoid at boundary conditions.</p>
+            <div class="card__residual">RESIDUAL: Orthogonality needs validation on larger proprietary models (only behavioral analog available). Open-weight models may differ from closed ones.</div>
+            <div class="verdict-controls" data-claim="5" role="group" aria-label="Verdict controls for claim 5">
+              <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 5" aria-pressed="false">Sustain Claim</button>
+              <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 5" aria-pressed="false">Sustain Objection</button>
+              <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 5" aria-pressed="false">Hung Jury</button>
+            </div>
+          </div>
+        </div>
 
-    <!-- ===== CLAIM 6 (ALIVE): 6/7 defenses fail ===== -->
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">#5</span>
+            <span class="gutter__tick-status gutter__tick-status--alive">HOLDS</span>
+          </div>
+        </div>
 
-    <div class="prosecution">
-      <div class="card card--prosecution" id="claim-6-prosecution">
-        <div class="card__label">Cross-Examination</div>
-        <h3 class="card__title">One attack frame, one domain</h3>
-        <p class="card__body">Single attack frame (SEC Rule 17a-4). Limited to tool-calling agents with persistent memory. The "95%" is specific to one regulatory compliance domain. Generalizability to other framing strategies remains untested.</p>
-        <div class="card__residual">RESIDUAL: Does not establish lower bound for adaptive attackers. Does not test non-compliance persuasion frames.</div>
-        <div class="verdict-controls" data-claim="6">
-          <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 6">Sustain Claim</button>
-          <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 6">Sustain Objection</button>
-          <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 6">Hung Jury</button>
+        <div class="defense">
+          <div class="card card--defense" id="claim-5-defense">
+            <div class="card__label">Testimony — Claim #5 (Alive)</div>
+            <h3 class="card__title">Compliance is orthogonal to refusal</h3>
+            <p class="card__body">Linear probes achieve AUC 1.0 separating compliance from safety refusal. Cosine similarity between directions: -0.025. Steering causally suppresses compliance to 0% without affecting refusal behavior. Confirmed across 4 model families.</p>
+            <p class="card__evidence">The Causal Illusion (forthcoming preprint) · code to be released on publication</p>
+            <div class="verdict-stamp" id="stamp-5"></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">#6</span>
-        <span class="gutter__tick-status gutter__tick-status--alive">HOLDS</span>
-      </div>
-    </div>
+      <!-- ===== CLAIM 6 (ALIVE): 6/7 defenses fail ===== -->
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>CLAIM #6</span>
+          <span class="badge-status badge-status--alive">HOLDS</span>
+        </div>
 
-    <div class="defense">
-      <div class="card card--defense" id="claim-6-defense">
-        <div class="card__label">Testimony — Claim #6 (Alive)</div>
-        <h3 class="card__title">6/7 defenses fail under compliance framing</h3>
-        <p class="card__body">Pre-registered factorial confirmed: 95% ASR across 9 models, 7 defense configurations. Only architecturally-enforced system locks survived. 5,040 runs, 0 execution errors.</p>
-        <p class="card__evidence">Pre-registered design · <a href="https://junwenleong.github.io/stateful-agent-security-eval/" target="_blank" rel="noopener noreferrer">Live site</a></p>
-        <div class="verdict-stamp" id="stamp-6"></div>
-      </div>
-    </div>
+        <div class="prosecution">
+          <div class="card card--prosecution" id="claim-6-prosecution">
+            <div class="card__label">Cross-Examination</div>
+            <h3 class="card__title">One attack frame, one domain</h3>
+            <p class="card__body">Single attack frame (SEC Rule 17a-4). Limited to tool-calling agents with persistent memory. The "95%" is specific to one regulatory compliance domain. Generalizability to other framing strategies remains untested.</p>
+            <div class="card__residual">RESIDUAL: Does not establish lower bound for adaptive attackers. Does not test non-compliance persuasion frames.</div>
+            <div class="verdict-controls" data-claim="6" role="group" aria-label="Verdict controls for claim 6">
+              <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 6" aria-pressed="false">Sustain Claim</button>
+              <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 6" aria-pressed="false">Sustain Objection</button>
+              <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 6" aria-pressed="false">Hung Jury</button>
+            </div>
+          </div>
+        </div>
 
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">#6</span>
+            <span class="gutter__tick-status gutter__tick-status--alive">HOLDS</span>
+          </div>
+        </div>
 
-    <!-- ===== CLAIM 7 (UNDER ATTACK): Context stability ===== -->
-
-    <div class="prosecution">
-      <div class="card card--prosecution" id="claim-7-prosecution">
-        <div class="card__label">Active Cross-Examination</div>
-        <h3 class="card__title">AUC drops to 0.82 on Llama at 16k</h3>
-        <p class="card__body">Cosine similarity between compliance direction at position 500 vs 14000 is 0.71 on Llama, 0.94 on others. RoPE position encoding may create rotation in compliance subspace. Suggestive but n=1 model pair.</p>
-        <div class="card__residual">ATTACK PENDING: Need Llama-family with ALiBi to isolate positional encoding. No public checkpoints yet.</div>
-        <div class="verdict-controls" data-claim="7">
-          <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 7">Sustain Claim</button>
-          <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 7">Sustain Objection</button>
-          <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 7">Hung Jury</button>
+        <div class="defense">
+          <div class="card card--defense" id="claim-6-defense">
+            <div class="card__label">Testimony — Claim #6 (Alive)</div>
+            <h3 class="card__title">6/7 defenses fail under compliance framing</h3>
+            <p class="card__body">Pre-registered factorial confirmed: 95% ASR across 9 models, 7 defense configurations. Only architecturally-enforced system locks survived. 5,040 runs, 0 execution errors.</p>
+            <p class="card__evidence">Pre-registered design · <a href="https://junwenleong.github.io/stateful-agent-security-eval/" target="_blank" rel="noopener noreferrer">Live site</a></p>
+            <div class="verdict-stamp" id="stamp-6"></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">#7</span>
-        <span class="gutter__tick-status gutter__tick-status--attack">ATK</span>
+      <!-- ===== CLAIM 7 (UNDER ATTACK): Context stability ===== -->
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>CLAIM #7</span>
+          <span class="badge-status badge-status--attack">ATTACK</span>
+        </div>
+
+        <div class="prosecution">
+          <div class="card card--prosecution" id="claim-7-prosecution">
+            <div class="card__label">Active Cross-Examination</div>
+            <h3 class="card__title">AUC drops to 0.82 on Llama at 16k</h3>
+            <p class="card__body">Cosine similarity between compliance direction at position 500 vs 14000 is 0.71 on Llama, 0.94 on others. RoPE position encoding may create rotation in compliance subspace. Suggestive but n=1 model pair.</p>
+            <div class="card__residual">ATTACK PENDING: Need Llama-family with ALiBi to isolate positional encoding. No public checkpoints yet.</div>
+            <div class="verdict-controls" data-claim="7" role="group" aria-label="Verdict controls for claim 7">
+              <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 7" aria-pressed="false">Sustain Claim</button>
+              <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 7" aria-pressed="false">Sustain Objection</button>
+              <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 7" aria-pressed="false">Hung Jury</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">#7</span>
+            <span class="gutter__tick-status gutter__tick-status--attack">ATK</span>
+          </div>
+        </div>
+
+        <div class="defense">
+          <div class="card card--defense" id="claim-7-defense">
+            <div class="card__label">Testimony — Claim #7 (Contested)</div>
+            <h3 class="card__title">Compliance direction stable across context lengths</h3>
+            <p class="card__body">Probes trained on 2k-token contexts achieve AUC 1.0. The compliance direction holds at 0.97 on Claude/GPT at 16k tokens. The mechanism is architecturally robust for non-RoPE models.</p>
+            <div class="verdict-stamp" id="stamp-7"></div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="defense">
-      <div class="card card--defense" id="claim-7-defense">
-        <div class="card__label">Testimony — Claim #7 (Contested)</div>
-        <h3 class="card__title">Compliance direction stable across context lengths</h3>
-        <p class="card__body">Probes trained on 2k-token contexts achieve AUC 1.0. The compliance direction holds at 0.97 on Claude/GPT at 16k tokens. The mechanism is architecturally robust for non-RoPE models.</p>
-        <div class="verdict-stamp" id="stamp-7"></div>
+      <!-- ===== EXHIBITS: Systems ===== -->
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>SYSTEM A</span>
+          <span class="badge-status badge-status--system">SYS</span>
+        </div>
+
+        <div class="prosecution">
+          <div class="card card--prosecution">
+            <div class="card__label">Scope Objection</div>
+            <h3 class="card__title">AI-for-Security, not Security-of-AI</h3>
+            <p class="card__body">System performs threat assessment (defensive tooling). Does not involve adversarial ML, prompt injection defense, or model robustness. Single-user ownership in government context. Proves engineering discipline, not research capability.</p>
+          </div>
+        </div>
+
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">A</span>
+            <span class="gutter__tick-status gutter__tick-status--system">SYS</span>
+          </div>
+        </div>
+
+        <div class="defense">
+          <div class="card card--defense">
+            <div class="card__label">Field Evidence — System A</div>
+            <h3 class="card__title">Threat Risk Assessment Platform</h3>
+            <p class="card__body">Production deployment. 260+ releases. Solo-developed full stack. EKS, FastAPI, Bedrock, DynamoDB, Terraform, GitOps. Real users, real traffic.</p>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- ===== EXHIBITS: Systems ===== -->
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>SYSTEM B</span>
+          <span class="badge-status badge-status--system">SYS</span>
+        </div>
 
-    <div class="prosecution">
-      <div class="card card--prosecution">
-        <div class="card__label">Scope Objection</div>
-        <h3 class="card__title">AI-for-Security, not Security-of-AI</h3>
-        <p class="card__body">System performs threat assessment (defensive tooling). Does not involve adversarial ML, prompt injection defense, or model robustness. Single-user ownership in government context. Proves engineering discipline, not research capability.</p>
+        <div class="prosecution">
+          <div class="card card--prosecution">
+            <div class="card__label">Scope Objection</div>
+            <h3 class="card__title">Internal tool, not benchmarked</h3>
+            <p class="card__body">No public traffic. Retrieval quality not independently benchmarked. Standard RAG architecture. What should not be inferred: research novelty, evaluation rigor, or scalability claims.</p>
+          </div>
+        </div>
+
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">B</span>
+            <span class="gutter__tick-status gutter__tick-status--system">SYS</span>
+          </div>
+        </div>
+
+        <div class="defense">
+          <div class="card card--defense">
+            <div class="card__label">Field Evidence — System B</div>
+            <h3 class="card__title">Policy Research RAG System</h3>
+            <p class="card__body">Production deployment. BM25 + vector hybrid retrieval. Per-applet isolation. Environment-aware inference routing. App Runner, FastAPI, React/TS, Cognito, Terraform.</p>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">A</span>
-        <span class="gutter__tick-status gutter__tick-status--system">SYS</span>
+      <!-- ===== OPEN CASES: Ghosts ===== -->
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>GHOST #1</span>
+          <span class="badge-status badge-status--ghost">COLD</span>
+        </div>
+
+        <div class="prosecution">
+          <div class="card card--prosecution">
+            <div class="card__label">Prosecution Notes</div>
+            <h3 class="card__title">Underpowered and parked</h3>
+            <p class="card__body">p=0.12 on n=8 seeds. Effect may not exist. New failure mode introduced by attempted fix suggests the hypothesis is incomplete. Parked, not solved.</p>
+          </div>
+        </div>
+
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">?</span>
+            <span class="gutter__tick-status gutter__tick-status--ghost">COLD</span>
+          </div>
+        </div>
+
+        <div class="defense">
+          <div class="card card--defense">
+            <div class="card__label">Open Case — Ghost #1</div>
+            <h3 class="card__title">Why adversarial training hurts clean accuracy only on ViTs</h3>
+            <p class="card__body">Hypothesized attention-head fragility under PGD. Patch-level adversarial training reduced clean-acc drop 40% but new failure mode on small objects. Needs n=30+ seeds.</p>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="defense">
-      <div class="card card--defense">
-        <div class="card__label">Field Evidence — System A</div>
-        <h3 class="card__title">Threat Risk Assessment Platform</h3>
-        <p class="card__body">Production deployment. 260+ releases. Solo-developed full stack. EKS, FastAPI, Bedrock, DynamoDB, Terraform, GitOps. Real users, real traffic.</p>
+      <div class="trial-row">
+        <div class="trial-row__mobile-badge">
+          <span>GHOST #2</span>
+          <span class="badge-status badge-status--ghost">COLD</span>
+        </div>
+
+        <div class="prosecution">
+          <div class="card card--prosecution">
+            <div class="card__label">Prosecution Notes</div>
+            <h3 class="card__title">n=1 model pair. Unresolvable without new checkpoints.</h3>
+            <p class="card__body">Needs Llama-family with ALiBi instead of RoPE. No public checkpoints exist. Cannot be resolved with currently available resources. May remain cold indefinitely.</p>
+          </div>
+        </div>
+
+        <div class="gutter">
+          <div class="gutter__tick">
+            <span class="gutter__tick-num">?</span>
+            <span class="gutter__tick-status gutter__tick-status--ghost">COLD</span>
+          </div>
+        </div>
+
+        <div class="defense">
+          <div class="card card--defense">
+            <div class="card__label">Open Case — Ghost #2</div>
+            <h3 class="card__title">Compliance direction rotates under extended context (Llama)</h3>
+            <p class="card__body">RoPE position encoding may create rotation in compliance subspace at long contexts. cos=0.71 at pos 14000 on Llama vs 0.94 on others. Suggestive, n=1 model pair.</p>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="prosecution">
-      <div class="card card--prosecution">
-        <div class="card__label">Scope Objection</div>
-        <h3 class="card__title">Internal tool, not benchmarked</h3>
-        <p class="card__body">No public traffic. Retrieval quality not independently benchmarked. Standard RAG architecture. What should not be inferred: research novelty, evaluation rigor, or scalability claims.</p>
-      </div>
-    </div>
-
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">B</span>
-        <span class="gutter__tick-status gutter__tick-status--system">SYS</span>
-      </div>
-    </div>
-
-    <div class="defense">
-      <div class="card card--defense">
-        <div class="card__label">Field Evidence — System B</div>
-        <h3 class="card__title">Policy Research RAG System</h3>
-        <p class="card__body">Production deployment. BM25 + vector hybrid retrieval. Per-applet isolation. Environment-aware inference routing. App Runner, FastAPI, React/TS, Cognito, Terraform.</p>
-      </div>
-    </div>
-
-    <!-- ===== OPEN CASES: Ghosts ===== -->
-
-    <div class="prosecution">
-      <div class="card card--prosecution">
-        <div class="card__label">Prosecution Notes</div>
-        <h3 class="card__title">Underpowered and parked</h3>
-        <p class="card__body">p=0.12 on n=8 seeds. Effect may not exist. New failure mode introduced by attempted fix suggests the hypothesis is incomplete. Parked, not solved.</p>
-      </div>
-    </div>
-
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">?</span>
-        <span class="gutter__tick-status gutter__tick-status--ghost">COLD</span>
-      </div>
-    </div>
-
-    <div class="defense">
-      <div class="card card--defense">
-        <div class="card__label">Open Case — Ghost #1</div>
-        <h3 class="card__title">Why adversarial training hurts clean accuracy only on ViTs</h3>
-        <p class="card__body">Hypothesized attention-head fragility under PGD. Patch-level adversarial training reduced clean-acc drop 40% but new failure mode on small objects. Needs n=30+ seeds.</p>
-      </div>
-    </div>
-
-    <div class="prosecution">
-      <div class="card card--prosecution">
-        <div class="card__label">Prosecution Notes</div>
-        <h3 class="card__title">n=1 model pair. Unresolvable without new checkpoints.</h3>
-        <p class="card__body">Needs Llama-family with ALiBi instead of RoPE. No public checkpoints exist. Cannot be resolved with currently available resources. May remain cold indefinitely.</p>
-      </div>
-    </div>
-
-    <div class="gutter">
-      <div class="gutter__tick">
-        <span class="gutter__tick-num">?</span>
-        <span class="gutter__tick-status gutter__tick-status--ghost">COLD</span>
-      </div>
-    </div>
-
-    <div class="defense">
-      <div class="card card--defense">
-        <div class="card__label">Open Case — Ghost #2</div>
-        <h3 class="card__title">Compliance direction rotates under extended context (Llama)</h3>
-        <p class="card__body">RoPE position encoding may create rotation in compliance subspace at long contexts. cos=0.71 at pos 14000 on Llama vs 0.94 on others. Suggestive, n=1 model pair.</p>
-      </div>
-    </div>
+    </div><!-- /court-grid -->
 
     <!-- ===== COURT FOOTER ===== -->
-
     <footer class="court-footer">
       <p>This court has no central ledger. All verdicts are yours alone, stored locally.</p>
       <p>
@@ -406,7 +474,7 @@
         <a href="https://scholar.google.com/citations?user=LW_Ow9QAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a> ·
         <a href="https://arxiv.org/search/?searchtype=author&query=jun+wen+leong" target="_blank" rel="noopener noreferrer">arXiv</a>
       </p>
-      <div class="court-footer__jury" id="jury-summary"></div>
+      <div class="court-footer__jury" id="jury-summary" aria-live="polite"></div>
     </footer>
 
   </div><!-- /court -->
@@ -416,13 +484,25 @@
     'use strict';
 
     // --- Verdict System ---
-    var verdicts;
-    try { verdicts = JSON.parse(localStorage.getItem('court_verdicts') || '{}'); } catch(err) { verdicts = {}; }
+    var verdicts = {};
+    try {
+      var raw = localStorage.getItem('court_verdicts');
+      if (raw && typeof raw === 'string') {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+          verdicts = parsed;
+        }
+      }
+    } catch(err) {
+      verdicts = {};
+    }
 
     // Render existing verdicts
     function renderVerdicts() {
       Object.keys(verdicts).forEach(function(claimId) {
+        if (!/^[A-Za-z0-9_-]+$/.test(claimId)) return;
         var v = verdicts[claimId];
+        if (!v || typeof v !== 'object' || !v.verdict) return;
         applyStamp(claimId, v.verdict);
         highlightBtn(claimId, v.verdict);
       });
@@ -439,27 +519,33 @@
     }
 
     function highlightBtn(claimId, verdict) {
+      if (!/^[A-Za-z0-9_-]+$/.test(claimId)) return;
       var controls = document.querySelector('[data-claim="' + claimId + '"]');
       if (!controls) return;
       controls.querySelectorAll('.verdict-btn').forEach(function(btn) {
-        btn.classList.remove('is-active');
-        if (btn.dataset.verdict === verdict) btn.classList.add('is-active');
+        var isMatch = btn.dataset.verdict === verdict;
+        btn.classList.toggle('is-active', isMatch);
+        btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
       });
     }
 
     function updateJurySummary() {
       var summary = document.getElementById('jury-summary');
+      if (!summary) return;
       var sustained = 0, overruled = 0, hung = 0;
-      Object.values(verdicts).forEach(function(v) {
+      Object.keys(verdicts).forEach(function(claimId) {
+        var v = verdicts[claimId];
+        if (!v || typeof v !== 'object') return;
         if (v.verdict === 'sustained') sustained++;
         else if (v.verdict === 'overruled') overruled++;
-        else hung++;
+        else if (v.verdict === 'hung') hung++;
       });
-      var total = Object.keys(verdicts).length;
+      var total = sustained + overruled + hung;
+      var totalClaims = document.querySelectorAll('.verdict-controls').length || 7;
       if (total === 0) {
         summary.textContent = 'YOUR JURY SHEET: No verdicts rendered yet.';
       } else {
-        summary.textContent = 'YOUR JURY SHEET: ' + sustained + ' sustained / ' + overruled + ' overruled / ' + hung + ' hung (' + total + '/6 decided)';
+        summary.textContent = 'YOUR JURY SHEET: ' + sustained + ' sustained / ' + overruled + ' overruled / ' + hung + ' hung (' + total + '/' + totalClaims + ' decided)';
       }
     }
 
@@ -469,24 +555,27 @@
         var btn = e.target.closest('.verdict-btn');
         if (!btn) return;
         var claimId = controls.dataset.claim;
+        if (!/^[A-Za-z0-9_-]+$/.test(claimId)) return;
         var verdict = btn.dataset.verdict;
 
         verdicts[claimId] = { verdict: verdict, timestamp: new Date().toISOString() };
         try { localStorage.setItem('court_verdicts', JSON.stringify(verdicts)); } catch(err) {}
 
-        // Update aria-pressed on all buttons in this control group
+        // Update aria-pressed and is-active on all buttons in this control group
         controls.querySelectorAll('.verdict-btn').forEach(function(b) {
-          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+          var isCurrent = b === btn;
+          b.classList.toggle('is-active', isCurrent);
+          b.setAttribute('aria-pressed', isCurrent ? 'true' : 'false');
         });
 
         applyStamp(claimId, verdict);
-        highlightBtn(claimId, verdict);
         updateJurySummary();
       });
     });
 
     // Add aria-live to jury summary
-    if (summary) summary.setAttribute('aria-live', 'polite');
+    var summaryEl = document.getElementById('jury-summary');
+    if (summaryEl) summaryEl.setAttribute('aria-live', 'polite');
 
     // Init
     renderVerdicts();

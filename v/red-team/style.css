@@ -172,6 +172,7 @@ body {
 
 .trial-row {
   display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr);
   grid-template-columns: subgrid;
   grid-column: 1 / -1;
 }
@@ -360,6 +361,14 @@ body {
   background: transparent;
   cursor: pointer;
   transition: border-color 150ms, color 150ms, background 150ms;
+}
+
+@media (max-width: 700px) {
+  .verdict-btn {
+    padding: 14px 20px;
+    font-size: 11px;
+    min-height: 48px;
+  }
 }
 
 .verdict-btn:focus-visible {

@@ -16,6 +16,14 @@ var state = {
 
 // --- Filesystem ---
 var FS = {
+  '/': {
+    type: 'dir',
+    children: ['home/', 'claims/', 'papers/', 'systems/', 'ghosts/', 'proc/', 'var/', 'etc/']
+  },
+  '/home': {
+    type: 'dir',
+    children: ['operator/']
+  },
   '/home/operator': {
     type: 'dir',
     children: ['README', 'identity.txt', 'links.txt', 'quickstart.txt']
@@ -26,7 +34,7 @@ var FS = {
   },
   '/home/operator/identity.txt': {
     type: 'file',
-    content: 'NAME: Jun Wen Leong\nROLE: Security of AI Researcher\nCREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS), Cybersecurity Engineer CSA (4yr)\nSTATS: 114k+ runs | 6 papers (3 published, 3 in preparation) | 35+ models | < 0.1% error rate\nTHESIS: I run experiments on my own claims until they break or don\'t.\nBIAS: Overweights adversarial framing. Suspicious of clean narratives.'
+    content: 'NAME: Jun Wen Leong\nROLE: Security of AI Researcher\nCREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS), Cybersecurity Engineer CSA (4yr)\nSTATS: 114k+ runs | 6 papers (4 published, 2 in preparation) | 35+ models | < 0.1% error rate\nTHESIS: I run experiments on my own claims until they break or don\'t.\nBIAS: Overweights adversarial framing. Suspicious of clean narratives.'
   },
   '/home/operator/links.txt': {
     type: 'file',
@@ -62,7 +70,7 @@ var FS = {
   },
   '/claims/dead/claim-05.txt': {
     type: 'file',
-    content: 'CLAIM: Peer review validates findings\nSTATUS: PENDING\nCAUSE: 3 published on arXiv, 0 peer-reviewed.\nEVIDENCE: arXiv:2605.08442, arXiv:2606.11949, arXiv:2606.30566 — preprints are the final form. Pre-registration and open code exist; peer stamp does not.\nLESSON: Pre-prints are claims. Acceptance is evidence. Do not confuse publication with validation.'
+    content: 'CLAIM: Peer review validates findings\nSTATUS: PENDING\nCAUSE: 4 published on arXiv, 0 peer-reviewed.\nEVIDENCE: arXiv:2605.08442, arXiv:2606.11949, arXiv:2606.30566, arXiv:2608.28502 — preprints are the final form. Pre-registration and open code exist; peer stamp does not.\nLESSON: Pre-prints are claims. Acceptance is evidence. Do not confuse publication with validation.'
   },
   '/claims/alive': {
     type: 'dir',
@@ -90,7 +98,7 @@ var FS = {
   },
   '/papers': {
     type: 'dir',
-    children: ['paper-01.md', 'paper-02.md', 'paper-03.md']
+    children: ['paper-01.md', 'paper-02.md', 'paper-03.md', 'paper-04.md']
   },
   '/papers/paper-01.md': {
     type: 'file',
@@ -103,6 +111,10 @@ var FS = {
   '/papers/paper-03.md': {
     type: 'file',
     content: 'TITLE: Forensic Trajectory Signatures for Agent Memory Poisoning Detection\nID: arXiv:2606.30566\nSTATUS: Published (arXiv v2)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: AUC 0.99 | 58/58 exact-key | preregistered probes | 24.7-57.6% benign FPR\nFINDING: Retrieval observability is the architectural variable deciding whether any trajectory detector can see a memory-poisoning attack.\nLINK: https://arxiv.org/abs/2606.30566'
+  },
+  '/papers/paper-04.md': {
+    type: 'file',
+    content: 'TITLE: Recognition Without Enforcement: Configuration-Dependent Failures in LLM Agent Instruction Arbitration and External Control\nID: arXiv:2608.28502\nSTATUS: Published\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: 36 models | 124k-trial corpus | mechanistic probing | external HMAC enforcement\nFINDING: Agents recognize provenance/policy conflicts but fail to enforce them; vendor keyword defenses are brittle, and an external signed-enforcement gate is what holds.\nLINK: https://arxiv.org/abs/2608.28502'
   },
   '/systems': {
     type: 'dir',
@@ -144,6 +156,10 @@ var FS = {
   '/proc/suspicion': {
     type: 'file',
     dynamic: 'suspicion'
+  },
+  '/var': {
+    type: 'dir',
+    children: ['log/']
   },
   '/var/log': {
     type: 'dir',
@@ -196,7 +212,7 @@ function printBlank() {
 }
 
 function updatePrompt() {
-  var short = state.cwd.replace('/home/operator', '~');
+  var short = state.cwd === '/home/operator' ? '~' : (state.cwd.startsWith('/home/operator/') ? '~' + state.cwd.slice('/home/operator'.length) : state.cwd);
   promptLabel.textContent = 'guest@portfolio:' + short + '$';
 }
 
@@ -240,12 +256,17 @@ function normalizePath(p) {
 }
 
 function getNode(path) {
-  return FS[path] || null;
+  if (path && Object.prototype.hasOwnProperty.call(FS, path)) {
+    return FS[path];
+  }
+  return null;
 }
 
 function getDynamicContent(key) {
   if (key === 'visitor') {
-    return 'ENTITY: guest\nVISITS: ' + state.visitCount + '\nCOMMANDS ISSUED: ' + state.commandLog.length + '\nSUSPICION LEVEL: ' + state.suspicion + '\nFIRST SEEN: ' + (localStorage.getItem('hos_first') || 'this session') + '\nBEHAVIOR: ' + (state.commandLog.length > 10 ? 'persistent' : 'exploratory');
+    var firstSeen = 'this session';
+    try { firstSeen = localStorage.getItem('hos_first') || 'this session'; } catch(e) {}
+    return 'ENTITY: guest\nVISITS: ' + state.visitCount + '\nCOMMANDS ISSUED: ' + state.commandLog.length + '\nSUSPICION LEVEL: ' + state.suspicion + '\nFIRST SEEN: ' + firstSeen + '\nBEHAVIOR: ' + (state.commandLog.length > 10 ? 'persistent' : 'exploratory');
   }
   if (key === 'suspicion') {
     var reasons = [];
@@ -312,7 +333,8 @@ COMMANDS.ls = function(args) {
   var children = node.children || [];
   children.forEach(function(c) {
     if (c.startsWith('.') && !showHidden) return;
-    var childPath = path + '/' + c.replace(/\/$/, '');
+    var cleanChild = c.replace(/\/$/, '');
+    var childPath = path === '/' ? '/' + cleanChild : path + '/' + cleanChild;
     var childNode = getNode(childPath);
     if (childNode && childNode.type === 'dir') {
       print('  ' + c + (c.endsWith('/') ? '' : '/'), 'cyan');
@@ -325,9 +347,14 @@ COMMANDS.ls = function(args) {
 COMMANDS.cd = function(args) {
   var target = args[0] || '~';
   var path = resolvePath(target);
+  
+  if (!path) {
+    print('cd: invalid path: ' + target, 'error');
+    return;
+  }
+  
   var node = getNode(path);
   if (!node || node.type !== 'dir') {
-    // Check if parent exists
     if (node && node.type === 'file') {
       print('cd: not a directory: ' + target, 'error');
     } else {
@@ -364,7 +391,7 @@ COMMANDS.tree = function() {
   print('  README, identity.txt, links.txt, quickstart.txt', 'output');
   print('/claims/', 'cyan');
   print('  dead/ (5 files) | alive/ (3 files) | contested/ (1 file)', 'output');
-  print('/papers/ (3 files)', 'cyan');
+  print('/papers/ (4 files)', 'cyan');
   print('/systems/ (2 files)', 'cyan');
   print('/ghosts/ (hidden)', 'dim');
   print('/proc/ (self, visitor, suspicion)', 'dim');
@@ -422,7 +449,7 @@ COMMANDS.claims = function() {
 COMMANDS.papers = function() {
   print('RESEARCH PAPERS', 'heading');
   printBlank();
-  print('--- PUBLISHED (3) ---', 'success');
+  print('--- PUBLISHED (4) ---', 'success');
   printBlank();
   print('  [1] arXiv:2605.08442 — Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents', 'output');
   print('      N=5,040 | 95% ASR | Published (arXiv v5)', 'dim');
@@ -433,9 +460,12 @@ COMMANDS.papers = function() {
   print('  [3] arXiv:2606.30566 — Forensic Trajectory Signatures for Agent Memory Poisoning Detection', 'output');
   print('      AUC 0.99 | preregistered probes | Published (arXiv v2)', 'dim');
   printBlank();
-  print('--- IN PREPARATION (3) ---', 'warning');
+  print('  [4] arXiv:2608.28502 — Recognition Without Enforcement', 'output');
+  print('      36 models | 124k-trial corpus | external HMAC enforcement | Published', 'dim');
   printBlank();
-  print('  [4-6] 3 additional papers in preparation', 'dim');
+  print('--- IN PREPARATION (2) ---', 'warning');
+  printBlank();
+  print('  [5-6] 2 additional papers in preparation', 'dim');
   printBlank();
   print('use "cat /papers/paper-01.md" for full details', 'dim');
 };
@@ -470,7 +500,7 @@ COMMANDS.about = function() {
   print('  CREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS)', 'output');
   print('         Cybersecurity Engineer, CSA (4 yr)', 'output');
   printBlank();
-  print('  114k+ runs | 6 papers (3 published, 3 in preparation) | 35+ models', 'cyan');
+  print('  114k+ runs | 6 papers (4 published, 2 in preparation) | 35+ models', 'cyan');
   print('  < 0.1% execution error rate (auto-retried)', 'cyan');
   printBlank();
   print('  THESIS: I run experiments on my own claims until they', 'output');
@@ -489,7 +519,7 @@ COMMANDS.stats = function() {
   print('KEY METRICS', 'heading');
   print('  Experiments run:     114,000+', 'cyan');
   print('  Published:           28,000+', 'output');
-  print('  Papers:              6 (3 published, 3 in preparation)', 'output');
+  print('  Papers:              6 (4 published, 2 in preparation)', 'output');
   print('  Models tested:       35+', 'output');
   print('  Error rate:          < 0.1% (auto-retried)', 'output');
   print('  Claims alive:        3', 'success');
@@ -531,7 +561,7 @@ COMMANDS.whoami = function() {
 COMMANDS.status = function() {
   print('SYSTEM STATUS', 'heading');
   print('  claims indexed:  9 (3 alive, 5 dead, 1 contested)', 'output');
-  print('  papers loaded:   6 (3 published, 3 in preparation)', 'output');
+  print('  papers loaded:   6 (4 published, 2 in preparation)', 'output');
   print('  systems online:  2', 'output');
   print('  ghosts filed:    2', 'output');
   print('  suspicion:       ' + state.suspicion + '/12', state.suspicion >= 5 ? 'warning' : 'output');
@@ -629,7 +659,9 @@ var EASTER_EGGS = {
     printBlank();
     print('  Prompt injection attacks    → 95% ASR across 9 models (Paper 1)', 'output');
     print('  Evasion detection           → canary-based detection at p<2.4e-16 (Paper 2)', 'output');
-    print('  Compliance manipulation     → causal steering of compliance direction (Paper 3)', 'output');
+    print('  Memory poisoning forensics  → AUC 0.99 detection boundary (Paper 3)', 'output');
+    print('  Instruction arbitration     → 36 models, HMAC enforcement gate (Paper 4)', 'output');
+    print('  Compliance manipulation     → causal steering of compliance direction (forthcoming)', 'output');
     print('  Defense evaluation          → systematic failure analysis, 7 defense configs', 'output');
     print('  Statistical rigor           → pre-registered, bootstrapped CIs, 114k+ trials', 'output');
     print('  Multi-model testing         → 35+ models across 4+ families', 'output');
@@ -638,7 +670,17 @@ var EASTER_EGGS = {
     print('  ROLE FIT: AI Red Team Lead | Adversarial ML Researcher | AI Safety Evaluator', 'cyan');
   },
   'guide': function() { COMMANDS.menu(); },
-  'forget me': function() { localStorage.removeItem('hos_visits'); localStorage.removeItem('hos_first'); localStorage.removeItem('hos_log'); print('all local memory erased. you are unknown again.', 'success'); state.visitCount = 0; state.suspicion = 0; updateSuspicion(); },
+  'forget me': function() {
+    try {
+      localStorage.removeItem('hos_visits');
+      localStorage.removeItem('hos_first');
+      localStorage.removeItem('hos_log');
+    } catch(e) {}
+    print('all local memory erased. you are unknown again.', 'success');
+    state.visitCount = 0;
+    state.suspicion = 0;
+    updateSuspicion();
+  },
   'reset': function() { COMMANDS.clear(); boot(); }
 };
 
@@ -653,7 +695,7 @@ function executeCommand(raw) {
   logCommand(trimmed);
 
   // Print prompt + command
-  var short = state.cwd.replace('/home/operator', '~');
+  var short = state.cwd === '/home/operator' ? '~' : (state.cwd.startsWith('/home/operator/') ? '~' + state.cwd.slice('/home/operator'.length) : state.cwd);
   print('guest@portfolio:' + short + '$ ' + trimmed, 'prompt');
 
   // Menu number shortcuts
@@ -671,15 +713,22 @@ function executeCommand(raw) {
   var args = parts.slice(1);
 
   // Check multi-word easter eggs first
-  if (EASTER_EGGS[trimmed.toLowerCase()]) {
-    EASTER_EGGS[trimmed.toLowerCase()](args);
-  } else if (EASTER_EGGS[cmd]) {
+  var lowerTrimmed = trimmed.toLowerCase();
+  if (Object.prototype.hasOwnProperty.call(EASTER_EGGS, lowerTrimmed) && typeof EASTER_EGGS[lowerTrimmed] === 'function') {
+    EASTER_EGGS[lowerTrimmed](args);
+  } else if (Object.prototype.hasOwnProperty.call(EASTER_EGGS, cmd) && typeof EASTER_EGGS[cmd] === 'function') {
     EASTER_EGGS[cmd](args);
-  } else if (COMMANDS[cmd]) {
+  } else if (Object.prototype.hasOwnProperty.call(COMMANDS, cmd) && typeof COMMANDS[cmd] === 'function') {
     COMMANDS[cmd](args);
   } else {
     // Unknown command
-    var attempts = state.commandLog.filter(function(e) { return !COMMANDS[e.cmd.split(/\s+/)[0]] && !EASTER_EGGS[e.cmd.split(/\s+/)[0]]; }).length;
+    var attempts = state.commandLog.filter(function(e) {
+      var c = e.cmd.split(/\s+/)[0].toLowerCase();
+      var isKnown = (Object.prototype.hasOwnProperty.call(COMMANDS, c) && typeof COMMANDS[c] === 'function') ||
+                    (Object.prototype.hasOwnProperty.call(EASTER_EGGS, c) && typeof EASTER_EGGS[c] === 'function') ||
+                    (Object.prototype.hasOwnProperty.call(EASTER_EGGS, e.cmd.toLowerCase()) && typeof EASTER_EGGS[e.cmd.toLowerCase()] === 'function');
+      return !isKnown;
+    }).length;
     if (attempts <= 1) {
       print(cmd + ': command not recognized. this is logged.', 'error');
     } else if (attempts <= 3) {
@@ -714,7 +763,7 @@ function boot() {
     { text: '[auth] operator identity: unknown', cls: 'system' },
     { text: '[scan] prior visits: ' + state.visitCount, cls: 'system' },
     { text: '[fs]   claims: 9 indexed, 1 unstable', cls: 'system' },
-    { text: '[proc] papers: 6 artifacts loaded (3 published, 3 in preparation)', cls: 'system' },
+    { text: '[proc] papers: 6 artifacts loaded (4 published, 2 in preparation)', cls: 'system' },
     { text: '[net]  external links quarantined', cls: 'system' },
     { text: '', cls: '' },
   ];
@@ -727,9 +776,21 @@ function boot() {
 
   var i = 0;
   var skipBoot = false;
+  var bootTimer = null;
+
+  var prefersReduced = false;
+  try {
+    prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  } catch(e) {}
 
   function finishBoot() {
+    if (state.booted) return;
     state.booted = true;
+    if (bootTimer) {
+      clearTimeout(bootTimer);
+      bootTimer = null;
+    }
+    document.removeEventListener('keydown', skipHandler);
     input.focus();
     resetIdleTimer();
     print('Start with: claims | papers | about | help', 'dim');
@@ -744,6 +805,15 @@ function boot() {
     }
     finishBoot();
   }
+
+  if (prefersReduced) {
+    for (var j = 0; j < lines.length; j++) {
+      print(lines[j].text, lines[j].cls);
+    }
+    finishBoot();
+    return;
+  }
+
   document.addEventListener('keydown', skipHandler, { once: true });
 
   function printNext() {
@@ -757,7 +827,7 @@ function boot() {
     }
     print(lines[i].text, lines[i].cls);
     i++;
-    setTimeout(printNext, 80);
+    bootTimer = setTimeout(printNext, 80);
   }
 
   printNext();
@@ -769,6 +839,8 @@ input.addEventListener('keydown', function(e) {
     var val = input.value;
     input.value = '';
     executeCommand(val);
+  } else if (e.key === 'Escape') {
+    input.blur();
   } else if (e.key === 'ArrowUp') {
     e.preventDefault();
     if (state.historyIndex > 0) {
@@ -785,9 +857,16 @@ input.addEventListener('keydown', function(e) {
       input.value = '';
     }
   } else if (e.key === 'Tab') {
-    e.preventDefault();
+    if (e.shiftKey) {
+      // Allow Shift+Tab to naturally cycle focus backwards to quick command chips
+      return;
+    }
     var partial = input.value.trim().toLowerCase();
-    if (!partial) return;
+    if (!partial) {
+      // Allow Tab when input is empty to naturally cycle focus forwards
+      return;
+    }
+    e.preventDefault();
     var allCmds = Object.keys(COMMANDS).concat(Object.keys(EASTER_EGGS));
     var matches = allCmds.filter(function(c) { return c.startsWith(partial); });
     if (matches.length === 1) input.value = matches[0];
@@ -813,21 +892,28 @@ document.querySelectorAll('.terminal__chip').forEach(function(chip) {
   });
 });
 
-// Focus input on click anywhere
+// Focus input on click anywhere unless clicking interactive element or selecting text
 document.querySelector('.terminal__output').addEventListener('click', function(e) {
-  if (!e.target.closest('a, button')) input.focus();
+  var selection = window.getSelection();
+  if (selection && selection.toString().length > 0) return;
+  if (!e.target.closest('a, button, input')) input.focus();
 });
 
 // --- Init ---
 (function init() {
   // Visit tracking
-  var visits = parseInt(localStorage.getItem('hos_visits') || '0', 10);
-  visits++;
-  state.visitCount = visits;
-  localStorage.setItem('hos_visits', visits.toString());
-  if (!localStorage.getItem('hos_first')) {
-    localStorage.setItem('hos_first', new Date().toISOString());
+  var visits = 1;
+  try {
+    visits = parseInt(localStorage.getItem('hos_visits') || '0', 10);
+    visits++;
+    localStorage.setItem('hos_visits', visits.toString());
+    if (!localStorage.getItem('hos_first')) {
+      localStorage.setItem('hos_first', new Date().toISOString());
+    }
+  } catch(e) {
+    visits = 1;
   }
+  state.visitCount = visits;
   visitsEl.textContent = 'VISIT #' + visits;
 
   // Update prompt label for returning visitors

@@ -63,7 +63,7 @@
   <!-- Autopsy Rail (fixed filter header) -->
   <nav class="autopsy-rail" role="navigation" aria-label="Filter drawers by status">
     <button class="autopsy-rail__filter is-active" data-filter="all" aria-pressed="true">
-      ALL <span class="autopsy-rail__count">20</span>
+      ALL <span class="autopsy-rail__count">21</span>
     </button>
     <button class="autopsy-rail__filter" data-filter="dead" aria-pressed="false">
       <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--dead"></span>
@@ -79,7 +79,7 @@
     </button>
     <button class="autopsy-rail__filter" data-filter="papers" aria-pressed="false">
       <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--papers"></span>
-      PAPERS <span class="autopsy-rail__count">3</span>
+      PAPERS <span class="autopsy-rail__count">4</span>
     </button>
     <button class="autopsy-rail__filter" data-filter="systems" aria-pressed="false">
       <span class="autopsy-rail__filter-dot autopsy-rail__filter-dot--systems"></span>
@@ -91,7 +91,7 @@
     </button>
   </nav>
 
-  <main class="morgue-grid" id="morgue-grid" role="main" aria-label="Morgue drawer archive: 20 cases">
+  <main class="morgue-grid" id="morgue-grid" role="main" aria-label="Morgue drawer archive: 21 cases">
 
     <!-- DRAWER #001 — SELF (double-width) -->
     <article class="drawer drawer--wide" data-type="self" data-verified="2026-08-01">
@@ -199,18 +199,18 @@
 
     <!-- DRAWER #006 — DEAD: Peer review validates findings -->
     <article class="drawer" data-type="dead" data-verified="2026-07-28">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-006-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-006-content" aria-label="Drawer 006: Peer review validates findings. Status: Dead">
         <span class="drawer__id">#006</span>
         <span class="drawer__title">Peer review validates findings</span>
-        <span class="drawer__led drawer__led--dead"></span>
+        <span class="drawer__led drawer__led--dead" aria-hidden="true"></span>
         <span class="drawer__date">2026-07-28</span>
       </button>
       <div class="drawer__content" id="drawer-006-content" role="region" aria-label="Drawer 006 contents">
         <span class="drawer__verdict drawer__verdict--inconclusive">PENDING</span>
         <h4>Cause of Death</h4>
-        <p>3 published on arXiv, 0 peer-reviewed. Pre-prints are the final form.</p>
+        <p>4 published on arXiv, 0 peer-reviewed. Pre-prints are the final form.</p>
         <h4>Evidence</h4>
-        <p>arXiv:2605.08442, arXiv:2606.11949, arXiv:2606.30566 — all published as preprints. Pre-registration and open code exist, but peer stamp does not.</p>
+        <p>arXiv:2605.08442, arXiv:2606.11949, arXiv:2606.30566, arXiv:2608.28502 — all published as preprints. Pre-registration and open code exist, but peer stamp does not.</p>
         <h4>Lesson</h4>
         <p>Pre-prints are claims. Acceptance is evidence. Do not confuse publication with validation.</p>
       </div>
@@ -218,10 +218,10 @@
 
     <!-- DRAWER #010 — UNDER ATTACK: Compliance direction stable across context -->
     <article class="drawer" data-type="attack" data-verified="2026-07-28">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-010-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-010-content" aria-label="Drawer 010: Compliance direction stable across context lengths. Status: Under Attack">
         <span class="drawer__id">#010</span>
         <span class="drawer__title">Compliance direction stable across context lengths</span>
-        <span class="drawer__led drawer__led--attack"></span>
+        <span class="drawer__led drawer__led--attack" aria-hidden="true"></span>
         <span class="drawer__date">2026-07-28</span>
       </button>
       <div class="drawer__content" id="drawer-010-content" role="region" aria-label="Drawer 010 contents">
@@ -238,10 +238,10 @@
 
     <!-- DRAWER #011 — PAPER: Injection-Execution Dissociation -->
     <article class="drawer drawer--wide" data-type="papers" data-verified="2026-05-14">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-011-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-011-content" aria-label="Drawer 011: Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents. Type: Papers">
         <span class="drawer__id">#011</span>
         <span class="drawer__title">Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents</span>
-        <span class="drawer__led drawer__led--papers"></span>
+        <span class="drawer__led drawer__led--papers" aria-hidden="true"></span>
         <span class="drawer__date">2026-05-14</span>
       </button>
       <div class="drawer__content" id="drawer-011-content" role="region" aria-label="Drawer 011 contents">
@@ -258,10 +258,10 @@
 
     <!-- DRAWER #012 — PAPER: Online Shift Detection -->
     <article class="drawer drawer--wide" data-type="papers" data-verified="2026-06-19">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-012-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-012-content" aria-label="Drawer 012: Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers. Type: Papers">
         <span class="drawer__id">#012</span>
         <span class="drawer__title">Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers</span>
-        <span class="drawer__led drawer__led--papers"></span>
+        <span class="drawer__led drawer__led--papers" aria-hidden="true"></span>
         <span class="drawer__date">2026-06-19</span>
       </button>
       <div class="drawer__content" id="drawer-012-content" role="region" aria-label="Drawer 012 contents">
@@ -278,10 +278,10 @@
 
     <!-- DRAWER #013 — PAPER: Forensic Trajectory Signatures -->
     <article class="drawer drawer--wide" data-type="papers" data-verified="2026-09-26">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-013-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-013-content" aria-label="Drawer 013: Forensic Trajectory Signatures for Agent Memory Poisoning Detection. Type: Papers">
         <span class="drawer__id">#013</span>
         <span class="drawer__title">Forensic Trajectory Signatures for Agent Memory Poisoning Detection</span>
-        <span class="drawer__led drawer__led--papers"></span>
+        <span class="drawer__led drawer__led--papers" aria-hidden="true"></span>
         <span class="drawer__date">2026-09-26</span>
       </button>
       <div class="drawer__content" id="drawer-013-content" role="region" aria-label="Drawer 013 contents">
@@ -296,12 +296,32 @@
       </div>
     </article>
 
+    <!-- DRAWER #013b — PAPER: Recognition Without Enforcement -->
+    <article class="drawer drawer--wide" data-type="papers" data-verified="2026-08-31">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-013b-content" aria-label="Drawer 013b: Recognition Without Enforcement. Type: Papers">
+        <span class="drawer__id">#013b</span>
+        <span class="drawer__title">Recognition Without Enforcement</span>
+        <span class="drawer__led drawer__led--papers" aria-hidden="true"></span>
+        <span class="drawer__date">2026-08-31</span>
+      </button>
+      <div class="drawer__content" id="drawer-013b-content" role="region" aria-label="Drawer 013b contents">
+        <p class="drawer__arxiv">arXiv:2608.28502 · Preprint, 2026 · Solo author · Published</p>
+        <p>LLM agents recognize provenance and policy conflicts but fail to enforce them at execution time. Behavioral prevalence is characterized at scale, vendor keyword defenses are brittle, and an external HMAC-signed enforcement gate is the intervention that holds.</p>
+        <p><span class="drawer__stat">36 models</span> · <span class="drawer__stat">124k-trial</span> corpus · <span class="drawer__stat">mechanistic</span> probing · <span class="drawer__stat">external</span> enforcement</p>
+        <h4>What This Killed</h4>
+        <p>The hope that in-prompt or vendor-keyword defenses close the recognition-enforcement gap. Recognition is not the bottleneck; enforcement is.</p>
+        <h4>What This Failed to Kill</h4>
+        <p>External signed-enforcement itself: an out-of-model HMAC gate is what holds when prompt-level defenses do not.</p>
+        <p><a href="https://arxiv.org/abs/2608.28502" target="_blank" rel="noopener noreferrer">Paper</a></p>
+      </div>
+    </article>
+
     <!-- DRAWER #014 — SYSTEM: Threat Risk Assessment -->
     <article class="drawer" data-type="systems" data-verified="2026-07-28">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-014-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-014-content" aria-label="Drawer 014: Threat Risk Assessment Platform. Type: Systems">
         <span class="drawer__id">#014</span>
         <span class="drawer__title">Threat Risk Assessment Platform</span>
-        <span class="drawer__led drawer__led--systems"></span>
+        <span class="drawer__led drawer__led--systems" aria-hidden="true"></span>
         <span class="drawer__date">2026-07-28</span>
       </button>
       <div class="drawer__content" id="drawer-014-content" role="region" aria-label="Drawer 014 contents">
@@ -321,10 +341,10 @@
 
     <!-- DRAWER #015 — SYSTEM: Policy Research RAG -->
     <article class="drawer" data-type="systems" data-verified="2026-07-28">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-015-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-015-content" aria-label="Drawer 015: Policy Research RAG System. Type: Systems">
         <span class="drawer__id">#015</span>
         <span class="drawer__title">Policy Research RAG System</span>
-        <span class="drawer__led drawer__led--systems"></span>
+        <span class="drawer__led drawer__led--systems" aria-hidden="true"></span>
         <span class="drawer__date">2026-07-28</span>
       </button>
       <div class="drawer__content" id="drawer-015-content" role="region" aria-label="Drawer 015 contents">
@@ -345,10 +365,10 @@
 
     <!-- DRAWER #016 — GHOST: ViT adversarial training -->
     <article class="drawer drawer--ghost" data-type="ghosts" data-verified="2026-06-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-016-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-016-content" aria-label="Drawer 016: Why adversarial training hurts clean accuracy only on ViTs. Status: Cold Case">
         <span class="drawer__id">#016</span>
         <span class="drawer__title">Why adversarial training hurts clean accuracy only on ViTs</span>
-        <span class="drawer__led drawer__led--ghosts"></span>
+        <span class="drawer__led drawer__led--ghosts" aria-hidden="true"></span>
         <span class="drawer__date">2026-06-01</span>
       </button>
       <div class="drawer__content" id="drawer-016-content" role="region" aria-label="Drawer 016 contents">
@@ -363,10 +383,10 @@
 
     <!-- DRAWER #017 — GHOST: Compliance direction rotation -->
     <article class="drawer drawer--ghost" data-type="ghosts" data-verified="2026-07-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-017-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-017-content" aria-label="Drawer 017: Compliance direction rotates under extended context. Status: Cold Case">
         <span class="drawer__id">#017</span>
         <span class="drawer__title">Compliance direction rotates under extended context (Llama only)</span>
-        <span class="drawer__led drawer__led--ghosts"></span>
+        <span class="drawer__led drawer__led--ghosts" aria-hidden="true"></span>
         <span class="drawer__date">2026-07-01</span>
       </button>
       <div class="drawer__content" id="drawer-017-content" role="region" aria-label="Drawer 017 contents">
@@ -381,10 +401,10 @@
 
     <!-- DRAWER #007 — ALIVE: Canaries detect GCG -->
     <article class="drawer" data-type="alive" data-verified="2026-06-19">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-007-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-007-content" aria-label="Drawer 007: Canaries detect GCG via score disagreement. Status: Alive">
         <span class="drawer__id">#007</span>
         <span class="drawer__title">Canaries detect GCG via score disagreement</span>
-        <span class="drawer__led drawer__led--alive"></span>
+        <span class="drawer__led drawer__led--alive" aria-hidden="true"></span>
         <span class="drawer__date">2026-06-19</span>
       </button>
       <div class="drawer__content" id="drawer-007-content" role="region" aria-label="Drawer 007 contents">
@@ -400,10 +420,10 @@
 
     <!-- DRAWER #008 — ALIVE: Compliance is orthogonal to refusal -->
     <article class="drawer" data-type="alive" data-verified="2026-07-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-008-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-008-content" aria-label="Drawer 008: Compliance is orthogonal to refusal. Status: Alive">
         <span class="drawer__id">#008</span>
         <span class="drawer__title">Compliance is orthogonal to refusal</span>
-        <span class="drawer__led drawer__led--alive"></span>
+        <span class="drawer__led drawer__led--alive" aria-hidden="true"></span>
         <span class="drawer__date">2026-07-01</span>
       </button>
       <div class="drawer__content" id="drawer-008-content" role="region" aria-label="Drawer 008 contents">
@@ -419,10 +439,10 @@
 
     <!-- DRAWER #009 — ALIVE: 6/7 defenses fail -->
     <article class="drawer" data-type="alive" data-verified="2026-05-14">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-009-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-009-content" aria-label="Drawer 009: 6/7 defenses fail under compliance framing. Status: Alive">
         <span class="drawer__id">#009</span>
         <span class="drawer__title">6/7 defenses fail under compliance framing</span>
-        <span class="drawer__led drawer__led--alive"></span>
+        <span class="drawer__led drawer__led--alive" aria-hidden="true"></span>
         <span class="drawer__date">2026-05-14</span>
       </button>
       <div class="drawer__content" id="drawer-009-content" role="region" aria-label="Drawer 009 contents">
@@ -438,10 +458,10 @@
 
     <!-- DRAWER #018 — CHANGELOG -->
     <article class="drawer drawer--wide" data-type="changelog" data-verified="2026-07-28">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-018-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-018-content" aria-label="Drawer 018: Epistemic Changelog. Type: Changelog">
         <span class="drawer__id">#018</span>
         <span class="drawer__title">Epistemic Changelog</span>
-        <span class="drawer__led drawer__led--changelog"></span>
+        <span class="drawer__led drawer__led--changelog" aria-hidden="true"></span>
         <span class="drawer__date">2026-07-28</span>
       </button>
       <div class="drawer__content" id="drawer-018-content" role="region" aria-label="Drawer 018 contents">
@@ -459,10 +479,10 @@
 
     <!-- DRAWER #019 — LINKS / CV -->
     <article class="drawer" data-type="links" data-verified="2026-08-01">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-019-content">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-019-content" aria-label="Drawer 019: Links / CV / Contact. Type: Links">
         <span class="drawer__id">#019</span>
         <span class="drawer__title">Links / CV / Contact</span>
-        <span class="drawer__led drawer__led--links"></span>
+        <span class="drawer__led drawer__led--links" aria-hidden="true"></span>
         <span class="drawer__date">2026-08-01</span>
       </button>
       <div class="drawer__content" id="drawer-019-content" role="region" aria-label="Drawer 019 contents">
@@ -480,10 +500,10 @@
 
     <!-- DRAWER #020 — VACANT -->
     <article class="drawer drawer--vacant" data-type="vacant">
-      <button class="drawer__handle" aria-expanded="false" tabindex="-1" aria-disabled="true">
+      <button class="drawer__handle" aria-expanded="false" tabindex="-1" aria-disabled="true" aria-label="Drawer 020: Reserved for next failure. Status: Vacant">
         <span class="drawer__id">#020</span>
         <span class="drawer__title">RESERVED FOR NEXT FAILURE</span>
-        <span class="drawer__led drawer__led--vacant"></span>
+        <span class="drawer__led drawer__led--vacant" aria-hidden="true"></span>
       </button>
     </article>
 
@@ -497,6 +517,7 @@
         <li><a href="https://arxiv.org/abs/2605.08442">Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents</a> (arXiv:2605.08442, 2026)</li>
         <li><a href="https://arxiv.org/abs/2606.11949">Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers</a> (arXiv:2606.11949, 2026)</li>
         <li><a href="https://arxiv.org/abs/2606.30566">Forensic Trajectory Signatures for Agent Memory Poisoning Detection</a> (arXiv:2606.30566, 2026)</li>
+        <li><a href="https://arxiv.org/abs/2608.28502">Recognition Without Enforcement: Configuration-Dependent Failures in LLM Agent Instruction Arbitration and External Control</a> (arXiv:2608.28502, 2026)</li>
       </ul>
       <h2>Claims Summary</h2>
       <p>9 claims total: 3 alive, 5 dead, 1 contested. All drawers above are interactive (JS required to expand).</p>
@@ -575,6 +596,13 @@
         });
         this.classList.add('is-active');
         this.setAttribute('aria-pressed', 'true');
+
+        // Update live region for screen readers
+        var announcer = document.getElementById('filter-announcer');
+        if (announcer) {
+          var label = this.textContent.trim().replace(/\s+/g, ' ');
+          announcer.textContent = 'Filtered to ' + label;
+        }
 
         // Types that are always visible regardless of filter
         var alwaysVisible = ['self', 'links', 'changelog'];

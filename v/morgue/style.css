@@ -291,7 +291,7 @@ a:hover {
 .autopsy-rail__filter-dot--ghosts { background: #9A8BB3; }
 
 .autopsy-rail__count {
-  color: #6B7578;
+  color: #8A969B;
   margin-left: 2px;
 }
 
@@ -322,6 +322,27 @@ a:hover {
   padding: 130px 40px 40px 40px;
   max-width: 960px;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .morgue-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 130px 20px 20px 20px;
+  }
+
+  .drawer--wide {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .morgue-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .drawer--wide {
+    grid-column: span 1;
+  }
 }
 
 /* ============================================================
@@ -419,7 +440,7 @@ a:hover {
 .drawer__id {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  color: #6B7578;
+  color: #8A969B;
   letter-spacing: 0.05em;
   flex-shrink: 0;
 }
@@ -495,7 +516,7 @@ a:hover {
 .drawer__date {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  color: #6B7578;
+  color: #8A969B;
   flex-shrink: 0;
   white-space: nowrap;
 }
@@ -507,7 +528,8 @@ a:hover {
 .drawer__content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 300ms ease, padding 300ms ease, opacity 300ms ease;
+  visibility: hidden;
+  transition: max-height 300ms ease, padding 300ms ease, opacity 300ms ease, visibility 300ms ease;
   opacity: 0;
   padding: 0 18px;
   font-family: 'Newsreader', sans-serif;
@@ -517,7 +539,8 @@ a:hover {
 }
 
 .drawer.is-open .drawer__content {
-  max-height: 3000px;
+  max-height: 600px;
+  visibility: visible;
   opacity: 1;
   padding: 12px 18px 20px 18px;
 }
@@ -829,6 +852,7 @@ a:hover {
   }
 
   .autopsy-rail {
+    top: 32px;
     padding: 8px 12px;
     gap: 5px;
     overflow-x: auto;
@@ -942,6 +966,14 @@ a:hover {
     overflow: visible;
     color: #333;
   }
+
+  .drawer__led { box-shadow: none; }
+  .drawer--ghost { opacity: 1; border-color: #ccc; }
+  .drawer--ghost .drawer__title { color: #333; }
+  .drawer--ghost .drawer__content { color: #555; }
+  .drawer--ghost .drawer__content a { color: #666; }
+  .drawer--ghost .drawer__content a:hover { color: #888; }
+  .drawer--ghost.is-open { border-color: #ddd; box-shadow: none; }
 
   .drawer__handle {
     color: #1a1a1a;

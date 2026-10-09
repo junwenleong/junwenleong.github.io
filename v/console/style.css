@@ -68,7 +68,7 @@ body {
 }
 
 .terminal__line--system {
-  color: #767676;
+  color: #8A96A0;
 }
 
 .terminal__line--prompt {
@@ -81,6 +81,13 @@ body {
 
 .terminal__line--error {
   color: #e06060;
+}
+
+@media print {
+  .terminal__line--cyan { color: #00557f; }
+  .terminal__line--error { color: #8b0000; }
+  .terminal__line--success { color: #006400; }
+  .terminal__line--warning { color: #b8860b; }
 }
 
 .terminal__line--success {
@@ -102,7 +109,7 @@ body {
 }
 
 .terminal__line--dim {
-  color: #767676;
+  color: #8A96A0;
 }
 
 .terminal__line--link {
@@ -140,12 +147,12 @@ body {
   outline: none;
   color: #e0e0e0;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
+  font-size: clamp(14px, 4.5vh, 16px);
   caret-color: #00E5FF;
 }
 
 .terminal__input::placeholder {
-  color: #333;
+  color: #76828C;
 }
 
 /* --- Suspicion Meter --- */
@@ -155,18 +162,30 @@ body {
   bottom: 56px;
   right: 20px;
   font-size: 10px;
-  color: #767676;
+  color: #8A96A0;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   z-index: 10;
+}
+
+@media print {
+  .terminal__suspicion { display: none; }
 }
 
 .terminal__suspicion--elevated {
   color: #D6A84F;
 }
 
+@media print {
+  .terminal__suspicion { display: none; }
+}
+
 .terminal__suspicion--high {
   color: #e06060;
+}
+
+@media print {
+  .terminal__suspicion { display: none; }
 }
 
 /* --- Visit Counter --- */
@@ -176,9 +195,13 @@ body {
   top: 12px;
   right: 20px;
   font-size: 10px;
-  color: #333;
+  color: #8A96A0;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+@media print {
+  .terminal__visits { display: none; }
 }
 
 /* --- Fallback Menu --- */
@@ -200,13 +223,25 @@ body {
   width: 100%;
 }
 
+@media print {
+  .terminal__menu-item { display: none; }
+}
+
 .terminal__menu-item:hover {
   color: #ffffff;
+}
+
+@media print {
+  .terminal__menu-item { display: none; }
 }
 
 .terminal__menu-item:focus-visible {
   outline: 1px solid #00E5FF;
   outline-offset: 2px;
+}
+
+@media print {
+  .terminal__menu-item { display: none; }
 }
 
 /* --- Command Chips (mobile) --- */
@@ -234,10 +269,18 @@ body {
   transition: border-color 100ms, color 100ms;
 }
 
+@media print {
+  .terminal__chip { display: none; }
+}
+
 .terminal__chip:hover,
 .terminal__chip:focus {
   border-color: #00E5FF;
   color: #00E5FF;
+}
+
+@media print {
+  .terminal__chip { display: none; }
 }
 
 /* --- Boot Animation --- */
@@ -256,8 +299,16 @@ body {
   text-transform: uppercase;
 }
 
+@media print {
+  .terminal__boot-skip { display: none; }
+}
+
 .terminal__boot-skip:hover {
   color: #888;
+}
+
+@media print {
+  .terminal__boot-skip { display: none; }
 }
 
 /* --- Responsive: Mobile --- */
@@ -276,7 +327,7 @@ body {
   }
 
   .terminal__input {
-    font-size: 16px; /* prevent iOS zoom */
+    font-size: clamp(16px, 4.5vh, 20px);
   }
 
   .terminal__chips {
