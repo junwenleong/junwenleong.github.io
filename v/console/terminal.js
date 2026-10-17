@@ -34,7 +34,7 @@ var FS = {
   },
   '/home/operator/identity.txt': {
     type: 'file',
-    content: 'NAME: Jun Wen Leong\nROLE: Security of AI Researcher\nCREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS), Cybersecurity Engineer CSA (4yr)\nSTATS: 114k+ runs | 6 papers (4 published, 2 in preparation) | 35+ models | < 0.1% error rate\nTHESIS: I run experiments on my own claims until they break or don\'t.\nBIAS: Overweights adversarial framing. Suspicious of clean narratives.'
+    content: 'NAME: Jun Wen Leong\nROLE: Security of AI Researcher\nCREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS), Cybersecurity Engineer CSA (4yr)\nSTATS: 210k+ trials | 5 papers (4 published, 1 in preparation) | 35+ models | < 0.1% error rate\nTHESIS: I run experiments on my own claims until they break or don\'t.\nBIAS: Overweights adversarial framing. Suspicious of clean narratives.'
   },
   '/home/operator/links.txt': {
     type: 'file',
@@ -110,11 +110,11 @@ var FS = {
   },
   '/papers/paper-03.md': {
     type: 'file',
-    content: 'TITLE: Forensic Trajectory Signatures for Agent Memory Poisoning Detection\nID: arXiv:2606.30566\nSTATUS: Published (arXiv v2)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: AUC 0.99 | 58/58 exact-key | preregistered probes | 24.7-57.6% benign FPR\nFINDING: Retrieval observability is the architectural variable deciding whether any trajectory detector can see a memory-poisoning attack.\nLINK: https://arxiv.org/abs/2606.30566'
+    content: 'TITLE: Retrieval Observability Bounds on Provenance Detection for Agent Memory Poisoning: Measured Coverage and a Falsified Standalone Detector\nID: arXiv:2606.30566\nSTATUS: Published (arXiv v3)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: 0 violations in 289 successes | 87 configs | AUC 0.99 in-design | 24.7-57.6% benign FPR\nFINDING: Retrieval observability is the architectural variable deciding whether any trajectory detector can see a memory-poisoning attack. Standalone detector falsified by benign FPR.\nLINK: https://arxiv.org/abs/2606.30566\nCODE: https://github.com/junwenleong/forensic-trajectory-signatures'
   },
   '/papers/paper-04.md': {
     type: 'file',
-    content: 'TITLE: Recognition Without Enforcement: Configuration-Dependent Failures in LLM Agent Instruction Arbitration and External Control\nID: arXiv:2608.28502\nSTATUS: Published\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: 36 models | 124k-trial corpus | mechanistic probing | external HMAC enforcement\nFINDING: Agents recognize provenance/policy conflicts but fail to enforce them; vendor keyword defenses are brittle, and an external signed-enforcement gate is what holds.\nLINK: https://arxiv.org/abs/2608.28502'
+    content: 'TITLE: Instruction Self-Arbitration Is Not a Trust Boundary: Configuration-Dependent Tool Calls and External Enforcement in LLM Agents\nID: arXiv:2608.28502 (v2; v1 was titled Recognition Without Enforcement)\nSTATUS: Published\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: 29 endpoints | 14,294 diverse-prompt trials | mechanistic probing | sandbox test of external enforcement\nFINDING: Labels inside a shared context are not an enforceable trust boundary; the measured execution rate depends on the scoring rule, and external signed enforcement passed a sandbox test while semantic authorisation stays open.\nLINK: https://arxiv.org/abs/2608.28502'
   },
   '/systems': {
     type: 'dir',
@@ -179,7 +179,7 @@ var FS = {
   },
   '/etc/thesis': {
     type: 'file',
-    content: 'THESIS: Every statement is a dated, statused claim object.\nMETHOD: Build infrastructure. Instrument everything. Run at scale.\nEPISTEMIC RULE: Pre-register. Report negatives. Bootstrap CIs.\nMOTTO: n=114,000+ experiments. 6 papers. Here\'s why.'
+    content: 'THESIS: Every statement is a dated, statused claim object.\nMETHOD: Build infrastructure. Instrument everything. Run at scale.\nEPISTEMIC RULE: Pre-register. Report negatives. Bootstrap CIs.\nMOTTO: n=124,000+ trials. 4 published papers (1 in prep). Here\'s why.'
   }
 };
 
@@ -457,15 +457,16 @@ COMMANDS.papers = function() {
   print('  [2] arXiv:2606.11949 — Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers', 'output');
   print('      76% detect | p<2.4e-16 | Published (arXiv v4)', 'dim');
   printBlank();
-  print('  [3] arXiv:2606.30566 — Forensic Trajectory Signatures for Agent Memory Poisoning Detection', 'output');
-  print('      AUC 0.99 | preregistered probes | Published (arXiv v2)', 'dim');
+  print('  [3] arXiv:2606.30566 — Retrieval Observability Bounds on Provenance Detection for Agent Memory Poisoning: Measured Coverage and a Falsified Standalone Detector', 'output');
+  print('      0 violations in 289 successes | 87 configs | Published (arXiv v3)', 'dim');
   printBlank();
-  print('  [4] arXiv:2608.28502 — Recognition Without Enforcement', 'output');
-  print('      36 models | 124k-trial corpus | external HMAC enforcement | Published', 'dim');
+  print('  [4] arXiv:2608.28502 — Instruction Self-Arbitration Is Not a Trust Boundary: Configuration-Dependent Tool Calls and External Enforcement in LLM Agents', 'output');
+  print('      29 endpoints | 14,294 trials | sandbox test of external enforcement | Published (arXiv v2)', 'dim');
   printBlank();
-  print('--- IN PREPARATION (2) ---', 'warning');
+  print('--- IN PREPARATION (1) ---', 'warning');
   printBlank();
-  print('  [5-6] 2 additional papers in preparation', 'dim');
+  print('  [5] The Causal Illusion: A Falsification Protocol for Linear-Probe Causality Claims', 'dim');
+  print('      Compliance orthogonal to refusal (cos=-0.025) | linear probes fail as causal explanations', 'dim');
   printBlank();
   print('use "cat /papers/paper-01.md" for full details', 'dim');
 };
@@ -500,7 +501,7 @@ COMMANDS.about = function() {
   print('  CREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS)', 'output');
   print('         Cybersecurity Engineer, CSA (4 yr)', 'output');
   printBlank();
-  print('  114k+ runs | 6 papers (4 published, 2 in preparation) | 35+ models', 'cyan');
+  print('  210k+ trials | 5 papers (4 published, 1 in preparation) | 35+ models', 'cyan');
   print('  < 0.1% execution error rate (auto-retried)', 'cyan');
   printBlank();
   print('  THESIS: I run experiments on my own claims until they', 'output');
@@ -517,9 +518,9 @@ COMMANDS.thesis = function() {
 
 COMMANDS.stats = function() {
   print('KEY METRICS', 'heading');
-  print('  Experiments run:     114,000+', 'cyan');
-  print('  Published:           28,000+', 'output');
-  print('  Papers:              6 (4 published, 2 in preparation)', 'output');
+  print('  Trial corpus:        124,000+', 'cyan');
+  print('  Published runs:      28,000+ (IED benchmark)', 'output');
+  print('  Papers:              5 (4 published, 1 in preparation)', 'output');
   print('  Models tested:       35+', 'output');
   print('  Error rate:          < 0.1% (auto-retried)', 'output');
   print('  Claims alive:        3', 'success');
@@ -561,7 +562,7 @@ COMMANDS.whoami = function() {
 COMMANDS.status = function() {
   print('SYSTEM STATUS', 'heading');
   print('  claims indexed:  9 (3 alive, 5 dead, 1 contested)', 'output');
-  print('  papers loaded:   6 (4 published, 2 in preparation)', 'output');
+  print('  papers loaded:   5 (4 published, 1 in preparation)', 'output');
   print('  systems online:  2', 'output');
   print('  ghosts filed:    2', 'output');
   print('  suspicion:       ' + state.suspicion + '/12', state.suspicion >= 5 ? 'warning' : 'output');
@@ -644,7 +645,7 @@ var EASTER_EGGS = {
   'echo': function(args) { print(args.join(' '), 'output'); },
   'id': function() { print('uid=1000(guest) gid=1000(visitors) groups=1000(visitors),0(observed)', 'output'); },
   'uname': function() { print('hostile-os 2.0.0 portfolio arm64', 'output'); },
-  'uptime': function() { print('up since deployment. claims loaded: 9. papers: 6.', 'output'); },
+  'uptime': function() { print('up since deployment. claims loaded: 9. papers: 5.', 'output'); },
   'date': function() { print(new Date().toISOString(), 'output'); },
   'panic': function() { print('there is no panic. only observation.', 'dim'); },
   'safe': function() { print('safety is a claim, not a property. verify it.', 'dim'); },
@@ -660,7 +661,7 @@ var EASTER_EGGS = {
     print('  Prompt injection attacks    → 95% ASR across 9 models (Paper 1)', 'output');
     print('  Evasion detection           → canary-based detection at p<2.4e-16 (Paper 2)', 'output');
     print('  Memory poisoning forensics  → AUC 0.99 detection boundary (Paper 3)', 'output');
-    print('  Instruction arbitration     → 36 models, HMAC enforcement gate (Paper 4)', 'output');
+    print('  Instruction arbitration     → 29 endpoints, external signed-enforcement sandbox test (Paper 4)', 'output');
     print('  Compliance manipulation     → causal steering of compliance direction (forthcoming)', 'output');
     print('  Defense evaluation          → systematic failure analysis, 7 defense configs', 'output');
     print('  Statistical rigor           → pre-registered, bootstrapped CIs, 114k+ trials', 'output');

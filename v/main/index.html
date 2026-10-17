@@ -7,13 +7,13 @@
   <meta name="description" content="Security of AI Researcher. LLM agents reliably detect safety-relevant signals but systematically fail to enforce them at execution time.">
   <meta name="theme-color" content="#080b0f">
   <meta property="og:title" content="Jun Wen Leong — Security of AI">
-  <meta property="og:description" content="LLM agents detect safety signals but fail to enforce them. 6 papers, 28,000+ experiments, 35+ models.">
+  <meta property="og:description" content="Instruction self-arbitration is not a trust boundary for LLM agents. 4 published papers, 210k+ trials, 35+ models.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://junwenleong.github.io/">
   <meta property="og:image" content="https://junwenleong.github.io/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Jun Wen Leong — Security of AI">
-  <link rel="canonical" href="https://junwenleong.github.io/">
+  <link rel="canonical" href="https://junwenleong.github.io/v/main/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
       <h1 class="site__name">Jun Wen Leong</h1>
       <p class="site__role">Security of AI Researcher</p>
       <p class="site__thesis">LLM agents reliably detect safety-relevant signals but systematically fail to enforce them at execution time.</p>
-      <p class="site__stats">6 papers &middot; 28,000+ published experiments &middot; 35+ models evaluated</p>
+      <p class="site__stats">4 published papers, 1 in prep &middot; 210k+ trial corpus &middot; 35+ models evaluated</p>
       <p class="site__method">Pre-registered designs. Claims treated as hypotheses. I publish what I broke, including my own.</p>
     </header>
 
@@ -53,22 +53,22 @@
 
       <article class="paper">
         <a href="https://arxiv.org/abs/2606.30566" class="paper__link">arXiv:2606.30566</a>
-        <h3 class="paper__title">Forensic Trajectory Signatures for Agent Memory Poisoning Detection</h3>
+        <h3 class="paper__title">Retrieval Observability Bounds on Provenance Detection for Agent Memory Poisoning: Measured Coverage and a Falsified Standalone Detector</h3>
         <p class="paper__detail">Whether memory access produces a logged tool call is the single architectural variable deciding if any trajectory-based detector can see a poisoning attack. Detector reaches <span class="finding">AUC 0.99</span> in-design but is falsified for standalone deployment by its own preregistered benign study (24.7&ndash;57.6% benign false positives).</p>
         <p class="paper__meta"><span class="finding">AUC 0.99</span> &middot; provenance-graph taxonomy &middot; preregistered implicit/explicit-retrieval probes</p>
+        <p class="paper__links"><a href="https://github.com/junwenleong/forensic-trajectory-signatures">code &amp; artifact</a></p>
       </article>
 
       <article class="paper">
         <a href="https://arxiv.org/abs/2608.28502" class="paper__link">arXiv:2608.28502</a>
-        <h3 class="paper__title">Recognition Without Enforcement: Configuration-Dependent Failures in LLM Agent Instruction Arbitration and External Control</h3>
-        <p class="paper__detail">LLM agents recognize provenance and policy conflicts but fail to enforce them at execution time. Behavioral prevalence characterized at scale; vendor keyword defenses are brittle, and an external HMAC-signed enforcement gate is the intervention that holds.</p>
-        <p class="paper__meta"><span class="finding">36 models</span> &middot; 124k-trial behavioral corpus &middot; mechanistic probing &middot; external enforcement</p>
+        <h3 class="paper__title">Instruction Self-Arbitration Is Not a Trust Boundary: Configuration-Dependent Tool Calls and External Enforcement in LLM Agents</h3>
+        <p class="paper__detail">Labels inside a shared context are not an enforceable trust boundary. The v1 keyword &ldquo;detection&rdquo; flag mostly matched negated phrases, and the measured execution rate depends on the scoring rule (1.21% fixed before collection, 12.9% path-based, 20.2% any delete call). An external signed-capability gate rejected every forged, tampered, replayed and unsigned record in a sandbox test; semantic authorisation remains open.</p>
+        <p class="paper__meta"><span class="finding">29 endpoints</span> &middot; 14,294 diverse-prompt trials &middot; mechanistic probing &middot; external enforcement (sandbox test)</p>
       </article>
 
       <div class="paper paper--upcoming">
         <p class="paper__upcoming-label">Next claims under test</p>
-        <p class="paper__upcoming-item">The Causal Illusion: falsification protocol for linear-probe causality. Compliance and refusal directions are near-orthogonal (probe AUC 1.0, cos &asymp; &minus;0.03), but probe-decodable directions are often not causally necessary under generation-time ablation.</p>
-        <p class="paper__upcoming-item">When Memory Conflicts with Instructions: 86k-trial behavioral study. Models detect conflicts explicitly yet fail to arbitrate safely.</p>
+        <p class="paper__upcoming-item">When Are Linear Directions Causal? A Falsification Protocol for Probe-Identified Directions in LLMs (The Causal Illusion): compliance and refusal directions are near-orthogonal (probe AUC 1.0, cos &asymp; &minus;0.03), but probe-decodable directions are not causally necessary under generation-time ablation.</p>
       </div>
     </section>
 
