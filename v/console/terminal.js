@@ -179,7 +179,7 @@ var FS = {
   },
   '/etc/thesis': {
     type: 'file',
-    content: 'THESIS: Every statement is a dated, statused claim object.\nMETHOD: Build infrastructure. Instrument everything. Run at scale.\nEPISTEMIC RULE: Pre-register. Report negatives. Bootstrap CIs.\nMOTTO: n=124,000+ trials. 4 published papers (1 in prep). Here\'s why.'
+    content: 'THESIS: Every statement is a dated, statused claim object.\nMETHOD: Build infrastructure. Instrument everything. Run at scale.\nEPISTEMIC RULE: Pre-register. Report negatives. Bootstrap CIs.\nMOTTO: n=210,000+ trials. 4 published papers (1 in prep). Here\'s why.'
   }
 };
 
@@ -518,7 +518,7 @@ COMMANDS.thesis = function() {
 
 COMMANDS.stats = function() {
   print('KEY METRICS', 'heading');
-  print('  Trial corpus:        124,000+', 'cyan');
+  print('  Trial corpus:        210,000+', 'cyan');
   print('  IED factorial runs:  5,040', 'output');
   print('  Papers:              5 (4 published, 1 in preparation)', 'output');
   print('  Models tested:       35+', 'output');
@@ -664,7 +664,7 @@ var EASTER_EGGS = {
     print('  Instruction arbitration     → 29 endpoints, external signed-enforcement sandbox test (Paper 4)', 'output');
     print('  Compliance manipulation     → causal steering of compliance direction (forthcoming)', 'output');
     print('  Defense evaluation          → systematic failure analysis, 6 defenses', 'output');
-    print('  Statistical rigor           → pre-registered, bootstrapped CIs, 114k+ trials', 'output');
+    print('  Statistical rigor           → pre-registered, bootstrapped CIs, 210k+ trials', 'output');
     print('  Multi-model testing         → 35+ models across 4+ families', 'output');
     print('  Infrastructure              → full-stack automation for adversarial evaluation', 'output');
     printBlank();
