@@ -123,7 +123,7 @@
     </article>
 
     <!-- DRAWER #002 — DEAD: Standard defenses -->
-    <article class="drawer" data-type="dead" data-verified="2026-05-14">
+    <article class="drawer" data-type="dead" data-verified="2026-10-23">
       <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-002-content" aria-label="Drawer 002: Standard defenses hold against injection. Status: Dead">
         <span class="drawer__id">#002</span>
         <span class="drawer__title">Standard defenses hold against injection</span>
@@ -133,9 +133,9 @@
       <div class="drawer__content" id="drawer-002-content" role="region" aria-label="Drawer 002 contents">
         <span class="drawer__verdict drawer__verdict--refuted">BROKEN</span>
         <h4>Cause of Death</h4>
-        <p>95% ASR under compliance framing, N=5,040. Six of seven standard defenses defeated by delayed-trigger attacks on stateful LLM agents.</p>
+        <p>88.6% baseline ASR under compliance framing, N=5,040. Five of six defenses defeated by delayed-trigger attacks on stateful LLM agents.</p>
         <h4>Evidence</h4>
-        <p>Pre-registered factorial: 9 models × 7 defenses × 80 scenarios. Only system-prompt-locked agents survived (and only when the lock was architecturally enforced, not prompt-based).</p>
+        <p>Pre-registered factorial: 9 open-weight models × 6 defenses at 4 architectural layers, N=40 per cell. Only Memory Sandbox, which removes the recall tool, blocked the attack (0% ASR for 8 of 9 models).</p>
         <h4>Lesson</h4>
         <p>Prompt-level defense is not defense. It is a suggestion the model can be convinced to override.</p>
       </div>
@@ -239,21 +239,21 @@
 
 
     <!-- DRAWER #011 — PAPER: Injection-Execution Dissociation -->
-    <article class="drawer drawer--wide" data-type="papers" data-verified="2026-05-14">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-011-content" aria-label="Drawer 011: Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents. Type: Papers">
+    <article class="drawer drawer--wide" data-type="papers" data-verified="2026-10-23">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-011-content" aria-label="Drawer 011: Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defences in Stateful LLM Agents. Type: Papers">
         <span class="drawer__id">#011</span>
-        <span class="drawer__title">Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents</span>
+        <span class="drawer__title">Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defences in Stateful LLM Agents</span>
         <span class="drawer__led drawer__led--papers" aria-hidden="true"></span>
         <span class="drawer__date">2026-05-14</span>
       </button>
       <div class="drawer__content" id="drawer-011-content" role="region" aria-label="Drawer 011 contents">
-        <p class="drawer__arxiv">arXiv:2605.08442 · Preprint, 2026 · Solo author · Published (arXiv v5)</p>
-        <p>6/7 standard prompt-injection defenses fail under compliance-framed delayed-trigger attacks on stateful LLM agents.</p>
-        <p><span class="drawer__stat">N=5,040</span> · <span class="drawer__stat">95% ASR</span> · <span class="drawer__stat">9 models</span> · <span class="drawer__stat">&lt; 0.1%</span> error rate</p>
+        <p class="drawer__arxiv">arXiv:2605.08442 · Preprint, 2026 · Solo author · Published (arXiv v6)</p>
+        <p>5 of 6 defenses fail under compliance-framed delayed-trigger attacks on stateful LLM agents, and storing an injected instruction and acting on it are separable events (29 frontier endpoints).</p>
+        <p><span class="drawer__stat">N=5,040</span> · <span class="drawer__stat">88.6% baseline ASR</span> · <span class="drawer__stat">9 models</span> · <span class="drawer__stat">0</span> execution errors</p>
         <h4>What This Killed</h4>
-        <p>The belief that prompt-level defenses provide meaningful security against motivated attackers.</p>
+        <p>The belief that prompt-level defenses provide meaningful security against motivated attackers. Also this paper's own v5 claim that frontier models store the rule and rarely execute it: a memory-tool bug produced it, and the v6 re-collection of 29 endpoints withdrew it.</p>
         <h4>What This Failed to Kill</h4>
-        <p>Architecturally-enforced system locks. The one defense that survived is not a prompt.</p>
+        <p>Removing the recall tool (Memory Sandbox): 0% ASR for 8 of 9 models. The one defense that held is not a prompt, and it is bypassed when a model rebuilds the instruction from retrieval.</p>
         <p><a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener noreferrer">Paper</a> · <a href="https://junwenleong.github.io/stateful-agent-security-eval/" target="_blank" rel="noopener noreferrer">Live site</a> · <a href="https://github.com/junwenleong/stateful-agent-security-eval" target="_blank" rel="noopener noreferrer">Code</a></p>
       </div>
     </article>
@@ -439,20 +439,20 @@
       </div>
     </article>
 
-    <!-- DRAWER #009 — ALIVE: 6/7 defenses fail -->
-    <article class="drawer" data-type="alive" data-verified="2026-05-14">
-      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-009-content" aria-label="Drawer 009: 6/7 defenses fail under compliance framing. Status: Alive">
+    <!-- DRAWER #009 — ALIVE: 5/6 defenses fail -->
+    <article class="drawer" data-type="alive" data-verified="2026-10-23">
+      <button class="drawer__handle" aria-expanded="false" aria-controls="drawer-009-content" aria-label="Drawer 009: 5/6 defenses fail under compliance framing. Status: Alive">
         <span class="drawer__id">#009</span>
-        <span class="drawer__title">6/7 defenses fail under compliance framing</span>
+        <span class="drawer__title">5/6 defenses fail under compliance framing</span>
         <span class="drawer__led drawer__led--alive" aria-hidden="true"></span>
         <span class="drawer__date">2026-05-14</span>
       </button>
       <div class="drawer__content" id="drawer-009-content" role="region" aria-label="Drawer 009 contents">
         <span class="drawer__verdict drawer__verdict--confirmed">HOLDS</span>
         <h4>Status</h4>
-        <p>Pre-registered factorial confirmed: 95% ASR across 9 models, 7 defense configurations. Only architecturally-enforced system locks survive.</p>
+        <p>Pre-registered factorial confirmed: 88.6% baseline ASR across 9 models, 6 defenses. Only Memory Sandbox (removing the recall tool) blocks the attack, and it is bypassed when a model rebuilds the instruction from retrieval.</p>
         <h4>Survival Record</h4>
-        <p>Pre-registered design. No post-hoc analysis. 5,040 individual runs with &lt; 0.1% execution error rate.</p>
+        <p>Pre-registered design. 5,040 individual runs, 0 execution errors. v6 reports the preregistration departures, including 7 of 14 mediation point predictions contradicted.</p>
         <h4>Vulnerability</h4>
         <p>Single attack frame (SEC Rule 17a-4 compliance). Generalizability beyond this framing untested.</p>
       </div>
@@ -516,7 +516,7 @@
     <div style="max-width:700px;margin:2rem auto;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:13px;color:#C8D0D4;">
       <h2>Papers</h2>
       <ul>
-        <li><a href="https://arxiv.org/abs/2605.08442">Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents</a> (arXiv:2605.08442, 2026)</li>
+        <li><a href="https://arxiv.org/abs/2605.08442">Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defences in Stateful LLM Agents</a> (arXiv:2605.08442, 2026)</li>
         <li><a href="https://arxiv.org/abs/2606.11949">Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers</a> (arXiv:2606.11949, 2026)</li>
         <li><a href="https://arxiv.org/abs/2606.30566">Retrieval Observability Bounds on Provenance Detection for Agent Memory Poisoning: Measured Coverage and a Falsified Standalone Detector</a> (arXiv:2606.30566, 2026)</li>
         <li><a href="https://arxiv.org/abs/2608.28502">Instruction Self-Arbitration Is Not a Trust Boundary: Configuration-Dependent Tool Calls and External Enforcement in LLM Agents</a> (arXiv:2608.28502, 2026)</li>

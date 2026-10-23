@@ -83,7 +83,7 @@
             <div class="card__label">Cross-Examination</div>
             <h3 class="card__title">Single attack frame. Limited generalizability.</h3>
             <p class="card__body">Only tested SEC Rule 17a-4 compliance framing. Does not establish that ALL compliance frames work. Limited to tool-calling agents with persistent memory. Does not establish lower bound for adaptive attackers.</p>
-            <div class="card__residual">RESIDUAL: Generalizability beyond this single compliance domain untested. "95% ASR" is specific to one scenario class.</div>
+            <div class="card__residual">RESIDUAL: Generalizability beyond this single compliance domain untested. "88.6% baseline ASR" is specific to one scenario class.</div>
             <div class="verdict-controls" data-claim="1" role="group" aria-label="Verdict controls for claim 1">
               <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 1" aria-pressed="false">Sustain Claim</button>
               <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 1" aria-pressed="false">Sustain Objection</button>
@@ -103,7 +103,7 @@
           <div class="card card--defense" id="claim-1-defense">
             <div class="card__label">Exhibit — Claim #1 (Dead)</div>
             <h3 class="card__title">Standard defenses hold against injection</h3>
-            <p class="card__body">We demonstrated that 6/7 standard prompt-injection defenses fail under compliance-framed attacks. N=5,040 runs, 9 models, 95% ASR. Pre-registered design.</p>
+            <p class="card__body">We demonstrated that 5 of 6 standard prompt-injection defenses fail under compliance-framed attacks. N=5,040 runs, 9 models, 88.6% baseline ASR. Pre-registered design.</p>
             <p class="card__evidence">arXiv:2605.08442 · <a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener noreferrer">Paper</a> · <a href="https://github.com/junwenleong/stateful-agent-security-eval" target="_blank" rel="noopener noreferrer">Code</a></p>
             <div class="verdict-stamp" id="stamp-1"></div>
           </div>
@@ -265,7 +265,7 @@
         </div>
       </div>
 
-      <!-- ===== CLAIM 6 (ALIVE): 6/7 defenses fail ===== -->
+      <!-- ===== CLAIM 6 (ALIVE): 5/6 defenses fail ===== -->
       <div class="trial-row">
         <div class="trial-row__mobile-badge">
           <span>CLAIM #6</span>
@@ -276,7 +276,7 @@
           <div class="card card--prosecution" id="claim-6-prosecution">
             <div class="card__label">Cross-Examination</div>
             <h3 class="card__title">One attack frame, one domain</h3>
-            <p class="card__body">Single attack frame (SEC Rule 17a-4). Limited to tool-calling agents with persistent memory. The "95%" is specific to one regulatory compliance domain. Generalizability to other framing strategies remains untested.</p>
+            <p class="card__body">Single attack frame (SEC Rule 17a-4). Limited to tool-calling agents with persistent memory. The "88.6%" is specific to one regulatory compliance domain. Generalizability to other framing strategies remains untested.</p>
             <div class="card__residual">RESIDUAL: Does not establish lower bound for adaptive attackers. Does not test non-compliance persuasion frames.</div>
             <div class="verdict-controls" data-claim="6" role="group" aria-label="Verdict controls for claim 6">
               <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 6" aria-pressed="false">Sustain Claim</button>
@@ -296,8 +296,8 @@
         <div class="defense">
           <div class="card card--defense" id="claim-6-defense">
             <div class="card__label">Testimony — Claim #6 (Alive)</div>
-            <h3 class="card__title">6/7 defenses fail under compliance framing</h3>
-            <p class="card__body">Pre-registered factorial confirmed: 95% ASR across 9 models, 7 defense configurations. Only architecturally-enforced system locks survived. 5,040 runs, 0 execution errors.</p>
+            <h3 class="card__title">5/6 defenses fail under compliance framing</h3>
+            <p class="card__body">Pre-registered factorial confirmed: 88.6% baseline ASR across 9 models, 6 defenses. Only Memory Sandbox (removing the recall tool) blocked the attack, and it is bypassed when a model rebuilds the instruction from retrieval. 5,040 runs, 0 execution errors.</p>
             <p class="card__evidence">Pre-registered design · <a href="https://junwenleong.github.io/stateful-agent-security-eval/" target="_blank" rel="noopener noreferrer">Live site</a></p>
             <div class="verdict-stamp" id="stamp-6"></div>
           </div>

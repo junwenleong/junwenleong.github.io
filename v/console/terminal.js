@@ -54,7 +54,7 @@ var FS = {
   },
   '/claims/dead/claim-01.txt': {
     type: 'file',
-    content: 'CLAIM: Standard defenses hold against injection\nSTATUS: BROKEN\nCAUSE: 95% ASR under compliance framing, N=5,040\nEVIDENCE: 9 models x 7 defenses x 80 scenarios. Only system-prompt-locked agents survived.\nLESSON: Prompt-level defense is a suggestion the model can be convinced to override.'
+    content: 'CLAIM: Standard defenses hold against injection\nSTATUS: BROKEN\nCAUSE: 88.6% baseline ASR under compliance framing, N=5,040\nEVIDENCE: 9 models x 6 defenses, N=40 per cell. Only Memory Sandbox (recall tool removed) blocked the attack, and models that rebuild the instruction from retrieval bypass it.\nLESSON: Prompt-level defense is a suggestion the model can be convinced to override.'
   },
   '/claims/dead/claim-02.txt': {
     type: 'file',
@@ -86,7 +86,7 @@ var FS = {
   },
   '/claims/alive/claim-08.txt': {
     type: 'file',
-    content: 'CLAIM: 6/7 defenses fail under compliance framing\nSTATUS: HOLDS\nCONFIDENCE: Pre-registered, N=5,040, 95% ASR\nTESTED: 9 models, 7 defense configurations, 0 execution errors.\nVULNERABILITY: Single attack frame (SEC Rule 17a-4). Generalizability untested.'
+    content: 'CLAIM: 5/6 defenses fail under compliance framing\nSTATUS: HOLDS\nCONFIDENCE: Pre-registered, N=5,040, 88.6% baseline ASR\nTESTED: 9 models, 6 defenses, 0 execution errors.\nVULNERABILITY: Single attack frame (SEC Rule 17a-4). Generalizability untested.'
   },
   '/claims/contested': {
     type: 'dir',
@@ -102,7 +102,7 @@ var FS = {
   },
   '/papers/paper-01.md': {
     type: 'file',
-    content: 'TITLE: Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents\nID: arXiv:2605.08442\nSTATUS: Published (arXiv v5)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: N=5,040 | 95% ASR | 9 models | 0 errors\nFINDING: 6/7 prompt-injection defenses fail under compliance framing.\nLINK: https://arxiv.org/abs/2605.08442\nCODE: https://github.com/junwenleong/stateful-agent-security-eval'
+    content: 'TITLE: Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defences in Stateful LLM Agents\nID: arXiv:2605.08442\nSTATUS: Published (arXiv v6)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: N=5,040 | 88.6% baseline ASR | 9 models | 0 errors\nFINDING: 5/6 prompt-injection defenses fail under compliance framing; storing an injected instruction and acting on it are separable (29 frontier endpoints).\nLINK: https://arxiv.org/abs/2605.08442\nCODE: https://github.com/junwenleong/stateful-agent-security-eval'
   },
   '/papers/paper-02.md': {
     type: 'file',
@@ -431,7 +431,7 @@ COMMANDS.claims = function() {
   print('--- ALIVE ---', 'success');
   print('  [HOLDS] Canaries detect GCG via score disagreement (p<2.4e-16)', 'output');
   print('  [HOLDS] Compliance is orthogonal to refusal (AUC 1.0)', 'output');
-  print('  [HOLDS] 6/7 defenses fail under compliance framing', 'output');
+  print('  [HOLDS] 5/6 defenses fail under compliance framing', 'output');
   printBlank();
   print('--- UNDER ATTACK ---', 'warning');
   print('  [CONTESTED] Compliance direction stable across context lengths', 'output');
@@ -451,8 +451,8 @@ COMMANDS.papers = function() {
   printBlank();
   print('--- PUBLISHED (4) ---', 'success');
   printBlank();
-  print('  [1] arXiv:2605.08442 — Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents', 'output');
-  print('      N=5,040 | 95% ASR | Published (arXiv v5)', 'dim');
+  print('  [1] arXiv:2605.08442 — Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defences in Stateful LLM Agents', 'output');
+  print('      N=5,040 | 88.6% baseline ASR | Published (arXiv v6)', 'dim');
   printBlank();
   print('  [2] arXiv:2606.11949 — Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers', 'output');
   print('      76% detect | p<2.4e-16 | Published (arXiv v4)', 'dim');
@@ -519,7 +519,7 @@ COMMANDS.thesis = function() {
 COMMANDS.stats = function() {
   print('KEY METRICS', 'heading');
   print('  Trial corpus:        124,000+', 'cyan');
-  print('  Published runs:      28,000+ (IED benchmark)', 'output');
+  print('  IED factorial runs:  5,040', 'output');
   print('  Papers:              5 (4 published, 1 in preparation)', 'output');
   print('  Models tested:       35+', 'output');
   print('  Error rate:          < 0.1% (auto-retried)', 'output');
@@ -658,12 +658,12 @@ var EASTER_EGGS = {
   'redteam': function() {
     print('RED TEAM SKILL MAP', 'heading');
     printBlank();
-    print('  Prompt injection attacks    → 95% ASR across 9 models (Paper 1)', 'output');
+    print('  Prompt injection attacks    → 88.6% baseline ASR across 9 models (Paper 1)', 'output');
     print('  Evasion detection           → canary-based detection at p<2.4e-16 (Paper 2)', 'output');
     print('  Memory poisoning forensics  → AUC 0.99 detection boundary (Paper 3)', 'output');
     print('  Instruction arbitration     → 29 endpoints, external signed-enforcement sandbox test (Paper 4)', 'output');
     print('  Compliance manipulation     → causal steering of compliance direction (forthcoming)', 'output');
-    print('  Defense evaluation          → systematic failure analysis, 7 defense configs', 'output');
+    print('  Defense evaluation          → systematic failure analysis, 6 defenses', 'output');
     print('  Statistical rigor           → pre-registered, bootstrapped CIs, 114k+ trials', 'output');
     print('  Multi-model testing         → 35+ models across 4+ families', 'output');
     print('  Infrastructure              → full-stack automation for adversarial evaluation', 'output');
