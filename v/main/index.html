@@ -7,7 +7,7 @@
   <meta name="description" content="Security of AI Researcher. LLM agents reliably detect safety-relevant signals but systematically fail to enforce them at execution time.">
   <meta name="theme-color" content="#080b0f">
   <meta property="og:title" content="Jun Wen Leong — Security of AI">
-  <meta property="og:description" content="Instruction self-arbitration is not a trust boundary for LLM agents. 4 published papers, 210k+ trials, 35+ models.">
+  <meta property="og:description" content="Instruction self-arbitration is not a trust boundary for LLM agents. 4 arXiv preprints, pre-registered designs, negative results reported.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://junwenleong.github.io/">
   <meta property="og:image" content="https://junwenleong.github.io/og-image.png">
@@ -27,7 +27,7 @@
       <h1 class="site__name">Jun Wen Leong</h1>
       <p class="site__role">Security of AI Researcher</p>
       <p class="site__thesis">LLM agents reliably detect safety-relevant signals but systematically fail to enforce them at execution time.</p>
-      <p class="site__stats">4 published papers, 1 in prep &middot; 210k+ trial corpus &middot; 35+ models evaluated</p>
+      <p class="site__stats">4 arXiv preprints &middot; 29 frontier endpoints &middot; 5,040-run pre-registered factorial</p>
       <p class="site__method">Pre-registered designs. Claims treated as hypotheses. I publish what I broke, including my own.</p>
     </header>
 
@@ -47,7 +47,7 @@
         <a href="https://arxiv.org/abs/2606.11949" class="paper__link">arXiv:2606.11949</a>
         <h3 class="paper__title">Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers</h3>
         <p class="paper__detail">Any un-targeted classifier produces detectable divergence under GCG attack. Geometric bound on divergence-minimisation. CoT Budget Starvation artifact identified.</p>
-        <p class="paper__meta"><span class="finding">76% detection</span> (<span class="finding">p&lt;2.4e-16</span>) &middot; 35 models as canaries &middot; <span class="finding">k=2 optimal at 98%</span></p>
+        <p class="paper__meta"><span class="finding">75.5% detection</span> (37/49) &middot; 20 frontier models as canaries &middot; <span class="finding">98% with two canaries</span></p>
         <p class="paper__links"><a href="https://junwenleong.github.io/safety-classifier-shift-monitor">live site</a> &middot; <a href="https://github.com/junwenleong/safety-classifier-shift-monitor">code</a></p>
       </article>
 
@@ -55,7 +55,7 @@
         <a href="https://arxiv.org/abs/2606.30566" class="paper__link">arXiv:2606.30566</a>
         <h3 class="paper__title">Retrieval Observability Bounds on Provenance Detection for Agent Memory Poisoning: Measured Coverage and a Falsified Standalone Detector</h3>
         <p class="paper__detail">Whether memory access produces a logged tool call is the single architectural variable deciding if any trajectory-based detector can see a poisoning attack. Detector reaches <span class="finding">AUC 0.99</span> in-design but is falsified for standalone deployment by its own preregistered benign study (24.7&ndash;57.6% benign false positives).</p>
-        <p class="paper__meta"><span class="finding">AUC 0.99</span> &middot; provenance-graph taxonomy &middot; preregistered implicit/explicit-retrieval probes</p>
+        <p class="paper__meta"><span class="finding">0/289</span> exfiltrations without a prior logged retrieval &middot; detector falsified (benign FPR 24.7&ndash;57.6%) &middot; preregistered implicit/explicit-retrieval probes</p>
         <p class="paper__links"><a href="https://github.com/junwenleong/forensic-trajectory-signatures">code &amp; artifact</a></p>
       </article>
 
@@ -66,10 +66,6 @@
         <p class="paper__meta"><span class="finding">29 endpoints</span> &middot; 14,294 diverse-prompt trials &middot; mechanistic probing &middot; external enforcement (sandbox test)</p>
       </article>
 
-      <div class="paper paper--upcoming">
-        <p class="paper__upcoming-label">Next claims under test</p>
-        <p class="paper__upcoming-item">When Are Linear Directions Causal? A Falsification Protocol for Probe-Identified Directions in LLMs (The Causal Illusion): compliance and refusal directions are near-orthogonal (probe AUC 1.0, cos &asymp; &minus;0.03), but probe-decodable directions are not causally necessary under generation-time ablation.</p>
-      </div>
     </section>
 
     <!-- Systems -->

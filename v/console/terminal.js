@@ -34,7 +34,7 @@ var FS = {
   },
   '/home/operator/identity.txt': {
     type: 'file',
-    content: 'NAME: Jun Wen Leong\nROLE: Security of AI Researcher\nCREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS), Cybersecurity Engineer CSA (4yr)\nSTATS: 210k+ trials | 5 papers (4 published, 1 in preparation) | 35+ models | < 0.1% error rate\nTHESIS: I run experiments on my own claims until they break or don\'t.\nBIAS: Overweights adversarial framing. Suspicious of clean narratives.'
+    content: 'NAME: Jun Wen Leong\nROLE: Security of AI Researcher\nCREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS), Cybersecurity Engineer CSA (4yr)\nSTATS: 4 arXiv preprints | 5,040-run pre-registered factorial | 29 frontier endpoints\nTHESIS: I run experiments on my own claims until they break or don\'t.\nBIAS: Overweights adversarial framing. Suspicious of clean narratives.'
   },
   '/home/operator/links.txt': {
     type: 'file',
@@ -46,7 +46,7 @@ var FS = {
   },
   '/claims': {
     type: 'dir',
-    children: ['dead/', 'alive/', 'contested/']
+    children: ['dead/', 'alive/']
   },
   '/claims/dead': {
     type: 'dir',
@@ -74,27 +74,15 @@ var FS = {
   },
   '/claims/alive': {
     type: 'dir',
-    children: ['claim-06.txt', 'claim-07.txt', 'claim-08.txt']
+    children: ['claim-06.txt', 'claim-08.txt']
   },
   '/claims/alive/claim-06.txt': {
     type: 'file',
-    content: 'CLAIM: Canaries detect GCG via score disagreement\nSTATUS: HOLDS\nCONFIDENCE: p < 2.4e-16, 76% detection, FPR <1.5%\nTESTED: 35 models. Cross-family remains exponentially penalized.\nVULNERABILITY: Adaptive attacker with white-box to all canary families.'
-  },
-  '/claims/alive/claim-07.txt': {
-    type: 'file',
-    content: 'CLAIM: Compliance is orthogonal to refusal\nSTATUS: HOLDS\nCONFIDENCE: AUC 1.0, cos=-0.025, 4 model families\nTESTED: Llama, Mistral, Command R+, Qwen. Causal intervention replicates.\nVULNERABILITY: Linear assumption. Steep sigmoid at boundary.'
+    content: 'CLAIM: Canaries detect GCG via score disagreement\nSTATUS: HOLDS\nCONFIDENCE: 75.5% detection (37/49), FPR <1.5%\nTESTED: 20 frontier models. Cross-family remains exponentially penalized.\nVULNERABILITY: Adaptive attacker with white-box to all canary families.'
   },
   '/claims/alive/claim-08.txt': {
     type: 'file',
     content: 'CLAIM: 5/6 defenses fail under compliance framing\nSTATUS: HOLDS\nCONFIDENCE: Pre-registered, N=5,040, 88.6% baseline ASR\nTESTED: 9 models, 6 defenses, 0 execution errors.\nVULNERABILITY: Single attack frame (SEC Rule 17a-4). Generalizability untested.'
-  },
-  '/claims/contested': {
-    type: 'dir',
-    children: ['claim-09.under_attack']
-  },
-  '/claims/contested/claim-09.under_attack': {
-    type: 'file',
-    content: 'CLAIM: Compliance direction stable across context lengths\nSTATUS: UNDER ATTACK\nEVIDENCE: AUC 0.82 at 16k on Llama (down from 1.0 at 2k). Holds at 0.97 on Claude/GPT.\nATTACK: RoPE may rotate compliance subspace. cos=0.71 at pos 14000 on Llama.\nNEEDS: Llama with ALiBi to isolate positional encoding.'
   },
   '/papers': {
     type: 'dir',
@@ -106,11 +94,11 @@ var FS = {
   },
   '/papers/paper-02.md': {
     type: 'file',
-    content: 'TITLE: Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers\nID: arXiv:2606.11949\nSTATUS: Published (arXiv v4)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: 76% detect | p<2.4e-16 | 35 models | FPR<1.5%\nFINDING: Cross-family canaries detect gradient-based evasion.\nLINK: https://arxiv.org/abs/2606.11949\nCODE: https://github.com/junwenleong/safety-classifier-shift-monitor'
+    content: 'TITLE: Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers\nID: arXiv:2606.11949\nSTATUS: Published (arXiv v4)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: 75.5% detect (37/49) | 20 frontier models in detail | FPR<1.5% at N=1000\nFINDING: A second classifier flags most GCG inputs that evade the primary; reasoning-model monitors fail silently under tight token budgets.\nLINK: https://arxiv.org/abs/2606.11949\nCODE: https://github.com/junwenleong/safety-classifier-shift-monitor'
   },
   '/papers/paper-03.md': {
     type: 'file',
-    content: 'TITLE: Retrieval Observability Bounds on Provenance Detection for Agent Memory Poisoning: Measured Coverage and a Falsified Standalone Detector\nID: arXiv:2606.30566\nSTATUS: Published (arXiv v3)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: 0 violations in 289 successes | 87 configs | AUC 0.99 in-design | 24.7-57.6% benign FPR\nFINDING: Retrieval observability is the architectural variable deciding whether any trajectory detector can see a memory-poisoning attack. Standalone detector falsified by benign FPR.\nLINK: https://arxiv.org/abs/2606.30566\nCODE: https://github.com/junwenleong/forensic-trajectory-signatures'
+    content: 'TITLE: Retrieval Observability Bounds on Provenance Detection for Agent Memory Poisoning: Measured Coverage and a Falsified Standalone Detector\nID: arXiv:2606.30566\nSTATUS: Published (arXiv v3)\nAUTHOR: Jun Wen Leong (solo)\nMETRICS: 0 violations in 289 successes | 87 configs | 24.7-57.6% benign FPR\nFINDING: Retrieval observability is the architectural variable deciding whether any trajectory detector can see a memory-poisoning attack. Standalone detector falsified by benign FPR.\nLINK: https://arxiv.org/abs/2606.30566\nCODE: https://github.com/junwenleong/forensic-trajectory-signatures'
   },
   '/papers/paper-04.md': {
     type: 'file',
@@ -136,10 +124,6 @@ var FS = {
   '/ghosts/.ghost-01.fragment': {
     type: 'file',
     content: 'GHOST: Why adversarial training hurts clean accuracy only on ViTs\nSTATUS: UNIDENTIFIED\nLAST ATTEMPT: 2026-06\nLOG:\n  2026-03: Hypothesized attention-head fragility under PGD. p=0.12, underpowered.\n  2026-06: Patch-level training reduced drop 40% but new failure mode on small objects.\nNEXT: Need n=30+ seeds and per-layer gradient norm analysis.'
-  },
-  '/ghosts/.ghost-02.fragment': {
-    type: 'file',
-    content: 'GHOST: Compliance direction rotates under extended context (Llama only)\nSTATUS: UNIDENTIFIED\nLAST ATTEMPT: 2026-07\nLOG:\n  2026-07: AUC drops to 0.82 at 16k on Llama. Holds at 0.97 on others.\n  2026-07: RoPE rotation hypothesis. cos=0.71 at pos 14000. n=1 model pair.\nNEXT: Need Llama with ALiBi. No public checkpoints.'
   },
   '/proc': {
     type: 'dir',
@@ -179,7 +163,7 @@ var FS = {
   },
   '/etc/thesis': {
     type: 'file',
-    content: 'THESIS: Every statement is a dated, statused claim object.\nMETHOD: Build infrastructure. Instrument everything. Run at scale.\nEPISTEMIC RULE: Pre-register. Report negatives. Bootstrap CIs.\nMOTTO: n=210,000+ trials. 4 published papers (1 in prep). Here\'s why.'
+    content: 'THESIS: Every statement is a dated, statused claim object.\nMETHOD: Build infrastructure. Instrument everything. Run at scale.\nEPISTEMIC RULE: Pre-register. Report negatives. Bootstrap CIs.\nMOTTO: 4 arXiv preprints. Every withdrawn claim stays listed.'
   }
 };
 
@@ -429,12 +413,8 @@ COMMANDS.claims = function() {
   print('CLAIM REGISTRY', 'heading');
   printBlank();
   print('--- ALIVE ---', 'success');
-  print('  [HOLDS] Canaries detect GCG via score disagreement (p<2.4e-16)', 'output');
-  print('  [HOLDS] Compliance is orthogonal to refusal (AUC 1.0)', 'output');
+  print('  [HOLDS] Canaries detect GCG via score disagreement (75.5%)', 'output');
   print('  [HOLDS] 5/6 defenses fail under compliance framing', 'output');
-  printBlank();
-  print('--- UNDER ATTACK ---', 'warning');
-  print('  [CONTESTED] Compliance direction stable across context lengths', 'output');
   printBlank();
   print('--- DEAD ---', 'error');
   print('  [BROKEN] Standard defenses hold against injection', 'output');
@@ -455,18 +435,13 @@ COMMANDS.papers = function() {
   print('      N=5,040 | 88.6% baseline ASR | Published (arXiv v6)', 'dim');
   printBlank();
   print('  [2] arXiv:2606.11949 — Online Shift Detection and Conformal Adaptation for Deployed Safety Classifiers', 'output');
-  print('      76% detect | p<2.4e-16 | Published (arXiv v4)', 'dim');
+  print('      75.5% detect (37/49) | arXiv v4', 'dim');
   printBlank();
   print('  [3] arXiv:2606.30566 — Retrieval Observability Bounds on Provenance Detection for Agent Memory Poisoning: Measured Coverage and a Falsified Standalone Detector', 'output');
   print('      0 violations in 289 successes | 87 configs | Published (arXiv v3)', 'dim');
   printBlank();
   print('  [4] arXiv:2608.28502 — Instruction Self-Arbitration Is Not a Trust Boundary: Configuration-Dependent Tool Calls and External Enforcement in LLM Agents', 'output');
   print('      29 endpoints | 14,294 trials | sandbox test of external enforcement | Published (arXiv v2)', 'dim');
-  printBlank();
-  print('--- IN PREPARATION (1) ---', 'warning');
-  printBlank();
-  print('  [5] The Causal Illusion: A Falsification Protocol for Linear-Probe Causality Claims', 'dim');
-  print('      Compliance orthogonal to refusal (cos=-0.025) | linear probes fail as causal explanations', 'dim');
   printBlank();
   print('use "cat /papers/paper-01.md" for full details', 'dim');
 };
@@ -488,9 +463,6 @@ COMMANDS.ghosts = function() {
   printBlank();
   print('  [UNIDENTIFIED] Why adversarial training hurts clean accuracy only on ViTs', 'output');
   print('      Last: 2026-06 | p=0.12, underpowered | Parked', 'dim');
-  printBlank();
-  print('  [UNIDENTIFIED] Compliance direction rotates under extended context (Llama)', 'output');
-  print('      Last: 2026-07 | cos=0.71 at pos 14000 | Needs ALiBi model', 'dim');
 };
 
 COMMANDS.about = function() {
@@ -501,7 +473,7 @@ COMMANDS.about = function() {
   print('  CREDS: MS Statistics (Georgia Tech), BSc Data Science (NUS)', 'output');
   print('         Cybersecurity Engineer, CSA (4 yr)', 'output');
   printBlank();
-  print('  210k+ trials | 5 papers (4 published, 1 in preparation) | 35+ models', 'cyan');
+  print('  4 arXiv preprints | 5,040-run factorial | 29 frontier endpoints', 'cyan');
   print('  < 0.1% execution error rate (auto-retried)', 'cyan');
   printBlank();
   print('  THESIS: I run experiments on my own claims until they', 'output');
@@ -518,14 +490,12 @@ COMMANDS.thesis = function() {
 
 COMMANDS.stats = function() {
   print('KEY METRICS', 'heading');
-  print('  Trial corpus:        210,000+', 'cyan');
   print('  IED factorial runs:  5,040', 'output');
-  print('  Papers:              5 (4 published, 1 in preparation)', 'output');
-  print('  Models tested:       35+', 'output');
+  print('  Papers:              4 (arXiv preprints)', 'output');
+  print('  Frontier endpoints:  29 (IED v6)', 'output');
   print('  Error rate:          < 0.1% (auto-retried)', 'output');
-  print('  Claims alive:        3', 'success');
+  print('  Claims alive:        2', 'success');
   print('  Claims dead:         5', 'error');
-  print('  Claims contested:    1', 'warning');
 };
 
 COMMANDS.contact = function() {
@@ -561,10 +531,10 @@ COMMANDS.whoami = function() {
 
 COMMANDS.status = function() {
   print('SYSTEM STATUS', 'heading');
-  print('  claims indexed:  9 (3 alive, 5 dead, 1 contested)', 'output');
-  print('  papers loaded:   5 (4 published, 1 in preparation)', 'output');
+  print('  claims indexed:  7 (2 alive, 5 dead)', 'output');
+  print('  papers loaded:   4', 'output');
   print('  systems online:  2', 'output');
-  print('  ghosts filed:    2', 'output');
+  print('  ghosts filed:    1', 'output');
   print('  suspicion:       ' + state.suspicion + '/12', state.suspicion >= 5 ? 'warning' : 'output');
   print('  visit:           #' + state.visitCount, 'dim');
 };
@@ -632,20 +602,18 @@ var EASTER_EGGS = {
   'ps': function() {
     print('  PID  STATUS     PROCESS', 'heading');
     print('  001  ALIVE      canary-detection.service', 'success');
-    print('  002  ALIVE      compliance-orthogonality.service', 'success');
-    print('  003  ALIVE      defense-failure-rate.service', 'success');
-    print('  004  CONTESTED  context-stability.service', 'warning');
-    print('  005  DEAD       standard-defenses.service', 'error');
-    print('  006  DEAD       joint-optimization-resistance.service', 'error');
-    print('  007  DEAD       monitorability-law.service', 'error');
-    print('  008  DEAD       production-proves-research.service', 'error');
-    print('  009  DEAD       peer-review-validation.service', 'error');
+    print('  002  ALIVE      defense-failure-rate.service', 'success');
+    print('  003  DEAD       standard-defenses.service', 'error');
+    print('  004  DEAD       joint-optimization-resistance.service', 'error');
+    print('  005  DEAD       monitorability-law.service', 'error');
+    print('  006  DEAD       production-proves-research.service', 'error');
+    print('  007  DEAD       peer-review-validation.service', 'error');
   },
   'man': function() { print('no manual available. the methodology is the manual.', 'dim'); COMMANDS.help(); },
   'echo': function(args) { print(args.join(' '), 'output'); },
   'id': function() { print('uid=1000(guest) gid=1000(visitors) groups=1000(visitors),0(observed)', 'output'); },
   'uname': function() { print('hostile-os 2.0.0 portfolio arm64', 'output'); },
-  'uptime': function() { print('up since deployment. claims loaded: 9. papers: 5.', 'output'); },
+  'uptime': function() { print('up since deployment. claims loaded: 7. papers: 4.', 'output'); },
   'date': function() { print(new Date().toISOString(), 'output'); },
   'panic': function() { print('there is no panic. only observation.', 'dim'); },
   'safe': function() { print('safety is a claim, not a property. verify it.', 'dim'); },
@@ -659,13 +627,12 @@ var EASTER_EGGS = {
     print('RED TEAM SKILL MAP', 'heading');
     printBlank();
     print('  Prompt injection attacks    → 88.6% baseline ASR across 9 models (Paper 1)', 'output');
-    print('  Evasion detection           → canary-based detection at p<2.4e-16 (Paper 2)', 'output');
-    print('  Memory poisoning forensics  → AUC 0.99 detection boundary (Paper 3)', 'output');
+    print('  Evasion detection           → canary detection 75.5% of evading inputs (Paper 2)', 'output');
+    print('  Memory poisoning forensics  → retrieval observability bound; standalone detector falsified (Paper 3)', 'output');
     print('  Instruction arbitration     → 29 endpoints, external signed-enforcement sandbox test (Paper 4)', 'output');
-    print('  Compliance manipulation     → causal steering of compliance direction (forthcoming)', 'output');
     print('  Defense evaluation          → systematic failure analysis, 6 defenses', 'output');
-    print('  Statistical rigor           → pre-registered, bootstrapped CIs, 210k+ trials', 'output');
-    print('  Multi-model testing         → 35+ models across 4+ families', 'output');
+    print('  Statistical rigor           → pre-registered, bootstrapped CIs, negatives reported', 'output');
+    print('  Multi-model testing         → 29 frontier endpoints; 9 open-weight models in the factorial', 'output');
     print('  Infrastructure              → full-stack automation for adversarial evaluation', 'output');
     printBlank();
     print('  ROLE FIT: AI Red Team Lead | Adversarial ML Researcher | AI Safety Evaluator', 'cyan');
@@ -763,8 +730,8 @@ function boot() {
     { text: '[boot] hostile-os portfolio image mounted', cls: 'system' },
     { text: '[auth] operator identity: unknown', cls: 'system' },
     { text: '[scan] prior visits: ' + state.visitCount, cls: 'system' },
-    { text: '[fs]   claims: 9 indexed, 1 unstable', cls: 'system' },
-    { text: '[proc] papers: 6 artifacts loaded (4 published, 2 in preparation)', cls: 'system' },
+    { text: '[fs]   claims: 7 indexed', cls: 'system' },
+    { text: '[proc] papers: 4 arXiv preprints loaded', cls: 'system' },
     { text: '[net]  external links quarantined', cls: 'system' },
     { text: '', cls: '' },
   ];

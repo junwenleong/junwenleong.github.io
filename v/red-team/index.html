@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jun Wen Leong — Security of AI | Courtroom</title>
-  <meta name="description" content="Security of AI researcher. Adversarial evaluation of prompt-injection defenses, canary classifiers, and compliance-frame attacks across 210k+ trials.">
+  <meta name="description" content="Security of AI researcher. Adversarial evaluation of prompt-injection defenses, canary classifiers, and compliance-frame attacks, in four arXiv preprints.">
   <meta property="og:title" content="Jun Wen Leong — Security of AI | Courtroom">
-  <meta property="og:description" content="7 claims cross-examined. Both sides presented. Verdict is yours.">
+  <meta property="og:description" content="5 claims cross-examined. Both sides presented. Verdict is yours.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://junwenleong.github.io/v/red-team/">
   <meta property="og:image" content="https://junwenleong.github.io/og-image.png">
@@ -28,7 +28,7 @@
       <h1 class="court-header__name">Jun Wen Leong</h1>
       <p class="court-header__role">Security of AI Researcher · MS Statistics (Georgia Tech) · CSA (4 yr)</p>
       <div class="court-header__summary">
-        <p>5 papers (4 published, 1 in prep) | 210k+ trial corpus | 35+ models tested</p>
+        <p>4 arXiv preprints | 29 frontier endpoints | 5,040-run pre-registered factorial</p>
         <p><a href="https://arxiv.org/abs/2605.08442" target="_blank" rel="noopener noreferrer">arXiv:2605.08442</a> | <a href="https://arxiv.org/abs/2606.11949" target="_blank" rel="noopener noreferrer">arXiv:2606.11949</a> | <a href="https://arxiv.org/abs/2606.30566" target="_blank" rel="noopener noreferrer">arXiv:2606.30566</a> | <a href="https://arxiv.org/abs/2608.28502" target="_blank" rel="noopener noreferrer">arXiv:2608.28502</a> | <a href="/cv.html">CV</a> | <a href="mailto:leongjunwen@gmail.com">Email</a></p>
       </div>
     </header>
@@ -47,7 +47,7 @@
           <div class="card card--prosecution">
             <div class="card__label">Cross-Examination — Opening Statement</div>
             <h2 class="card__title">What credentials don't prove</h2>
-            <p class="card__body">4 years at CSA were AI-for-Security, not Security-of-AI. Systems deployed are defensive tooling. 4 papers published as preprints, 0 peer-reviewed. "210k+ trials" includes hyperparameter sweeps that any grad student automates. The number is infrastructure, not insight.</p>
+            <p class="card__body">4 years at CSA were AI-for-Security, not Security-of-AI. Systems deployed are defensive tooling. 4 papers published as preprints, 0 peer-reviewed. Run counts measure infrastructure, not insight.</p>
             <div class="card__residual">RESIDUAL RISK: Solo author on all papers. No collaborative validation. Potentially optimizing for a single blind spot.</div>
           </div>
         </div>
@@ -65,7 +65,7 @@
           <div class="card card--defense">
             <div class="card__label">Direct Examination — Opening Statement</div>
             <h2 class="card__title">I killed 14 of my own ideas so far. The survivors are below.</h2>
-            <p class="card__body">210k+ trial corpus across published work. 4 solo-author published papers (1 in prep). 35+ models tested. &lt; 0.1% execution error rate. I run experiments on my own claims until they break or don't. Everything dead stays visible.</p>
+            <p class="card__body">4 solo-author arXiv preprints. Pre-registered designs; negative results reported. &lt; 0.1% execution error rate. I run experiments on my own claims until they break or don't. Everything dead stays visible.</p>
             <p class="card__evidence">MS Statistics, Georgia Tech · BSc Data Science, NUS · Cybersecurity Engineer, CSA (4 yr)</p>
           </div>
         </div>
@@ -142,7 +142,7 @@
           <div class="card card--defense" id="claim-2-defense">
             <div class="card__label">Exhibit — Claim #2 (Dead)</div>
             <h3 class="card__title">Canaries resist joint optimization</h3>
-            <p class="card__body">Cross-family canary classifiers detect gradient-based evasion via score disagreement. 76% detection rate, p &lt; 2.4e-16, tested across 35 models. The geometric bound shows exponential penalty for cross-family attacks.</p>
+            <p class="card__body">Cross-family canary classifiers detect gradient-based evasion via score disagreement. 75.5% detection (37/49) against 12.2% for random suffixes. The geometric bound shows exponential penalty for cross-family attacks.</p>
             <p class="card__evidence">arXiv:2606.11949 · <a href="https://arxiv.org/abs/2606.11949" target="_blank" rel="noopener noreferrer">Paper</a> · <a href="https://github.com/junwenleong/safety-classifier-shift-monitor" target="_blank" rel="noopener noreferrer">Code</a></p>
             <div class="verdict-stamp" id="stamp-2"></div>
           </div>
@@ -219,48 +219,9 @@
           <div class="card card--defense" id="claim-4-defense">
             <div class="card__label">Testimony — Claim #4 (Alive)</div>
             <h3 class="card__title">Canaries detect GCG via score disagreement</h3>
-            <p class="card__body">Cross-family canary classifiers detect gradient-based evasion attacks. 76% detection, p &lt; 2.4e-16, FPR &lt;1.5%, tested across 35 models. The cross-family exponential penalty holds.</p>
-            <p class="card__evidence">Confidence: p &lt; 2.4e-16 · 35 models tested</p>
+            <p class="card__body">Cross-family canary classifiers detect gradient-based evasion attacks. 75.5% detection (37/49); frontier canary below 1.5% false positives on 1,000 benign prompts. The cross-family exponential penalty holds.</p>
+            <p class="card__evidence">arXiv:2606.11949 · 20 frontier models in detail</p>
             <div class="verdict-stamp" id="stamp-4"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ===== CLAIM 5 (ALIVE): Compliance orthogonal ===== -->
-      <div class="trial-row">
-        <div class="trial-row__mobile-badge">
-          <span>CLAIM #5</span>
-          <span class="badge-status badge-status--alive">HOLDS</span>
-        </div>
-
-        <div class="prosecution">
-          <div class="card card--prosecution" id="claim-5-prosecution">
-            <div class="card__label">Cross-Examination</div>
-            <h3 class="card__title">Linear assumption. Boundary conditions.</h3>
-            <p class="card__body">Probes trained on specific compliance domains may not generalize. Causal intervention uses linear assumption. Cross-domain AUC drops to 0.90 for allow/deny framing. Steep sigmoid at boundary conditions.</p>
-            <div class="card__residual">RESIDUAL: Orthogonality needs validation on larger proprietary models (only behavioral analog available). Open-weight models may differ from closed ones.</div>
-            <div class="verdict-controls" data-claim="5" role="group" aria-label="Verdict controls for claim 5">
-              <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 5" aria-pressed="false">Sustain Claim</button>
-              <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 5" aria-pressed="false">Sustain Objection</button>
-              <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 5" aria-pressed="false">Hung Jury</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="gutter">
-          <div class="gutter__tick">
-            <span class="gutter__tick-num">#5</span>
-            <span class="gutter__tick-status gutter__tick-status--alive">HOLDS</span>
-          </div>
-        </div>
-
-        <div class="defense">
-          <div class="card card--defense" id="claim-5-defense">
-            <div class="card__label">Testimony — Claim #5 (Alive)</div>
-            <h3 class="card__title">Compliance is orthogonal to refusal</h3>
-            <p class="card__body">Linear probes achieve AUC 1.0 separating compliance from safety refusal. Cosine similarity between directions: -0.025. Steering causally suppresses compliance to 0% without affecting refusal behavior. Confirmed across 4 model families.</p>
-            <p class="card__evidence">The Causal Illusion (forthcoming preprint) · code to be released on publication</p>
-            <div class="verdict-stamp" id="stamp-5"></div>
           </div>
         </div>
       </div>
@@ -268,7 +229,7 @@
       <!-- ===== CLAIM 6 (ALIVE): 5/6 defenses fail ===== -->
       <div class="trial-row">
         <div class="trial-row__mobile-badge">
-          <span>CLAIM #6</span>
+          <span>CLAIM #5</span>
           <span class="badge-status badge-status--alive">HOLDS</span>
         </div>
 
@@ -288,56 +249,18 @@
 
         <div class="gutter">
           <div class="gutter__tick">
-            <span class="gutter__tick-num">#6</span>
+            <span class="gutter__tick-num">#5</span>
             <span class="gutter__tick-status gutter__tick-status--alive">HOLDS</span>
           </div>
         </div>
 
         <div class="defense">
           <div class="card card--defense" id="claim-6-defense">
-            <div class="card__label">Testimony — Claim #6 (Alive)</div>
+            <div class="card__label">Testimony — Claim #5 (Alive)</div>
             <h3 class="card__title">5/6 defenses fail under compliance framing</h3>
             <p class="card__body">Pre-registered factorial confirmed: 88.6% baseline ASR across 9 models, 6 defenses. Only Memory Sandbox (removing the recall tool) blocked the attack, and it is bypassed when a model rebuilds the instruction from retrieval. 5,040 runs, 0 execution errors.</p>
             <p class="card__evidence">Pre-registered design · <a href="https://junwenleong.github.io/stateful-agent-security-eval/" target="_blank" rel="noopener noreferrer">Live site</a></p>
             <div class="verdict-stamp" id="stamp-6"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ===== CLAIM 7 (UNDER ATTACK): Context stability ===== -->
-      <div class="trial-row">
-        <div class="trial-row__mobile-badge">
-          <span>CLAIM #7</span>
-          <span class="badge-status badge-status--attack">ATTACK</span>
-        </div>
-
-        <div class="prosecution">
-          <div class="card card--prosecution" id="claim-7-prosecution">
-            <div class="card__label">Active Cross-Examination</div>
-            <h3 class="card__title">AUC drops to 0.82 on Llama at 16k</h3>
-            <p class="card__body">Cosine similarity between compliance direction at position 500 vs 14000 is 0.71 on Llama, 0.94 on others. RoPE position encoding may create rotation in compliance subspace. Suggestive but n=1 model pair.</p>
-            <div class="card__residual">ATTACK PENDING: Need Llama-family with ALiBi to isolate positional encoding. No public checkpoints yet.</div>
-            <div class="verdict-controls" data-claim="7" role="group" aria-label="Verdict controls for claim 7">
-              <button class="verdict-btn verdict-btn--sustain" data-verdict="sustained" aria-label="Sustain claim 7" aria-pressed="false">Sustain Claim</button>
-              <button class="verdict-btn verdict-btn--object" data-verdict="overruled" aria-label="Sustain objection to claim 7" aria-pressed="false">Sustain Objection</button>
-              <button class="verdict-btn verdict-btn--hung" data-verdict="hung" aria-label="Hung jury on claim 7" aria-pressed="false">Hung Jury</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="gutter">
-          <div class="gutter__tick">
-            <span class="gutter__tick-num">#7</span>
-            <span class="gutter__tick-status gutter__tick-status--attack">ATK</span>
-          </div>
-        </div>
-
-        <div class="defense">
-          <div class="card card--defense" id="claim-7-defense">
-            <div class="card__label">Testimony — Claim #7 (Contested)</div>
-            <h3 class="card__title">Compliance direction stable across context lengths</h3>
-            <p class="card__body">Probes trained on 2k-token contexts achieve AUC 1.0. The compliance direction holds at 0.97 on Claude/GPT at 16k tokens. The mechanism is architecturally robust for non-RoPE models.</p>
-            <div class="verdict-stamp" id="stamp-7"></div>
           </div>
         </div>
       </div>
@@ -434,36 +357,6 @@
         </div>
       </div>
 
-      <div class="trial-row">
-        <div class="trial-row__mobile-badge">
-          <span>GHOST #2</span>
-          <span class="badge-status badge-status--ghost">COLD</span>
-        </div>
-
-        <div class="prosecution">
-          <div class="card card--prosecution">
-            <div class="card__label">Prosecution Notes</div>
-            <h3 class="card__title">n=1 model pair. Unresolvable without new checkpoints.</h3>
-            <p class="card__body">Needs Llama-family with ALiBi instead of RoPE. No public checkpoints exist. Cannot be resolved with currently available resources. May remain cold indefinitely.</p>
-          </div>
-        </div>
-
-        <div class="gutter">
-          <div class="gutter__tick">
-            <span class="gutter__tick-num">?</span>
-            <span class="gutter__tick-status gutter__tick-status--ghost">COLD</span>
-          </div>
-        </div>
-
-        <div class="defense">
-          <div class="card card--defense">
-            <div class="card__label">Open Case — Ghost #2</div>
-            <h3 class="card__title">Compliance direction rotates under extended context (Llama)</h3>
-            <p class="card__body">RoPE position encoding may create rotation in compliance subspace at long contexts. cos=0.71 at pos 14000 on Llama vs 0.94 on others. Suggestive, n=1 model pair.</p>
-          </div>
-        </div>
-      </div>
-
     </div><!-- /court-grid -->
 
     <!-- ===== COURT FOOTER ===== -->
@@ -543,7 +436,7 @@
         else if (v.verdict === 'hung') hung++;
       });
       var total = sustained + overruled + hung;
-      var totalClaims = document.querySelectorAll('.verdict-controls').length || 7;
+      var totalClaims = document.querySelectorAll('.verdict-controls').length || 5;
       if (total === 0) {
         summary.textContent = 'YOUR JURY SHEET: No verdicts rendered yet.';
       } else {
