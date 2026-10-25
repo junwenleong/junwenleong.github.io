@@ -5,6 +5,6 @@
   <text x="80" y="340" font-family="system-ui, sans-serif" font-size="24" fill="#9CA3AF">Adversarial evaluation. Jailbreak robustness. Red-teaming.</text>
   <text x="80" y="420" font-family="monospace" font-size="20" fill="#FF4D2E">5/6 defenses fail under compliance-framed load.</text>
   <text x="80" y="460" font-family="monospace" font-size="20" fill="#35C9C0">Only Memory Sandbox blocks it, and models can route around it.</text>
-  <text x="80" y="540" font-family="monospace" font-size="16" fill="#5C6370">210k+ runs | 5 papers | 35+ models | &lt; 0.1% errors</text>
+  <text x="80" y="540" font-family="monospace" font-size="16" fill="#5C6370">4 arXiv preprints | 5,040-run factorial | 29 frontier endpoints</text>
   <line x1="80" y1="380" x2="1120" y2="380" stroke="#1C2030" stroke-width="1"/>
 </svg>
